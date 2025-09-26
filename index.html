@@ -5,243 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Locator Generator</title>
+    <!-- Use ai.png for all icons -->
+    <link rel="icon" type="image/png" href="ai_png.png">
+    <link rel="shortcut icon" type="image/png" href="ai_png.png">
+    <link rel="apple-touch-icon" href="ai_png.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(241, 245, 249, 0.3);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #667eea, #764ba2);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #5a67d8, #6b46c1);
-        }
-
-        .modal {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .modal-content {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .locator-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-        }
-
-        .locator-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            border-left-color: #667eea;
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .ai-content {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            border: 2px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .ai-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .rule-badge {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .loading-shimmer {
-            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        .pulse-animation {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .input-section .section-content {
-            max-height: 620px;
-            min-height: 220px;
-            height: 420px;
-            overflow: hidden;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .code-block {
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            background: #1e293b;
-            color: #e2e8f0;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .copy-success {
-            background: #10b981 !important;
-            color: white !important;
-        }
-
-        .horizontal-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            height: calc(100vh - 140px);
-        }
-
-        .input-section,
-        .output-section {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .section-content {
-            flex: 1;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        @media (max-width: 1024px) {
-            .horizontal-layout {
-                grid-template-columns: 1fr;
-                height: auto;
-                gap: 1.5rem;
-            }
-
-            .input-section,
-            .output-section {
-                height: 50vh;
-            }
-        }
-
-        .ai-icon {
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .priority-high {
-            border-left-color: #10b981;
-        }
-
-        .priority-medium {
-            border-left-color: #3b82f6;
-        }
-
-        .priority-low {
-            border-left-color: #f59e0b;
-        }
-
-        .output-section,
-        .output-section .section-content {
-            height: 100%;
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        #output-container {
-            flex: 1 1 0%;
-            min-height: 0;
-            max-height: 100%;
-            overflow-y: auto;
-        }
-
-        html,
-        body,
-        .min-h-screen,
-        .flex-col {
-            height: 100%;
-            min-height: 100%;
-            overflow: hidden;
-        }
-
-        main {
-            height: 100%;
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        .horizontal-layout {
-            height: 100%;
-            min-height: 0;
-            overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="gradient-bg">
@@ -250,12 +22,11 @@
             <div class="max-w-full mx-auto px-6 py-4">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-4">
-                        <div class="p-3 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl shadow-lg">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                <path d="M9 12l2 2 4-4"></path>
-                                <path d="M21 12c-1.5 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3"></path>
-                                <path d="M3 12c1.5 0 3-1 3-3s-1.5-3-3-3-3 1-3 3 1.5 3 3 3"></path>
-                            </svg>
+                        <!-- Replace SVG logo with ai.png image -->
+                        <div class="p-3 bg-white rounded-xl shadow-lg flex items-center justify-center"
+                            style="width:48px;height:48px;">
+                            <img src="ai.png" alt="AI Logo" width="24" height="24"
+                                style="display:block;max-width:100%;max-height:100%;">
                         </div>
                         <div>
                             <h1 class="text-2xl font-bold text-slate-800">Locator Generator Agent</h1>
@@ -269,13 +40,13 @@
                             <span>AI Ready</span>
                         </div>
                         <button id="settings-btn" class="p-2 rounded-xl hover:bg-white/50 transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColoFGer"
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 stroke-width="2">
                                 <circle cx="12" cy="12" r="3"></circle>
                                 <path
                                     d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
                                 </path>
-                            </svg>
                         </button>
                     </div>
                 </div>
@@ -287,7 +58,7 @@
                 <!-- Input Section -->
                 <div class="input-section">
                     <div class="glass-effect rounded-2xl shadow-xl p-6 section-content">
-                        <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center justify-between mb-2">
                             <h2 class="text-xl font-semibold text-slate-800">HTML Input</h2>
                             <div class="flex space-x-2">
                                 <button id="clear-btn"
@@ -303,22 +74,23 @@
 
                         <textarea id="html-input"
                             class="flex-1 w-full border-2 border-slate-200 rounded-xl p-4 focus:border-blue-400 focus:outline-none transition-colors custom-scrollbar resize-none"
-                            style="max-height: 450px; min-height: 200px; height: 300px; overflow-y: auto;"
+                            style="max-height: 450px; min-height: 200px; height: 300px; overflow-y: auto; margin-bottom: 0;"
                             placeholder="Paste your HTML snippet here...
-
                             Example:
                             <button id=&quot;submit-btn&quot; class=&quot;btn primary&quot;>Submit</button>
                             <div class=&quot;form-group&quot;>
                             <input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Enter email&quot;>
                             </div>"></textarea>
 
+                        <!-- Remove extra margin between textarea and checkboxes/buttons -->
                         <div
-                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-0 space-y-3 sm:space-y-0">
+                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-2 space-y-3 sm:space-y-0">
                             <div class="flex flex-wrap items-center gap-4">
                                 <div class="flex items-center space-x-2">
                                     <input type="checkbox" id="include-ai" class="rounded" checked>
                                     <label for="include-ai" class="text-sm text-slate-700 flex items-center gap-1">
-                                        <div class="ai-icon">AI</div>
+                                        <img src="image.png" alt="AI"
+                                            class="inline-block w-5 h-5 align-middle rounded-full" />
                                         AI Suggestions
                                     </label>
                                 </div>
@@ -338,6 +110,13 @@
                                     <span>Generate Locators</span>
                                 </span>
                             </button>
+                            <div id="chat-bubble"
+                                class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -364,6 +143,28 @@
                         </div>
 
                         <div id="output-container" class="flex-1 overflow-y-auto custom-scrollbar -mr-2 pr-2">
+                            <div id="crazy-loader" class="hidden flex flex-col items-center justify-center py-12">
+                                <!-- Fun crazy loader: spinning emoji and bouncing dots -->
+                                <!-- <div class="animate-spin-slow text-5xl mb-4 flex items-center justify-center"
+                                    style="animation: spin 1.5s linear infinite;">
+                                    <div
+                                        style="background: white; border-radius: 9999px; padding: 12px; display: inline-flex; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);">
+                                        <img src="ai.png" alt="AI" style="width: 48px; height: 48px; display: block;" />
+                                    </div>
+                                </div> -->
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-pink-400 rounded-full animate-bounce"
+                                        style="animation-delay:0s"></div>
+                                    <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce"
+                                        style="animation-delay:0.2s"></div>
+                                    <div class="w-3 h-3 bg-purple-400 rounded-full animate-bounce"
+                                        style="animation-delay:0.4s"></div>
+                                </div>
+                                <div
+                                    class="mt-4 text-lg font-bold text-pink-600 dark:text-pink-400 drop-shadow-lg text-center tracking-wide">
+                                    AI is conjuring magical locators...
+                                </div>
+                            </div>
                             <div id="empty-state"
                                 class="h-full flex flex-col items-center justify-center text-slate-400">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -385,14 +186,6 @@
             </div>
         </main>
 
-        <!-- Chat Bubble -->
-        <div id="chat-bubble"
-            class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-
         <!-- Chat Modal -->
         <div id="chat-modal"
             class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
@@ -400,7 +193,7 @@
                 class="modal-content glass-effect w-full max-w-lg p-6 rounded-2xl shadow-2xl transform scale-95 flex flex-col max-h-[90vh]">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                        <div class="ai-icon">AI</div>
+                        <img src="image.png" alt="AI" class="inline-block w-6 h-6 align-middle rounded-full" />
                         Chat Assistant
                     </h2>
                     <button id="close-chat-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
@@ -414,7 +207,8 @@
                 <div id="chat-history" class="flex-1 overflow-y-auto custom-scrollbar p-2 mb-4 space-y-4">
                     <div class="flex justify-start">
                         <div class="bg-blue-100 text-blue-800 p-3 rounded-xl max-w-[80%] flex items-start gap-2">
-                            <div class="ai-icon mt-0.5">AI</div>
+                            <img src="image.png" alt="AI"
+                                class="inline-block w-5 h-5 align-middle rounded-full mt-0.5" />
                             <div>Hello! I can help you with your locators or answer any questions about the provided
                                 HTML.</div>
                         </div>
@@ -772,7 +566,7 @@
                 <div class="flex-grow">
                     <div class="flex justify-between items-start mb-3">
                         <div class="flex items-center space-x-2 flex-wrap gap-2">
-                            ${isAI ? '<div class="ai-badge"><div class="ai-icon">AI</div> AI Generated</div>' : '<div class="rule-badge">Rule-based</div>'}
+                            ${isAI ? '<div class="ai-badge flex items-center gap-1"><img src="image.png" alt="AI" class="inline-block w-5 h-5 align-middle rounded-full" /> AI Generated</div>' : '<div class="rule-badge">Rule-based</div>'}
                             <span class="px-2 py-1 text-xs font-semibold rounded-full ${type === 'CSS' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}">${type}</span>
                             <span class="px-2 py-1 text-xs rounded-full ${priority === 'high' ? 'bg-green-100 text-green-800' : priority === 'medium' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800'}">${priority.toUpperCase()}</span>
                         </div>
@@ -1160,21 +954,21 @@
                 // Best practices and anti-patterns
                 if (aiData.bestPractices || aiData.antiPatterns) {
                     const adviceContainer = document.createElement('div');
-                    adviceContainer.className = 'mt-6 grid grid-cols-1 md:grid-cols-2 gap-4';
+                    adviceContainer.className = 'mt-4 grid grid-cols-1 md:grid-cols-2 gap-3';
 
                     // Best practices
                     if (aiData.bestPractices && aiData.bestPractices.length > 0) {
                         const practicesDiv = document.createElement('div');
-                        practicesDiv.className = 'p-4 bg-green-50 rounded-xl border border-green-200';
+                        practicesDiv.className = 'p-2 bg-green-50 rounded-xl border border-green-200';
                         practicesDiv.innerHTML = `
-                            <h4 class="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                            <h4 class="font-semibold text-green-800 mb-2 flex items-center gap-2">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M9 12l2 2 4-4"></path>
                                     <path d="M21 12c-1 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3"></path>
                                 </svg>
                                 Best Practices
                             </h4>
-                            <ul class="text-sm text-green-700 space-y-2">
+                            <ul class="text-sm text-green-700 space-y-1">
                                 ${aiData.bestPractices.map(practice => `<li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">•</span><span>${escapeHtml(practice)}</span></li>`).join('')}
                             </ul>
                         `;
@@ -1184,9 +978,9 @@
                     // Anti-patterns
                     if (aiData.antiPatterns && aiData.antiPatterns.length > 0) {
                         const antiPatternsDiv = document.createElement('div');
-                        antiPatternsDiv.className = 'p-4 bg-red-50 rounded-xl border border-red-200';
+                        antiPatternsDiv.className = 'p-2 bg-red-50 rounded-xl border border-red-200';
                         antiPatternsDiv.innerHTML = `
-                            <h4 class="font-semibold text-red-800 mb-3 flex items-center gap-2">
+                            <h4 class="font-semibold text-red-800 mb-2 flex items-center gap-2">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <line x1="15" y1="9" x2="9" y2="15"></line>
@@ -1194,7 +988,7 @@
                                 </svg>
                                 Avoid These Patterns
                             </h4>
-                            <ul class="text-sm text-red-700 space-y-2">
+                            <ul class="text-sm text-red-700 space-y-1">
                                 ${aiData.antiPatterns.map(pattern => `<li class="flex items-start gap-2"><span class="text-red-500 mt-0.5">•</span><span>${escapeHtml(pattern)}</span></li>`).join('')}
                             </ul>
                         `;
@@ -1234,7 +1028,12 @@
                         priority === 'medium' ? 'text-blue-700' : 'text-yellow-700'
                         }`;
 
-                    const priorityIcon = priority === 'high' ? '🟢' : priority === 'medium' ? '🔵' : '🟡';
+                    const priorityIcon =
+                        priority === 'high'
+                            ? `<svg class="inline-block mr-1" width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#22c55e"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+                            : priority === 'medium'
+                                ? `<svg class="inline-block mr-1" width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#3b82f6"/><path d="M7 10h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`
+                                : `<svg class="inline-block mr-1" width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" fill="#f59e0b"/><path d="M10 7v3l2 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
                     priorityHeader.innerHTML = `${priorityIcon} ${priority.charAt(0).toUpperCase() + priority.slice(1)} Priority (${items.length})`;
                     prioritySection.appendChild(priorityHeader);
 
@@ -1266,6 +1065,12 @@
                 clearOutput();
                 showOutput();
 
+                const crazyLoader = document.getElementById('crazy-loader');
+                // Show loader
+                crazyLoader.classList.remove('hidden');
+                outputContent.classList.add('hidden');
+                emptyState.classList.add('hidden');
+
                 generateBtn.disabled = true;
                 generateBtn.innerHTML = `
                 <span class="flex items-center justify-center space-x-2">
@@ -1274,17 +1079,16 @@
                     </svg>
                     <span>AI Generating...</span>
                 </span>
-            `;
+                `;
 
                 try {
                     // Generate rule-based locators first
                     const ruleBasedLocators = generateRuleBasedLocators(htmlContent);
                     generatedLocators.push(...ruleBasedLocators);
 
-                    if (ruleBasedLocators.length > 0) {
-                        const ruleSection = createRuleBasedSection(ruleBasedLocators);
-                        outputContent.appendChild(ruleSection);
-                    }
+                    let aiSection = null;
+                    let aiLocators = [];
+                    let ruleSection = null;
 
                     // Generate AI locators if enabled and API key is available
                     if (document.getElementById('include-ai')?.checked && apiKey) {
@@ -1292,17 +1096,17 @@
                             const aiData = await generateAiLocators(htmlContent);
 
                             if (aiData.recommendations) {
-                                generatedLocators.push(...aiData.recommendations.map(rec => ({
+                                aiLocators = aiData.recommendations.map(rec => ({
                                     locator: rec.cssSelector || rec.xpath,
                                     type: rec.cssSelector ? 'CSS' : 'XPath',
                                     priority: rec.priority?.toLowerCase() || 'medium',
                                     explanation: rec.explanation,
                                     source: 'ai'
-                                })));
+                                }));
+                                generatedLocators.push(...aiLocators);
                             }
 
-                            const aiSection = createAiSection(aiData);
-                            outputContent.appendChild(aiSection);
+                            aiSection = createAiSection(aiData);
                         } catch (aiError) {
                             console.error('AI generation failed:', aiError);
                             showToast(`AI generation failed: ${aiError.message}`, 'error', 5000);
@@ -1312,15 +1116,15 @@
                                 const setupDiv = document.createElement('div');
                                 setupDiv.className = 'locator-section p-6 bg-yellow-50 rounded-xl border border-yellow-200 mb-6';
                                 setupDiv.innerHTML = `
-                                <div class="text-center">
-                                    <div class="ai-icon mb-3 mx-auto w-12 h-12 text-2xl">AI</div>
-                                    <h3 class="text-lg font-semibold text-yellow-800 mb-2">🔑 API Key Required</h3>
-                                    <p class="text-yellow-700 mb-4">Configure your Gemini API key to enable AI-powered suggestions and get smarter locator recommendations.</p>
-                                    <button id="setup-api-btn" class="px-6 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors">
-                                        Setup API Key
-                                    </button>
-                                </div>
-                            `;
+                                    <div class="text-center">
+                                        <img src="image.png" alt="AI" class="mx-auto mb-3 w-12 h-12 rounded-full" />
+                                        <h3 class="text-lg font-semibold text-yellow-800 mb-2">🔑 API Key Required</h3>
+                                        <p class="text-yellow-700 mb-4">Configure your Gemini API key to enable AI-powered suggestions and get smarter locator recommendations.</p>
+                                        <button id="setup-api-btn" class="px-6 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors">
+                                            Setup API Key
+                                        </button>
+                                    </div>
+                                `;
                                 outputContent.appendChild(setupDiv);
 
                                 setupDiv.querySelector('#setup-api-btn').addEventListener('click', openModal);
@@ -1328,17 +1132,34 @@
                         }
                     }
 
-                    if (generatedLocators.length === 0) {
+                    // Always create rule-based section if there are rule-based locators
+                    if (ruleBasedLocators.length > 0) {
+                        ruleSection = createRuleBasedSection(ruleBasedLocators);
+                    }
+
+                    // Show sections in correct order:
+                    // - If AI locators present, show AI section first, then rule-based section.
+                    // - If only rule-based locators, show just rule-based section.
+                    if (aiSection) {
+                        outputContent.appendChild(aiSection);
+                    }
+                    if (ruleSection) {
+                        outputContent.appendChild(ruleSection);
+                    }
+
+                    if (!aiSection && !ruleSection) {
+                        crazyLoader.classList.add('hidden');
+                        outputContent.classList.remove('hidden');
                         const noResultsDiv = document.createElement('div');
                         noResultsDiv.className = 'text-center py-16 text-slate-500';
                         noResultsDiv.innerHTML = `
-                        <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 12h8"></path>
-                        </svg>
-                        <p class="text-lg font-semibold mb-2">No locators could be generated</p>
-                        <p class="text-sm">Try providing HTML with more identifiable elements like IDs, classes, or attributes.</p>
-                    `;
+                            <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 12h8"></path>
+                            </svg>
+                            <p class="text-lg font-semibold mb-2">No locators could be generated</p>
+                            <p class="text-sm">Try providing HTML with more identifiable elements like IDs, classes, or attributes.</p>
+                        `;
                         outputContent.appendChild(noResultsDiv);
                     }
 
@@ -1349,25 +1170,27 @@
                     const errorDiv = document.createElement('div');
                     errorDiv.className = 'p-6 bg-red-50 rounded-xl border border-red-200 text-center';
                     errorDiv.innerHTML = `
-                    <svg class="mx-auto mb-4 text-red-500" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="15" y1="9" x2="9" y2="15"></line>
-                        <line x1="9" y1="9" x2="15" y2="15"></line>
-                    </svg>
-                    <h3 class="text-lg font-semibold text-red-800 mb-2">Generation Failed</h3>
-                    <p class="text-red-700">${escapeHtml(error.message)}</p>
-                `;
+                        <svg class="mx-auto mb-4 text-red-500" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        <h3 class="text-lg font-semibold text-red-800 mb-2">Generation Failed</h3>
+                        <p class="text-red-700">${escapeHtml(error.message)}</p>
+                    `;
                     outputContent.appendChild(errorDiv);
                 } finally {
                     generateBtn.disabled = false;
                     generateBtn.innerHTML = `
-                    <span class="flex items-center justify-center space-x-2">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
-                        </svg>
-                        <span>Generate Locators</span>
-                    </span>
-                `;
+                        <span class="flex items-center justify-center space-x-2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
+                            </svg>
+                            <span>Generate Locators</span>
+                        </span>
+                    `;
+                    crazyLoader.classList.add('hidden');
+                    outputContent.classList.remove('hidden');
                 }
             });
 
@@ -1465,7 +1288,7 @@
                     } else {
                         contentDiv.innerHTML = `
                             <div class="flex items-start gap-2">
-                                <div class="ai-icon mt-1 flex-shrink-0">AI</div>
+                                <img src="image.png" alt="AI" class="inline-block w-5 h-5 align-middle rounded-full mt-0.5" />
                                 <div class="message-content">${showdownConverter.makeHtml(text)}</div>
                             </div>
                         `;
@@ -1488,7 +1311,7 @@
 
                 element.innerHTML = `
                     <div class="flex items-start gap-2">
-                        <div class="ai-icon mt-1 flex-shrink-0">AI</div>
+                        <img src="image.png" alt="AI" class="inline-block w-5 h-5 align-middle rounded-full mt-1 flex-shrink-0" />
                         <div class="message-content">${showdownConverter.makeHtml(newText)}</div>
                     </div>
                 `;
@@ -1566,25 +1389,28 @@
 
                 // Add sample HTML for demo
                 if (!htmlInput.value.trim()) {
-                    htmlInput.value = `<div class="login-form">
-                        <h2 id="login-title">Sign In</h2>
-                        <form data-testid="login-form">
-                            <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Enter password" required>
-                            </div>
-                            <div class="form-actions">
-                            <button type="submit" class="btn btn-primary" data-testid="login-button">
-                                Log In
-                            </button>
-                            <a href="/forgot-password" class="forgot-link">Forgot Password?</a>
-                            </div>
-                        </form>
-                        </div>`;
+                    const sampleHtml = `
+                    <div class="login-form">
+                    <h2 id="login-title">Sign In</h2>
+                    <form data-testid="login-form">
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+                        <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" data-testid="login-button">
+                            Log In
+                        </button>
+                        <a href="/forgot-password" class="forgot-link">Forgot Password?</a>
+                        </div>
+                    </form>
+                    </div>
+                        `.trim();
+                    htmlInput.value = formatHtml(sampleHtml);
                 }
                 showToast('E2E Locator Generator ready! Try generating locators from the sample HTML.', 'success', 4000);
             });
