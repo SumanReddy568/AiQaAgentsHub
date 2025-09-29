@@ -7,6 +7,7 @@ import * as AI from './aiService.js';
 import * as Rules from './ruleService.js';
 import * as Utils from './utils.js';
 import { initDB } from './db.js';
+import { loadSettingsFromStorage } from './settings.js';
 
 function handleSettingsSave() {
     const key = DOM.apiKeyInput.value.trim();
@@ -132,9 +133,20 @@ function loadSettings() {
     }
 }
 
+/**
+ * Updates the settings form UI based on the current state.
+ */
+function populateSettingsForm() {
+    if (state.apiKey) DOM.apiKeyInput.value = state.apiKey;
+    if (state.selectedModel) DOM.modelSelect.value = state.selectedModel;
+    UI.updateApiStatus(!!state.apiKey);
+}
+
 async function init() {
+    loadSettingsFromStorage();
+    populateSettingsForm();
     await initDB();
-    loadSettings();
+    // loadSettings();
 
     // Setup all event listeners
     DOM.settingsBtn.addEventListener('click', () => UI.openModal(DOM.settingsModal));

@@ -32,18 +32,28 @@ function renderDashboard(records = []) {
     // --- 1. Calculate Statistics ---
     const totalCalls = records.length;
     const totalTokens = records.reduce((sum, rec) => sum + (rec.totalTokens || 0), 0);
+
+    // UPDATED: Calculate stats for all three call types
     const locatorCalls = records.filter(r => r.type === 'locator').length;
     const chatCalls = records.filter(r => r.type === 'chat').length;
-    const avgTokens = totalCalls > 0 ? Math.round(totalTokens / totalCalls) : 0;
+    const explainerCalls = records.filter(r => r.type === 'explainer').length;
 
-    // Illustrative cost: assuming a blended rate of $1 per 1 million tokens.
+    const avgTokens = totalCalls > 0 ? Math.round(totalTokens / totalCalls) : 0;
     const estimatedCost = (totalTokens / 1_000_000) * 1.00;
 
     // --- 2. Update Stat Cards ---
     document.getElementById('total-calls').textContent = totalCalls.toLocaleString();
     document.getElementById('total-tokens').textContent = totalTokens.toLocaleString();
-    document.getElementById('locator-calls').textContent = locatorCalls.toLocaleString();
-    document.getElementById('chat-calls').textContent = chatCalls.toLocaleString();
+
+    // UPDATED: Find and update all three call type elements
+    const locatorCallsEl = document.getElementById('locator-calls');
+    const chatCallsEl = document.getElementById('chat-calls');
+    const explainerCallsEl = document.getElementById('explainer-calls'); // New element
+
+    if (locatorCallsEl) locatorCallsEl.textContent = locatorCalls.toLocaleString();
+    if (chatCallsEl) chatCallsEl.textContent = chatCalls.toLocaleString();
+    if (explainerCallsEl) explainerCallsEl.textContent = explainerCalls.toLocaleString();
+
     document.getElementById('avg-tokens').textContent = avgTokens.toLocaleString();
     document.getElementById('estimated-cost').textContent = `$${estimatedCost.toFixed(4)}`;
 

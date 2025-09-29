@@ -2,7 +2,7 @@
 
 export let state = {
     apiKey: '',
-    selectedModel: 'gemini-1.5-flash-latest',
+    selectedModel: 'gemini-2.5-flash-latest',
     generatedLocators: [],
     isChatting: false,
 };
