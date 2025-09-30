@@ -13,7 +13,6 @@ const outputContent = document.getElementById('output-content');
 const loader = document.getElementById('explainer-loader');
 const emptyState = document.getElementById('explainer-empty-state');
 
-// CORRECTED: Configure Showdown for better formatting (like GitHub)
 const showdownConverter = new showdown.Converter({
     ghCompatibleHeaderId: true,
     simpleLineBreaks: true,
@@ -43,8 +42,6 @@ async function handleExplainClick() {
     try {
         const explanation = await AI.getCodeExplanation(options);
         outputContent.innerHTML = showdownConverter.makeHtml(explanation);
-
-        // CORRECTED: Find all new code blocks and apply syntax highlighting
         outputContent.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block);
         });

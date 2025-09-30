@@ -63,14 +63,17 @@ export async function getCodeExplanation(options) {
         \`\`\`
     `;
 
+    const startTime = Date.now(); // START TIMER
     const { content, usage } = await fetchFromApi(prompt);
+    const duration = Date.now() - startTime; // END TIMER
 
     addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
         locatorsGenerated: 0,
-        type: 'explainer'
+        type: 'explainer',
+        duration: duration // ADD DURATION
     }).catch(err => console.error("DB save failed:", err));
 
     return content;
@@ -80,7 +83,9 @@ export async function generateAiLocators(htmlContent) {
     const prompt = `Analyze this HTML. Identify key interactive elements. For each element, provide the most robust cssSelector and xpath. Prioritize selectors using id, data-testid, name, or other unique attributes. Return ONLY a valid JSON object following this exact schema: {"recommendations": [{"element": "description", "cssSelector": "selector", "xpath": "selector", "priority": "high|medium|low", "explanation": "reasoning"}]}.
     HTML: \`\`\`html\n${htmlContent}\n\`\`\``;
 
+    const startTime = Date.now(); // START TIMER
     const { content, usage } = await fetchFromApi(prompt);
+    const duration = Date.now() - startTime; // END TIMER
     let recommendations = [];
 
     try {
@@ -107,7 +112,8 @@ export async function generateAiLocators(htmlContent) {
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
         locatorsGenerated: recommendations.length,
-        type: 'locator'
+        type: 'locator',
+        duration: duration // ADD DURATION
     }).catch(err => console.error("DB save failed:", err));
 
     return recommendations.map(rec => ({ ...rec, isAI: true }));
@@ -120,7 +126,10 @@ export async function getChatResponse(query, htmlContent) {
     Provide a concise, helpful response using markdown.`;
 
     // Note: getChatResponse doesn't need the JSON cleaning because it expects markdown text.
+    const startTime = Date.now(); // START TIMER
     const { content, usage } = await fetchFromApi(prompt);
+    const duration = Date.now() - startTime; // END TIMER
+
 
     // Save to DB
     addApiCall({
@@ -128,7 +137,47 @@ export async function getChatResponse(query, htmlContent) {
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
         locatorsGenerated: 0,
-        type: 'chat'
+        type: 'chat',
+        duration: duration // ADD DURATION
+    }).catch(err => console.error("DB save failed:", err));
+
+    return content;
+}
+
+/**
+ * Optimizes code by removing redundant code and returns a git diff.
+ * @param {string} code - The code to optimize.
+ * @param {string} language - The programming language.
+ * @returns {Promise<string>} - The git diff as markdown.
+ */
+export async function optimizeCodeWithDiff(code, language) {
+    const prompt = `
+        Act as a senior software engineer. The user provides a code snippet in ${language}.
+        Your task:
+        - Remove all redundant, dead, or duplicate code.
+        - Optimize for clarity and efficiency.
+        - Return ONLY a valid git diff (unified diff format) between the original and optimized code, using markdown code block with "diff" language.
+        - The diff must be syntactically correct and complete, with all code blocks properly closed and no missing lines.
+        - The diff output must start with \`\`\`diff and end with \`\`\`, and contain only the diff (no explanation, no extra text).
+
+        Original code:
+        \`\`\`${language.toLowerCase()}
+        ${code}
+        \`\`\`
+        `;
+
+    const startTime = Date.now(); // START TIMER
+    const { content, usage } = await fetchFromApi(prompt);
+    const duration = Date.now() - startTime; // END TIMER
+
+    // Save to DB
+    addApiCall({
+        timestamp: new Date(),
+        model: state.selectedModel,
+        totalTokens: usage.totalTokenCount,
+        locatorsGenerated: 0,
+        type: 'optimizer',
+        duration: duration // ADD DURATION
     }).catch(err => console.error("DB save failed:", err));
 
     return content;

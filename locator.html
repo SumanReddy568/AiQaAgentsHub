@@ -37,16 +37,18 @@
                             <div class="w-2 h-2 bg-green-500 rounded-full pulse-animation"></div>
                             <span>AI Ready</span>
                         </div>
-                        <a href="index.html" title="Agent Hub (Home)" class="p-2 rounded-xl hover:bg-white/50 transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <a href="index.html" title="Agent Hub (Home)"
+                            class="p-2 rounded-xl hover:bg-white/50 transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
                         </a>
-                        <a href="explainer.html" title="Code Explainer Agent" class="p-2 rounded-xl hover:bg-white/50 transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <a href="explainer.html" title="Code Explainer Agent"
+                            class="p-2 rounded-xl hover:bg-white/50 transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
                             </svg>
@@ -61,16 +63,6 @@
                                 <path d="M6 20V16"></path>
                             </svg>
                         </a>
-
-                        <button id="settings-btn" class="p-2 rounded-xl hover:bg-white/50 transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path
-                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                                </path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -185,7 +177,8 @@
                 class="modal-content glass-effect w-full max-w-lg p-6 rounded-2xl shadow-2xl transform scale-95 flex flex-col max-h-[90vh]">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                        <img src="assets/ai_png.png" alt="AI" class="inline-block w-6 h-6 align-middle rounded-full" /> Chat
+                        <img src="assets/ai_png.png" alt="AI" class="inline-block w-6 h-6 align-middle rounded-full" />
+                        Chat
                         Assistant
                     </h2>
                     <button id="close-chat-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
@@ -199,7 +192,8 @@
                 <div id="chat-history" class="flex-1 overflow-y-auto custom-scrollbar p-2 mb-4 space-y-4">
                     <div class="flex justify-start">
                         <div class="bg-slate-100 text-slate-800 p-3 rounded-xl max-w-[80%] flex items-start gap-2">
-                            <img src="assets/ai_png.png" alt="AI" class="inline-block w-5 h-5 align-middle rounded-full mt-0.5" />
+                            <img src="assets/ai_png.png" alt="AI"
+                                class="inline-block w-5 h-5 align-middle rounded-full mt-0.5" />
                             <div>Hello! I can help you with your locators or answer any questions.</div>
                         </div>
                     </div>
@@ -220,52 +214,61 @@
             </div>
         </div>
 
-        <div id="settings-modal"
-            class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
-            <div class="modal-content glass-effect w-full max-w-lg p-8 rounded-2xl shadow-2xl transform scale-95">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-slate-800">Settings</h2>
-                    <button id="close-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-                <div class="space-y-6">
-                    <div>
-                        <label for="api-key-input" class="block text-sm font-semibold text-slate-700 mb-2">Gemini API
-                            Key</label>
-                        <input type="password" id="api-key-input"
-                            class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
-                            placeholder="Enter your Gemini API key">
-                        <p class="text-xs text-slate-500 mt-2">Your API key is stored locally in your browser.</p>
-                    </div>
-                    <div>
-                        <label for="model-select" class="block text-sm font-semibold text-slate-700 mb-2">AI
-                            Model</label>
-                        <select id="model-select"
-                            class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none bg-white">
-                            <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced)</option>
-                            <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Fast & Cost-effective)</option>
-                            <option value="gemini-pro">Gemini Pro (Legacy)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex justify-end space-x-3 mt-8">
-                    <button id="cancel-settings-btn"
-                        class="px-4 py-2 text-slate-600 hover:text-slate-800 transition-colors">Cancel</button>
-                    <button id="save-settings-btn"
-                        class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all">Save
-                        Settings</button>
-                </div>
+        <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+        <script type="module" src="js/locator.js"></script>
+    </div>
+</body>
+
+</html>
+</div>
+</div>
+</div>
+
+<div id="settings-modal"
+    class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
+    <div class="modal-content glass-effect w-full max-w-lg p-8 rounded-2xl shadow-2xl transform scale-95">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-slate-800">Settings</h2>
+            <button id="close-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="space-y-6">
+            <div>
+                <label for="api-key-input" class="block text-sm font-semibold text-slate-700 mb-2">Gemini API
+                    Key</label>
+                <input type="password" id="api-key-input"
+                    class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                    placeholder="Enter your Gemini API key">
+                <p class="text-xs text-slate-500 mt-2">Your API key is stored locally in your browser.</p>
+            </div>
+            <div>
+                <label for="model-select" class="block text-sm font-semibold text-slate-700 mb-2">AI
+                    Model</label>
+                <select id="model-select"
+                    class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none bg-white">
+                    <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced)</option>
+                    <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Fast & Cost-effective)</option>
+                    <option value="gemini-pro">Gemini Pro (Legacy)</option>
+                </select>
             </div>
         </div>
-
-        <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
-        <script type="module" src="js/main.js"></script>
+        <div class="flex justify-end space-x-3 mt-8">
+            <button id="cancel-settings-btn"
+                class="px-4 py-2 text-slate-600 hover:text-slate-800 transition-colors">Cancel</button>
+            <button id="save-settings-btn"
+                class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all">Save
+                Settings</button>
+        </div>
     </div>
+</div>
+
+<div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+<script type="module" src="js/main.js"></script>
+</div>
 </body>
 
 </html>

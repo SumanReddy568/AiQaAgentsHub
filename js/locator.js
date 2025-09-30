@@ -144,15 +144,10 @@ function populateSettingsForm() {
 
 async function init() {
     loadSettingsFromStorage();
-    populateSettingsForm();
     await initDB();
     // loadSettings();
 
     // Setup all event listeners
-    DOM.settingsBtn.addEventListener('click', () => UI.openModal(DOM.settingsModal));
-    DOM.closeModalBtn.addEventListener('click', () => UI.closeModal(DOM.settingsModal));
-    DOM.cancelSettingsBtn.addEventListener('click', () => UI.closeModal(DOM.settingsModal));
-    DOM.saveSettingsBtn.addEventListener('click', handleSettingsSave);
 
     DOM.chatBubble.addEventListener('click', () => UI.openModal(DOM.chatModal));
     DOM.closeChatModalBtn.addEventListener('click', () => UI.closeModal(DOM.chatModal));

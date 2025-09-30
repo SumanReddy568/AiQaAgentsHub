@@ -15,6 +15,12 @@ export function initDB() {
             if (!dbInstance.objectStoreNames.contains(STORE_NAME)) {
                 dbInstance.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
             }
+            if (!apiCallsStore.indexNames.contains('type')) {
+                apiCallsStore.createIndex('type', 'type', { unique: false });
+            }
+            if (!apiCallsStore.indexNames.contains('duration')) {
+                apiCallsStore.createIndex('duration', 'duration', { unique: false });
+            }
         };
 
         request.onsuccess = (event) => {
