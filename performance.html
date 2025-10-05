@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Analyzer - AI QA Agent Hub</title>
+    <link rel="icon" type="image/png" href="assets/ai_png.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="gradient-bg h-full overflow-hidden">
+    <div class="fixed top-8 right-8 flex items-center gap-4 z-10">
+        <a href="index.html"
+            class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
+            &larr; Home
+        </a>
+        <a href="dashboard.html" title="Usage Dashboard"
+            class="p-2 rounded-xl hover:bg-white/50 transition-colors bg-white/80">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20V10"></path>
+                <path d="M18 20V4"></path>
+                <path d="M6 20V16"></path>
+            </svg>
+        </a>
+        <a href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
+            title="Check Gemini API Status">
+            Gemini Status
+        </a>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-screen flex flex-col">
+        <header class="text-center mb-10 flex-shrink-0">
+            <a href="index.html" class="inline-block mb-4">
+                <img src="assets/ai_png.png" alt="AI Logo" class="w-16 h-16 bg-white rounded-2xl shadow-lg p-3">
+            </a>
+            <h1 class="text-4xl font-bold text-slate-800">Performance Analyzer</h1>
+            <p class="text-slate-600 mt-2">Get AI-powered insights about your webpage's performance.</p>
+        </header>
+        
+        <div class="glass-effect p-8 rounded-2xl shadow-lg mb-8 flex-shrink-0">
+            <div class="mb-4 p-4 bg-blue-50 rounded-xl text-sm text-blue-700">
+                <strong>Note:</strong> Due to browser security restrictions, some metrics may be limited. 
+                For detailed analysis of non-public URLs, consider using Lighthouse or browser DevTools.
+            </div>
+            <div class="flex gap-4">
+                <input type="url" id="url-input" 
+                    class="flex-1 border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                    placeholder="Enter webpage URL (e.g., https://example.com)">
+                <button id="analyze-btn"
+                    class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700">
+                    Analyze Page
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+            <p class="mt-4 text-slate-600">Analyzing page performance...</p>
+        </div>
+
+        <div id="error" class="hidden glass-effect p-8 rounded-2xl shadow-lg mb-8 border-l-4 border-red-500">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Error</h3>
+            <p id="error-message" class="text-slate-600"></p>
+        </div>
+
+        <div id="results"
+            class="glass-effect p-8 rounded-2xl shadow-lg prose prose-slate max-w-none overflow-y-auto flex-1">
+            <!-- Results will be inserted here -->  
+        </div>
+    </div>
+
+    <script type="module" src="js/performance.js"></script>
+    <script src="js/theme-switcher.js"></script>
+</body>
+</html>
