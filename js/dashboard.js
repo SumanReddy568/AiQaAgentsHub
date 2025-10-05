@@ -133,7 +133,7 @@ function createPerformanceSpikeChart(records) {
 
     if (performanceChart) performanceChart.destroy();
 
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff'];
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf'];
     const agentColors = {
         locator: '#22c55e',
         chat: '#ec4899',
@@ -244,7 +244,7 @@ function createCallsTimelineChart(records) {
 
     if (timelineChart) timelineChart.destroy();
 
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff'];
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf'];
     const colors = {
         locator: '#22c55e',
         chat: '#ec4899',
@@ -300,7 +300,7 @@ function createTokenAnalysisChart(records) {
 
     if (tokenChart) tokenChart.destroy();
 
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff'];
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf'];
     const inputTokens = [];
     const outputTokens = [];
 
@@ -396,7 +396,7 @@ function createAgentResponseTimeChart(records) {
     // Destroy previous chart if exists
     if (window.agentResponseTimeChart) window.agentResponseTimeChart.destroy();
 
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff'];
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf'];
     const agentLabels = agentTypes.map(t => t.charAt(0).toUpperCase() + t.slice(1));
     const bucketLabels = ['< 1s', '1-3s', '3-5s', '> 5s'];
     const bucketColors = ['#22c55e', '#3b82f6', '#fbbf24', '#ef4444'];
@@ -516,6 +516,7 @@ function renderDashboard(records = []) {
     const explainerCalls = records.filter(r => r.type === 'explainer').length;
     const optimizerCalls = records.filter(r => r.type === 'optimizer').length;
     const diffCalls = records.filter(r => r.type === 'diff').length;
+    const perfCalls = records.filter(r => r.type === 'perf').length;
     const avgTokens = totalCalls > 0 ? Math.round(totalTokens / totalCalls) : 0;
     const estimatedCost = (totalTokens / 1_000_000) * 1.00;
 
@@ -533,15 +534,21 @@ function renderDashboard(records = []) {
     // });
 
     // --- 2. Update Stat Cards ---
-    document.getElementById('total-calls').textContent = totalCalls.toLocaleString();
-    document.getElementById('total-tokens').textContent = totalTokens.toLocaleString();
-    document.getElementById('locator-calls').textContent = locatorCalls.toLocaleString();
-    document.getElementById('chat-calls').textContent = chatCalls.toLocaleString();
-    document.getElementById('explainer-calls').textContent = explainerCalls.toLocaleString();
-    document.getElementById('optimizer-calls').textContent = optimizerCalls.toLocaleString();
-    document.getElementById('diff-checker-calls').textContent = diffCalls.toLocaleString();
-    document.getElementById('avg-tokens').textContent = avgTokens.toLocaleString();
-    document.getElementById('estimated-cost').textContent = `$${estimatedCost.toFixed(4)}`;
+    const setStatCard = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value.toLocaleString();
+    };
+    setStatCard('total-calls', totalCalls);
+    setStatCard('total-tokens', totalTokens);
+    setStatCard('locator-calls', locatorCalls);
+    setStatCard('chat-calls', chatCalls);
+    setStatCard('explainer-calls', explainerCalls);
+    setStatCard('optimizer-calls', optimizerCalls);
+    setStatCard('diff-checker-calls', diffCalls);
+    setStatCard('perf-calls', perfCalls); // <-- fix: use correct perf stat card
+    setStatCard('avg-tokens', avgTokens);
+    const costEl = document.getElementById('estimated-cost');
+    if (costEl) costEl.textContent = `$${estimatedCost.toFixed(4)}`;
 
     // --- 3. Create sparklines for each metric ---
     // Use call count for total calls sparkline
@@ -576,6 +583,7 @@ function renderDashboard(records = []) {
     createSparkline('spark-explainer', generateSparklineData(records, 'explainer'), '#6366f1');
     createSparkline('spark-optimizer', generateSparklineData(records, 'optimizer'), '#84cc16');
     createSparkline('spark-diff', generateSparklineData(records, 'diff'), '#14b8a6');
+    createSparkline('spark-perf', generateSparklineData(records, 'perf'), '#f59e0b'); // <-- fix: use correct perf sparkline
 
     // --- 4. Create advanced charts ---
     createPerformanceSpikeChart(records);
@@ -648,7 +656,7 @@ function renderDashboard(records = []) {
     });
 
     // --- 8. Populate the Agent Performance Table ---
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff'];
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf']; // <-- add 'perf'
     const perfTableBody = document.getElementById('agent-performance-body');
 
     if (records.length === 0) {
@@ -659,7 +667,8 @@ function renderDashboard(records = []) {
             const callCount = agentRecords.length;
             const durations = agentRecords.map(r => r.duration);
             const p90 = calculateP90(durations);
-            const agentName = type.charAt(0).toUpperCase() + type.slice(1);
+            // Fix agent name for perf
+            const agentName = type === 'perf' ? 'Performance Checker' : type.charAt(0).toUpperCase() + type.slice(1);
 
             // Calculate trend based on recent performance
             let trend = 'stable';
@@ -701,7 +710,8 @@ function updateAgentPerformanceTable(stats) {
         { name: 'Chat', calls: 38, p90: 2100, trend: 'down' },
         { name: 'Explainer', calls: 29, p90: 1800, trend: 'stable' },
         { name: 'Optimizer', calls: 22, p90: 1450, trend: 'up' },
-        { name: 'Diff Checker', calls: 15, p90: 980, trend: 'down' }
+        { name: 'Diff Checker', calls: 15, p90: 980, trend: 'down' },
+        { name: 'Performance', calls: 10, p90: 3000, trend: 'stable' }
     ];
 
     tbody.innerHTML = agents.map(agent => `

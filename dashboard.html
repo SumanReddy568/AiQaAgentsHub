@@ -128,11 +128,19 @@
                     <canvas id="spark-diff"></canvas>
                 </div>
             </div>
+            <div class="stat-card group">
+                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Performance Checker Calls
+                </h2>
+                <p id="perf-calls" class="stat-value text-orange-600 dark:text-orange-400">0</p>
+                <div class="mt-3 h-12">
+                    <canvas id="spark-perf"></canvas>
+                </div>
+            </div>
         </div>
 
         <!-- Performance Spike Graph -->
         <div class="dashboard-card mb-8">
-            <h2 class="card-title text-slate-800 dark:text-slate-100">⚡ Real-time Performance Spikes</h2>
+            <h2 class="card-title text-slate-800 dark:text-slate-100">Real-time Performance Spikes</h2>
             <div class="mt-6 h-64">
                 <canvas id="performance-spike-chart"></canvas>
             </div>
@@ -141,14 +149,14 @@
         <!-- Call Distribution & Agent Performance -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">📞 Call Distribution Over Time</h2>
+                <h2 class="card-title text-slate-800 dark:text-slate-100">Call Distribution Over Time</h2>
                 <div class="mt-6 h-72">
                     <canvas id="calls-timeline-chart"></canvas>
                 </div>
             </div>
 
             <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">📊 Agent Performance</h2>
+                <h2 class="card-title text-slate-800 dark:text-slate-100">Agent Performance</h2>
                 <div class="mt-6 overflow-auto max-h-72">
                     <table class="w-full text-left">
                         <thead
@@ -170,7 +178,7 @@
 
         <!-- Token Usage Analysis -->
         <div class="dashboard-card mb-8">
-            <h2 class="card-title text-slate-800 dark:text-slate-100">🎯 Token Usage Analysis</h2>
+            <h2 class="card-title text-slate-800 dark:text-slate-100">Token Usage Analysis</h2>
             <div class="mt-6 h-80">
                 <canvas id="token-analysis-chart"></canvas>
             </div>
@@ -204,7 +212,7 @@
             </div>
 
             <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">⏱️ Response Time Distribution</h2>
+                <h2 class="card-title text-slate-800 dark:text-slate-100">Response Time Distribution</h2>
                 <div class="mt-6 h-80">
                     <canvas id="response-time-chart"></canvas>
                 </div>

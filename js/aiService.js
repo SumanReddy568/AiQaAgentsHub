@@ -1,7 +1,7 @@
 // js/aiService.js
 
 import { state } from './state.js';
-import { addApiCall } from './db.js';
+import { addApiCall, initDB } from './db.js'; // <-- import initDB
 
 async function fetchFromApi(prompt) {
     if (!state.apiKey) {
@@ -67,7 +67,8 @@ export async function getCodeExplanation(options) {
     const { content, usage } = await fetchFromApi(prompt);
     const duration = Date.now() - startTime; // END TIMER
 
-    addApiCall({
+    await initDB(); // <-- ensure DB is ready before saving
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
@@ -106,8 +107,9 @@ export async function generateAiLocators(htmlContent) {
         throw new Error("The AI returned an invalid format. Please try again.");
     }
 
+    await initDB(); // <-- ensure DB is ready before saving
     // Save to DB
-    addApiCall({
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
@@ -131,8 +133,9 @@ export async function getChatResponse(query, htmlContent) {
     const duration = Date.now() - startTime; // END TIMER
 
 
+    await initDB(); // <-- ensure DB is ready before saving
     // Save to DB
-    addApiCall({
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
@@ -170,8 +173,9 @@ export async function optimizeCodeWithDiff(code, language) {
     const { content, usage } = await fetchFromApi(prompt);
     const duration = Date.now() - startTime; // END TIMER
 
+    await initDB(); // <-- ensure DB is ready before saving
     // Save to DB
-    addApiCall({
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
@@ -218,8 +222,9 @@ export async function getDiffAnalysis({ left, right, type }) {
     const { content, usage } = await fetchFromApi(prompt);
     const duration = Date.now() - startTime;
 
+    await initDB(); // <-- ensure DB is ready before saving
     // Save to DB
-    addApiCall({
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
@@ -316,11 +321,13 @@ export async function analyzePagePerformance(metrics) {
     const { content, usage } = await fetchFromApi(prompt);
     const duration = Date.now() - startTime;
 
-    addApiCall({
+    await initDB(); // <-- ensure DB is ready before saving
+    // Save to DB
+    await addApiCall({
         timestamp: new Date(),
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
-        type: 'performance',
+        type: 'perf',
         duration
     }).catch(err => console.error("DB save failed:", err));
 
