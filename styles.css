@@ -396,3 +396,320 @@ select:focus {
     visibility: hidden;
     position: absolute;
 }
+.hidden {
+    display: none !important;
+}
+
+/* Custom styles for diff highlighting */
+.hljs-addition,
+.hljs-diff-add,
+.hljs-diff-plus {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+    color: #22c55e !important;
+    display: block;
+    width: 100%;
+}
+
+.hljs-deletion,
+.hljs-diff-delete,
+.hljs-diff-minus {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    color: #ef4444 !important;
+    display: block;
+    width: 100%;
+}
+
+#diff-block {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    white-space: pre;
+    word-wrap: normal;
+    tab-size: 4;
+}
+
+.language-diff {
+    counter-reset: line;
+}
+
+.language-diff .line {
+    display: block;
+    padding: 0 1em;
+    min-height: 1.5em;
+}
+
+.language-diff .line:before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    margin-right: 1em;
+    width: 2em;
+    color: #64748b;
+    text-align: right;
+}
+
+/* Override the pre styling for diff blocks */
+pre code.language-diff {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    background: var(--bg-primary);
+    border-radius: 0.5em;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.form-input {
+    transition: all 0.3s ease;
+    border: 2px solid #e2e8f0;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.form-input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    outline: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.side-by-side-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: calc(100vh - 180px);
+}
+
+.input-panel,
+.output-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scrollable-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.diff-line {
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre-wrap;
+    padding: 2px 4px;
+}
+
+.diff-line.added {
+    background-color: #e6ffed;
+    color: #22863a;
+}
+
+.diff-line.removed {
+    background-color: #ffeef0;
+    color: #cb2431;
+}
+
+.stat-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+.dashboard-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.sparkline-container {
+    height: 48px;
+    width: 100%;
+}
+
+/* Agent performance trend indicators */
+.trend-up {
+    color: #22c55e;
+}
+
+.trend-down {
+    color: #ef4444;
+}
+
+.trend-stable {
+    color: #6b7280;
+}
+
+/* Animated gradient backgrounds for charts */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-gradient {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+/* Performance spike indicators */
+.spike-high {
+    background: rgba(239, 68, 68, 0.2);
+    border-left: 4px solid #ef4444;
+}
+
+.spike-medium {
+    background: rgba(251, 191, 36, 0.2);
+    border-left: 4px solid #fbbf24;
+}
+
+.spike-low {
+    background: rgba(34, 197, 94, 0.2);
+    border-left: 4px solid #22c55e;
+}
+
+/* Table enhancements */
+tbody tr {
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+    background: var(--bg-tertiary) !important;
+    transform: scale(1.01);
+}
+
+/* Chart tooltip custom styling */
+.chartjs-tooltip {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive grid improvements */
+@media (max-width: 640px) {
+    .grid.grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading state for charts */
+.chart-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.chart-loading::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+
+    0%,
+    20% {
+        content: '.';
+    }
+
+    40% {
+        content: '..';
+    }
+
+    60%,
+    100% {
+        content: '...';
+    }
+}
+
+/* Enhanced scrollbar for tables */
+.overflow-auto::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
