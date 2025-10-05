@@ -12,9 +12,14 @@ export function initDB() {
 
         request.onupgradeneeded = (event) => {
             const dbInstance = event.target.result;
+            let apiCallsStore;
+
             if (!dbInstance.objectStoreNames.contains(STORE_NAME)) {
-                dbInstance.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                apiCallsStore = dbInstance.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+            } else {
+                apiCallsStore = event.target.transaction.objectStore(STORE_NAME);
             }
+
             if (!apiCallsStore.indexNames.contains('type')) {
                 apiCallsStore.createIndex('type', 'type', { unique: false });
             }
