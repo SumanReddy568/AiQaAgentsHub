@@ -10,7 +10,7 @@ const frameworkSelect = document.getElementById('framework-select');
 const codeInput = document.getElementById('code-input');
 const explainBtn = document.getElementById('explain-btn');
 const outputContent = document.getElementById('output-content');
-const loader = document.getElementById('explainer-loader');
+const loader = document.getElementById('optimizer-loader'); // fixed ID
 const emptyState = document.getElementById('explainer-empty-state');
 
 const showdownConverter = new showdown.Converter({
@@ -33,8 +33,8 @@ async function handleExplainClick() {
         framework: frameworkSelect.value
     };
 
-    loader.classList.remove('hidden');
-    emptyState.classList.add('hidden');
+    if (loader) loader.classList.remove('hidden');
+    if (emptyState) emptyState.classList.add('hidden');
     outputContent.innerHTML = '';
     explainBtn.disabled = true;
     explainBtn.textContent = 'Analyzing...';
@@ -50,11 +50,12 @@ async function handleExplainClick() {
         console.error("Explanation failed:", error);
         outputContent.innerHTML = `<p class="text-red-500">Sorry, an error occurred: ${error.message}</p>`;
     } finally {
-        loader.classList.add('hidden');
+        if (loader) loader.classList.add('hidden');
         explainBtn.disabled = false;
         explainBtn.textContent = 'Explain Code';
     }
 }
+
 
 async function init() {
     loadSettingsFromStorage();

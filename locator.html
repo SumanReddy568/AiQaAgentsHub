@@ -70,10 +70,14 @@
                         </div>
                         <textarea id="html-input"
                             class="flex-1 w-full border-2 border-slate-200 rounded-xl p-4 focus:border-blue-400 focus:outline-none transition-colors custom-scrollbar resize-none"
-                            style="max-height: 450px; min-height: 200px; height: 300px; overflow-y: auto;"
-                            placeholder="Paste your HTML snippet here...&#10;Example:&#10;<button id=&quot;submit-btn&quot; class=&quot;btn primary&quot;>Submit</button>&#10;<div class=&quot;form-group&quot;>&#10;<input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Enter email&quot;>&#10;</div>"></textarea>
-                        <div
-                            class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 space-y-3 sm:space-y-0">
+                            style="max-height: 450px; min-height: 200px; height: 300px; overflow-y: auto;" placeholder="Paste your HTML snippet here...
+                        Example:
+                        <button id='submit-btn' class='btn primary'>Submit</button>
+                        <div class='form-group'>
+                        <input type='email' name='email' placeholder='Enter email'>
+                        </div>">
+                        </textarea>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
                             <div class="flex flex-wrap items-center gap-4">
                                 <div class="flex items-center space-x-2">
                                     <input type="checkbox" id="include-ai" class="rounded" checked>
@@ -118,15 +122,12 @@
 
                         <div id="output-container" class="flex-1 overflow-y-auto custom-scrollbar -mr-2 pr-2">
                             <div id="crazy-loader" class="hidden flex flex-col items-center justify-center py-12">
-                                <div class="flex space-x-2">
-                                    <div class="w-3 h-3 bg-pink-400 rounded-full animate-bounce"
-                                        style="animation-delay:0s"></div>
-                                    <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce"
-                                        style="animation-delay:0.2s"></div>
-                                    <div class="w-3 h-3 bg-purple-400 rounded-full animate-bounce"
-                                        style="animation-delay:0.4s"></div>
+                                <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
+                                    <span class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
+                                    <img src="assets/ai.png" alt="AI" class="w-10 h-10 rounded-full shadow relative z-10" />
                                 </div>
-                                <div class="mt-4 text-lg font-bold text-pink-600 text-center tracking-wide">
+                                <div class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
+                                    <img src="assets/ai_png.png" alt="AI" class="w-6 h-6 rounded-full" />
                                     AI is conjuring magical locators...
                                 </div>
                             </div>
@@ -204,59 +205,9 @@
         <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
         <script type="module" src="js/locator.js"></script>
     </div>
-</body>
-
-</html>
-</div>
-</div>
-</div>
-
-<div id="settings-modal"
-    class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
-    <div class="modal-content glass-effect w-full max-w-lg p-8 rounded-2xl shadow-2xl transform scale-95">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-slate-800">Settings</h2>
-            <button id="close-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <div class="space-y-6">
-            <div>
-                <label for="api-key-input" class="block text-sm font-semibold text-slate-700 mb-2">Gemini API
-                    Key</label>
-                <input type="password" id="api-key-input"
-                    class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
-                    placeholder="Enter your Gemini API key">
-                <p class="text-xs text-slate-500 mt-2">Your API key is stored locally in your browser.</p>
-            </div>
-            <div>
-                <label for="model-select" class="block text-sm font-semibold text-slate-700 mb-2">AI
-                    Model</label>
-                <select id="model-select"
-                    class="w-full border-2 border-slate-200 rounded-xl p-3 focus:border-blue-400 focus:outline-none bg-white">
-                    <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced)</option>
-                    <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Fast & Cost-effective)</option>
-                    <option value="gemini-pro">Gemini Pro (Legacy)</option>
-                </select>
-            </div>
-        </div>
-        <div class="flex justify-end space-x-3 mt-8">
-            <button id="cancel-settings-btn"
-                class="px-4 py-2 text-slate-600 hover:text-slate-800 transition-colors">Cancel</button>
-            <button id="save-settings-btn"
-                class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all">Save
-                Settings</button>
-        </div>
+    <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+    <script type="module" src="js/main.js"></script>
+    <script src="js/theme-switcher.js"></script>
     </div>
-</div>
-
-<div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
-<script type="module" src="js/main.js"></script>
-<script src="js/theme-switcher.js"></script>
-</div>
 </body>
-
 </html>

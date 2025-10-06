@@ -9,20 +9,6 @@ import * as Utils from './utils.js';
 import { initDB } from './db.js';
 import { loadSettingsFromStorage } from './settings.js';
 
-function handleSettingsSave() {
-    const key = DOM.apiKeyInput.value.trim();
-    if (key) {
-        updateState({ apiKey: key, selectedModel: DOM.modelSelect.value });
-        localStorage.setItem('gemini-api-key', state.apiKey);
-        localStorage.setItem('selected-model', state.selectedModel);
-        UI.updateApiStatus(true);
-        Utils.showToast('Settings saved!', 'success');
-        UI.closeModal(DOM.settingsModal);
-    } else {
-        Utils.showToast('Please enter a valid API key', 'error');
-    }
-}
-
 async function handleGenerateClick() {
     const htmlContent = DOM.htmlInput.value.trim();
     if (!htmlContent) {
@@ -117,29 +103,6 @@ function handleFilterChange() {
         }
         card.style.display = show ? 'block' : 'none';
     });
-}
-
-function loadSettings() {
-    const savedKey = localStorage.getItem('gemini-api-key');
-    const savedModel = localStorage.getItem('selected-model');
-    if (savedKey) {
-        updateState({ apiKey: savedKey });
-        DOM.apiKeyInput.value = savedKey;
-        UI.updateApiStatus(true);
-    }
-    if (savedModel) {
-        updateState({ selectedModel: savedModel });
-        DOM.modelSelect.value = savedModel;
-    }
-}
-
-/**
- * Updates the settings form UI based on the current state.
- */
-function populateSettingsForm() {
-    if (state.apiKey) DOM.apiKeyInput.value = state.apiKey;
-    if (state.selectedModel) DOM.modelSelect.value = state.selectedModel;
-    UI.updateApiStatus(!!state.apiKey);
 }
 
 async function init() {

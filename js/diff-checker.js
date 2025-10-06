@@ -12,11 +12,11 @@ const ui = {
     rightInput: document.getElementById('right-input'),
     diffType: document.getElementById('diff-type'),
     diffBtn: document.getElementById('diff-btn'),
-    loader: document.getElementById('diff-loader'),
+    loader: document.getElementById('optimizer-loader'), // fixed ID
     output: document.getElementById('diff-output'),
     diffBlock: document.getElementById('diff-block'),
     diffSummary: document.getElementById('diff-summary'),
-    diffButtonText: document.getElementById('diff-btn-text'),
+    diffButtonText: document.getElementById('diff-btn-text'), // fixed ID
 };
 
 /**

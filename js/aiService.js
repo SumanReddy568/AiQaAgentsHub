@@ -148,46 +148,6 @@ export async function getChatResponse(query, htmlContent) {
 }
 
 /**
- * Optimizes code by removing redundant code and returns a git diff.
- * @param {string} code - The code to optimize.
- * @param {string} language - The programming language.
- * @returns {Promise<string>} - The git diff as markdown.
- */
-export async function optimizeCodeWithDiff(code, language) {
-    const prompt = `
-        Act as a senior software engineer. The user provides a code snippet in ${language}.
-        Your task:
-        - Remove all redundant, dead, or duplicate code.
-        - Optimize for clarity and efficiency.
-        - Return ONLY a valid git diff (unified diff format) between the original and optimized code, using markdown code block with "diff" language.
-        - The diff must be syntactically correct and complete, with all code blocks properly closed and no missing lines.
-        - The diff output must start with \`\`\`diff and end with \`\`\`, and contain only the diff (no explanation, no extra text).
-
-        Original code:
-        \`\`\`${language.toLowerCase()}
-        ${code}
-        \`\`\`
-        `;
-
-    const startTime = Date.now(); // START TIMER
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime; // END TIMER
-
-    await initDB(); // <-- ensure DB is ready before saving
-    // Save to DB
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: 0,
-        type: 'optimizer',
-        duration: duration // ADD DURATION
-    }).catch(err => console.error("DB save failed:", err));
-
-    return content;
-}
-
-/**
  * Compares two pieces of content and returns a diff with AI summary.
  * @param {Object} options
  * @param {string} options.left - Left content.
@@ -278,7 +238,7 @@ export async function analyzePagePerformance(metrics) {
     const transferSize = (metrics.resources.sizes.transfer / 1024).toFixed(2);
     const resourceCount = metrics.resources.totalResources;
     const fcp = metrics.paint?.firstContentfulPaint?.toFixed(2) || 'N/A';
-    
+
     const prompt = `
         Analyze these web performance metrics and provide recommendations:
         
@@ -328,6 +288,45 @@ export async function analyzePagePerformance(metrics) {
         model: state.selectedModel,
         totalTokens: usage.totalTokenCount,
         type: 'perf',
+        duration
+    }).catch(err => console.error("DB save failed:", err));
+
+    return content;
+}
+
+/**
+ * Optimizes code by removing redundant code and returns the optimized code snippet.
+ * @param {string} code - The code to optimize.
+ * @param {string} language - The programming language.
+ * @returns {Promise<string>} - The optimized code snippet.
+ */
+export async function optimizeCodeWithSnippet(code, language) {
+    const prompt = `
+    You are an expert code optimizer. The user provides a code snippet in ${language}.
+    Your task:
+    - Remove all redundant, dead, or duplicate code.
+    - Optimize for clarity and efficiency.
+    - Return ONLY the optimized code in a markdown code block (\`\`\`${language.toLowerCase()}\`\`\`).
+    - Return opitmised summary in markdown format.
+    - Do NOT include any diff or extra commentary.
+
+    Original code:
+    \`\`\`${language.toLowerCase()}
+    ${code}
+    \`\`\`
+        `;
+
+    const startTime = Date.now();
+    const { content, usage } = await fetchFromApi(prompt);
+    const duration = Date.now() - startTime;
+
+    await initDB();
+    await addApiCall({
+        timestamp: new Date(),
+        model: state.selectedModel,
+        totalTokens: usage.totalTokenCount,
+        locatorsGenerated: 0,
+        type: 'optimizer',
         duration
     }).catch(err => console.error("DB save failed:", err));
 

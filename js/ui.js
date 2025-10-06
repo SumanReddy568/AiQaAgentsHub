@@ -45,7 +45,12 @@ function createLocatorCard({ locator, type, explanation, priority, isAI }) {
     card.innerHTML = `
         <div class="flex justify-between items-start mb-2">
             <div class="flex items-center gap-2 flex-wrap">
-                <span class="px-2 py-1 text-xs font-semibold rounded-full ${isAI ? 'bg-pink-100 text-pink-800' : 'bg-slate-100 text-slate-800'}">${isAI ? 'AI' : 'Rule'}</span>
+                ${isAI
+                            ? `<span class="inline-flex items-center px-2 py-1 rounded-full bg-white">
+                            <img src="assets/ai.png" alt="AI" class="w-4 h-4 rounded-full mr-1" />
+                        </span>`
+                            : `<span class="px-2 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-800">Rule</span>`
+                }
                 <span class="px-2 py-1 text-xs font-semibold rounded-full ${type === 'CSS' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}">${type}</span>
                 <span class="px-2 py-1 text-xs font-semibold rounded-full ${priority === 'high' ? 'bg-green-100 text-green-800' : priority === 'medium' ? 'bg-amber-100 text-amber-800' : 'bg-gray-100 text-gray-800'}">${priority}</span>
             </div>

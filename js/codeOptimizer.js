@@ -1,4 +1,4 @@
-import { optimizeCodeWithDiff } from './aiService.js';
+import { optimizeCodeWithSnippet } from './aiService.js';
 import { loadSettingsFromStorage } from './settings.js';
 import { initDB } from './db.js';
 
@@ -25,58 +25,49 @@ function showToast(msg, type = 'info', timeout = 3000) {
 
 let lastOptimizedCode = ''; // Store the latest optimized code for copying
 
-function extractOptimizedCodeFromDiff(diffMarkdown) {
-    // Extract the optimized code from the diff (lines not starting with '-' and not diff headers)
-    const match = diffMarkdown.match(/```diff\s*([\s\S]*?)```/);
-    const diffText = match ? match[1].trim() : diffMarkdown.trim();
-    return diffText
-        .split('\n')
-        .filter(line =>
-            !line.startsWith('-') &&
-            !line.startsWith('@@') &&
-            !line.startsWith('+++') &&
-            !line.startsWith('---')
-        )
-        .map(line => line.startsWith('+') ? line.slice(1) : line)
-        .join('\n')
-        .trim();
-}
-
-function renderDiff(diffMarkdown) {
+function renderOptimizedResult(markdown) {
     outputDiv.innerHTML = '';
-    if (!diffMarkdown) {
+    if (!markdown) {
         outputDiv.innerHTML = '<div class="text-slate-400 text-center py-8">Paste your code and click "Optimize Code" to generate optimized code</div>';
         copyBtn.classList.add('hidden');
         lastOptimizedCode = '';
         return;
     }
-    const match = diffMarkdown.match(/```diff\s*([\s\S]*?)```/);
-    const diffText = match ? match[1].trim() : diffMarkdown.trim();
 
-    const html = diffText.split('\n').map(line => {
-        if (line.startsWith('+') && !line.startsWith('+++')) {
-            return `<span style="background:#052e16;color:#22c55e;display:block;">${line.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>`;
-        }
-        if (line.startsWith('-') && !line.startsWith('---')) {
-            return `<span style="background:#58151c;color:#ef4444;display:block;">${line.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>`;
-        }
-        if (line.startsWith('@@')) {
-            return `<span style="background:#1e293b;color:#fbbf24;display:block;">${line.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>`;
-        }
-        return `<span style="display:block;">${line.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>`;
-    }).join('');
+    // Extract code block
+    const codeMatch = markdown.match(/```(\w+)?\s*([\s\S]*?)```/);
+    let codeHtml = '';
+    if (codeMatch) {
+        codeHtml = `<pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto text-sm mb-4"><code>${codeMatch[2].replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`;
+        lastOptimizedCode = codeMatch[2].trim();
+        copyBtn.classList.remove('hidden');
+    } else {
+        lastOptimizedCode = '';
+        copyBtn.classList.add('hidden');
+    }
 
-    const pre = document.createElement('pre');
-    pre.className = 'bg-slate-900 rounded-xl p-4 overflow-x-auto text-sm';
-    pre.innerHTML = `<code>${html}</code>`;
-    outputDiv.appendChild(pre);
+    // Extract explanation: everything after the first code block and first heading (## or ###)
+    let explanationHtml = '';
+    let explanation = '';
+    if (codeMatch) {
+        // Remove code block from markdown
+        const afterCode = markdown.slice(codeMatch.index + codeMatch[0].length);
+        // Find first heading (## or ###)
+        const headingMatch = afterCode.match(/(##+ .+|### .+)/);
+        if (headingMatch) {
+            explanation = afterCode.slice(headingMatch.index);
+        } else {
+            explanation = afterCode.trim();
+        }
+    }
+    if (explanation) {
+        explanationHtml = `<div class="prose prose-sm max-w-none mt-2 scrollable">${marked.parse(explanation)}</div>`;
+    }
 
-    // Extract and store the optimized code for copying
-    lastOptimizedCode = extractOptimizedCodeFromDiff(diffMarkdown);
-    copyBtn.classList.toggle('hidden', !lastOptimizedCode);
+    outputDiv.innerHTML = codeHtml + explanationHtml;
 }
 
-renderDiff('');
+renderOptimizedResult('');
 
 async function handleOptimize() {
     const code = codeInput.value.trim();
@@ -88,8 +79,8 @@ async function handleOptimize() {
     showLoader(true);
     outputDiv.innerHTML = '';
     try {
-        const diff = await optimizeCodeWithDiff(code, language);
-        renderDiff(diff);
+        const result = await optimizeCodeWithSnippet(code, language);
+        renderOptimizedResult(result);
     } catch (err) {
         showToast(err.message || 'Optimization failed.', 'error', 5000);
     } finally {

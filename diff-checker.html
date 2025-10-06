@@ -154,17 +154,15 @@
                     </h2>
 
                     <!-- Loading State -->
-                    <div id="diff-loader" class="hidden flex flex-col items-center justify-center py-16">
-                        <div class="flex space-x-3 mb-6">
-                            <div class="w-4 h-4 bg-blue-500 rounded-full animate-bounce" style="animation-delay:0s">
-                            </div>
-                            <div class="w-4 h-4 bg-purple-500 rounded-full animate-bounce"
-                                style="animation-delay:0.15s"></div>
-                            <div class="w-4 h-4 bg-pink-500 rounded-full animate-bounce" style="animation-delay:0.3s">
-                            </div>
+                    <div id="optimizer-loader" class="hidden flex flex-col items-center justify-center py-12">
+                        <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
+                            <span class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
+                            <img src="assets/ai.png" alt="AI" class="w-10 h-10 rounded-full shadow relative z-10" />
                         </div>
-                        <p class="text-lg font-bold text-slate-700">AI is analyzing...</p>
-                        <p class="text-sm text-slate-500 mt-2">Please wait</p>
+                        <div class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
+                            <img src="assets/ai_png.png" alt="AI" class="w-6 h-6 rounded-full" />
+                            AI is analyzing your code...
+                        </div>
                     </div>
 
                     <!-- Results -->
