@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Latest Tech News - AI Agent Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/ai_png.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="gradient-bg min-h-screen" style="overflow:auto">
+    <!-- Loader (shared with locator) -->
+    <div id="news-loading" class="hidden flex flex-col items-center justify-center py-12">
+        <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
+            <span
+                class="absolute inset-0 rounded-full border-4 border-yellow-400 border-t-transparent animate-spin"></span>
+            <img src="assets/ai_png.png" alt="AI" class="w-10 h-10 rounded-full shadow relative z-10" />
+        </div>
+        <div
+            class="mt-4 text-lg font-bold text-yellow-700 text-center tracking-wide flex items-center justify-center gap-2">
+            <img src="assets/ai_png.png" alt="AI" class="w-6 h-6 rounded-full" />
+            Fetching the latest tech news...
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <header class="flex items-center mb-8">
+            <img src="assets/ai_png.png" alt="AI Logo" class="w-10 h-10 rounded-xl mr-4">
+            <h1 class="text-3xl font-bold text-slate-800">Latest Tech News</h1>
+        </header>
+        <div id="news-list" class="grid gap-6"></div>
+        <div id="news-error" class="text-center text-red-600 mt-8 hidden"></div>
+    </div>
+    <script type="module" src="js/tech-news.js"></script>
+</body>
+
+</html>

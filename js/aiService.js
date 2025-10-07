@@ -3,7 +3,7 @@
 import { state } from './state.js';
 import { addApiCall, initDB } from './db.js'; // <-- import initDB
 
-async function fetchFromApi(prompt) {
+export async function fetchFromApi(prompt) {
     if (!state.apiKey) {
         throw new Error('API key not configured. Please set one on the main page.');
     }
