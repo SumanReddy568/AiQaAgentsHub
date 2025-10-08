@@ -233,14 +233,14 @@ async function fetchAndRenderAiNews(existingArticles) {
         const aiPrompt = `
             You are a tech news aggregator focusing on the latest technology news.
             The current date is ${currentDate}.
-            Find and return 50 of the most important tech news articles published within the last 48 hours.
+            Find and return 100 of the most important tech news articles published within the last 48 hours realted to AI, SOftware teseting, Devops, cloud, major outages in software.
             Keywords: ${combinedTopics}
             
             **CRITICAL RULES:**
             1. Each 'summary' must be detailed, 2-3 sentences.
-            2. Each 'technicalExplanation' should briefly explain the core tech impact.
+            2. For each article, write a 'technicalExplanation' that briefly explains the core technical impact of the news.
             3. 'publishedAt' must be accurate ISO 8601 format.
-            4. 'url' should be a valid reference link to the original article or source.
+            4. The 'title', 'sourceName', 'publishedAt', and 'url' fields must be used exactly as provided in the input data. DO NOT change or generate new information for these fields.
             5. Return ONLY valid JSON array (no markdown, no comments).
             
             JSON array:
