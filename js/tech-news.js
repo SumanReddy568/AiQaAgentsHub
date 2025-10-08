@@ -1,8 +1,5 @@
 // news.js
-
-import * as DOM from './dom.js';
 import { state } from './state.js';
-import * as Utils from './utils.js';
 import { fetchFromApi } from './aiService.js';
 import { loadSettingsFromStorage } from './settings.js';
 
@@ -17,7 +14,28 @@ const NEWSDATA_API_KEY = 'pub_872dd00f93e04da988383949bebd2aa5';
 // ==============================
 // 1️⃣ Fetch from NewsAPI.org (multiple companies + topics)
 // ==============================
+function getNewsApiRequestCount() {
+    const today = getTodayDate();
+    const requestCountKey = `newsApiRequestCount_${today}`;
+    return parseInt(localStorage.getItem(requestCountKey) || '0', 10);
+}
+
+function incrementNewsApiRequestCount() {
+    const today = getTodayDate();
+    const requestCountKey = `newsApiRequestCount_${today}`;
+    const currentCount = getNewsApiRequestCount();
+    localStorage.setItem(requestCountKey, currentCount + 1);
+}
+
 async function fetchNewsApiData() {
+    const maxRequestsPerDay = 50;
+    const currentRequestCount = getNewsApiRequestCount();
+
+    if (currentRequestCount >= maxRequestsPerDay) {
+        console.warn(`NewsAPI request limit reached (${maxRequestsPerDay} requests per day).`);
+        return [];
+    }
+
     const companies = ['Google', 'Microsoft', 'Apple', 'OpenAI', 'NVIDIA', 'Meta', 'Amazon', 'Tesla', 'IBM', 'Intel'];
     const topics = ['AI', 'Cloud', 'Software Testing', 'DevOps', 'Cybersecurity'];
 
@@ -27,16 +45,22 @@ async function fetchNewsApiData() {
     );
 
     try {
-        const responses = await Promise.all(endpoints.map(url => fetch(url)));
+        const limitedEndpoints = endpoints.slice(0, maxRequestsPerDay - currentRequestCount); // Limit requests
+        const responses = await Promise.all(limitedEndpoints.map(url => fetch(url)));
         const jsonResults = await Promise.all(responses.map(res => res.json()));
         const allArticles = jsonResults.flatMap(r => r.articles || []);
+
+        // Increment the request count
+        incrementNewsApiRequestCount();
 
         return allArticles.map(a => ({
             title: a.title || 'Untitled',
             summary: a.description || a.content || 'No summary available.',
             technicalExplanation: '',
             sourceName: a.source?.name || 'NewsAPI',
-            publishedAt: a.publishedAt || new Date().toISOString()
+            publishedAt: a.publishedAt || new Date().toISOString(),
+            category: detectCategory(a.title, a.description || a.content || ''),
+            url: a.url || a.urlToImage || '#'
         }));
     } catch (err) {
         console.warn('NewsAPI fetch failed:', err);
@@ -61,7 +85,9 @@ async function fetchNewsDataIo() {
             summary: item.description || item.content || 'No summary available.',
             technicalExplanation: '',
             sourceName: item.source_id || item.source || 'NewsData.io',
-            publishedAt: item.pubDate || new Date().toISOString()
+            publishedAt: item.pubDate || new Date().toISOString(),
+            category: detectCategory(item.title, item.description || item.content || ''),
+            url: item.link || '#'
         }));
     } catch (err) {
         console.warn('NewsData.io fetch failed:', err);
@@ -69,8 +95,30 @@ async function fetchNewsDataIo() {
     }
 }
 
+// Helper to detect news category
+function detectCategory(title, content) {
+    const text = (title + ' ' + content).toLowerCase();
+
+    if (text.includes('ai') || text.includes('artificial intelligence') || text.includes('machine learning') ||
+        text.includes('neural') || text.includes('llm') || text.includes('chatgpt')) {
+        return 'ai';
+    } else if (text.includes('test') || text.includes('qa') || text.includes('quality assurance') ||
+        text.includes('unit test') || text.includes('integration test')) {
+        return 'testing';
+    } else if (text.includes('cloud') || text.includes('aws') || text.includes('azure') ||
+        text.includes('google cloud') || text.includes('serverless')) {
+        return 'cloud';
+    } else if (text.includes('dev') || text.includes('code') || text.includes('programming') ||
+        text.includes('software') || text.includes('api') || text.includes('backend') ||
+        text.includes('frontend')) {
+        return 'development';
+    }
+
+    return 'other';
+}
+
 // ==============================
-// 3️⃣ Handle AI Fetch + Merge
+// 3️⃣ Handle AI Fetch + Merge (Progressive Rendering)
 // ==============================
 async function handleFetchNews() {
     loading.classList.remove('hidden');
@@ -86,76 +134,22 @@ async function handleFetchNews() {
         return;
     }
 
-    const currentDate = new Date().toISOString();
-    const aiPrompt = `
-        You are a meticulous tech news aggregator with real-time web search.
-        The current date is ${currentDate}.
-        Find and return a minimum of 100 of the most important tech news articles published within the last 48 hours which include ai, software devlopement, testing, majour outages, new stack in tech, major breakouts etc.
+    // Start fetching NewsAPI and NewsData.io in parallel
+    let newsApiPromise = fetchNewsApiData();
+    let newsDataPromise = fetchNewsDataIo();
 
-        Focus on: AI breakthroughs, software releases, cloud service updates, major funding/acquisitions, and hardware news.
-
-        **CRITICAL RULES:**
-        1. Each 'summary' must be detailed, 3–4 sentences minimum.
-        2. Each 'technicalExplanation' should briefly explain the core tech or business impact.
-        3. 'publishedAt' must be accurate ISO 8601 format.
-        4. Return ONLY valid JSON (no markdown, no comments).
-
-        JSON array:
-        [
-          {
-            "title": "...",
-            "summary": "...",
-            "technicalExplanation": "...",
-            "sourceName": "...",
-            "publishedAt": "..."
-          }
-        ]
-    `;
-
+    // Render non-AI news as soon as they're ready
     try {
-        const [aiResp, newsApiArticles, newsDataArticles] = await Promise.all([
-            fetchFromApi(aiPrompt),
-            fetchNewsApiData(),
-            fetchNewsDataIo()
-        ]);
+        const [newsApiArticles, newsDataArticles] = await Promise.all([newsApiPromise, newsDataPromise]);
+        const initialArticles = dedupeArticles([...newsApiArticles, ...newsDataArticles]);
+        renderNews(initialArticles);
 
-        // Parse AI JSON safely
-        let jsonStr = aiResp.content.trim();
-        if (jsonStr.startsWith('```json')) jsonStr = jsonStr.slice(7, -3).trim();
-        else if (jsonStr.startsWith('```')) jsonStr = jsonStr.slice(3, -3).trim();
+        // Show a loading indicator for AI news
+        showAiLoadingIndicator();
 
-        const aiArticles = JSON.parse(jsonStr);
-
-        // Combine everything
-        const allArticles = dedupeArticles([...aiArticles, ...newsApiArticles, ...newsDataArticles]);
-
-        // Enrich missing technicalExplanation via AI
-        const toEnrich = allArticles.filter(a => !a.technicalExplanation || a.technicalExplanation.trim() === '');
-        if (toEnrich.length > 0) {
-            try {
-                const enrichPrompt = `
-                    For each of the following articles, provide a 2–3 sentence "technicalExplanation" in JSON array format.
-                    Articles:
-                    ${JSON.stringify(toEnrich.slice(0, 10))}
-                `;
-                const { content } = await fetchFromApi(enrichPrompt);
-                let enrichJson = content.trim();
-                if (enrichJson.startsWith('```json')) enrichJson = enrichJson.slice(7, -3).trim();
-                else if (enrichJson.startsWith('```')) enrichJson = enrichJson.slice(3, -3).trim();
-                const enriched = JSON.parse(enrichJson);
-
-                enriched.forEach(e => {
-                    const match = allArticles.find(a => a.title.trim() === e.title.trim());
-                    if (match) match.technicalExplanation = e.technicalExplanation;
-                });
-            } catch (err) {
-                console.warn('AI enrichment failed:', err.message);
-            }
-        }
-
-        renderNews(allArticles);
+        // Start AI fetch in parallel
+        fetchAndRenderAiNews(initialArticles);
     } catch (err) {
-        console.error(err);
         loading.classList.add('hidden');
         errorDiv.innerHTML = `
             <div class="text-center">
@@ -167,6 +161,112 @@ async function handleFetchNews() {
             </div>
         `;
         errorDiv.classList.remove('hidden');
+    }
+}
+
+// Helper to get today's date in YYYY-MM-DD format
+function getTodayDate() {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+}
+
+// Fetch AI news with caching
+async function fetchAndRenderAiNews(existingArticles) {
+    const currentDate = getTodayDate();
+    const cacheKey = `aiNewsCache_${currentDate}`;
+    let cachedData = JSON.parse(localStorage.getItem(cacheKey)) || [];
+
+    // Show cached data immediately if available
+    if (cachedData.length > 0) {
+        console.log('Using cached AI news data.');
+        renderNews(dedupeArticles([...existingArticles, ...cachedData]));
+    }
+
+    const topics = [
+        { name: "AI and Machine Learning", query: "AI artificial intelligence machine learning LLM GPT" },
+        { name: "Cloud Computing", query: "cloud AWS Azure Google Cloud serverless" },
+        { name: "Development Tools", query: "software development programming language framework" },
+        { name: "Testing and QA", query: "software testing QA quality assurance test automation" }
+    ];
+
+    showAiLoadingIndicator();
+
+    try {
+        let allArticles = [...existingArticles];
+
+        const topicPromises = topics.map(async (topic) => {
+            const aiPrompt = `
+                You are a tech news aggregator focusing specifically on ${topic.name} news.
+                The current date is ${currentDate}.
+                Find and return 10-15 of the most important ${topic.name} news articles published within the last 48 hours.
+                Keywords: ${topic.query}
+                
+                **CRITICAL RULES:**
+                1. Each 'summary' must be detailed, 2-3 sentences.
+                2. Each 'technicalExplanation' should briefly explain the core tech impact.
+                3. 'publishedAt' must be accurate ISO 8601 format.
+                4. 'url' should be a valid reference link to the original article or source.
+                5. Return ONLY valid JSON array (no markdown, no comments).
+                
+                JSON array:
+                [
+                  {
+                    "title": "...",
+                    "summary": "...",
+                    "technicalExplanation": "...",
+                    "sourceName": "...",
+                    "publishedAt": "...",
+                    "url": "https://..."
+                  }
+                ]
+            `;
+
+            try {
+                console.log(`Fetching AI news for topic: ${topic.name}`);
+                const response = await fetchFromApi(aiPrompt);
+
+                if (!response || !response.content) {
+                    console.error(`No response content for topic: ${topic.name}`);
+                    return [];
+                }
+
+                let jsonStr = response.content.trim();
+                if (jsonStr.startsWith('```json')) jsonStr = jsonStr.slice(7, -3).trim();
+                else if (jsonStr.startsWith('```')) jsonStr = jsonStr.slice(3, -3).trim();
+
+                const topicArticles = JSON.parse(jsonStr);
+
+                topicArticles.forEach(article => {
+                    article.category = detectCategory(article.title, article.summary + ' ' + (article.technicalExplanation || ''));
+                    if (!article.url) article.url = '#';
+                });
+
+                console.log(`Fetched ${topicArticles.length} articles for topic: ${topic.name}`);
+                return topicArticles;
+            } catch (err) {
+                console.error(`Failed to fetch AI news for topic: ${topic.name}`, err);
+                return [];
+            }
+        });
+
+        const topicResults = await Promise.all(topicPromises);
+
+        for (const articles of topicResults) {
+            allArticles = dedupeArticles([...allArticles, ...articles]);
+            renderNews(allArticles);
+        }
+
+        // Cache the AI news data for today
+        const newAiArticles = dedupeArticles(topicResults.flat());
+        if (newAiArticles.length > 0) {
+            console.log('Storing AI news data in cache.');
+            localStorage.setItem(cacheKey, JSON.stringify(newAiArticles));
+        }
+
+        removeAiLoadingIndicator();
+    } catch (err) {
+        console.error('AI news fetch failed:', err);
+        removeAiLoadingIndicator();
     }
 }
 
@@ -197,30 +297,59 @@ function renderNews(newsArr) {
     const fragment = document.createDocumentFragment();
     newsArr.forEach((news, index) => {
         const card = document.createElement('div');
-        card.className = "news-item bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-slate-200";
+        card.className = "news-item bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 mb-4 mx-auto";
+        card.dataset.category = news.category || 'other';
         card.style.animationDelay = `${index * 50}ms`;
+        card.style.width = "95%"; // Adjusted width for better responsiveness
+        card.style.maxWidth = "1200px"; // Adjusted max width for better layout
 
         card.innerHTML = `
-            <div class="flex items-center justify-between mb-3">
-                <div class="font-semibold text-blue-600">${news.sourceName || 'Tech News'}</div>
-                <div class="flex items-center gap-2 text-xs text-slate-500">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span>${formatTimeAgo(news.publishedAt)}</span>
+            <div class="flex items-center justify-between mb-4">
+                <div class="font-semibold text-blue-600 dark:text-blue-400 text-lg">${news.sourceName || 'Tech News'}</div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>${formatTimeAgo(news.publishedAt)}</span>
+                    </div>
+                    ${news.url && news.url !== '#' ? `
+                        <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-medium rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Read Source
+                        </a>
+                    ` : ''}
                 </div>
             </div>
-            <h3 class="text-xl font-bold text-slate-800 mb-2">${news.title}</h3>
-            <p class="text-slate-600 mb-4">${news.summary}</p>
-            <div class="bg-slate-50 border-l-4 border-slate-300 p-3 rounded-r-lg">
-                <h4 class="font-bold text-sm text-slate-700 mb-1">Technical Insight</h4>
-                <p class="text-sm text-slate-600">${news.technicalExplanation || 'No technical explanation provided.'}</p>
+            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 leading-tight">${news.title}</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg leading-relaxed">${news.summary}</p>
+            <div class="bg-slate-100 dark:bg-slate-700 border-l-4 border-slate-300 dark:border-slate-600 p-4 rounded-r-lg mb-4">
+                <h4 class="font-bold text-base text-slate-700 dark:text-slate-300 mb-2">Technical Insight</h4>
+                <p class="text-base text-slate-700 dark:text-slate-400 leading-relaxed">${news.technicalExplanation || 'No technical explanation provided.'}</p>
             </div>
+            ${news.url && news.url !== '#' ? `
+                <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-600">
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Reference:</span>
+                    <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
+                       class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium flex items-center gap-1 hover:underline">
+                        ${news.url.replace(/^https?:\/\//, '').split('/')[0]}
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+            ` : ''}
         `;
         fragment.appendChild(card);
     });
 
     newsList.appendChild(fragment);
+
+    // Setup filter handlers after rendering
+    setupFilterHandlers();
 }
 
 // ==============================
@@ -244,5 +373,68 @@ function formatTimeAgo(dateString) {
     }
 }
 
+// Add filter functionality
+function setupFilterHandlers() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active state
+            filterButtons.forEach(b => b.classList.remove('active', 'bg-blue-500', 'text-white'));
+            filterButtons.forEach(b => b.classList.add('bg-slate-100', 'text-slate-700'));
+
+            btn.classList.remove('bg-slate-100', 'text-slate-700');
+            btn.classList.add('active', 'bg-blue-500', 'text-white');
+
+            const filter = btn.dataset.filter;
+
+            // Get all cards
+            const cards = document.querySelectorAll('.news-item');
+
+            cards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
 // ==============================
-document.addEventListener('DOMContentLoaded', handleFetchNews);
+// Helper: Show "AI news loading" indicator
+function showAiLoadingIndicator() {
+    // Create a banner instead of a card
+    const aiLoadingBanner = document.createElement('div');
+    aiLoadingBanner.id = 'ai-loading-banner';
+    aiLoadingBanner.className = "fixed top-0 left-0 right-0 bg-blue-100 dark:bg-blue-900 py-3 px-4 shadow-md z-50 flex items-center justify-center gap-3";
+    aiLoadingBanner.innerHTML = `
+        <svg class="animate-spin w-5 h-5 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
+        <span class="font-medium text-blue-700 dark:text-blue-300">Loading AI-powered news...</span>
+    `;
+    document.body.appendChild(aiLoadingBanner);
+
+    // Add padding to body to prevent content from being hidden under the banner
+    document.body.style.paddingTop = '50px';
+}
+
+// Helper: Remove AI loading indicator
+function removeAiLoadingIndicator() {
+    const aiLoadingBanner = document.getElementById('ai-loading-banner');
+    if (aiLoadingBanner) {
+        aiLoadingBanner.remove();
+        document.body.style.paddingTop = ''; // Reset padding
+    }
+}
+
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+    handleFetchNews();
+});
+document.addEventListener('DOMContentLoaded', () => {
+    handleFetchNews();
+});

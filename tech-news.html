@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="gradient-bg min-h-screen" style="overflow:auto">
+<body class="gradient-bg min-h-screen px-6 py-8" style="overflow:auto">
     <!-- Loader (shared with locator) -->
-    <div id="news-loading" class="hidden flex flex-col items-center justify-center py-12">
+    <div id="news-loading" class="hidden flex flex-col items-center justify-center py-12 mb-16">
         <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
             <span
                 class="absolute inset-0 rounded-full border-4 border-yellow-400 border-t-transparent animate-spin"></span>
@@ -26,15 +26,40 @@
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        <header class="flex items-center mb-8">
-            <img src="assets/ai_png.png" alt="AI Logo" class="w-10 h-10 rounded-xl mr-4">
-            <h1 class="text-3xl font-bold text-slate-800">Latest Tech News</h1>
+    <div class="container mx-auto px-4 mt-12">
+        <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+            <div class="flex items-center mb-4 sm:mb-0">
+                <img src="assets/ai_png.png" alt="AI Logo" class="w-10 h-10 rounded-xl mr-4">
+                <h1 class="text-3xl font-bold text-slate-800">Latest Tech News</h1>
+            </div>
+            <!-- Filter Options -->
+            <div class="flex flex-wrap gap-2" id="news-filters">
+                <button
+                    class="filter-btn active px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm"
+                    data-filter="ai">AI</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm"
+                    data-filter="development">Development</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm"
+                    data-filter="testing">Testing</button>
+                <button
+                    class="filter-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm"
+                    data-filter="cloud">Cloud</button>
+            </div>
+            <a href="index.html"
+                class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
+                &larr; Home
+            </a>
         </header>
-        <div id="news-list" class="grid gap-6"></div>
+
+        <div id="news-list" class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"></div>
         <div id="news-error" class="text-center text-red-600 mt-8 hidden"></div>
     </div>
     <script type="module" src="js/tech-news.js"></script>
+    <script src="js/theme-switcher.js"></script>
 </body>
-
 </html>
