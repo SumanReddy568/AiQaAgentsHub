@@ -57,7 +57,7 @@
         </header>
 
         <!-- Key Metrics Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5 mb-8">
             <div class="stat-card group">
                 <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total API Calls</h2>
                 <p id="total-calls" class="stat-value text-blue-600 dark:text-blue-400">0</p>
@@ -129,11 +129,19 @@
                 </div>
             </div>
             <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Performance Checker Calls
+                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Performance Checker
+                    Calls
                 </h2>
                 <p id="perf-calls" class="stat-value text-orange-600 dark:text-orange-400">0</p>
                 <div class="mt-3 h-12">
                     <canvas id="spark-perf"></canvas>
+                </div>
+            </div>
+            <div class="stat-card group">
+                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tech News Calls</h2>
+                <p id="technews-calls" class="stat-value text-sky-600 dark:text-sky-400">0</p>
+                <div class="mt-3 h-12">
+                    <canvas id="spark-technews"></canvas>
                 </div>
             </div>
         </div>

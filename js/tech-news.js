@@ -1,6 +1,6 @@
 // news.js
 import { state } from './state.js';
-import { fetchFromApi } from './aiService.js';
+import { fetchFromApi, logTechNewsApiCall } from './aiService.js';
 import { loadSettingsFromStorage } from './settings.js';
 
 const newsList = document.getElementById('news-list');
@@ -44,6 +44,7 @@ async function fetchNewsApiData() {
         `https://newsapi.org/v2/everything?q=${encodeURIComponent(q)}&from=${new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
     );
 
+    const startTime = Date.now();
     try {
         const limitedEndpoints = endpoints.slice(0, maxRequestsPerDay - currentRequestCount); // Limit requests
         const responses = await Promise.all(limitedEndpoints.map(url => fetch(url)));
@@ -53,7 +54,7 @@ async function fetchNewsApiData() {
         // Increment the request count
         incrementNewsApiRequestCount();
 
-        return allArticles.map(a => ({
+        const articles = allArticles.map(a => ({
             title: a.title || 'Untitled',
             summary: a.description || a.content || 'No summary available.',
             technicalExplanation: '',
@@ -62,8 +63,24 @@ async function fetchNewsApiData() {
             category: detectCategory(a.title, a.description || a.content || ''),
             url: a.url || a.urlToImage || '#'
         }));
+        // Log API call for dashboard (token metrics set to 0 for external APIs)
+        await logTechNewsApiCall({
+            duration: Date.now() - startTime,
+            count: articles.length,
+            totalTokens: 0,
+            promptTokens: 0,
+            responseTokens: 0
+        });
+        return articles;
     } catch (err) {
         console.warn('NewsAPI fetch failed:', err);
+        await logTechNewsApiCall({
+            duration: Date.now() - startTime,
+            count: 0,
+            totalTokens: 0,
+            promptTokens: 0,
+            responseTokens: 0
+        });
         return [];
     }
 }
@@ -75,12 +92,13 @@ async function fetchNewsDataIo() {
     const q = encodeURIComponent('tech, ai, dev, software testing, cloud, hardware');
     const url = `https://newsdata.io/api/1/latest?apikey=${NEWSDATA_API_KEY}&q=${q}`;
 
+    const startTime = Date.now();
     try {
         const resp = await fetch(url);
         const data = await resp.json();
         const results = data.results || [];
 
-        return results.map(item => ({
+        const articles = results.map(item => ({
             title: item.title || 'Untitled',
             summary: item.description || item.content || 'No summary available.',
             technicalExplanation: '',
@@ -89,8 +107,24 @@ async function fetchNewsDataIo() {
             category: detectCategory(item.title, item.description || item.content || ''),
             url: item.link || '#'
         }));
+        // Log API call for dashboard (token metrics set to 0 for external APIs)
+        await logTechNewsApiCall({
+            duration: Date.now() - startTime,
+            count: articles.length,
+            totalTokens: 0,
+            promptTokens: 0,
+            responseTokens: 0
+        });
+        return articles;
     } catch (err) {
         console.warn('NewsData.io fetch failed:', err);
+        await logTechNewsApiCall({
+            duration: Date.now() - startTime,
+            count: 0,
+            totalTokens: 0,
+            promptTokens: 0,
+            responseTokens: 0
+        });
         return [];
     }
 }
@@ -179,93 +213,86 @@ async function fetchAndRenderAiNews(existingArticles) {
     // Show cached data immediately if available
     if (cachedData.length > 0) {
         console.log('Using cached AI news data.');
+        // Ensure AI badge is set for cached articles
+        cachedData.forEach(article => {
+            article.sourceName = "AI Generated";
+        });
         renderNews(dedupeArticles([...existingArticles, ...cachedData]));
     }
 
-    const topics = [
-        { name: "AI and Machine Learning", query: "AI artificial intelligence machine learning LLM GPT" },
-        { name: "Cloud Computing", query: "cloud AWS Azure Google Cloud serverless" },
-        { name: "Development Tools", query: "software development programming language framework" },
-        { name: "Testing and QA", query: "software testing QA quality assurance test automation" }
-    ];
+    const combinedTopics = `
+        AI artificial intelligence machine learning LLM GPT,
+        cloud AWS Azure Google Cloud serverless,
+        software development programming language framework,
+        software testing QA quality assurance test automation
+    `;
 
     showAiLoadingIndicator();
 
     try {
-        let allArticles = [...existingArticles];
+        const aiPrompt = `
+            You are a tech news aggregator focusing on the latest technology news.
+            The current date is ${currentDate}.
+            Find and return 50 of the most important tech news articles published within the last 48 hours.
+            Keywords: ${combinedTopics}
+            
+            **CRITICAL RULES:**
+            1. Each 'summary' must be detailed, 2-3 sentences.
+            2. Each 'technicalExplanation' should briefly explain the core tech impact.
+            3. 'publishedAt' must be accurate ISO 8601 format.
+            4. 'url' should be a valid reference link to the original article or source.
+            5. Return ONLY valid JSON array (no markdown, no comments).
+            
+            JSON array:
+            [
+              {
+                "title": "...",
+                "summary": "...",
+                "technicalExplanation": "...",
+                "sourceName": "...",
+                "publishedAt": "...",
+                "url": "https://..."
+              }
+            ]
+        `;
 
-        const topicPromises = topics.map(async (topic) => {
-            const aiPrompt = `
-                You are a tech news aggregator focusing specifically on ${topic.name} news.
-                The current date is ${currentDate}.
-                Find and return 10-15 of the most important ${topic.name} news articles published within the last 48 hours.
-                Keywords: ${topic.query}
-                
-                **CRITICAL RULES:**
-                1. Each 'summary' must be detailed, 2-3 sentences.
-                2. Each 'technicalExplanation' should briefly explain the core tech impact.
-                3. 'publishedAt' must be accurate ISO 8601 format.
-                4. 'url' should be a valid reference link to the original article or source.
-                5. Return ONLY valid JSON array (no markdown, no comments).
-                
-                JSON array:
-                [
-                  {
-                    "title": "...",
-                    "summary": "...",
-                    "technicalExplanation": "...",
-                    "sourceName": "...",
-                    "publishedAt": "...",
-                    "url": "https://..."
-                  }
-                ]
-            `;
+        console.log('Fetching AI news...');
+        const response = await fetchFromApi(aiPrompt);
 
-            try {
-                console.log(`Fetching AI news for topic: ${topic.name}`);
-                const response = await fetchFromApi(aiPrompt);
+        if (!response || !response.content) {
+            console.error('No response content for AI news.');
+            removeAiLoadingIndicator();
+            return;
+        }
 
-                if (!response || !response.content) {
-                    console.error(`No response content for topic: ${topic.name}`);
-                    return [];
-                }
+        let jsonStr = response.content.trim();
+        if (jsonStr.startsWith('```json')) jsonStr = jsonStr.slice(7, -3).trim();
+        else if (jsonStr.startsWith('```')) jsonStr = jsonStr.slice(3, -3).trim();
 
-                let jsonStr = response.content.trim();
-                if (jsonStr.startsWith('```json')) jsonStr = jsonStr.slice(7, -3).trim();
-                else if (jsonStr.startsWith('```')) jsonStr = jsonStr.slice(3, -3).trim();
+        const aiArticles = JSON.parse(jsonStr);
 
-                const topicArticles = JSON.parse(jsonStr);
-
-                topicArticles.forEach(article => {
-                    article.category = detectCategory(article.title, article.summary + ' ' + (article.technicalExplanation || ''));
-                    if (!article.url) article.url = '#';
-                });
-
-                console.log(`Fetched ${topicArticles.length} articles for topic: ${topic.name}`);
-                return topicArticles;
-            } catch (err) {
-                console.error(`Failed to fetch AI news for topic: ${topic.name}`, err);
-                return [];
-            }
+        aiArticles.forEach(article => {
+            article.category = detectCategory(article.title, article.summary + ' ' + (article.technicalExplanation || ''));
+            if (!article.url) article.url = '#';
+            // Ensure AI badge is shown
+            article.sourceName = "AI Generated";
         });
 
-        const topicResults = await Promise.all(topicPromises);
+        console.log(`Fetched ${aiArticles.length} AI articles.`);
+        const allArticles = dedupeArticles([...existingArticles, ...aiArticles]);
 
-        for (const articles of topicResults) {
-            allArticles = dedupeArticles([...allArticles, ...articles]);
-            renderNews(allArticles);
-        }
+        // Render the combined articles
+        renderNews(allArticles);
 
         // Cache the AI news data for today
-        const newAiArticles = dedupeArticles(topicResults.flat());
-        if (newAiArticles.length > 0) {
+        if (aiArticles.length > 0) {
             console.log('Storing AI news data in cache.');
-            localStorage.setItem(cacheKey, JSON.stringify(newAiArticles));
+            localStorage.setItem(cacheKey, JSON.stringify(aiArticles));
         }
-
-        removeAiLoadingIndicator();
     } catch (err) {
         console.error('AI news fetch failed:', err);
+    } finally {
+        // Ensure the loading indicator is removed regardless of success or failure
         removeAiLoadingIndicator();
     }
 }
@@ -307,6 +334,9 @@ function renderNews(newsArr) {
             <div class="flex items-center justify-between mb-4">
                 <div class="font-semibold text-blue-600 dark:text-blue-400 text-lg">${news.sourceName || 'Tech News'}</div>
                 <div class="flex items-center gap-4">
+                    ${news.sourceName === 'AI Generated' ? `
+                        <img src="assets/ai.png" alt="AI Badge" class="w-6 h-6" title="Generated by AI">
+                    ` : ''}
                     <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -405,6 +435,9 @@ function setupFilterHandlers() {
 // ==============================
 // Helper: Show "AI news loading" indicator
 function showAiLoadingIndicator() {
+    // Prevent multiple banners
+    if (document.getElementById('ai-loading-banner')) return;
+
     // Create a banner instead of a card
     const aiLoadingBanner = document.createElement('div');
     aiLoadingBanner.id = 'ai-loading-banner';
@@ -432,9 +465,6 @@ function removeAiLoadingIndicator() {
 }
 
 // ==============================
-document.addEventListener('DOMContentLoaded', () => {
-    handleFetchNews();
-});
 document.addEventListener('DOMContentLoaded', () => {
     handleFetchNews();
 });

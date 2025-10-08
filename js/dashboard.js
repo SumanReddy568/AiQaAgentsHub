@@ -517,6 +517,7 @@ function renderDashboard(records = []) {
     const optimizerCalls = records.filter(r => r.type === 'optimizer').length;
     const diffCalls = records.filter(r => r.type === 'diff').length;
     const perfCalls = records.filter(r => r.type === 'perf').length;
+    const techNewsCalls = records.filter(r => r.type === 'technews').length;
     const avgTokens = totalCalls > 0 ? Math.round(totalTokens / totalCalls) : 0;
     const estimatedCost = (totalTokens / 1_000_000) * 1.00;
 
@@ -547,6 +548,7 @@ function renderDashboard(records = []) {
     setStatCard('diff-checker-calls', diffCalls);
     setStatCard('perf-calls', perfCalls); // <-- fix: use correct perf stat card
     setStatCard('avg-tokens', avgTokens);
+    setStatCard('technews-calls', techNewsCalls); // <-- Add this line
     const costEl = document.getElementById('estimated-cost');
     if (costEl) costEl.textContent = `$${estimatedCost.toFixed(4)}`;
 
@@ -584,8 +586,10 @@ function renderDashboard(records = []) {
     createSparkline('spark-optimizer', generateSparklineData(records, 'optimizer'), '#84cc16');
     createSparkline('spark-diff', generateSparklineData(records, 'diff'), '#14b8a6');
     createSparkline('spark-perf', generateSparklineData(records, 'perf'), '#f59e0b'); // <-- fix: use correct perf sparkline
+    createSparkline('spark-technews', generateSparklineData(records, 'technews'), '#0ea5e9'); // <-- Add this line
 
     // --- 4. Create advanced charts ---
+    // Add 'technews' to agentTypes for charts
     createPerformanceSpikeChart(records);
     createCallsTimelineChart(records);
     createTokenAnalysisChart(records);
@@ -656,7 +660,7 @@ function renderDashboard(records = []) {
     });
 
     // --- 8. Populate the Agent Performance Table ---
-    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf']; // <-- add 'perf'
+    const agentTypes = ['locator', 'chat', 'explainer', 'optimizer', 'diff', 'perf', 'technews']; // <-- add 'technews'
     const perfTableBody = document.getElementById('agent-performance-body');
 
     if (records.length === 0) {
@@ -667,8 +671,11 @@ function renderDashboard(records = []) {
             const callCount = agentRecords.length;
             const durations = agentRecords.map(r => r.duration);
             const p90 = calculateP90(durations);
-            // Fix agent name for perf
-            const agentName = type === 'perf' ? 'Performance Checker' : type.charAt(0).toUpperCase() + type.slice(1);
+            // Fix agent name for perf and technews
+            let agentName = '';
+            if (type === 'perf') agentName = 'Performance Checker';
+            else if (type === 'technews') agentName = 'Tech News';
+            else agentName = type.charAt(0).toUpperCase() + type.slice(1);
 
             // Calculate trend based on recent performance
             let trend = 'stable';
