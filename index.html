@@ -46,6 +46,11 @@
 
     <!-- Settings and theme toggle icons at top-right -->
     <div class="fixed top-8 right-8 z-50 flex items-center space-x-4">
+        <!-- Gemini Status Indicator -->
+        <div id="gemini-status-indicator" class="flex items-center space-x-2">
+            <span id="gemini-status-dot" class="inline-block w-3 h-3 rounded-full bg-gray-400 animate-pulse"></span>
+            <span id="gemini-status-label" class="text-xs font-semibold text-gray-600">Checking...</span>
+        </div>
         <!-- Theme toggle switch - simplified version -->
         <div class="flex items-center">
             <input type="checkbox" id="theme-switch" class="theme-switch" />
@@ -61,7 +66,7 @@
                 </path>
             </svg>
         </button>
-        
+
         <a href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
             class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
             title="Check Gemini API Status">
@@ -115,10 +120,15 @@
                 <a href="tech-news.html"
                     class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block border-2 border-yellow-400">
                     <h3 class="text-2xl font-bold text-yellow-700 flex items-center gap-2">
-                        <svg class="inline-block" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="#facc15"/><path d="M8 8h8v2H8zM8 12h5v2H8z" stroke="#92400e" stroke-width="1.5"/></svg>
+                        <svg class="inline-block" width="28" height="28" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 4h16v16H4z" fill="#facc15" />
+                            <path d="M8 8h8v2H8zM8 12h5v2H8z" stroke="#92400e" stroke-width="1.5" />
+                        </svg>
                         Tech News
                     </h3>
-                    <p class="text-slate-700 mt-2">See the latest AI, software, and testing news, launches, and outages—auto-refreshed every visit.</p>
+                    <p class="text-slate-700 mt-2">See the latest AI, software, and testing news, launches, and
+                        outages—auto-refreshed every visit.</p>
                     <span class="mt-4 inline-block font-semibold text-yellow-700">View News &rarr;</span>
                 </a>
                 <a href="locator.html"
@@ -152,7 +162,8 @@
                 <a href="performance.html"
                     class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
                     <h3 class="text-2xl font-bold text-slate-800">Performance Analyzer</h3>
-                    <p class="text-slate-600 mt-2">Analyze webpage performance metrics and get AI-powered optimization recommendations.</p>
+                    <p class="text-slate-600 mt-2">Analyze webpage performance metrics and get AI-powered optimization
+                        recommendations.</p>
                     <span class="mt-4 inline-block font-semibold text-purple-600">Launch Agent &rarr;</span>
                 </a>
             </div>
@@ -219,12 +230,122 @@
 
     <script type="module" src="js/landing.js"></script>
     <script type="module" src="js/theme-switcher.js"></script>
-    <!-- <script>
-        // Check authentication
-        if (!localStorage.getItem('user_token')) {
-            window.location.href = '/login.html';
+    <!-- Gemini Status Polling Script -->
+    <script>
+        let geminiStatusInterval = null;
+
+        function getGeminiSettings() {
+            // Use the same keys as in aiService.js
+            const apiKey = localStorage.getItem('gemini-api-key');
+            const selectedModel = localStorage.getItem('selected-model') || 'gemini-2.5-flash';
+            return { apiKey, selectedModel };
         }
-    </script> -->
+
+        async function checkGeminiStatus() {
+            const dot = document.getElementById('gemini-status-dot');
+            const label = document.getElementById('gemini-status-label');
+            const { apiKey, selectedModel } = getGeminiSettings();
+
+            if (!apiKey) {
+                dot.className = "inline-block w-3 h-3 rounded-full bg-gray-400";
+                label.textContent = "Not Configured";
+                label.className = "text-xs font-semibold text-gray-500";
+                label.removeAttribute('title');
+                return;
+            }
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
+                const resp = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: "ping" }] }],
+                        generationConfig: { temperature: 0 }
+                    })
+                });
+
+                if (resp.ok) {
+                    dot.className = "inline-block w-3 h-3 rounded-full bg-green-500";
+                    label.textContent = "Online";
+                    label.className = "text-xs font-semibold text-green-600 dark:text-green-400";
+                    label.removeAttribute('title');
+                } else {
+                    let errorData, errorMsg = "";
+                    try { errorData = await resp.json(); } catch { }
+                    if (errorData && errorData.error && errorData.error.message) {
+                        errorMsg = errorData.error.message;
+                    }
+                    if (
+                        resp.status === 403 &&
+                        errorData &&
+                        errorData.error &&
+                        errorData.error.status === "PERMISSION_DENIED"
+                    ) {
+                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
+                        label.textContent = "Invalid API Key";
+                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
+                        label.title = errorMsg || "Invalid API Key";
+                    } else if (resp.status === 429) {
+                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
+                        label.textContent = "Rate Limited";
+                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
+                        label.title = errorMsg || "Rate Limited";
+                    } else if (
+                        resp.status === 503 &&
+                        errorMsg.toLowerCase().includes("model is overloaded")
+                    ) {
+                        dot.className = "inline-block w-3 h-3 rounded-full bg-orange-500";
+                        label.textContent = "Gemini Service Down";
+                        label.className = "text-xs font-semibold text-orange-600 dark:text-orange-400";
+                        label.title = errorMsg;
+                    } else if (resp.status >= 500) {
+                        dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
+                        label.textContent = "Offline";
+                        label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
+                        label.title = errorMsg || "Offline";
+                    } else {
+                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
+                        label.textContent = "Degraded";
+                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
+                        label.title = errorMsg || "Degraded";
+                    }
+                }
+            } catch (e) {
+                dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
+                label.textContent = "Offline";
+                label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
+                label.title = e?.message || "Offline";
+            }
+        }
+
+        function startGeminiStatusPolling() {
+            if (geminiStatusInterval) return;
+            checkGeminiStatus();
+            geminiStatusInterval = setInterval(checkGeminiStatus, 30000);
+        }
+
+        function stopGeminiStatusPolling() {
+            if (geminiStatusInterval) {
+                clearInterval(geminiStatusInterval);
+                geminiStatusInterval = null;
+            }
+        }
+
+        // Only poll when page is visible/active
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+                startGeminiStatusPolling();
+            } else {
+                stopGeminiStatusPolling();
+            }
+        });
+
+        // Start polling if page is visible on load
+        if (document.visibilityState === 'visible') {
+            startGeminiStatusPolling();
+        }
+    </script>
     <script>
         // Onboarding logic
         document.addEventListener('DOMContentLoaded', function () {
