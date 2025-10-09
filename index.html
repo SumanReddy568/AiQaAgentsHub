@@ -184,11 +184,26 @@
             </div>
             <div class="space-y-6">
                 <div>
-                    <label for="api-key-input" class="block text-sm font-semibold mb-2">Gemini API
-                        Key</label>
+                    <label for="provider-select" class="block text-sm font-semibold mb-2">AI Provider</label>
+                    <select id="provider-select"
+                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none">
+                        <option value="gemini" selected>Google Gemini</option>
+                        <option value="deepseek">DeepSeek</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="api-key-input" class="block text-sm font-semibold mb-2">Gemini API Key</label>
                     <input type="password" id="api-key-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="Enter your Gemini API key">
+                    <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
+                </div>
+                <div>
+                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API
+                        Key</label>
+                    <input type="password" id="deepseek-api-key-input"
+                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        placeholder="Enter your DeepSeek API key">
                     <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
                 <div>

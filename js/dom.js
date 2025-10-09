@@ -21,6 +21,8 @@ export const cancelSettingsBtn = document.getElementById('cancel-settings-btn');
 export const saveSettingsBtn = document.getElementById('save-settings-btn');
 export const apiKeyInput = document.getElementById('api-key-input');
 export const modelSelect = document.getElementById('model-select');
+export const providerSelect = document.getElementById('provider-select');
+export const deepseekApiKeyInput = document.getElementById('deepseek-api-key-input');
 
 export const chatBubble = document.getElementById('chat-bubble');
 export const chatModal = document.getElementById('chat-modal');

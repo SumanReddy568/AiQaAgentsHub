@@ -1,7 +1,10 @@
 // js/state.js
 
 export let state = {
-    apiKey: '',
+    provider: 'gemini',
+    apiKey: '', // Active key for current provider (for quick access)
+    geminiApiKey: '',
+    deepseekApiKey: '',
     selectedModel: 'gemini-2.5-flash',
     generatedLocators: [],
     isChatting: false,
