@@ -233,7 +233,7 @@ async function fetchAndRenderAiNews(existingArticles) {
         const aiPrompt = `
             You are a tech news aggregator focusing on the latest technology news.
             The current date is ${currentDate}.
-            Find and return 100 of the most important tech news articles published within the last 48 hours realted to AI, SOftware teseting, Devops, cloud, major outages in software.
+            Find and return 50 of the most important tech news articles published within the last 48 hours realted to AI, SOftware teseting, Devops, cloud, major outages in software.
             Keywords: ${combinedTopics}
             
             **CRITICAL RULES:**
