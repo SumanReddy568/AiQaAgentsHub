@@ -36,8 +36,12 @@ async function fetchNewsApiData() {
         return [];
     }
 
-    const companies = ['Google', 'Microsoft', 'Apple', 'OpenAI', 'NVIDIA', 'Meta', 'Amazon', 'Tesla', 'IBM', 'Intel'];
-    const topics = ['AI', 'Cloud', 'Software Testing', 'DevOps', 'Cybersecurity'];
+    const companies = [
+        'OpenAI', 'Google AI', 'Anthropic', 'Perplexity AI', 'Microsoft AI',
+        'DeepMind', 'Amazon AWS', 'Nvidia AI', 'Meta AI', 'Tesla AI',
+        'Claude AI', 'Gemini AI', 'Mistral AI', 'Inflection AI'
+    ];
+    const topics = ['AI Testing', 'Software Testing', 'DevOps', 'Cloud Computing', 'LLM'];
 
     const queries = [...companies, ...topics];
     const endpoints = queries.map(q =>
@@ -172,7 +176,6 @@ async function handleFetchNews() {
     let newsApiPromise = fetchNewsApiData();
     let newsDataPromise = fetchNewsDataIo();
 
-    // Render non-AI news as soon as they're ready
     try {
         const [newsApiArticles, newsDataArticles] = await Promise.all([newsApiPromise, newsDataPromise]);
         const initialArticles = dedupeArticles([...newsApiArticles, ...newsDataArticles]);
@@ -182,16 +185,37 @@ async function handleFetchNews() {
         showAiLoadingIndicator();
 
         // Start AI fetch in parallel
-        fetchAndRenderAiNews(initialArticles);
+        const aiNewsSuccess = await fetchAndRenderAiNews(initialArticles);
+
+        // If no news at all (external + AI), show error
+        const hasExternal = initialArticles && initialArticles.length > 0;
+        const aiArticles = JSON.parse(localStorage.getItem(`aiNewsCache_${getTodayDate()}`) || '[]');
+        const hasAI = aiArticles && aiArticles.length > 0;
+
+        if (!hasExternal && !hasAI && !aiNewsSuccess) {
+            loading.classList.add('hidden');
+            errorDiv.innerHTML = `
+                <div class="text-center py-12">
+                    <svg class="w-14 h-14 text-yellow-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div class="font-bold text-lg mb-2 text-yellow-700">No news found</div>
+                    <div class="text-slate-600 dark:text-slate-300 mb-2">Unable to fetch any news from external or AI sources at this time.</div>
+                    <div class="text-slate-500 dark:text-slate-400 text-sm">Please check your internet connection or try again later.</div>
+                </div>
+            `;
+            errorDiv.classList.remove('hidden');
+        }
     } catch (err) {
         loading.classList.add('hidden');
         errorDiv.innerHTML = `
-            <div class="text-center">
-                <svg class="w-12 h-12 text-red-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center py-12">
+                <svg class="w-14 h-14 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <p class="font-semibold">Failed to load news</p>
-                <p class="text-sm mt-2">Error: ${err.message || err}</p>
+                <div class="font-bold text-lg mb-2 text-red-600">Failed to load news</div>
+                <div class="text-slate-600 dark:text-slate-300 mb-2">Unable to fetch any news from external or AI sources.</div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm">Error: ${err.message || err}</div>
             </div>
         `;
         errorDiv.classList.remove('hidden');
@@ -212,12 +236,12 @@ async function fetchAndRenderAiNews(existingArticles) {
 
     // Show cached data immediately if available
     if (cachedData.length > 0) {
-        console.log('Using cached AI news data.');
-        // Ensure AI badge is set for cached articles
         cachedData.forEach(article => {
             article.sourceName = "AI Generated";
         });
         renderNews(dedupeArticles([...existingArticles, ...cachedData]));
+        removeAiLoadingIndicator();
+        return true;
     }
 
     const combinedTopics = `
@@ -242,7 +266,12 @@ async function fetchAndRenderAiNews(existingArticles) {
             3. 'publishedAt' must be accurate ISO 8601 format.
             4. The 'title', 'sourceName', 'publishedAt', and 'url' fields must be used exactly as provided in the input data. DO NOT change or generate new information for these fields.
             5. Return ONLY valid JSON array (no markdown, no comments).
-            
+            6. Also tech news must only be in english
+            7. Concentrate on more technical news articles rather than business focused ones.
+            8. High prioity is for AI in software testing, devops, cloud, software development.
+            9 Be strict on the news recency - only last 48 hours.
+            10. Be strict to avoid duplicates with already fetched news articles.
+            11. Be Strict on source link validity - only return URLs that point to actual news articles, not just homepages or domains.
             JSON array:
             [
               {
@@ -256,13 +285,11 @@ async function fetchAndRenderAiNews(existingArticles) {
             ]
         `;
 
-        console.log('Fetching AI news...');
         const response = await fetchFromApi(aiPrompt);
 
         if (!response || !response.content) {
-            console.error('No response content for AI news.');
             removeAiLoadingIndicator();
-            return;
+            return false;
         }
 
         let jsonStr = response.content.trim();
@@ -274,26 +301,20 @@ async function fetchAndRenderAiNews(existingArticles) {
         aiArticles.forEach(article => {
             article.category = detectCategory(article.title, article.summary + ' ' + (article.technicalExplanation || ''));
             if (!article.url) article.url = '#';
-            // Ensure AI badge is shown
             article.sourceName = "AI Generated";
         });
 
-        console.log(`Fetched ${aiArticles.length} AI articles.`);
         const allArticles = dedupeArticles([...existingArticles, ...aiArticles]);
-
-        // Render the combined articles
         renderNews(allArticles);
 
-        // Cache the AI news data for today
         if (aiArticles.length > 0) {
-            console.log('Storing AI news data in cache.');
             localStorage.setItem(cacheKey, JSON.stringify(aiArticles));
         }
-    } catch (err) {
-        console.error('AI news fetch failed:', err);
-    } finally {
-        // Ensure the loading indicator is removed regardless of success or failure
         removeAiLoadingIndicator();
+        return aiArticles.length > 0;
+    } catch (err) {
+        removeAiLoadingIndicator();
+        return false;
     }
 }
 
@@ -303,12 +324,28 @@ async function fetchAndRenderAiNews(existingArticles) {
 function dedupeArticles(articles) {
     const seen = new Map();
     for (const art of articles) {
+        // Clean and validate URL
+        if (art.url && !isValidUrl(art.url)) {
+            // Extract domain if possible
+            try {
+                const domain = new URL(art.url).hostname;
+                art.url = `https://${domain}`;
+            } catch {
+                art.url = '#';
+            }
+        }
+
         const key = art.title.toLowerCase().replace(/[^a-z0-9]/g, '');
         if (!seen.has(key)) {
             seen.set(key, art);
         } else {
             const existing = seen.get(key);
-            if ((art.summary || '').length > (existing.summary || '').length) seen.set(key, art);
+            // Prefer articles with valid URLs
+            if (isValidUrl(art.url) && !isValidUrl(existing.url)) {
+                seen.set(key, art);
+            } else if ((art.summary || '').length > (existing.summary || '').length) {
+                seen.set(key, art);
+            }
         }
     }
     return Array.from(seen.values());
@@ -343,7 +380,7 @@ function renderNews(newsArr) {
                         </svg>
                         <span>${formatTimeAgo(news.publishedAt)}</span>
                     </div>
-                    ${news.url && news.url !== '#' ? `
+                    ${isValidUrl(news.url) ? `
                         <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
                            class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-medium rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -360,12 +397,12 @@ function renderNews(newsArr) {
                 <h4 class="font-bold text-base text-slate-700 dark:text-slate-300 mb-2">Technical Insight</h4>
                 <p class="text-base text-slate-700 dark:text-slate-400 leading-relaxed">${news.technicalExplanation || 'No technical explanation provided.'}</p>
             </div>
-            ${news.url && news.url !== '#' ? `
+            ${isValidUrl(news.url) ? `
                 <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-600">
-                    <span class="text-sm text-slate-500 dark:text-slate-400">Reference:</span>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Source:</span>
                     <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
                        class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium flex items-center gap-1 hover:underline">
-                        ${news.url.replace(/^https?:\/\//, '').split('/')[0]}
+                        ${new URL(news.url).hostname}
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                         </svg>
@@ -461,6 +498,21 @@ function removeAiLoadingIndicator() {
     if (aiLoadingBanner) {
         aiLoadingBanner.remove();
         document.body.style.paddingTop = ''; // Reset padding
+    }
+}
+
+// Helper to validate URLs
+function isValidUrl(url) {
+    try {
+        const parsed = new URL(url);
+        // Check if URL is not just a domain
+        return parsed.pathname !== '/' &&
+            parsed.pathname !== '' &&
+            !url.includes('?') && // Avoid URLs with query parameters
+            !parsed.pathname.endsWith('.jpg') &&
+            !parsed.pathname.endsWith('.png');
+    } catch {
+        return false;
     }
 }
 
