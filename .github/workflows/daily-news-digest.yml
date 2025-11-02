@@ -1,5 +1,4 @@
 name: Daily News Digest
-
 on:
   schedule:
     - cron: '0 9 * * *'
@@ -12,6 +11,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Restore Cache
+        uses: actions/cache@v4
+        with:
+          path: data/news-cache.json
+          key: news-cache
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,3 +33,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Save Updated Cache
+        uses: actions/cache@v4
+        with:
+          path: data/news-cache.json
+          key: news-cache
