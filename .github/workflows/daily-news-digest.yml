@@ -1,0 +1,125 @@
+name: Daily News Digest
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # 9:00 AM UTC daily
+    - cron: '0 18 * * *' # 6:00 PM UTC daily
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  send-news-digest:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Validate Configuration
+      run: |
+        if [ -z "${{ secrets.GEMINI_API_KEY }}" ]; then
+          echo "Error: GEMINI_API_KEY is not configured in repository secrets"
+          exit 1
+        fi
+        if [ -z "${{ secrets.DISCORD_WEBHOOK_URL }}" ]; then
+          echo "Error: DISCORD_WEBHOOK_URL is not configured in repository secrets"
+          exit 1
+        fi
+        echo "✅ Configuration validation passed"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        
+    - name: Install Google AI SDK
+      run: npm install @google/generative-ai
+        
+    - name: Fetch News and Send to Discord
+      run: |
+        node -e '
+          const { GoogleGenerativeAI } = require("@google/generative-ai");
+          
+          async function validateWebhook() {
+            try {
+              const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: "🔄 News digest workflow starting..." })
+              });
+              if (!response.ok) throw new Error(`Discord webhook test failed: ${response.status}`);
+              console.log("✅ Discord webhook test successful");
+              return true;
+            } catch (error) {
+              console.error("❌ Discord webhook test failed:", error);
+              return false;
+            }
+          }
+
+          async function fetchNewsWithGemini() {
+            const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            
+            const prompt = `
+              Act as an AI news curator. Find and summarize the 5 most significant news stories from the last 12 hours.
+              
+              PRIORITY ORDER (Most important first):
+              1. Major AI breakthroughs and significant developments
+              2. AI applications in software testing and test automation
+              3. AI in DevOps and development tools
+              4. AI in cloud computing and infrastructure
+              5. Other significant tech developments
+              
+              CRITICAL REQUIREMENTS:
+              1. At least 3 news items MUST be about AI
+              2. Prioritize news about AI tools for developers and testers
+              3. Each news item MUST have a valid, accessible source URL
+              4. Include only English language technical sources
+              5. Focus on practical implementations over research papers
+              6. Highlight real-world impact and technical details
+              
+              Format each news item as:
+              🤖 **[HEADLINE]**
+              📝 [2-3 sentence technical summary focusing on developer/tester perspective]
+              🔍 Technical Impact: [How this affects developers/testers]
+              🔗 Source: [FULL_URL_TO_ARTICLE]
+              
+              Ensure each URL is complete and points to specific articles.
+            `;
+            
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            return response.text();
+          }
+          
+          async function sendToDiscord() {
+            if (!await validateWebhook()) {
+              throw new Error("Discord webhook validation failed");
+            }
+            const news = await fetchNewsWithGemini();
+            if (!news?.trim()) {
+              throw new Error("No news content generated");
+            }
+            const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
+            const payload = {
+              content: `📰 **${timeLabel} AI News Digest**\n\n${news}\n\n_Generated at: ${new Date().toISOString()}_`
+            };
+            
+            const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            
+            if (!response.ok) {
+              throw new Error(`Failed to send news: ${response.status}`);
+            }
+            console.log("✅ News digest sent successfully");
+          }
+          
+          sendToDiscord().catch(error => {
+            console.error("❌ Error:", error);
+            process.exit(1);
+          });
+        '
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
