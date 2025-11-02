@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm init -y
-          npm install @google/generative-ai node-fetch@2
+          npm install @google/generative-ai
 
       - name: Run News Digest Script
         run: node scripts/news-digest.js
