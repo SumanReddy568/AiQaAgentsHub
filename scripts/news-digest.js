@@ -1,26 +1,31 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 async function validateWebhook() {
-  try {
-    const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: "🔄 News digest workflow starting..." })
-    });
-    if (!response.ok) throw new Error(`Discord webhook test failed: ${response.status}`);
-    console.log("✅ Discord webhook test successful");
-    return true;
-  } catch (error) {
-    console.error("❌ Discord webhook test failed:", error);
-    return false;
-  }
+    try {
+        const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                content: `🔄 AI Started Fetching latest tech news... (${new Date().toLocaleString('en-US', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short'
+                })})`
+            })
+        });
+        if (!response.ok) throw new Error(`Discord webhook test failed: ${response.status}`);
+        console.log("✅ Discord webhook test successful");
+        return true;
+    } catch (error) {
+        console.error("❌ Discord webhook test failed:", error);
+        return false;
+    }
 }
 
 async function fetchNewsWithGemini() {
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
-  const prompt = `
+    const prompt = `
     Act as an AI news curator. Find and summarize the 5 most significant news stories from the last 12 hours.
     
     PRIORITY ORDER (Most important first):
@@ -45,60 +50,60 @@ async function fetchNewsWithGemini() {
     🔗 Source: [FULL_URL_TO_ARTICLE]
   `;
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  return response.text();
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    return response.text();
 }
 
 async function sendEachNewsToDiscord(newsText) {
-  // Split by emoji marker "🤖" (each story starts there)
-  const items = newsText
-    .split(/(?=🤖)/g)
-    .map(i => i.trim())
-    .filter(i => i.length > 0);
+    // Split by emoji marker "🤖" (each story starts there)
+    const items = newsText
+        .split(/(?=🤖)/g)
+        .map(i => i.trim())
+        .filter(i => i.length > 0);
 
-  if (!items.length) {
-    throw new Error("No individual news items found to send");
-  }
-
-  const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
-  console.log(`📨 Sending ${items.length} news items to Discord (${timeLabel} digest)...`);
-
-  for (let i = 0; i < items.length; i++) {
-    const message = `📰 **${timeLabel} AI News Digest — Item ${i + 1}/${items.length}**\n\n${items[i]}`;
-    const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: message })
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
+    if (!items.length) {
+        throw new Error("No individual news items found to send");
     }
 
-    console.log(`✅ Sent news item ${i + 1}/${items.length}`);
-    await new Promise(r => setTimeout(r, 1500)); // Small delay to avoid rate limit
-  }
+    const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
+    console.log(`📨 Sending ${items.length} news items to Discord (${timeLabel} digest)...`);
 
-  console.log("✅ All news items sent successfully");
+    for (let i = 0; i < items.length; i++) {
+        const message = `📰 **${timeLabel} AI News Digest — Item ${i + 1}/${items.length}**\n\n${items[i]}`;
+        const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content: message })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
+        }
+
+        console.log(`✅ Sent news item ${i + 1}/${items.length}`);
+        await new Promise(r => setTimeout(r, 1500)); // Small delay to avoid rate limit
+    }
+
+    console.log("✅ All news items sent successfully");
 }
 
 async function main() {
-  try {
-    if (!await validateWebhook()) {
-      throw new Error("Discord webhook validation failed");
-    }
+    try {
+        if (!await validateWebhook()) {
+            throw new Error("Discord webhook validation failed");
+        }
 
-    const news = await fetchNewsWithGemini();
-    if (!news?.trim()) {
-      throw new Error("No news content generated by Gemini");
-    }
+        const news = await fetchNewsWithGemini();
+        if (!news?.trim()) {
+            throw new Error("No news content generated by Gemini");
+        }
 
-    await sendEachNewsToDiscord(news);
-  } catch (error) {
-    console.error("❌ Error:", error);
-    process.exit(1);
-  }
+        await sendEachNewsToDiscord(news);
+    } catch (error) {
+        console.error("❌ Error:", error);
+        process.exit(1);
+    }
 }
 
 main();
