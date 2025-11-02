@@ -6,7 +6,7 @@ async function validateWebhook() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                content: `🔄 AI Started Fetching latest tech news... (${new Date().toLocaleString('en-US', {
+                content: `🔄 @everyone AI Started Fetching latest tech news... (${new Date().toLocaleString('en-US', {
                     dateStyle: 'medium',
                     timeStyle: 'short'
                 })})`
