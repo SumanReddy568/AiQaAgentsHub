@@ -30,13 +30,16 @@ jobs:
       with:
         node-version: '16'
         
-    - name: Install Google AI SDK
-      run: npm install @google/generative-ai
+    - name: Install Dependencies
+      run: |
+        npm install @google/generative-ai
+        npm install node-fetch
         
     - name: Fetch News and Send to Discord
       run: |
         node -e '
           const { GoogleGenerativeAI } = require("@google/generative-ai");
+          const fetch = require("node-fetch");  // Add this line
           
           async function validateWebhook() {
             try {
