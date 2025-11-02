@@ -19,7 +19,7 @@ async function validateWebhook() {
 async function fetchNewsWithGemini() {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   // ✅ Updated to latest stable model
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
   const prompt = `
     Act as an AI news curator. Find and summarize the 5 most significant news stories from the last 12 hours.
