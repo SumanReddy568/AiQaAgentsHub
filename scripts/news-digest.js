@@ -9,7 +9,13 @@ async function validateWebhook() {
     const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: "🔄 News digest workflow starting..." }),
+      body: JSON.stringify({
+        content: `🔄 @everyone AI Started Fetching latest tech news... (${new Date().toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+            timeZone: 'Asia/Kolkata'
+        })})`
+    })
     });
     if (!response.ok) throw new Error(`Discord webhook test failed: ${response.status}`);
     console.log("✅ Discord webhook test successful");
