@@ -62,6 +62,7 @@ async function fetchNewsWithGemini(previousHeadlines) {
     2. AI applications in software testing and test automation
     3. AI in DevOps and development tools
     4. AI in cloud computing and infrastructure
+    5. New AI Tools and frameworks for developers/testers
     5. Other significant tech developments
 
     CRITICAL REQUIREMENTS:
@@ -75,6 +76,7 @@ async function fetchNewsWithGemini(previousHeadlines) {
     📝 [2-3 sentence technical summary focusing on developer/tester perspective]
     🔍 Technical Impact: [How this affects developers/testers]
     🔗 Source: [FULL_URL_TO_ARTICLE]
+    IMPORTANT: Ensure FULL_URL_TO_ARTICLE is an valid url, its should be exact source link, url should not throw 404.
   `;
 
   const result = await model.generateContent(prompt);
