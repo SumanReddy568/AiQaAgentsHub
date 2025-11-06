@@ -16,7 +16,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: data/news-cache.json
-          key: news-cache
+          key: news-cache-${{ github.run_number }}
+          restore-keys: |
+            news-cache-
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,4 +40,4 @@ jobs:
         uses: actions/cache@v4
         with:
           path: data/news-cache.json
-          key: news-cache
+          key: news-cache-${{ github.run_number }}
