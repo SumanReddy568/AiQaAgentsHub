@@ -8,6 +8,8 @@ on:
 jobs:
   send-news-digest:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -36,7 +38,17 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
+      - name: Commit Cache
+        if: success()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/news-cache.json
+          git commit -m "Update news cache [skip ci]" || echo "No changes to commit"
+          git push
+
       - name: Save Updated Cache
+        if: success()
         uses: actions/cache@v4
         with:
           path: data/news-cache.json
