@@ -27,20 +27,36 @@ async function validateWebhook() {
 }
 
 function loadPreviousNews() {
-  if (!fs.existsSync(CACHE_FILE)) return [];
   try {
+    // Ensure cache directory exists
+    fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
+    
+    // Initialize empty cache if doesn't exist
+    if (!fs.existsSync(CACHE_FILE)) {
+      fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
+      console.log('📁 Initialized new cache file');
+      return [];
+    }
+
     const data = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
     const tenDaysAgo = new Date();
     tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
 
     // Filter entries from last 10 days
-    const recentNews = data.filter(entry => new Date(entry.date) >= tenDaysAgo);
-    console.log(`🗂️ Loaded ${recentNews.length} cached headlines from last 10 days`);
+    const recentNews = Array.isArray(data) ? data.filter(entry => new Date(entry.date) >= tenDaysAgo) : [];
     
-    // Extract just the headlines for comparison
-    const headlines = recentNews.map(entry => entry.headline);
-    return headlines;
-  } catch {
+    // Clean up old entries and save
+    if (recentNews.length !== data.length) {
+      fs.writeFileSync(CACHE_FILE, JSON.stringify(recentNews, null, 2));
+      console.log(`🧹 Cleaned up ${data.length - recentNews.length} old entries`);
+    }
+    
+    console.log(`🗂️ Loaded ${recentNews.length} cached headlines from last 10 days`);
+    return recentNews.map(entry => entry.headline);
+  } catch (error) {
+    console.error('⚠️ Cache read error:', error);
+    // Initialize fresh cache on error
+    fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
     return [];
   }
 }
@@ -50,20 +66,27 @@ function saveCurrentNews(newsItems) {
     const currentDate = new Date().toISOString();
     const headlines = newsItems.map(item => ({
       date: currentDate,
-      headline: item.match(/\*\*(.*?)\*\*/)?.[1]
+      headline: item.match(/\*\*(.*?)\*\*/)?.[1],
+      source: (item.match(/Source: (.*?)(\n|$)/)?.[1] || '').trim()
     })).filter(item => item.headline);
 
-    // Load existing cache and merge with new items
     let existingCache = [];
-    if (fs.existsSync(CACHE_FILE)) {
+    try {
       existingCache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+    } catch {
+      existingCache = [];
     }
 
-    const updatedCache = [...existingCache, ...headlines];
+    // Remove duplicates based on headline
+    const uniqueCache = [...existingCache];
+    headlines.forEach(newItem => {
+      if (!uniqueCache.some(item => item.headline === newItem.headline)) {
+        uniqueCache.push(newItem);
+      }
+    });
     
-    fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(updatedCache, null, 2));
-    console.log(`💾 Cached ${headlines.length} headlines for next run`);
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(uniqueCache, null, 2));
+    console.log(`💾 Cached ${headlines.length} new headlines (total: ${uniqueCache.length})`);
   } catch (e) {
     console.error("⚠️ Failed to write cache:", e);
   }
