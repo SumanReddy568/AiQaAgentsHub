@@ -30,8 +30,16 @@ function loadPreviousNews() {
   if (!fs.existsSync(CACHE_FILE)) return [];
   try {
     const data = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
-    console.log(`🗂️ Loaded ${data.length} cached headlines from previous run`);
-    return data;
+    const tenDaysAgo = new Date();
+    tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
+
+    // Filter entries from last 10 days
+    const recentNews = data.filter(entry => new Date(entry.date) >= tenDaysAgo);
+    console.log(`🗂️ Loaded ${recentNews.length} cached headlines from last 10 days`);
+    
+    // Extract just the headlines for comparison
+    const headlines = recentNews.map(entry => entry.headline);
+    return headlines;
   } catch {
     return [];
   }
@@ -39,9 +47,22 @@ function loadPreviousNews() {
 
 function saveCurrentNews(newsItems) {
   try {
-    const headlines = newsItems.map(item => item.match(/\*\*(.*?)\*\*/)?.[1]).filter(Boolean);
+    const currentDate = new Date().toISOString();
+    const headlines = newsItems.map(item => ({
+      date: currentDate,
+      headline: item.match(/\*\*(.*?)\*\*/)?.[1]
+    })).filter(item => item.headline);
+
+    // Load existing cache and merge with new items
+    let existingCache = [];
+    if (fs.existsSync(CACHE_FILE)) {
+      existingCache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+    }
+
+    const updatedCache = [...existingCache, ...headlines];
+    
     fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(headlines, null, 2));
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(updatedCache, null, 2));
     console.log(`💾 Cached ${headlines.length} headlines for next run`);
   } catch (e) {
     console.error("⚠️ Failed to write cache:", e);
@@ -53,30 +74,55 @@ async function fetchNewsWithGemini(previousHeadlines) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
   const prompt = `
-    Act as an AI news curator. Find and summarize the 5 most significant news stories from the last 12 hours.
-    Do NOT include any story whose headline or URL matches these previous ones:
+    Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 5 of the most significant but DIFFERENT news stories from various tech domains in the last 24 hours.
+
+    STRICT EXCLUSIONS:
+    1. Skip these previous headlines:
     ${previousHeadlines.map(h => `- ${h}`).join("\n")}
+    2. Avoid general GitHub/Microsoft/OpenAI news unless truly groundbreaking
+    3. Skip minor version updates and small feature releases
 
-    PRIORITY ORDER (Most important first):
-    1. Major AI breakthroughs and significant developments
-    2. AI applications in software testing and test automation
-    3. AI in DevOps and development tools
-    4. AI in cloud computing and infrastructure
-    5. New AI Tools and frameworks for developers/testers
-    5. Other significant tech developments
+    PRIORITY AREAS (Find different stories from EACH area):
+    1. Emerging AI Technologies & Research
+       - New AI models or architectures
+       - Novel AI applications
+       - Breakthrough research papers
+    
+    2. Developer Tools & Testing
+       - New testing frameworks or tools
+       - Innovative development platforms
+       - Performance optimization tools
+       - Code analysis innovations
+    
+    3. Infrastructure & Cloud
+       - New cloud services
+       - Infrastructure automation
+       - Security innovations
+       - Performance improvements
+    
+    4. Industry Applications
+       - AI in different industries
+       - Real-world implementation cases
+       - Success stories and failures
+    
+    5. Alternative Sources
+       - Check tech blogs, research papers
+       - Industry conferences
+       - Company tech blogs
+       - Academic publications
 
-    CRITICAL REQUIREMENTS:
-    - At least 3 AI-related items
-    - Each with valid source URL
-    - English only
-    - Technical + developer/testing impact focus
+    FORMAT REQUIREMENTS:
+    🤖 **[UNIQUE AND SPECIFIC HEADLINE - NO GENERIC TITLES]**
+    📝 [2-3 technical sentences with specific details, numbers, or technical aspects]
+    🔍 Technical Impact: [Specific ways developers/testers can use or are affected]
+    🔗 Source: [VERIFIED_WORKING_URL]
 
-    Format each news item as:
-    🤖 **[HEADLINE]**
-    📝 [2-3 sentence technical summary focusing on developer/tester perspective]
-    🔍 Technical Impact: [How this affects developers/testers]
-    🔗 Source: [FULL_URL_TO_ARTICLE]
-    IMPORTANT: Ensure FULL_URL_TO_ARTICLE is an valid url, its should be exact source link, url should not throw 404.
+    ESSENTIAL:
+    - Each story must be from a different domain/area
+    - Include specific technical details and numbers
+    - Ensure sources are diverse (not all from the same website)
+    - URLs must be valid and accessible
+    - Focus on actionable insights for developers/testers
   `;
 
   const result = await model.generateContent(prompt);
