@@ -1,8 +1,8 @@
 name: Daily News Digest
 on:
   schedule:
-    - cron: '0 9 * * *'
-    - cron: '0 18 * * *'
+    - cron: '30 3 * * *'  # 9:00 AM IST
+    - cron: '30 12 * * *' # 6:00 PM IST
   workflow_dispatch:
 
 jobs:

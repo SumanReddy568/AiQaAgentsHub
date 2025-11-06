@@ -74,7 +74,7 @@ async function fetchNewsWithGemini(previousHeadlines) {
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
   const prompt = `
-    Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 5 of the most significant but DIFFERENT news stories from various tech domains in the last 24 hours.
+    Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 10 of the most significant but DIFFERENT news stories from various tech domains in the last 12 hours.
 
     STRICT EXCLUSIONS:
     1. Skip these previous headlines:
@@ -123,6 +123,16 @@ async function fetchNewsWithGemini(previousHeadlines) {
     - Ensure sources are diverse (not all from the same website)
     - URLs must be valid and accessible
     - Focus on actionable insights for developers/testers
+
+    STRICT FORMAT (EXACTLY 10 items, no separators or headers needed):
+    🤖 **[HEADLINE]**
+    📝 [Technical Summary]
+    🔍 Technical Impact: [Impact Details]
+    🔗 Source: [URL]
+
+    DO NOT include any additional text, separators, or numbering.
+    Start each item directly with the 🤖 emoji.
+    Provide exactly 10 items, no more, no less.
   `;
 
   const result = await model.generateContent(prompt);
@@ -131,15 +141,24 @@ async function fetchNewsWithGemini(previousHeadlines) {
 }
 
 async function sendEachNewsToDiscord(newsText) {
-  const items = newsText.split(/(?=🤖)/g).map(i => i.trim()).filter(Boolean);
+  // Split by news items more accurately and clean up formatting
+  const items = newsText
+    .replace(/---|\n{3,}/g, '') // Remove separators and extra newlines
+    .split(/(?=🤖\s+\*\*)/g) // Split only on actual news items
+    .map(i => i.trim())
+    .filter(item => item.startsWith('🤖')); // Keep only valid news items
 
   if (!items.length) throw new Error("No news items found to send");
+  if (items.length > 10) {
+    console.log(`⚠️ Found ${items.length} items, trimming to 10 items`);
+    items.length = 10; // Ensure we only take  items
+  }
 
   const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
   console.log(`📨 Sending ${items.length} news items to Discord (${timeLabel} digest)...`);
 
   for (let i = 0; i < items.length; i++) {
-    const message = `📰 **${timeLabel} AI News Digest — Item ${i + 1}/${items.length}**\n\n${items[i]}`;
+    const message = `📰 **${timeLabel} AI News Digest #${i + 1}/10**\n\n${items[i]}`;
     const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -147,7 +166,7 @@ async function sendEachNewsToDiscord(newsText) {
     });
 
     if (!response.ok) throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
-    console.log(`✅ Sent news item ${i + 1}/${items.length}`);
+    console.log(`✅ Sent news item ${i + 1}/10`);
     await new Promise(r => setTimeout(r, 1500));
   }
 
