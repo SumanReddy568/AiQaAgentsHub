@@ -66,8 +66,8 @@ function saveCurrentNews(newsItems) {
     const currentDate = new Date().toISOString();
     const headlines = newsItems.map(item => ({
       date: currentDate,
-      headline: item.match(/\*\*(.*?)\*\*/)?.[1],
-      source: (item.match(/Source: (.*?)(\n|$)/)?.[1] || '').trim()
+      headline: item.title,
+      source: item.source
     })).filter(item => item.headline);
 
     let existingCache = [];
@@ -93,245 +93,185 @@ function saveCurrentNews(newsItems) {
 }
 
 async function fetchNewsWithGemini(previousHeadlines) {
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
+  try {
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Using more reliable model
 
-  const prompt = `
-    Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 15 of the most significant but DIFFERENT news stories from various tech domains in the last 12 hours.
+    const prompt = `
+      Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 10 significant but DIFFERENT tech stories from the last 24 hours.
 
-    STRICT EXCLUSIONS:
-    1. Skip these previous headlines:
-    ${previousHeadlines.map(h => `- ${h}`).join("\n")}
-    2. Avoid general GitHub/Microsoft/OpenAI news unless truly groundbreaking
-    3. Skip minor version updates and small feature releases
+      EXCLUSIONS - SKIP THESE PREVIOUS HEADLINES:
+      ${previousHeadlines.slice(0, 20).map(h => `- ${h}`).join("\n")}
 
-    PRIORITY AREAS (Find different stories from EACH area):
-    1. Emerging AI Technologies & Research
-       - New AI models or architectures
-       - Novel AI applications
-       - Breakthrough research papers
+      PRIORITY DOMAINS (find different stories from each):
+      - AI/ML Research & New Models
+      - Developer Tools & Frameworks  
+      - Cloud Computing & Infrastructure
+      - Cybersecurity & Privacy
+      - Data Science & Analytics
+      - Open Source Innovations
+      - Tech Industry News
+
+      FORMAT REQUIREMENTS:
+      Return a JSON array with exactly 10 items. Each item should have:
+      {
+        "title": "Clear, specific headline",
+        "summary": "2-3 sentence technical summary with specific details",
+        "impact": "How this affects developers/engineers",
+        "source": "Working URL to the source"
+      }
+
+      IMPORTANT:
+      - Each story must be from a different domain
+      - Include specific technical details, numbers, version numbers
+      - Ensure URLs are real and accessible
+      - Focus on actionable insights for technical audience
+      - Return ONLY valid JSON, no other text
+    `;
+
+    console.log('🤖 Fetching news from Gemini...');
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text().trim();
     
-    2. Developer Tools & Testing
-       - New testing frameworks or tools
-       - Innovative development platforms
-       - Performance optimization tools
-       - Code analysis innovations
+    // Clean the response to extract JSON
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) {
+      throw new Error('No JSON array found in Gemini response');
+    }
     
-    3. Infrastructure & Cloud
-       - New cloud services
-       - Infrastructure automation
-       - Security innovations
-       - Performance improvements
-    
-    4. Industry Applications
-       - AI in different industries
-       - Real-world implementation cases
-       - Success stories and failures
-    
-    5. Alternative Sources
-       - Check tech blogs, research papers
-       - Industry conferences
-       - Company tech blogs
-       - Academic publications
-
-    FORMAT REQUIREMENTS:
-    🤖 **[UNIQUE AND SPECIFIC HEADLINE - NO GENERIC TITLES]**
-    📝 [2-3 technical sentences with specific details, numbers, or technical aspects]
-    🔍 Technical Impact: [Specific ways developers/testers can use or are affected]
-    🔗 Source: [VERIFIED_WORKING_URL]
-
-    ESSENTIAL:
-    - Each story must be from a different domain/area
-    - Include specific technical details and numbers
-    - Ensure sources are diverse (not all from the same website)
-    - URLs must be valid and accessible
-    - Focus on actionable insights for developers/testers
-
-    STRICT FORMAT (EXACTLY 15 items, no separators or headers needed):
-    🤖 **[HEADLINE]**
-    📝 [Technical Summary]
-    🔍 Technical Impact: [Impact Details]
-    🔗 Source: [URL]
-
-    DO NOT include any additional text, separators, or numbering.
-    Start each item directly with the 🤖 emoji.
-    Provide exactly 15 items, no more, no less.
-  `;
-
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  return response.text();
+    const newsData = JSON.parse(jsonMatch[0]);
+    console.log(`✅ Gemini returned ${newsData.length} news items`);
+    return newsData;
+  } catch (error) {
+    console.error('❌ Gemini API failed:', error.message);
+    throw error; // Re-throw to handle in main function
+  }
 }
 
 async function fetchNewsWithOpenRouter(previousHeadlines) {
-  const prompt = `
-    As a tech news analyst, find 15 significant and diverse technology news stories from the last 12 hours.
-    
-    EXCLUSIONS - DO NOT INCLUDE ANY OF THESE:
-    ${previousHeadlines.map(h => `- ${h}`).join("\n")}
-    
-    Focus on unique stories across these domains:
-    - AI/ML Research & Breakthroughs
-    - Software Development & Tools
-    - Cloud Computing & Infrastructure
-    - Cybersecurity Innovations
-    - Data Science & Analytics
-    - Open Source Projects
-    - Tech Industry Developments
-    
-    FORMAT EACH ITEM EXACTLY AS:
-    🚀 **[SPECIFIC_NEWS_HEADLINE]**
-    📊 [2-3 sentence technical summary with concrete details]
-    💡 Developer Value: [How this benefits developers/engineers]
-    🌐 Source: [ACTUAL_SOURCE_URL]
-    
-    Requirements:
-    - Provide exactly 15 items
-    - Each must be from a different sub-domain
-    - Include specific metrics, version numbers, or technical specs
-    - Ensure URLs are real and accessible
-    - No generic headlines or repetitive content
-    
-    Start immediately with the first item, no introduction.
-  `;
+  try {
+    const prompt = `
+      As a tech news analyst, find 10 significant and diverse technology news stories from the last 24 hours.
+      
+      EXCLUSIONS - DO NOT INCLUDE:
+      ${previousHeadlines.slice(0, 20).map(h => `- ${h}`).join("\n")}
+      
+      Focus on unique stories across different tech domains.
+      
+      Return a JSON array with exactly 10 items. Each item should have:
+      {
+        "title": "Specific news headline", 
+        "summary": "2-3 sentence technical summary",
+        "impact": "Developer/engineer impact",
+        "source": "Actual source URL"
+      }
+      
+      Requirements:
+      - Each from different sub-domain
+      - Include specific technical details
+      - Ensure URLs are real
+      - Return ONLY valid JSON
+    `;
 
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://github.com/SumanReddy568/AiQaAgentsHub',
-      'X-Title': 'Tech News Aggregator'
-    },
-    body: JSON.stringify({
-      model: "kwaipilot/kat-coder-pro:free",
-      messages: [
-        {
-          role: "user",
-          content: prompt
-        }
-      ],
-      max_tokens: 9000,
-      temperature: 0.7
-    })
-  });
+    console.log('🔄 Fetching news from OpenRouter...');
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://github.com/SumanReddy568/AiQaAgentsHub',
+        'X-Title': 'Tech News Aggregator'
+      },
+      body: JSON.stringify({
+        model: "kwaipilot/kat-coder-pro:free",
+        messages: [
+          {
+            role: "user",
+            content: prompt
+          }
+        ],
+        max_tokens: 4000,
+        temperature: 0.7
+      })
+    });
 
-  if (!response.ok) {
-    throw new Error(`OpenRouter API error: ${response.status} ${await response.text()}`);
+    if (!response.ok) {
+      throw new Error(`OpenRouter API error: ${response.status} ${await response.text()}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices[0].message.content.trim();
+    
+    const jsonMatch = content.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) {
+      throw new Error('No JSON array found in OpenRouter response');
+    }
+    
+    const newsData = JSON.parse(jsonMatch[0]);
+    console.log(`✅ OpenRouter returned ${newsData.length} news items`);
+    return newsData;
+  } catch (error) {
+    console.error('❌ OpenRouter API failed:', error.message);
+    throw error;
   }
-
-  const data = await response.json();
-  return data.choices[0].message.content;
 }
 
-async function prioritizeAndSelectTopNews(geminiNews, openRouterNews, previousHeadlines) {
-  console.log('🤖 Combining and prioritizing news from both AI services...');
-  
-  // Parse both news sources
-  const geminiItems = geminiNews
-    .split(/(?=🤖\s+\*\*)/g)
-    .map(item => item.trim())
-    .filter(item => item.startsWith('🤖') && item.includes('**'));
-  
-  const openRouterItems = openRouterNews
-    .split(/(?=🚀\s+\*\*)/g)
-    .map(item => item.trim())
-    .filter(item => item.startsWith('🚀') && item.includes('**'));
-
-  console.log(`📊 Gemini provided: ${geminiItems.length} items`);
-  console.log(`📊 OpenRouter provided: ${openRouterItems.length} items`);
-
-  // Combine all items
-  const allItems = [...geminiItems, ...openRouterItems];
-  
-  // Remove duplicates based on headline similarity
+function deduplicateNews(items, previousHeadlines) {
   const uniqueItems = [];
-  const usedHeadlines = new Set();
+  const usedTitles = new Set();
   
-  allItems.forEach(item => {
-    const headlineMatch = item.match(/\*\*(.*?)\*\*/);
-    if (headlineMatch) {
-      const headline = headlineMatch[1].toLowerCase().trim();
-      
-      // Check if this headline is too similar to any previous one
-      const isDuplicate = Array.from(usedHeadlines).some(existing => 
-        headline.includes(existing) || existing.includes(headline) ||
-        headline.split(' ').filter(word => word.length > 3).some(word => 
-          existing.includes(word)
-        )
-      );
-      
-      // Also check against cached headlines
-      const isCached = previousHeadlines.some(cached => 
-        cached.toLowerCase().includes(headline) || headline.includes(cached.toLowerCase())
-      );
-      
-      if (!isDuplicate && !isCached && uniqueItems.length < 20) {
-        uniqueItems.push(item);
-        usedHeadlines.add(headline);
-      }
+  items.forEach(item => {
+    const title = item.title.toLowerCase().trim();
+    
+    // Check if similar to cached headlines
+    const isCached = previousHeadlines.some(cached => 
+      cached.toLowerCase().includes(title) || title.includes(cached.toLowerCase())
+    );
+    
+    // Check if similar to already used titles
+    const isDuplicate = Array.from(usedTitles).some(existing => {
+      const words = title.split(' ').filter(word => word.length > 4);
+      return words.some(word => existing.includes(word));
+    });
+    
+    if (!isCached && !isDuplicate) {
+      uniqueItems.push(item);
+      usedTitles.add(title);
     }
   });
-
-  console.log(`🔄 After deduplication: ${uniqueItems.length} unique items`);
-
-  // Use a simple AI to select top 10 most impactful items
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
-
-  const prioritizationPrompt = `
-    You are a tech news editor. Select the TOP 10 most impactful and diverse technology news stories from the following list.
-    
-    CRITERIA:
-    1. Technical significance and innovation
-    2. Practical impact on developers/engineers
-    3. Diversity across different tech domains
-    4. Uniqueness and novelty
-    5. Actionable insights for technical audience
-    
-    NEWS ITEMS TO REVIEW:
-    ${uniqueItems.map((item, index) => `ITEM ${index + 1}:\n${item}`).join('\n\n')}
-    
-    INSTRUCTIONS:
-    - Select exactly 10 items total
-    - Ensure diversity across AI, development, infrastructure, security, etc.
-    - Prioritize stories with specific technical details and metrics
-    - Prefer stories with clear developer impact
-    - Maintain the original formatting exactly
-    - Remove the item numbering I added
-    
-    Return ONLY the 10 selected items in their original format, no additional text.
-  `;
-
-  const result = await model.generateContent(prioritizationPrompt);
-  const response = await result.response;
-  const selectedNews = response.text();
-
-  // Parse the final selection
-  const finalItems = selectedNews
-    .split(/(?=🤖\s+\*\*|🚀\s+\*\*)/g)
-    .map(item => item.trim())
-    .filter(item => (item.startsWith('🤖') || item.startsWith('🚀')) && item.includes('**'))
-    .slice(0, 10); // Ensure we only take 10 items
-
-  console.log(`🎯 Final selection: ${finalItems.length} top news items`);
-  return finalItems;
+  
+  return uniqueItems;
 }
 
-async function sendEachNewsToDiscord(newsItems) {
-  if (!newsItems.length) throw new Error("No news items found to send");
-  if (newsItems.length > 10) {
-    console.log(`⚠️ Found ${newsItems.length} items, trimming to 10 items`);
-    newsItems.length = 10;
+function formatNewsForDiscord(newsItems) {
+  const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
+  
+  return newsItems.map((item, index) => {
+    // Create clean, readable format for Discord
+    return `**${timeLabel} Tech Digest #${index + 1}** 📰
+
+**${item.title}**
+
+📝 ${item.summary}
+
+💡 **Technical Impact:** ${item.impact}
+
+🔗 ${item.source}
+
+━━━━━━━━━━━━━━━━━━━━━━━━`;
+  });
+}
+
+async function sendNewsToDiscord(formattedMessages) {
+  if (!formattedMessages.length) {
+    throw new Error("No news items to send");
   }
 
-  const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
-  console.log(`📨 Sending ${newsItems.length} news items to Discord (${timeLabel} digest)...`);
+  console.log(`📨 Sending ${formattedMessages.length} news items to Discord...`);
 
-  for (let i = 0; i < newsItems.length; i++) {
-    // Standardize emoji to 🤖 for consistency
-    const standardizedItem = newsItems[i].replace(/^🚀/, '🤖');
-    const message = `📰 **${timeLabel} AI News Digest #${i + 1}/10**\n\n${standardizedItem}`;
+  for (let i = 0; i < formattedMessages.length; i++) {
+    const message = formattedMessages[i];
     
     const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
       method: "POST",
@@ -339,53 +279,99 @@ async function sendEachNewsToDiscord(newsItems) {
       body: JSON.stringify({ content: message }),
     });
 
-    if (!response.ok) throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
-    console.log(`✅ Sent news item ${i + 1}/10`);
-    await new Promise(r => setTimeout(r, 1500));
+    if (!response.ok) {
+      throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
+    }
+    
+    console.log(`✅ Sent news item ${i + 1}/${formattedMessages.length}`);
+    
+    // Add delay between messages to avoid rate limiting
+    if (i < formattedMessages.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
   }
 
   console.log("✅ All news items sent successfully");
-  return newsItems;
 }
 
 async function main() {
   try {
-    if (!await validateWebhook()) throw new Error("Discord webhook validation failed");
+    if (!await validateWebhook()) {
+      throw new Error("Discord webhook validation failed");
+    }
 
     const previousHeadlines = loadPreviousNews();
     
-    // Fetch news from both services in parallel
-    console.log('🔄 Fetching news from Gemini and OpenRouter...');
-    const [geminiNews, openRouterNews] = await Promise.allSettled([
-      fetchNewsWithGemini(previousHeadlines),
-      fetchNewsWithOpenRouter(previousHeadlines)
-    ]);
-
-    // Handle API failures gracefully
-    if (geminiNews.status === 'rejected') {
-      console.error('❌ Gemini API failed:', geminiNews.reason);
-      throw new Error('Gemini API call failed');
-    }
+    // Fetch news from both services with better error handling
+    console.log('🔄 Fetching news from both AI services...');
     
-    if (openRouterNews.status === 'rejected') {
-      console.error('❌ OpenRouter API failed:', openRouterNews.reason);
-      // Continue with only Gemini data if OpenRouter fails
-      console.log('⚠️ Continuing with only Gemini data');
+    let geminiNews = [];
+    let openRouterNews = [];
+    let successfulAPIs = 0;
+
+    try {
+      geminiNews = await fetchNewsWithGemini(previousHeadlines);
+      successfulAPIs++;
+    } catch (error) {
+      console.log('⚠️ Continuing without Gemini news');
+      geminiNews = [];
     }
 
-    const combinedNews = await prioritizeAndSelectTopNews(
-      geminiNews.value,
-      openRouterNews.status === 'fulfilled' ? openRouterNews.value : '',
-      previousHeadlines
-    );
+    try {
+      openRouterNews = await fetchNewsWithOpenRouter(previousHeadlines);
+      successfulAPIs++;
+    } catch (error) {
+      console.log('⚠️ Continuing without OpenRouter news');
+      openRouterNews = [];
+    }
 
-    if (!combinedNews.length) throw new Error("No news items after prioritization");
+    // Check if both APIs failed
+    if (successfulAPIs === 0) {
+      throw new Error("Both Gemini and OpenRouter APIs failed. Cannot fetch news.");
+    }
 
-    const items = await sendEachNewsToDiscord(combinedNews);
-    saveCurrentNews(items);
+    console.log(`✅ ${successfulAPIs}/2 APIs successful - Gemini: ${geminiNews.length}, OpenRouter: ${openRouterNews.length}`);
+
+    // Combine and deduplicate news
+    const allNews = [...geminiNews, ...openRouterNews];
+    const uniqueNews = deduplicateNews(allNews, previousHeadlines);
+    
+    console.log(`🔄 Combined ${allNews.length} items, ${uniqueNews.length} after deduplication`);
+
+    // Select top 8 items (reduced for better readability)
+    const topNews = uniqueNews.slice(0, 8);
+    
+    if (topNews.length === 0) {
+      throw new Error("No unique news items found after processing");
+    }
+
+    // Format for Discord readability
+    const discordMessages = formatNewsForDiscord(topNews);
+    
+    // Send to Discord
+    await sendNewsToDiscord(discordMessages);
+    
+    // Save to cache
+    saveCurrentNews(topNews);
+
+    console.log("🎉 News digest completed successfully!");
 
   } catch (error) {
-    console.error("❌ Error:", error);
+    console.error("❌ Critical error:", error.message);
+    
+    // Send error notification to Discord
+    try {
+      await fetch(process.env.DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `❌ **News Digest Failed**\nError: ${error.message}\nTime: ${new Date().toLocaleString()}`
+        }),
+      });
+    } catch (discordError) {
+      console.error("Failed to send error notification to Discord:", discordError);
+    }
+    
     process.exit(1);
   }
 }
@@ -398,5 +384,14 @@ if (missingVars.length > 0) {
   console.error('❌ Missing required environment variables:', missingVars.join(', '));
   process.exit(1);
 }
+
+// Handle uncaught errors
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled promise rejection:', error);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught exception:', error);
+});
 
 main();
