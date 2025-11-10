@@ -37,6 +37,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }} 
 
       - name: Commit Cache
         if: success()
