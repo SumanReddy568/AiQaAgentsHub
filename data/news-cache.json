@@ -698,5 +698,30 @@
     "date": "2025-11-10T16:14:09.420Z",
     "headline": "OpenAI Releases DALL-E 3 Integration for Microsoft Power Platform, Enabling No-Code AI Image Generation",
     "source": "https://powerplatform.microsoft.com/dalle-3-integration-announcement"
+  },
+  {
+    "date": "2025-11-10T16:55:32.734Z",
+    "headline": "NASA's Perseverance Rover Discovers Organic Molecules in Martian Meteorite-Like Rock",
+    "source": "https://www.jpl.nasa.gov/news/perseverance-rover-discovers-organic-molecules-in-martian-rock"
+  },
+  {
+    "date": "2025-11-10T16:55:32.734Z",
+    "headline": "Tesla Unveils New 4680 Battery Cell with Structural Anode Design for Higher Energy Density",
+    "source": "https://www.tesla.com/blog/4680-battery-cell-breakthrough"
+  },
+  {
+    "date": "2025-11-10T16:55:32.734Z",
+    "headline": "IBM Launches Quantum Error Mitigation Toolkit for Near-Term Quantum Computing Applications",
+    "source": "https://research.ibm.com/blog/quantum-error-mitigation-toolkit"
+  },
+  {
+    "date": "2025-11-10T16:55:32.734Z",
+    "headline": "Starlink Deploys Laser Inter-Satellite Links Across 1,000+ Satellites in Low Earth Orbit",
+    "source": "https://www.spacex.com/starlink/laser-links-deployment/"
+  },
+  {
+    "date": "2025-11-10T16:55:32.734Z",
+    "headline": "OpenAI Releases Whisper v3 with Multilingual Real-Time Translation and Speaker Diarization",
+    "source": "https://openai.com/research/whisper-v3-release"
   }
 ]
