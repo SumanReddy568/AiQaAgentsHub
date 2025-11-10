@@ -1,0 +1,702 @@
+[
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Meta Releases Llama 3.1 Models, Including a Massive 405B Parameter Version",
+    "source": "https://ai.meta.com/blog/meta-llama-3-1/"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Bun 1.1.13 Introduces `bunx`, an `npx` Replacement up to 316x Faster",
+    "source": "https://bun.sh/blog/bun-v1.1.13"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Cloudflare Launches \"Firewall for AI\" to Protect LLMs from Prompt Injection Attacks",
+    "source": "https://blog.cloudflare.com/firewall-for-ai"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Chan Zuckerberg Initiative Unveils Polymathic AI for Unified Scientific Data Modeling",
+    "source": "https://chanzuckerberg.com/tech/blog/polymathic-ai-an-open-source-framework-for-building-ai-models-of-cells/"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Neon Introduces Production-Ready Database Branching for PostgreSQL",
+    "source": "https://neon.tech/blog/database-branching-ga"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Researchers Disclose \"Cache-Grab,\" a New CPU Side-Channel Attack on Vector Units",
+    "source": "https://www.vusec.net/projects/cache-grab/"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "W3C Community Group Advances WASI 0.2 with Standardized Key-Value and HTTP APIs",
+    "source": "https://bytecodealliance.org/articles/wasi-0-2-and-the-component-model-achieve-technical-consensus"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Google Introduces Jetstream 2.0, a High-Performance TPU v5p Inference Engine",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-jetstream-2-for-llm-and-diffusion-model-inference"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Rivos Secures Over $250M to Build RISC-V Server SoCs for AI Workloads",
+    "source": "https://www.anandtech.com/show/21468/rivos-exits-stealth-mode-reveals-plans-for-riscv-socs-for-ai-and-secures-over-250m-in-funding"
+  },
+  {
+    "date": "2025-11-06T03:06:35.070Z",
+    "headline": "Temporal Releases Open-Source \"Versioning\" Framework for Workflow State Management",
+    "source": "https://temporal.io/blog/versioning-workflows-in-production"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Google DeepMind Unveils CoMA, a Context-Aware Mixture-of-Agents Architecture for Complex Reinforcement Learning",
+    "source": "https://arxiv.org/abs/2407.15942"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "HTTP/2 \"CONTINUATION Flood\" Vulnerability Allows Single-Machine DoS Attacks on Web Servers",
+    "source": "https://www.bleepingcomputer.com/news/security/new-http-2-vulnerability-lets-single-machine-crash-web-servers/"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "QuestDB 7.4 Released with Native Apache Pekko Connectors and Advanced Geospatial Functions",
+    "source": "https://questdb.io/blog/2024/07/23/questdb-7-4/"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "CNCF Graduates Falco, a Cloud-Native Runtime Security Tool Using eBPF",
+    "source": "https://www.cncf.io/blog/2024/07/23/cloud-native-runtime-security-tool-falco-graduates/"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Linux Kernel 6.11 Set to Officially Drop Support for Intel's Itanium (IA-64) Architecture",
+    "source": "https://www.phoronix.com/news/Linux-6.11-Drops-IA-64"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Leptos 0.7 Rust Web Framework Overhauls Reactivity with \"Signals 2.0\"",
+    "source": "https://leptos.dev/blog/2024/07/22/leptos-07"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Physicists Demonstrate a \"Harmonic Oscillator\" Quantum Error-Correction Code",
+    "source": "https://www.nature.com/articles/s41586-024-07613-x"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Parca Adds Support for Zero-Instrumentation Profiling of Zig Applications via eBPF",
+    "source": "https://www.parca.dev/blog/parca-zig-support"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Toyota Develops AI-Powered Visual Inspection System that Reduces Semiconductor Defects by 50%",
+    "source": "https://global.toyota/en/newsroom/corporate/41170942.html"
+  },
+  {
+    "date": "2025-11-06T03:10:26.563Z",
+    "headline": "Bytecode Alliance Advances WASM Component Model with Native Tooling for Rust and Python",
+    "source": "https://bytecodealliance.org/articles/making-components-real-foundational-tooling"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Cerebras Unveils 4 Trillion Transistor Wafer-Scale Engine 3 for AI Supercomputing",
+    "source": "https://www.cerebras.net/press-release/cerebras-systems-unveils-worlds-fastest-ai-chip-with-4-trillion-transistors/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Zed Code Editor Goes Fully Open Source, Offering a Rust-Based High-Performance Alternative",
+    "source": "https://zed.dev/blog/zed-is-now-open-source"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Intrinsic, an Alphabet Company, Releases Flowstate Platform for AI-Powered Robotics Development",
+    "source": "https://intrinsic.ai/blog/hello-flowstate-the-developer-platform-for-ai-robotics"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "\"ShrinkLocker\" Ransomware Campaign Abuses Windows BitLocker for Disk Encryption",
+    "source": "https://www.bleepingcomputer.com/news/security/new-shrinklocker-ransomware-uses-bitlocker-to-encrypt-your-files/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "MotherDuck Introduces \"Projects\" for Scalable Data Sharing and Collaboration with DuckDB",
+    "source": "https://motherduck.com/blog/introducing-projects/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Wayve's GAIA-1 Model Pushes End-to-End AI for Autonomous Driving",
+    "source": "https://wayve.ai/thinking/introducing-gaia-1/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Mojo Language Unveils MLIR-Based JIT Compiler Architecture for High-Performance Python",
+    "source": "https://www.modular.com/blog/the-mojo-compiler-is-now-even-more-jit"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Cohere Releases Compass, a Data Curation Model to Improve RAG and Fine-Tuning",
+    "source": "https://txt.cohere.com/compass/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "RisingWave Adds Support for Stateful JavaScript User-Defined Functions in Streaming SQL",
+    "source": "https://www.risingwave.com/blog/write-stateful-udfs-in-risingwave-with-javascript/"
+  },
+  {
+    "date": "2025-11-06T03:13:49.105Z",
+    "headline": "Quantinuum Demonstrates Entangling Logical Qubits with 99.8% Fidelity",
+    "source": "https://www.quantinuum.com/news/quantinuum-scientists-demonstrate-highest-fidelity-entangling-gate-on-logical-qubits"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "NVIDIA Unveils JRender, a JAX-Based Differentiable Renderer for Sim-to-Real Robotics",
+    "source": "https://research.nvidia.com/publication/2024-07_jrender-jax-based-differentiable"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "ClickHouse Introduces Experimental Inverted Indexes for High-Speed Text Search",
+    "source": "https://clickhouse.com/blog/inverted-index-for-full-text-search-in-clickhouse"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Fermyon Launches Spin 2.0, Abstracting Data Storage for WebAssembly Microservices",
+    "source": "https://www.fermyon.com/blog/spin-v2"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Oxc Project Releases High-Performance JavaScript Linter in Rust as ESLint Alternative",
+    "source": "https://oxc-project.github.io/blog/2024-07-23-announcing-oxc-linter.html"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "NASA's Jet Propulsion Laboratory Open-Sources \"NICE\" for Spacecraft Chip Emulation",
+    "source": "https://github.com/nasa/nice"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Unison Cloud Platform Leverages Content-Addressed Code for Instant, Atomic Deployments",
+    "source": "https://www.unison-lang.org/blog/unison-cloud-is-here/"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Arm Releases Cortex-M52 Processor for Power-Efficient On-Device AI in IoT",
+    "source": "https://www.anandtech.com/show/21469/arm-announces-cortexm52-and-cortexm85-new-cpus-for-iot-and-embedded"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Google Researchers Propose \"Matryoshka Representation Learning\" for Adaptive AI",
+    "source": "https://ai.googleblog.com/2024/07/matryoshka-representation-learning.html"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Fly.io Details \"Machines V2\" API, Moving From Nomad to a Custom Rust Orchestrator",
+    "source": "https://fly.io/blog/machines-v2-is-now-default/"
+  },
+  {
+    "date": "2025-11-06T04:00:11.536Z",
+    "headline": "Boxxy: A New Go-Based Sandboxing Tool Using Linux Namespaces and Seccomp-bpf",
+    "source": "https://github.com/cpuguy83/boxxy"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "Google AI Proposes \"Mixture-of-Depths,\" Dynamically Allocating Transformer Blocks Per Token",
+    "source": "https://arxiv.org/abs/2404.02258"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "`bflat` AOT Compiler Enables Creation of Native, Single-File .NET Executables with Zero Dependencies",
+    "source": "https://github.com/bflattened/bflat"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "CXL Consortium Releases Compute Express Link 3.1 Specification with Enhanced Memory Pooling and Security",
+    "source": "https://www.computeexpresslink.org/post/cxl-3-1-specification-now-available"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "UW Researchers Use RFdiffusion AI to Design Novel Protein \"Hinges\" for Advanced Nanomachines",
+    "source": "https://www.washington.edu/news/2024/04/02/protein-design-hinge-axle-nanomachine/"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "PostgreSQL Introduces \"pg_tde\" for Transparent Data Encryption at the Block Level",
+    "source": "https://github.com/pgtde/pg_tde"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "Apple Unveils Ferret-UI, an MLLM Capable of Understanding and Interacting with Mobile App Screens",
+    "source": "https://arxiv.org/abs/2404.05719"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "High-Severity Path Traversal Vulnerability Disclosed in Widely Used `path-scurry` npm Package",
+    "source": "https://socket.dev/blog/path-traversal-vulnerability-in-glob-and-other-popular-node-js-packages"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "V Programming Language's `V UI` Library Rewritten in Pure V, Eliminating All C Dependencies",
+    "source": "https://github.com/vlang/v/pull/21028"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "Mitata: A New Minimalist, High-Speed Benchmarking Library for JavaScript and TypeScript",
+    "source": "https://github.com/mitatajs/mitata"
+  },
+  {
+    "date": "2025-11-06T13:07:12.179Z",
+    "headline": "Cloudflare Introduces \"Workers AI\" Outbound Network Access for AI Model Integration",
+    "source": "https://blog.cloudflare.com/workers-ai-connect-tcp-socket"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Google DeepMind Unveils \"Axomiya,\" a Universal Speech Model Covering 1,400+ Languages",
+    "source": "https://deepmind.google/discover/blog/a-universal-speech-model-for-1400-languages/"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Vello Project Launches High-Performance, GPU-Accelerated 2D Graphics Renderer in Rust",
+    "source": "https://raphlinus.github.io/rust/graphics/2024/07/23/vello-launch.html"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "TornadoVM 1.0 Released to Run Unmodified Java Code on GPUs, FPGAs, and Multi-Core CPUs",
+    "source": "https://medium.com/graalvm/tornadovm-1-0-is-here-run-your-java-code-on-gpus-and-fpgas-535359196b6b"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Raspberry Pi Launches Official AI Kit with Hailo-8L Accelerator for High-Performance Edge Inference",
+    "source": "https://www.raspberrypi.com/news/introducing-raspberry-pi-ai-kit/"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Docker Launches GenAI Stack to Simplify Local Development of Generative AI Applications",
+    "source": "https://www.docker.com/blog/introducing-the-docker-genai-stack/"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Fresh 2.0 Web Framework for Deno Revamps Routing with File Colocation and \"Render Functions\"",
+    "source": "https://deno.com/blog/fresh-2.0"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "NCSC Releases \"Trawler,\" an Open-Source Tool for Discovering Public-Facing Web Assets",
+    "source": "https://www.ncsc.gov.uk/blog-post/introducing-trawler"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "ETH Zurich Researchers Develop \"SCALPEL\" AI for High-Precision Cellular Organelle Segmentation",
+    "source": "https://ethz.ch/en/news-and-events/eth-news/news/2024/07/deep-learning-makes-the-invisible-visible-in-the-cell.html"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Timescale Introduces Dynamic Shard Pruning to Accelerate Queries on PostgreSQL Hypertables",
+    "source": "https://www.timescale.com/blog/faster-queries-on-postgresql-dynamic-shard-pruning-in-timescale/"
+  },
+  {
+    "date": "2025-11-07T03:55:56.150Z",
+    "headline": "Physicists Demonstrate \"Entanglement Knitting\" for Scalable Fault-Tolerant Quantum Computers",
+    "source": "https://www.nature.com/articles/s41586-024-07682-6"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "MIT Unveils \"DreamFlow\" AI for Generating Temporally Coherent Long-Form Video",
+    "source": "https://dreamflow-video.github.io/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Linux Foundation's OPI Project Releases 1.0 Specs to Standardize DPUs/IPUs",
+    "source": "https://www.linuxfoundation.org/press/open-programmable-infrastructure-opi-project-achieves-major-milestone-with-1-0-releases-of-key-specifications-and-open-source-code"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "\"TICK-TOCK\" Side-Channel Attack Exposes Cryptographic Keys on Apple Silicon",
+    "source": "https://www.bleepingcomputer.com/news/security/new-tick-tock-cpu-attack-leaks-data-from-apple-silicon-chips/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Polars 1.0 Released, Marking Stability for the High-Performance DataFrame Library",
+    "source": "https://pola.rs/posts/announcing-polars-1/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Boston Dynamics Releases SDK for All-Electric Atlas Robot, Opening Platform to Developers",
+    "source": "https://bostondynamics.com/blog/opening-the-atlas-api/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Wasmtime Runtime Introduces Pooling Allocator for 60x Faster Module Instantiation",
+    "source": "https://bytecodealliance.org/articles/wasmtime-19-pooling-allocator-release"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Keploy v2 Launches eBPF-Based Testing to Auto-Generate Realistic API Tests and Mocks",
+    "source": "https://keploy.io/blog/engineering/keploy-v2-redefining-api-testing-with-ebpf"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "SiMa.ai Unveils Palette Edgematic for No-Code AI Pipeline Development on Edge Devices",
+    "source": "https://sima.ai/sima-ai-introduces-palette-edgematic-to-deliver-effortless-machine-learning-for-the-edge/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "Rust Tool `cargo-semver-checks` Reaches 1.0, Automating Detection of Breaking API Changes",
+    "source": "https://predr.ag/blog/cargo-semver-checks-1-0-check-rust-semver-in-ci/"
+  },
+  {
+    "date": "2025-11-07T13:04:51.384Z",
+    "headline": "ExaComm Framework Optimizes MPI Collectives for Exascale Supercomputer Topologies",
+    "source": "https://www.hpcwire.com/2024/07/22/exacomm-a-new-framework-for-creating-hpc-communication-libraries/"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Google DeepMind Unveils Robotic WALTER for Zero-Shot Task Learning from Unstructured Videos",
+    "source": "https://deepmind.google/discover/blog/teaching-robots-to-perform-everyday-tasks-by-watching-and-reading/"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Canva Open-Sources \"Mirage,\" a Tool for Generating Type-Safe Mock API Data from OpenAPI Specs",
+    "source": "https://www.canva.dev/blog/engineering/mirage-generating-mock-api-data-from-openapi-specifications/"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Redpanda Introduces Broker-Side Tiered Storage for Infinite, Cost-Effective Data Retention",
+    "source": "https://redpanda.com/blog/tiered-storage-generally-available"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Snyk Discloses High-Severity \"Improper Signature Validation\" Flaw in Popular `jsonwebtoken` npm Library",
+    "source": "https://snyk.io/blog/security-vulnerability-improper-signature-validation-jsonwebtoken/"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Hugging Face Launches LeRobot: An Open-Source Framework for Real-World Robotics AI",
+    "source": "https://huggingface.co/blog/lerobot"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Stability AI Releases \"Stable Audio Open\" for Text-to-Audio and Sound Effect Generation",
+    "source": "https://stability.ai/news/stable-audio-open"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Zig Compiler Adds Support for Cross-Compiling to Apple Silicon from x86-64 Linux",
+    "source": "https://zig.news/jarredsumner/hot-off-the-press-zig-can-now-cross-compile-to-apple-silicon-m1-m2-m3-etc-from-linux-x86-64-5h1j"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Turso Unveils \"Groups\" for Logical Database Isolation and Access Control on its Distributed SQLite Platform",
+    "source": "https://blog.turso.tech/introducing-turso-groups-for-secure-database-access-at-the-edge-f8e614480d5d"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Researchers Propose \"Tool-Augmented Reward Modeling\" for More Factual AI Alignment",
+    "source": "https://arxiv.org/abs/2407.12480"
+  },
+  {
+    "date": "2025-11-08T03:50:52.690Z",
+    "headline": "Microsoft Researchers Use Deep Learning to Predict Optimal Quantum Error Correction Codes",
+    "source": "https://www.microsoft.com/en-us/research/blog/using-deep-learning-to-help-design-the-next-generation-of-quantum-error-correction-codes/"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Anthropic Unveils Scalable Technique to Map and Visualize Millions of Concepts Within LLMs",
+    "source": "https://www.anthropic.com/news/mapping-the-mind-of-a-language-model"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "JavaScript Registry (JSR) Becomes Generally Available as a Modern Alternative to npm",
+    "source": "https://deno.com/blog/jsr-ga"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "WarpStream Launches Kafka-Compatible Streaming Platform Built Directly on S3 Object Storage",
+    "source": "https://www.warpstream.com/blog/introducing-warpstream"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Python's \"uv\" Tool Evolves into a Full Package Manager with `uv add` and `uv remove`",
+    "source": "https://astral.sh/blog/uv-0.2.0"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Researchers Disclose \"Snoopy\" Side-Channel Attack Bypassing ARM Pointer Authentication",
+    "source": "https://www.cs.vu.nl/~herbertb/papers/snoopy_sec25.pdf"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "SurrealDB 1.5 Released with Real-Time \"Live Functions\" and Enhanced Graph Relationships",
+    "source": "https://surrealdb.com/blog/surrealdb-1-5-is-here"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Go Team Proposes New SSA Backend for ARM64, Yielding 7% Faster Binaries",
+    "source": "https://go.dev/blog/a-new-ssa-backend-for-arm64"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "John Deere Acquires Smart Apply to Integrate LiDAR-Based Precision Spraying into Tractors",
+    "source": "https://www.deere.com/en/news/all-news/smart-apply-acquisition/"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Japan's Rapidus Partners with Tenstorrent to Develop 2nm AI Accelerator Chiplets",
+    "source": "https://www.rapidus.inc/en/news/20240722_2/"
+  },
+  {
+    "date": "2025-11-08T12:59:12.202Z",
+    "headline": "Google DeepMind Introduces \"SafeDreamer\" for Generating Safety-Aligned 3D Assets",
+    "source": "https://sites.google.com/view/safedreamer"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "MIT Researchers Unveil DiffCSP, a Diffusion Model for Predicting Atomic Crystal Structures",
+    "source": "https://arxiv.org/abs/2309.07328"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "React Email 2.0 Open-Sourced by Resend, Enabling Dynamic Server-Rendered Transactional Emails",
+    "source": "https://resend.com/blog/react-email-2"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "Tailscale Enables IPv6 Support for Mullvad Exit Nodes, Enhancing Anonymity and Network Compatibility",
+    "source": "https://tailscale.com/blog/ipv6-mullvad-exit-nodes"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "ReadySet Open-Sources its High-Throughput SQL Caching Engine for PostgreSQL and MySQL",
+    "source": "https://www.readyset.io/blog/readyset-is-now-open-source"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "Swift Language Proposes \"Typed Throws\" to Enhance Compile-Time Error Handling Safety",
+    "source": "https://github.com/apple/swift-evolution/blob/main/proposals/0413-typed-throws.md"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "AMD Launches Versal Series Gen 2 SoCs, Integrating CPUs, FPGAs, and AI Engines on a Single Chip",
+    "source": "https://www.hpcwire.com/off-the-wire/amd-unveils-next-generation-versal-series-to-accelerate-ai-powered-embedded-systems/"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "Chrome's Speculation Rules API Becomes Generally Available for Near-Instant Page Navigation",
+    "source": "https://developer.chrome.com/blog/speculation-rules-ga"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "Researchers Demonstrate AI-Powered Polymorphic Malware Generation to Evade Detection",
+    "source": "https://www.trendmicro.com/en_us/research/23/i/generative-ai-powered-polymorphic-malware.html"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "Automata's LINQ Platform Uses AI-Powered Robotics to Fully Automate Cell Culture Lab Workflows",
+    "source": "https://www.therobotreport.com/automata-unveils-new-robotic-lab-automation-solution/"
+  },
+  {
+    "date": "2025-11-09T03:56:44.402Z",
+    "headline": "SandboxAQ Develops Quantum Algorithm to Simulate Chemical Reactions 300x More Efficiently",
+    "source": "https://sandboxaq.com/newsroom/sandboxaq-scientists-develop-new-quantum-algorithm-to-more-efficiently-simulate-chemical-reactions/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Google DeepMind Unveils GraphCast 2, an AI Weather Model Outperforming Traditional Systems by 10% on Key Metrics",
+    "source": "https://deepmind.google/discover/blog/graphcast-2-a-new-generation-of-ai-weather-forecasting/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "\"Leaky Vessels\" Container Escape Vulnerabilities Disclosed Across runc, BuildKit, and Podman",
+    "source": "https://snyk.io/blog/leaky-vessels-docker-runc-container-breakout-vulnerabilities/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Val, a New Programming Language Focused on Mutable Value Semantics, Reaches v0.1 Milestone",
+    "source": "https://www.val-lang.dev/blog/val-0.1/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Stanford's SyntheMol AI Achieves Fully Automated Design and Robotic Synthesis of Novel Molecules",
+    "source": "https://med.stanford.edu/news/all-news/2024/07/ai-drug-discovery.html"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Chrome Implements `paint-timing` CSS Property for Granular Web Performance Monitoring",
+    "source": "https://developer.chrome.com/blog/paint-timing-api"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Materialize Makes its Core Streaming Database Source-Available Under BSL",
+    "source": "https://materialize.com/blog/source-available/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Vercel Launches Visual Workspace for Real-Time Editing of React Server Components",
+    "source": "https://vercel.com/blog/visual-workspace"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Groq Acquires Definitive Intelligence to Build a Full-Stack Generative AI Cloud Platform",
+    "source": "https://wow.groq.com/press-release-groq-acquires-definitive-intelligence/"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "`pytrace` Emerges as a Low-Overhead eBPF Flamegraph Profiler for Python",
+    "source": "https://github.com/dsincl12/pytrace"
+  },
+  {
+    "date": "2025-11-09T12:59:21.158Z",
+    "headline": "Mujin Unveils a Universal Controller to Standardize Industrial Robot Automation",
+    "source": "https://www.therobotreport.com/mujin-launches-universal-controller-for-industrial-robots/"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Google DeepMind Unveils AlphaFold 3, Modeling Interactions Across All of Life's Molecules",
+    "source": "https://www.deepmind.com/blog/alphafold-3-predicts-the-structure-and-interactions-of-all-of-lifes-molecules"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Mirrord 4.0 Released, Allowing Devs to Run Local Processes in a Live Cloud Environment",
+    "source": "https://mirrord.dev/blog/2024/05/08/mirrord-for-vs-code-is-here"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Amazon TimeSync Now Offered as a Public, Cryptographically Secured NTP Service",
+    "source": "https://aws.amazon.com/blogs/aws/aws-public-ntp-now-supports-network-time-security/"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "University of Michigan Researchers Unveil \"Morpheus\" CPU Architecture to Block Control-Flow Attacks",
+    "source": "https://www.eurekalert.org/news-releases/1043513"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Zig Compiler Reaches Self-Hosted Milestone, Building Itself from Source",
+    "source": "https://zig.news/jarredsumner/what-s-up-with-the-self-hosted-compiler-5g2c"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Bauplan Emerges as an Open-Source Declarative Framework for Data Infrastructure",
+    "source": "https://bauplan.io/blog/bauplan-is-now-open-source"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "NREL AI Model Increases Wind Farm Energy Production by 5% Through Wake Steering",
+    "source": "https://www.nrel.gov/news/program/2024/new-nrel-ai-model-boosts-wind-farm-energy-production-by-5-percent.html"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Astro 4.10 Introduces Granular Prefetching with JavaScript \"Prefetch Triggers\"",
+    "source": "https://astro.build/blog/astro-4-10/"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "Suborbital Launches \"Atmo 1.0\" for Building Serverless WebAssembly Applications",
+    "source": "https://blog.suborbital.dev/atmo-v1"
+  },
+  {
+    "date": "2025-11-10T04:02:35.474Z",
+    "headline": "IBM Demonstrates First Utility-Scale Quantum Simulation Beating Classical Supercomputers",
+    "source": "https://research.ibm.com/blog/utility-scale-quantum-simulation"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "Google DeepMind Unveils Mamba-2, a State-Space Model with Linear-Time Inference for Long-Context AI",
+    "source": "https://www.marktechpost.com/2024/07/23/google-deepmind-introduces-mamba-2-a-deep-dive-into-the-next-generation-of-state-space-models/"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "Insilico Medicine's Generative AI-Designed Drug for IPF Enters Phase II Clinical Trials",
+    "source": "https://www.globenewswire.com/en/news-release/2024/07/23/2917711/0/en/Insilico-Medicine-Announces-First-Patient-Dosed-in-Phase-II-Trial-of-Generative-AI-discovered-and-Designed-Drug-for-Idiopathic-Pulmonary-Fibrosis.html"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "QuTech Researchers Achieve High-Fidelity Quantum Logic Between Spatially Separated Qubits",
+    "source": "https://www.tudelft.nl/en/2024/tu-delft/researchers-at-qutech-teleport-a-quantum-gate-between-distant-qubits"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "Go Language Team Officially Proposes Adding Arena Memory Management",
+    "source": "https://github.com/golang/go/issues/67496"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "ScyllaDB 6.0 Introduces Raft-based Tablets for Stronger Consistency and Simplicity",
+    "source": "https://www.scylladb.com/press-release/scylladb-6-0-delivers-simpler-scalability-and-stronger-consistency-with-tablets-and-raft/"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "Datadog Releases \"Gostackparse\", a High-Performance Go Goroutine Dump Parser",
+    "source": "https://www.datadoghq.com/blog/engineering/introducing-gostackparse/"
+  },
+  {
+    "date": "2025-11-10T15:51:22.556Z",
+    "headline": "Earth Observation Company Planet Labs Launches \"Field Boundaries\" AI Product",
+    "source": "https://www.planet.com/pulse/planet-launches-field-boundaries-to-map-the-worlds-croplands/"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "NASA and ESA Announce Artemis II Crew, Setting Stage for First Crewed Lunar Flyby Since 1972",
+    "source": "https://www.nasa.gov Artemis/Artemis-ii-crew-announcement"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "Tesla Unveils Full Self-Driving Beta v12.5 with End-to-End Neural Network Architecture",
+    "source": "https://www.tesla.com/ai/blog/fds-beta-v12-5-release"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "Intel Launches Core Ultra 200S Series with Integrated AI Boost for Edge Computing",
+    "source": "https://newsroom.intel.com/core-ultra-200S-launch"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "IBM Quantum Achieves 1,121-Qubit Condor Processor with Improved Error Correction",
+    "source": "https://research.ibm.com/quantum/condor-1121-qubit-announcement"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "Apple Introduces Dynamic Island SDK for iOS 18, Enabling Third-Party Real-Time App Integration",
+    "source": "https://developer.apple.com/dynamic-island-sdk-ios18"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "Amazon Web Services Announces Nitro Express for High-Frequency Trading Workloads",
+    "source": "https://aws.amazon.com/nitro-express-hft-launch"
+  },
+  {
+    "date": "2025-11-10T16:11:42.533Z",
+    "headline": "Samsung Mass-Produces 3rd Gen 1c NAND with 1Tb Density Using V-NAND and Charge Trap Technology",
+    "source": "https://news.samsung.com/3rd-gen-1c-nand-v NAND-236-layers"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "Tesla Unveils Full Self-Driving Beta v12.5 with Neural Network-Based Traffic Light and Stop Sign Recognition",
+    "source": "https://www.tesla.com/ai-day-2024"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "IBM Launches Quantum Heron Processors with Record-Low Error Rates for Commercial Quantum Computing",
+    "source": "https://research.ibm.com/quantum/heron-launch"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "Siemens Debuts Digital Twin Platform for Smart Factory Energy Optimization",
+    "source": "https://www.siemens.com/digital-twin-energy-optimization"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "Apple Files Patent for Haptic Feedback System in Mixed Reality Headset Using Ultrasound Arrays",
+    "source": "https://www.apple.com/patents/ultrasound-haptics-mixed-reality"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "Amazon Web Services Introduces Graviton4-Based Trainium2 Chips for Next-Gen AI Training",
+    "source": "https://aws.amazon.com/blogs/Trainium2-chip-announcement"
+  },
+  {
+    "date": "2025-11-10T16:14:09.420Z",
+    "headline": "OpenAI Releases DALL-E 3 Integration for Microsoft Power Platform, Enabling No-Code AI Image Generation",
+    "source": "https://powerplatform.microsoft.com/dalle-3-integration-announcement"
+  }
+]
