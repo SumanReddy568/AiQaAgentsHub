@@ -204,7 +204,7 @@ async function fetchNewsWithOpenRouter(previousHeadlines) {
       'X-Title': 'Tech News Aggregator'
     },
     body: JSON.stringify({
-      model: "tngtech/deepseek-r1t2-chimera:free",
+      model: "kwaipilot/kat-coder-pro:free",
       messages: [
         {
           role: "user",
