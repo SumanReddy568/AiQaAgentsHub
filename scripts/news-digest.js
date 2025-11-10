@@ -204,7 +204,7 @@ async function fetchNewsWithOpenRouter(previousHeadlines) {
       'X-Title': 'Tech News Aggregator'
     },
     body: JSON.stringify({
-      model: "openai/o4-mini",
+      model: "deepseek/deepseek-chat-v3.1:free",
       messages: [
         {
           role: "user",
@@ -277,7 +277,7 @@ async function prioritizeAndSelectTopNews(geminiNews, openRouterNews, previousHe
 
   // Use a simple AI to select top 10 most impactful items
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
   const prioritizationPrompt = `
     You are a tech news editor. Select the TOP 10 most impactful and diverse technology news stories from the following list.
