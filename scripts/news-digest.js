@@ -95,7 +95,7 @@ function saveCurrentNews(newsItems) {
 async function fetchNewsWithGemini(previousHeadlines) {
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Using more reliable model
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
     const prompt = `
       Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 10 significant but DIFFERENT tech stories from the last 24 hours.
