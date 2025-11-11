@@ -803,5 +803,45 @@
     "date": "2025-11-11T03:59:31.864Z",
     "headline": "Amazon Q in IDE Becomes Generally Available with Java Code Transformation",
     "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-q-ide-generally-available/"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "NASA's Perseverance Rover Discovers Evidence of Ancient Hydrothermal Activity on Mars",
+    "source": "https://www.jpl.nasa.gov/news/perseverance-rover-discovers-evidence-of-ancient-hydrothermal-activity-on-mars"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "Intel Launches Core Ultra 200S 'Arrow Lake' Desktop Processors with Integrated AI Acceleration",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/arrow-lake-desktop-launch.html"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "OpenAI Announces GPT-4 Turbo with Vision Now Available via API for All Developers",
+    "source": "https://openai.com/blog/gpt-4-turbo-vision-api-available"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "Tesla Deploys Full Self-Driving Beta to All Paid Subscribers in North America",
+    "source": "https://www.tesla.com/blog/full-self-driving-beta-update"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "IBM Quantum Achieves Error-Corrected Logical Qubit with Break-Even Lifetime",
+    "source": "https://research.ibm.com/blog/quantum-error-correction-breakthrough"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "Apple Introduces Lockdown Mode in iOS 17.5 to Counter Zero-Click Exploits",
+    "source": "https://www.apple.com/ios-17/"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "Siemens Unveils Digital Twin Platform for Real-Time Factory Automation Control",
+    "source": "https://www.siemens.com/digital-twin-manufacturing-launch"
+  },
+  {
+    "date": "2025-11-11T13:07:21.202Z",
+    "headline": "Mozilla Releases Firefox 128 with Rust-Based CSS Engine 'Stylo' Full Integration",
+    "source": "https://blog.mozilla.org/en/products/firefox/firefox-128-quantum-css-engine/"
   }
 ]
