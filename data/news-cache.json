@@ -763,5 +763,45 @@
     "date": "2025-11-11T03:49:21.773Z",
     "headline": "Vercel Integrates V8's Maglev JIT Compiler for Faster Edge Functions",
     "source": "https://vercel.com/blog/how-we-shaved-35-off-our-cold-starts-with-v8s-maglev-compiler"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "DuckDB Reaches 1.0.0 Milestone, Declaring Stable Storage Format",
+    "source": "https://duckdb.org/2024/06/24/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Critical RCE Vulnerability (CVE-2024-4323) Disclosed in Fluent Bit Logging Utility",
+    "source": "https://www.tenable.com/blog/linguistic-lumberjack-fluent-bit-critical-memory-corruption-vulnerability-could-lead-to-dos-rce"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Apple Open-Sources Ferret-UI, a Multimodal LLM for Understanding Mobile App Screens",
+    "source": "https://github.com/apple/ferret-ui"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Vercel Re-engineers Edge Functions with New `workerd`-based Runtime for Faster Performance",
+    "source": "https://vercel.com/blog/a-new-engine-for-edge-functions-faster-and-more-efficient"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "NVIDIA Releases Nemotron-4 340B, an Open Model Family for Synthetic Data Generation",
+    "source": "https://developer.nvidia.com/blog/nvidia-nemotron-4-340b-reward-and-instruct-models/"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Signal Deploys PQXDH Protocol, Upgrading Encryption with Quantum Resistance",
+    "source": "https://signal.org/blog/pqxdh/"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Arm Unveils 2024 Compute Platform with Cortex-X925 CPU and Immortalis-G925 GPU",
+    "source": "https://www.anandtech.com/show/21438/arm-unveils-2024-compute-platform-cortex-x925-cortex-a725-immortalis-g925"
+  },
+  {
+    "date": "2025-11-11T03:59:31.864Z",
+    "headline": "Amazon Q in IDE Becomes Generally Available with Java Code Transformation",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-q-ide-generally-available/"
   }
 ]
