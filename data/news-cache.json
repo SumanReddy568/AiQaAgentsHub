@@ -723,5 +723,45 @@
     "date": "2025-11-10T16:55:32.734Z",
     "headline": "OpenAI Releases Whisper v3 with Multilingual Real-Time Translation and Speaker Diarization",
     "source": "https://openai.com/research/whisper-v3-release"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "Mistral AI Releases Codestral, a 22B Parameter Generative AI Model for Code",
+    "source": "https://mistral.ai/news/codestral/"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "GitHub Copilot Extensions Now in Public Beta, Integrating Third-Party Tools into the IDE",
+    "source": "https://github.blog/2024-05-29-github-copilot-extensions-public-beta/"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Core API Stable",
+    "source": "https://duckdb.org/2024/05/29/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "ARM Unveils 2025 Flagship CPU and GPU: Cortex-X925 and Immortalis-G925",
+    "source": "https://www.anandtech.com/show/21403/arm-unveils-2025-flagship-cpu-and-gpu-cortex-x925-and-immortalis-g925"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "OpenAI Forms New Safety and Security Committee Led by Board Members",
+    "source": "https://openai.com/index/openai-board-forms-safety-and-security-committee/"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "Critical Veeam Vulnerability (CVE-2024-29855) Allows NTLM Relay Attacks",
+    "source": "https://www.bleepingcomputer.com/news/security/veeam-warns-of-critical-bug-allowing-ntlm-relay-attacks/"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "MIT Researchers Create 'Photo-gami' Algorithm for Self-Folding Robots",
+    "source": "https://news.mit.edu/2024/photo-gami-designing-robots-that-self-fold-light-0529"
+  },
+  {
+    "date": "2025-11-11T03:49:21.773Z",
+    "headline": "Vercel Integrates V8's Maglev JIT Compiler for Faster Edge Functions",
+    "source": "https://vercel.com/blog/how-we-shaved-35-off-our-cold-starts-with-v8s-maglev-compiler"
   }
 ]
