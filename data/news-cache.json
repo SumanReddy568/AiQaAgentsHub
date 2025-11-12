@@ -843,5 +843,45 @@
     "date": "2025-11-11T13:07:21.202Z",
     "headline": "Mozilla Releases Firefox 128 with Rust-Based CSS Engine 'Stylo' Full Integration",
     "source": "https://blog.mozilla.org/en/products/firefox/firefox-128-quantum-css-engine/"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "Google DeepMind Unveils Mantis: A Visual Language Model for Fine-Grained Visual Reasoning",
+    "source": "https://deepmind.google/discover/blog/mantis-a-model-that-can-see-and-reason-at-the-level-of-individual-pixels/"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "Postman Releases v11 with Spectral Linting, gRPC-Web Support, and Centralized Secret Management",
+    "source": "https://blog.postman.com/postman-v11-is-generally-available/"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "Critical Integer Overflow Vulnerability (CVE-2024-5390) Disclosed in libjpeg-xl Library",
+    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-5390"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "DuckDB Reaches Landmark 1.0.0 Release, Cementing its API and Storage Format",
+    "source": "https://duckdb.org/2024/07/23/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "Ruff Formatter is Now Stable, Offering a High-Performance Alternative to Black",
+    "source": "https://astral.sh/blog/the-ruff-formatter-is-stable"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "Apple Opens Vision Pro to Enterprise with visionOS 2 and New APIs for Industrial Use",
+    "source": "https://www.apple.com/newsroom/2024/07/apple-vision-pro-arrives-for-enterprise-customers/"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "JEDEC Publishes LPDDR6 Memory Standard, Doubling Peak Bandwidth for Mobile Devices",
+    "source": "https://www.anandtech.com/show/21495/jedec-publishes-lpddr6-standard-up-to-14-4-gbps-for-next-gen-ai-everywhere"
+  },
+  {
+    "date": "2025-11-12T03:57:33.118Z",
+    "headline": "MIT Researchers Develop Scalable Neutral-Atom Qubit with Ytterbium-171",
+    "source": "https://news.mit.edu/2024/new-qubit-design-may-help-unlock-power-quantum-computing-0722"
   }
 ]
