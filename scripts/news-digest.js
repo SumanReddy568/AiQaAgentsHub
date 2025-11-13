@@ -184,7 +184,7 @@ async function fetchNewsWithOpenRouter(previousHeadlines) {
         'X-Title': 'Tech News Aggregator'
       },
       body: JSON.stringify({
-        model: "kwaipilot/kat-coder-pro:free",
+        model: "openai/gpt-oss-20b:free",
         messages: [
           {
             role: "user",
