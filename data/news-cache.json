@@ -923,5 +923,45 @@
     "date": "2025-11-13T01:05:39.696Z",
     "headline": "New York Passes 'AI Disgorgement' Bill to Seize Profits from Biased Algorithms",
     "source": "https://www.reuters.com/technology/cybersecurity/new-york-passes-first-us-bill-allowing-state-seize-profits-biased-ai-2024-07-23/"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "AI21 Labs Releases Jamba-1.5, a Hybrid SSM-Transformer Model with a 256K Context Window",
+    "source": "https://www.ai21.com/blog/jamba-1-5"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Deno 1.45 Released with Experimental 'Sloppy Imports' and Faster HTTP Server",
+    "source": "https://deno.com/blog/deno-1.45"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Microsoft Azure Unveils AI-Powered Network Security Dashboard in Public Preview",
+    "source": "https://azure.microsoft.com/en-us/updates/public-preview-ai-powered-network-security-dashboard/"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Critical RCE Vulnerability (CVE-2024-5458) Disclosed in PHP-FPM Affecting Nginx Servers",
+    "source": "https://devcoalesce.com/blog/critical-php-rce-vulnerability- CVE-2024-5458-and-how-to-fix-it/"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Stable API and Storage Format",
+    "source": "https://duckdb.org/2024/06/24/announcing-duckdb-1.0.html"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Broadcom to Divest End-User Computing Unit to KKR for $4 Billion",
+    "source": "https://www.broadcom.com/company/news/product-releases/61331"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Intel Details 'Clearwater Forest' Xeon CPU with E-Core-Only Architecture on 18A Process",
+    "source": "https://www.anandtech.com/show/21443/intel-discloses-clearwater-forest-xeon-details-all-ecore-on-18a-in-2025"
+  },
+  {
+    "date": "2025-11-13T04:01:40.098Z",
+    "headline": "Figure AI Deploys Humanoid Robots to BMW Manufacturing Plant for Real-World Tasks",
+    "source": "https://www.figure.ai/press/figure-deploys-humanoid-robots-to-bmw-manufacturing-plant"
   }
 ]
