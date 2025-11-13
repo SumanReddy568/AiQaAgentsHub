@@ -883,5 +883,45 @@
     "date": "2025-11-12T03:57:33.118Z",
     "headline": "MIT Researchers Develop Scalable Neutral-Atom Qubit with Ytterbium-171",
     "source": "https://news.mit.edu/2024/new-qubit-design-may-help-unlock-power-quantum-computing-0722"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "AMD's Encrypted VMs Breached by New \"TICK-TOCK\" Side-Channel Attack",
+    "source": "https://www.bleepingcomputer.com/news/security/new-tick-tock-attack-breaches-amds-encrypted-virtual-machines/"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "Deno 1.45 Released with Sloppy Imports and Enhanced Language Server",
+    "source": "https://deno.com/blog/deno-1.45"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "Google Researchers Propose Searchformer, a Transformer for Information Retrieval",
+    "source": "https://www.marktechpost.com/2024/07/21/google-ai-introduces-searchformer-a-novel-generative-model-that-transforms-information-retrieval/"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "Linkerd 2.15 Adds Gateway Mirroring for Multi-Cluster Communication Over Untrusted Networks",
+    "source": "https://linkerd.io/2024/07/23/announcing-linkerd-2.15/"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "MotherDuck Enables Serverless Execution of Local DuckDB Extensions",
+    "source": "https://motherduck.com/blog/duckdb-extensions-on-motherduck/"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "OpenSSF Launches Malicious Packages Repo V2 with API for Programmatic Access",
+    "source": "https://openssf.org/blog/2024/07/23/announcing-the-general-availability-of-the-openssf-malicious-packages-repository-v2/"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "Samsung Adopts Chip-on-Wafer Packaging for HBM4 Memory, Enabling 2048-bit Interface",
+    "source": "https://www.anandtech.com/show/21481/samsung-to-use-chip-on-wafer-packaging-for-hbm4-2048bit-interface-and-16hi-stacks"
+  },
+  {
+    "date": "2025-11-13T01:05:39.696Z",
+    "headline": "New York Passes 'AI Disgorgement' Bill to Seize Profits from Biased Algorithms",
+    "source": "https://www.reuters.com/technology/cybersecurity/new-york-passes-first-us-bill-allowing-state-seize-profits-biased-ai-2024-07-23/"
   }
 ]
