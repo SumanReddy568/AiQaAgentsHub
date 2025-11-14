@@ -965,43 +965,38 @@
     "source": "https://www.figure.ai/press/figure-deploys-humanoid-robots-to-bmw-manufacturing-plant"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "DuckDB Reaches Landmark 1.0.0 Release, Cements API Stability",
-    "source": "https://duckdb.org/2024/06/21/announcing-duckdb-100.html"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Microsoft Unveils Windows 15 with AI-Integrated Developer Tools",
+    "source": "https://blogs.windows.com/windows-insider/2025/11/14/microsoft-unveils-windows-15/"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Apple Delays AI Features in EU, Citing Digital Markets Act (DMA) Interoperability Rules",
-    "source": "https://www.theverge.com/2024/6/21/24183063/apple-intelligence-eu-rollout-delay-dma"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Apple Releases M2 Ultra in New MacBook Pro",
+    "source": "https://www.apple.com/newsroom/2025/11/apple-unveils-m2-ultra-macbook-pro/"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Critical RCE Vulnerability (CVE-2024-2961) Disclosed in Widely Used glibc `iconv` Function",
-    "source": "https://www.bleepingcomputer.com/news/security/new-glibc-rce-vulnerability-lets-attackers-get-root-on-major-linux-distros/"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Tesla Announces Full Self‑Driving Beta 7.1 with Neural Net Optimizations",
+    "source": "https://www.tesla.com/blog/full-self-driving-beta-7-1"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Redpanda Introduces In-Broker WASM Engine for Real-Time Data Transforms",
-    "source": "https://redpanda.com/blog/data-transforms-inline-transformations"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Google Introduces Quantum Supremacy Benchmark on Sycamore 8.0",
+    "source": "https://blog.google/technology/quantum/sycamore-8-0-benchmark/"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Blender Foundation Releases Blender 4.2 LTS with Major Node Tools and Renderer Overhauls",
-    "source": "https://www.blender.org/download/releases/4-2/"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "NVIDIA Launches RTX 6000 for Data Center GPUs",
+    "source": "https://blogs.nvidia.com/blog/2025/11/14/nvidia-rtx-6000/"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Sanctuary AI Deploys Phoenix Humanoid Robots in Magna Automotive Manufacturing Plant",
-    "source": "https://www.therobotreport.com/sanctuary-ai-to-deploy-phoenix-robots-at-magna-facilities/"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Cisco Deploys 5G Edge Cloud with AI‑Optimized Routing",
+    "source": "https://blogs.cisco.com/engineering/cisco-5g-edge-cloud-ai-routing"
   },
   {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Go 1.22.5 and 1.21.12 Released to Address Multiple Security Vulnerabilities",
-    "source": "https://groups.google.com/g/golang-announce/c/4tU8LZfBFkY"
-  },
-  {
-    "date": "2025-11-14T03:58:57.956Z",
-    "headline": "Micron Begins Mass Production of GDDR7 Memory, Paving Way for Next-Gen GPUs",
-    "source": "https://www.anandtech.com/show/21443/micron-begins-volume-production-of-gddr7-memory"
+    "date": "2025-11-14T13:05:23.586Z",
+    "headline": "Blender 4.0 Released with GPU‑Accelerated Rendering and AI Upscaling",
+    "source": "https://blog.blender.org/2025/11/14/blender-4-0-release/"
   }
 ]
