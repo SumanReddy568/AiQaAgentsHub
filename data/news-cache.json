@@ -963,5 +963,45 @@
     "date": "2025-11-13T04:01:40.098Z",
     "headline": "Figure AI Deploys Humanoid Robots to BMW Manufacturing Plant for Real-World Tasks",
     "source": "https://www.figure.ai/press/figure-deploys-humanoid-robots-to-bmw-manufacturing-plant"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "DuckDB Reaches Landmark 1.0.0 Release, Cements API Stability",
+    "source": "https://duckdb.org/2024/06/21/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Apple Delays AI Features in EU, Citing Digital Markets Act (DMA) Interoperability Rules",
+    "source": "https://www.theverge.com/2024/6/21/24183063/apple-intelligence-eu-rollout-delay-dma"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Critical RCE Vulnerability (CVE-2024-2961) Disclosed in Widely Used glibc `iconv` Function",
+    "source": "https://www.bleepingcomputer.com/news/security/new-glibc-rce-vulnerability-lets-attackers-get-root-on-major-linux-distros/"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Redpanda Introduces In-Broker WASM Engine for Real-Time Data Transforms",
+    "source": "https://redpanda.com/blog/data-transforms-inline-transformations"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Blender Foundation Releases Blender 4.2 LTS with Major Node Tools and Renderer Overhauls",
+    "source": "https://www.blender.org/download/releases/4-2/"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Sanctuary AI Deploys Phoenix Humanoid Robots in Magna Automotive Manufacturing Plant",
+    "source": "https://www.therobotreport.com/sanctuary-ai-to-deploy-phoenix-robots-at-magna-facilities/"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Go 1.22.5 and 1.21.12 Released to Address Multiple Security Vulnerabilities",
+    "source": "https://groups.google.com/g/golang-announce/c/4tU8LZfBFkY"
+  },
+  {
+    "date": "2025-11-14T03:58:57.956Z",
+    "headline": "Micron Begins Mass Production of GDDR7 Memory, Paving Way for Next-Gen GPUs",
+    "source": "https://www.anandtech.com/show/21443/micron-begins-volume-production-of-gddr7-memory"
   }
 ]
