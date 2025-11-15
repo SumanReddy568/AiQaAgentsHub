@@ -1038,5 +1038,40 @@
     "date": "2025-11-15T03:53:06.363Z",
     "headline": "MIT Researchers Create Vertically-Stacked, Full-Color Micro-LED Pixels from 2D Materials",
     "source": "https://news.mit.edu/2024/new-full-color-vertically-stacked-micro-leds-0722"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Arm Unveils Neoverse V3AE and N3AE Cores for Software-Defined Vehicles",
+    "source": "https://newsroom.arm.com/news/neoverse-ae-software-defined-vehicles"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Google Quantum AI Demonstrates Braiding of Non-Abelian Anyons on Sycamore Processor",
+    "source": "https://www.nature.com/articles/s41586-024-07593-9"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Microsoft Introduces Florence-2, a Vision Foundation Model for Diverse Computer Vision Tasks",
+    "source": "https://huggingface.co/papers/2311.06242"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Deno 1.45.6 Released, Hardening Security by Restricting `FFI_SYMBOLS` Environment Variable",
+    "source": "https://deno.com/blog/v1.45.6"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Researchers Uncover 'TICK-TOCK', a CPU Vulnerability Leaking Data via Time-Stamp Counter",
+    "source": "https://www.vusec.net/projects/tick-tock/"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Amazon Bedrock Guardrails Becomes Generally Available for AI Application Safety",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/guardrails-amazon-bedrock-generally-available/"
+  },
+  {
+    "date": "2025-11-15T13:00:02.748Z",
+    "headline": "Elon Musk's xAI Signs Multi-Billion Dollar Deal to Use Oracle's Cloud Infrastructure",
+    "source": "https://www.reuters.com/technology/musks-xai-signs-multi-billion-dollar-deal-use-oracles-cloud-sources-say-2024-07-23/"
   }
 ]
