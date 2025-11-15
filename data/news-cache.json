@@ -998,5 +998,45 @@
     "date": "2025-11-14T13:05:23.586Z",
     "headline": "Blender 4.0 Released with GPU‑Accelerated Rendering and AI Upscaling",
     "source": "https://blog.blender.org/2025/11/14/blender-4-0-release/"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "Figure AI Demonstrates Real-Time, Conversational Reasoning in Humanoid Robot",
+    "source": "https://www.figure.ai/blog/figure-01-conversation-video"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "Deno 1.45 Released with Sloppy Imports and Enhanced JSR Support",
+    "source": "https://deno.com/blog/deno-1.45"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "AWS Announces General Availability of Amazon Bedrock in Canada West (Calgary) Region",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-bedrock-aws-canada-west-calgary-region/"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "Critical SQL Injection Vulnerability (CVE-2024-5290) Disclosed in Ultimate Member WordPress Plugin",
+    "source": "https://www.bleepingcomputer.com/news/security/critical-ultimate-member-plugin-bug-exposes-200k-wp-sites-to-data-theft/"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "Databricks Releases English SDK for Apache Spark in Public Preview",
+    "source": "https://www.databricks.com/blog/announcing-english-sdk-apache-spark-public-preview"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "OpenSSF Launches \"Sigstore on GKE\" to Simplify Private Software Signing on Kubernetes",
+    "source": "https://openssf.org/blog/2024/07/22/announcing-sigstore-on-gke/"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "Arm Unveils New Compute Subsystems for Windows on Arm Laptops to Compete with Apple Silicon",
+    "source": "https://www.anandtech.com/show/21481/arm-unveils-2024-compute-subsystems-for-client-powering-nextgen-windows-on-arm"
+  },
+  {
+    "date": "2025-11-15T03:53:06.363Z",
+    "headline": "MIT Researchers Create Vertically-Stacked, Full-Color Micro-LED Pixels from 2D Materials",
+    "source": "https://news.mit.edu/2024/new-full-color-vertically-stacked-micro-leds-0722"
   }
 ]
