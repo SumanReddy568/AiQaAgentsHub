@@ -1,205 +1,5 @@
 [
   {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Meta Releases Llama 3.1 Models, Including a Massive 405B Parameter Version",
-    "source": "https://ai.meta.com/blog/meta-llama-3-1/"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Bun 1.1.13 Introduces `bunx`, an `npx` Replacement up to 316x Faster",
-    "source": "https://bun.sh/blog/bun-v1.1.13"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Cloudflare Launches \"Firewall for AI\" to Protect LLMs from Prompt Injection Attacks",
-    "source": "https://blog.cloudflare.com/firewall-for-ai"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Chan Zuckerberg Initiative Unveils Polymathic AI for Unified Scientific Data Modeling",
-    "source": "https://chanzuckerberg.com/tech/blog/polymathic-ai-an-open-source-framework-for-building-ai-models-of-cells/"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Neon Introduces Production-Ready Database Branching for PostgreSQL",
-    "source": "https://neon.tech/blog/database-branching-ga"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Researchers Disclose \"Cache-Grab,\" a New CPU Side-Channel Attack on Vector Units",
-    "source": "https://www.vusec.net/projects/cache-grab/"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "W3C Community Group Advances WASI 0.2 with Standardized Key-Value and HTTP APIs",
-    "source": "https://bytecodealliance.org/articles/wasi-0-2-and-the-component-model-achieve-technical-consensus"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Google Introduces Jetstream 2.0, a High-Performance TPU v5p Inference Engine",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-jetstream-2-for-llm-and-diffusion-model-inference"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Rivos Secures Over $250M to Build RISC-V Server SoCs for AI Workloads",
-    "source": "https://www.anandtech.com/show/21468/rivos-exits-stealth-mode-reveals-plans-for-riscv-socs-for-ai-and-secures-over-250m-in-funding"
-  },
-  {
-    "date": "2025-11-06T03:06:35.070Z",
-    "headline": "Temporal Releases Open-Source \"Versioning\" Framework for Workflow State Management",
-    "source": "https://temporal.io/blog/versioning-workflows-in-production"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Google DeepMind Unveils CoMA, a Context-Aware Mixture-of-Agents Architecture for Complex Reinforcement Learning",
-    "source": "https://arxiv.org/abs/2407.15942"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "HTTP/2 \"CONTINUATION Flood\" Vulnerability Allows Single-Machine DoS Attacks on Web Servers",
-    "source": "https://www.bleepingcomputer.com/news/security/new-http-2-vulnerability-lets-single-machine-crash-web-servers/"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "QuestDB 7.4 Released with Native Apache Pekko Connectors and Advanced Geospatial Functions",
-    "source": "https://questdb.io/blog/2024/07/23/questdb-7-4/"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "CNCF Graduates Falco, a Cloud-Native Runtime Security Tool Using eBPF",
-    "source": "https://www.cncf.io/blog/2024/07/23/cloud-native-runtime-security-tool-falco-graduates/"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Linux Kernel 6.11 Set to Officially Drop Support for Intel's Itanium (IA-64) Architecture",
-    "source": "https://www.phoronix.com/news/Linux-6.11-Drops-IA-64"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Leptos 0.7 Rust Web Framework Overhauls Reactivity with \"Signals 2.0\"",
-    "source": "https://leptos.dev/blog/2024/07/22/leptos-07"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Physicists Demonstrate a \"Harmonic Oscillator\" Quantum Error-Correction Code",
-    "source": "https://www.nature.com/articles/s41586-024-07613-x"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Parca Adds Support for Zero-Instrumentation Profiling of Zig Applications via eBPF",
-    "source": "https://www.parca.dev/blog/parca-zig-support"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Toyota Develops AI-Powered Visual Inspection System that Reduces Semiconductor Defects by 50%",
-    "source": "https://global.toyota/en/newsroom/corporate/41170942.html"
-  },
-  {
-    "date": "2025-11-06T03:10:26.563Z",
-    "headline": "Bytecode Alliance Advances WASM Component Model with Native Tooling for Rust and Python",
-    "source": "https://bytecodealliance.org/articles/making-components-real-foundational-tooling"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Cerebras Unveils 4 Trillion Transistor Wafer-Scale Engine 3 for AI Supercomputing",
-    "source": "https://www.cerebras.net/press-release/cerebras-systems-unveils-worlds-fastest-ai-chip-with-4-trillion-transistors/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Zed Code Editor Goes Fully Open Source, Offering a Rust-Based High-Performance Alternative",
-    "source": "https://zed.dev/blog/zed-is-now-open-source"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Intrinsic, an Alphabet Company, Releases Flowstate Platform for AI-Powered Robotics Development",
-    "source": "https://intrinsic.ai/blog/hello-flowstate-the-developer-platform-for-ai-robotics"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "\"ShrinkLocker\" Ransomware Campaign Abuses Windows BitLocker for Disk Encryption",
-    "source": "https://www.bleepingcomputer.com/news/security/new-shrinklocker-ransomware-uses-bitlocker-to-encrypt-your-files/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "MotherDuck Introduces \"Projects\" for Scalable Data Sharing and Collaboration with DuckDB",
-    "source": "https://motherduck.com/blog/introducing-projects/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Wayve's GAIA-1 Model Pushes End-to-End AI for Autonomous Driving",
-    "source": "https://wayve.ai/thinking/introducing-gaia-1/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Mojo Language Unveils MLIR-Based JIT Compiler Architecture for High-Performance Python",
-    "source": "https://www.modular.com/blog/the-mojo-compiler-is-now-even-more-jit"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Cohere Releases Compass, a Data Curation Model to Improve RAG and Fine-Tuning",
-    "source": "https://txt.cohere.com/compass/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "RisingWave Adds Support for Stateful JavaScript User-Defined Functions in Streaming SQL",
-    "source": "https://www.risingwave.com/blog/write-stateful-udfs-in-risingwave-with-javascript/"
-  },
-  {
-    "date": "2025-11-06T03:13:49.105Z",
-    "headline": "Quantinuum Demonstrates Entangling Logical Qubits with 99.8% Fidelity",
-    "source": "https://www.quantinuum.com/news/quantinuum-scientists-demonstrate-highest-fidelity-entangling-gate-on-logical-qubits"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "NVIDIA Unveils JRender, a JAX-Based Differentiable Renderer for Sim-to-Real Robotics",
-    "source": "https://research.nvidia.com/publication/2024-07_jrender-jax-based-differentiable"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "ClickHouse Introduces Experimental Inverted Indexes for High-Speed Text Search",
-    "source": "https://clickhouse.com/blog/inverted-index-for-full-text-search-in-clickhouse"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Fermyon Launches Spin 2.0, Abstracting Data Storage for WebAssembly Microservices",
-    "source": "https://www.fermyon.com/blog/spin-v2"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Oxc Project Releases High-Performance JavaScript Linter in Rust as ESLint Alternative",
-    "source": "https://oxc-project.github.io/blog/2024-07-23-announcing-oxc-linter.html"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "NASA's Jet Propulsion Laboratory Open-Sources \"NICE\" for Spacecraft Chip Emulation",
-    "source": "https://github.com/nasa/nice"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Unison Cloud Platform Leverages Content-Addressed Code for Instant, Atomic Deployments",
-    "source": "https://www.unison-lang.org/blog/unison-cloud-is-here/"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Arm Releases Cortex-M52 Processor for Power-Efficient On-Device AI in IoT",
-    "source": "https://www.anandtech.com/show/21469/arm-announces-cortexm52-and-cortexm85-new-cpus-for-iot-and-embedded"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Google Researchers Propose \"Matryoshka Representation Learning\" for Adaptive AI",
-    "source": "https://ai.googleblog.com/2024/07/matryoshka-representation-learning.html"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Fly.io Details \"Machines V2\" API, Moving From Nomad to a Custom Rust Orchestrator",
-    "source": "https://fly.io/blog/machines-v2-is-now-default/"
-  },
-  {
-    "date": "2025-11-06T04:00:11.536Z",
-    "headline": "Boxxy: A New Go-Based Sandboxing Tool Using Linux Namespaces and Seccomp-bpf",
-    "source": "https://github.com/cpuguy83/boxxy"
-  },
-  {
     "date": "2025-11-06T13:07:12.179Z",
     "headline": "Google AI Proposes \"Mixture-of-Depths,\" Dynamically Allocating Transformer Blocks Per Token",
     "source": "https://arxiv.org/abs/2404.02258"
@@ -1073,5 +873,45 @@
     "date": "2025-11-15T13:00:02.748Z",
     "headline": "Elon Musk's xAI Signs Multi-Billion Dollar Deal to Use Oracle's Cloud Infrastructure",
     "source": "https://www.reuters.com/technology/musks-xai-signs-multi-billion-dollar-deal-use-oracles-cloud-sources-say-2024-07-23/"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "OpenAI Begins Rolling Out Content Provenance C2PA Standard to DALL-E 3",
+    "source": "https://openai.com/blog/content-credentials-for-dall-e-3"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "Bun v1.1 Released with Stable Windows Support and Single-File Executables",
+    "source": "https://bun.sh/blog/bun-v1.1"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "AWS Announces General Availability of IPv6-Only EKS Clusters",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/05/amazon-eks-ipv6-clusters/"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "New 'TunnelVision' Attack Bypasses Most VPNs Using DHCP Manipulation",
+    "source": "https://www.leviathansecurity.com/blog/tunnelvision"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "Open-Sora-Plan: A Community-Driven Roadmap to Replicate Sora-like Video Models",
+    "source": "https://github.com/PKU-YuanGroup/Open-Sora-Plan"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "Founders of Privacy-Focused Samourai Wallet Charged by U.S. DOJ",
+    "source": "https://www.justice.gov/usao-sdny/pr/samourai-wallet-founders-charged-and-arrested-money-laundering-and-unlicensed-money"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "Brave Browser Introduces 'Forgetful Browsing' to Auto-Clear Data on Site Close",
+    "source": "https://brave.com/blog/forgetful-browsing/"
+  },
+  {
+    "date": "2025-11-16T04:02:21.948Z",
+    "headline": "Google Releases TensorFlow 2.16 with Keras 3 as the Default Backend",
+    "source": "https://github.com/tensorflow/tensorflow/releases/tag/v2.16.1"
   }
 ]
