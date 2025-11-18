@@ -1,105 +1,5 @@
 [
   {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "MIT Unveils \"DreamFlow\" AI for Generating Temporally Coherent Long-Form Video",
-    "source": "https://dreamflow-video.github.io/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Linux Foundation's OPI Project Releases 1.0 Specs to Standardize DPUs/IPUs",
-    "source": "https://www.linuxfoundation.org/press/open-programmable-infrastructure-opi-project-achieves-major-milestone-with-1-0-releases-of-key-specifications-and-open-source-code"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "\"TICK-TOCK\" Side-Channel Attack Exposes Cryptographic Keys on Apple Silicon",
-    "source": "https://www.bleepingcomputer.com/news/security/new-tick-tock-cpu-attack-leaks-data-from-apple-silicon-chips/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Polars 1.0 Released, Marking Stability for the High-Performance DataFrame Library",
-    "source": "https://pola.rs/posts/announcing-polars-1/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Boston Dynamics Releases SDK for All-Electric Atlas Robot, Opening Platform to Developers",
-    "source": "https://bostondynamics.com/blog/opening-the-atlas-api/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Wasmtime Runtime Introduces Pooling Allocator for 60x Faster Module Instantiation",
-    "source": "https://bytecodealliance.org/articles/wasmtime-19-pooling-allocator-release"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Keploy v2 Launches eBPF-Based Testing to Auto-Generate Realistic API Tests and Mocks",
-    "source": "https://keploy.io/blog/engineering/keploy-v2-redefining-api-testing-with-ebpf"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "SiMa.ai Unveils Palette Edgematic for No-Code AI Pipeline Development on Edge Devices",
-    "source": "https://sima.ai/sima-ai-introduces-palette-edgematic-to-deliver-effortless-machine-learning-for-the-edge/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "Rust Tool `cargo-semver-checks` Reaches 1.0, Automating Detection of Breaking API Changes",
-    "source": "https://predr.ag/blog/cargo-semver-checks-1-0-check-rust-semver-in-ci/"
-  },
-  {
-    "date": "2025-11-07T13:04:51.384Z",
-    "headline": "ExaComm Framework Optimizes MPI Collectives for Exascale Supercomputer Topologies",
-    "source": "https://www.hpcwire.com/2024/07/22/exacomm-a-new-framework-for-creating-hpc-communication-libraries/"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Google DeepMind Unveils Robotic WALTER for Zero-Shot Task Learning from Unstructured Videos",
-    "source": "https://deepmind.google/discover/blog/teaching-robots-to-perform-everyday-tasks-by-watching-and-reading/"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Canva Open-Sources \"Mirage,\" a Tool for Generating Type-Safe Mock API Data from OpenAPI Specs",
-    "source": "https://www.canva.dev/blog/engineering/mirage-generating-mock-api-data-from-openapi-specifications/"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Redpanda Introduces Broker-Side Tiered Storage for Infinite, Cost-Effective Data Retention",
-    "source": "https://redpanda.com/blog/tiered-storage-generally-available"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Snyk Discloses High-Severity \"Improper Signature Validation\" Flaw in Popular `jsonwebtoken` npm Library",
-    "source": "https://snyk.io/blog/security-vulnerability-improper-signature-validation-jsonwebtoken/"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Hugging Face Launches LeRobot: An Open-Source Framework for Real-World Robotics AI",
-    "source": "https://huggingface.co/blog/lerobot"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Stability AI Releases \"Stable Audio Open\" for Text-to-Audio and Sound Effect Generation",
-    "source": "https://stability.ai/news/stable-audio-open"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Zig Compiler Adds Support for Cross-Compiling to Apple Silicon from x86-64 Linux",
-    "source": "https://zig.news/jarredsumner/hot-off-the-press-zig-can-now-cross-compile-to-apple-silicon-m1-m2-m3-etc-from-linux-x86-64-5h1j"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Turso Unveils \"Groups\" for Logical Database Isolation and Access Control on its Distributed SQLite Platform",
-    "source": "https://blog.turso.tech/introducing-turso-groups-for-secure-database-access-at-the-edge-f8e614480d5d"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Researchers Propose \"Tool-Augmented Reward Modeling\" for More Factual AI Alignment",
-    "source": "https://arxiv.org/abs/2407.12480"
-  },
-  {
-    "date": "2025-11-08T03:50:52.690Z",
-    "headline": "Microsoft Researchers Use Deep Learning to Predict Optimal Quantum Error Correction Codes",
-    "source": "https://www.microsoft.com/en-us/research/blog/using-deep-learning-to-help-design-the-next-generation-of-quantum-error-correction-codes/"
-  },
-  {
     "date": "2025-11-08T12:59:12.202Z",
     "headline": "Anthropic Unveils Scalable Technique to Map and Visualize Millions of Concepts Within LLMs",
     "source": "https://www.anthropic.com/news/mapping-the-mind-of-a-language-model"
@@ -848,5 +748,40 @@
     "date": "2025-11-17T04:01:18.868Z",
     "headline": "HashiCorp Shareholders Approve $6.7 Billion Acquisition by IBM",
     "source": "https://www.reuters.com/markets/deals/hashicorp-shareholders-vote-favor-ibms-67-billion-deal-2024-06-12/"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "Google Unveils 'Veo', a New Flagship Text-to-Video AI Model to Compete with OpenAI's Sora",
+    "source": "https://deepmind.google/technologies/veo/"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "OpenTofu, the Open Source Terraform Fork, Reaches General Availability with Version 1.7.0",
+    "source": "https://opentofu.org/blog/opentofu-is-going-ga/"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "Critical Path Traversal Vulnerability (CVE-2024-4956) Disclosed in Keycloak IAM",
+    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-4956"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "Astro Web Framework Releases v4.8 with Built-in i18n Routing and View Transition Improvements",
+    "source": "https://astro.build/blog/astro-4-8/"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "Microsoft Introduces Copilot-Powered 'Workload-Specific' Debugging in Visual Studio",
+    "source": "https://devblogs.microsoft.com/visualstudio/introducing-workload-specific-debugging-with-visual-studio-and-copilot/"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "IBM Details 'Kookaburra' Modular Quantum Processor and Roadmap to Fault-Tolerance",
+    "source": "https://research.ibm.com/blog/quantum-development-roadmap-2033"
+  },
+  {
+    "date": "2025-11-18T03:57:45.106Z",
+    "headline": "Tesla Launches Dojo 3: A Next‑Generation AI Accelerator for Autopilot",
+    "source": "https://www.cnn.com/2025/11/17/business/tesla-dojo-3"
   }
 ]
