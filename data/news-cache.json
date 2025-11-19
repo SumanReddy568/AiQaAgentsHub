@@ -1,55 +1,5 @@
 [
   {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Anthropic Unveils Scalable Technique to Map and Visualize Millions of Concepts Within LLMs",
-    "source": "https://www.anthropic.com/news/mapping-the-mind-of-a-language-model"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "JavaScript Registry (JSR) Becomes Generally Available as a Modern Alternative to npm",
-    "source": "https://deno.com/blog/jsr-ga"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "WarpStream Launches Kafka-Compatible Streaming Platform Built Directly on S3 Object Storage",
-    "source": "https://www.warpstream.com/blog/introducing-warpstream"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Python's \"uv\" Tool Evolves into a Full Package Manager with `uv add` and `uv remove`",
-    "source": "https://astral.sh/blog/uv-0.2.0"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Researchers Disclose \"Snoopy\" Side-Channel Attack Bypassing ARM Pointer Authentication",
-    "source": "https://www.cs.vu.nl/~herbertb/papers/snoopy_sec25.pdf"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "SurrealDB 1.5 Released with Real-Time \"Live Functions\" and Enhanced Graph Relationships",
-    "source": "https://surrealdb.com/blog/surrealdb-1-5-is-here"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Go Team Proposes New SSA Backend for ARM64, Yielding 7% Faster Binaries",
-    "source": "https://go.dev/blog/a-new-ssa-backend-for-arm64"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "John Deere Acquires Smart Apply to Integrate LiDAR-Based Precision Spraying into Tractors",
-    "source": "https://www.deere.com/en/news/all-news/smart-apply-acquisition/"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Japan's Rapidus Partners with Tenstorrent to Develop 2nm AI Accelerator Chiplets",
-    "source": "https://www.rapidus.inc/en/news/20240722_2/"
-  },
-  {
-    "date": "2025-11-08T12:59:12.202Z",
-    "headline": "Google DeepMind Introduces \"SafeDreamer\" for Generating Safety-Aligned 3D Assets",
-    "source": "https://sites.google.com/view/safedreamer"
-  },
-  {
     "date": "2025-11-09T03:56:44.402Z",
     "headline": "MIT Researchers Unveil DiffCSP, a Diffusion Model for Predicting Atomic Crystal Structures",
     "source": "https://arxiv.org/abs/2309.07328"
@@ -783,5 +733,45 @@
     "date": "2025-11-18T03:57:45.106Z",
     "headline": "Tesla Launches Dojo 3: A Next‑Generation AI Accelerator for Autopilot",
     "source": "https://www.cnn.com/2025/11/17/business/tesla-dojo-3"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Mamba-2 Unveiled as a New Class of Selective State Space Models with Quadratic Complexity",
+    "source": "https://www.haiper.ai/blog/mamba-2-a-new-state-space-model-that-rivals-the-transformer/"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Bun v1.1 Released with Stable Windows Support and an Integrated Cross-Platform Shell",
+    "source": "https://bun.sh/blog/bun-v1.1"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Cloudflare Workers AI Now Generally Available for Serverless GPU Inference at the Edge",
+    "source": "https://blog.cloudflare.com/workers-ai-ga"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "'HTTP/2 CONTINUATION Flood' Vulnerability Disclosed, Affecting Multiple Web Servers",
+    "source": "https://www.kb.cert.org/vuls/id/421644"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Zig Compiler Moves to New Self-Hosted Backend for Increased Speed and Independence",
+    "source": "https://zig.news/andrew/a-new-backend-for-the-zig-compiler-457h"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "EU Fines Apple €1.84 Billion Over Anti-Steering Rules for Music Streaming Apps",
+    "source": "https://www.reuters.com/technology/apple-hit-with-over-18-bln-euro-eu-antitrust-fine-2024-03-04/"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Declarative Popover API Set to Ship in Chrome 125, Simplifying Common UI Patterns",
+    "source": "https://developer.chrome.com/blog/introducing-the-popover-api"
+  },
+  {
+    "date": "2025-11-19T03:57:18.019Z",
+    "headline": "Postcat Emerges as an Open-Source, Extensible Alternative to Postman for API Tooling",
+    "source": "https://github.com/Postcatlab/postcat"
   }
 ]
