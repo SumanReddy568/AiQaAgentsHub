@@ -1,105 +1,5 @@
 [
   {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "MIT Researchers Unveil DiffCSP, a Diffusion Model for Predicting Atomic Crystal Structures",
-    "source": "https://arxiv.org/abs/2309.07328"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "React Email 2.0 Open-Sourced by Resend, Enabling Dynamic Server-Rendered Transactional Emails",
-    "source": "https://resend.com/blog/react-email-2"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "Tailscale Enables IPv6 Support for Mullvad Exit Nodes, Enhancing Anonymity and Network Compatibility",
-    "source": "https://tailscale.com/blog/ipv6-mullvad-exit-nodes"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "ReadySet Open-Sources its High-Throughput SQL Caching Engine for PostgreSQL and MySQL",
-    "source": "https://www.readyset.io/blog/readyset-is-now-open-source"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "Swift Language Proposes \"Typed Throws\" to Enhance Compile-Time Error Handling Safety",
-    "source": "https://github.com/apple/swift-evolution/blob/main/proposals/0413-typed-throws.md"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "AMD Launches Versal Series Gen 2 SoCs, Integrating CPUs, FPGAs, and AI Engines on a Single Chip",
-    "source": "https://www.hpcwire.com/off-the-wire/amd-unveils-next-generation-versal-series-to-accelerate-ai-powered-embedded-systems/"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "Chrome's Speculation Rules API Becomes Generally Available for Near-Instant Page Navigation",
-    "source": "https://developer.chrome.com/blog/speculation-rules-ga"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "Researchers Demonstrate AI-Powered Polymorphic Malware Generation to Evade Detection",
-    "source": "https://www.trendmicro.com/en_us/research/23/i/generative-ai-powered-polymorphic-malware.html"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "Automata's LINQ Platform Uses AI-Powered Robotics to Fully Automate Cell Culture Lab Workflows",
-    "source": "https://www.therobotreport.com/automata-unveils-new-robotic-lab-automation-solution/"
-  },
-  {
-    "date": "2025-11-09T03:56:44.402Z",
-    "headline": "SandboxAQ Develops Quantum Algorithm to Simulate Chemical Reactions 300x More Efficiently",
-    "source": "https://sandboxaq.com/newsroom/sandboxaq-scientists-develop-new-quantum-algorithm-to-more-efficiently-simulate-chemical-reactions/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Google DeepMind Unveils GraphCast 2, an AI Weather Model Outperforming Traditional Systems by 10% on Key Metrics",
-    "source": "https://deepmind.google/discover/blog/graphcast-2-a-new-generation-of-ai-weather-forecasting/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "\"Leaky Vessels\" Container Escape Vulnerabilities Disclosed Across runc, BuildKit, and Podman",
-    "source": "https://snyk.io/blog/leaky-vessels-docker-runc-container-breakout-vulnerabilities/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Val, a New Programming Language Focused on Mutable Value Semantics, Reaches v0.1 Milestone",
-    "source": "https://www.val-lang.dev/blog/val-0.1/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Stanford's SyntheMol AI Achieves Fully Automated Design and Robotic Synthesis of Novel Molecules",
-    "source": "https://med.stanford.edu/news/all-news/2024/07/ai-drug-discovery.html"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Chrome Implements `paint-timing` CSS Property for Granular Web Performance Monitoring",
-    "source": "https://developer.chrome.com/blog/paint-timing-api"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Materialize Makes its Core Streaming Database Source-Available Under BSL",
-    "source": "https://materialize.com/blog/source-available/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Vercel Launches Visual Workspace for Real-Time Editing of React Server Components",
-    "source": "https://vercel.com/blog/visual-workspace"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Groq Acquires Definitive Intelligence to Build a Full-Stack Generative AI Cloud Platform",
-    "source": "https://wow.groq.com/press-release-groq-acquires-definitive-intelligence/"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "`pytrace` Emerges as a Low-Overhead eBPF Flamegraph Profiler for Python",
-    "source": "https://github.com/dsincl12/pytrace"
-  },
-  {
-    "date": "2025-11-09T12:59:21.158Z",
-    "headline": "Mujin Unveils a Universal Controller to Standardize Industrial Robot Automation",
-    "source": "https://www.therobotreport.com/mujin-launches-universal-controller-for-industrial-robots/"
-  },
-  {
     "date": "2025-11-10T04:02:35.474Z",
     "headline": "Google DeepMind Unveils AlphaFold 3, Modeling Interactions Across All of Life's Molecules",
     "source": "https://www.deepmind.com/blog/alphafold-3-predicts-the-structure-and-interactions-of-all-of-lifes-molecules"
@@ -773,5 +673,45 @@
     "date": "2025-11-19T03:57:18.019Z",
     "headline": "Postcat Emerges as an Open-Source, Extensible Alternative to Postman for API Tooling",
     "source": "https://github.com/Postcatlab/postcat"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "GitLab Discloses Critical RCE Vulnerability (CVE-2024-4835) Allowing Account Takeover",
+    "source": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-security-update/"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "The Deno Team Launches JSR, a Modern JavaScript Registry Alternative to NPM",
+    "source": "https://deno.com/blog/jsr_open_beta"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "Apple M-Series Chips Vulnerable to New 'GoFetch' Side-Channel Attack",
+    "source": "https://gofetch.fail/"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "OpenTofu 1.7 Released with Provider-Defined Functions and Encrypted State",
+    "source": "https://opentofu.org/blog/opentofu-1-7-is-here/"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "Cloudflare Workers AI Now Supports Llama-3 and Fine-Tuning via LoRA",
+    "source": "https://blog.cloudflare.com/workers-ai-fine-tuning"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "DuckDB Reaches Stable 1.0.0 Release, Dubbed 'Snowduck'",
+    "source": "https://duckdb.org/2024/05/07/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "Zed, the High-Performance Rust-Based Code Editor, is Now Open Source",
+    "source": "https://zed.dev/blog/zed-is-now-open-source"
+  },
+  {
+    "date": "2025-11-19T13:07:53.911Z",
+    "headline": "Microsoft Unveils Project Petridish for Simulating Complex Biological Systems",
+    "source": "https://news.microsoft.com/source/features/ai/petridish-microsofts-new-platform-for-accelerating-synthetic-biology/"
   }
 ]
