@@ -713,5 +713,45 @@
     "date": "2025-11-19T13:07:53.911Z",
     "headline": "Microsoft Unveils Project Petridish for Simulating Complex Biological Systems",
     "source": "https://news.microsoft.com/source/features/ai/petridish-microsofts-new-platform-for-accelerating-synthetic-biology/"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "DuckDB Reaches Production-Ready Milestone with Version 1.0.0",
+    "source": "https://duckdb.org/2024/05/10/announcing-duckdb-1-0.html"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Signal Rolls Out Usernames and Quantum-Resistant Encryption",
+    "source": "https://signal.org/blog/phone-number-privacy-usernames/"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Linux Kernel 6.9 Released with Intel FRED and BPF Token Support",
+    "source": "https://www.phoronix.com/news/Linux-6.9-Released"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Critical RCE Vulnerability (CVE-2024-24786) Disclosed in Go Language for Windows",
+    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-24786"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Microsoft Announces General Availability of Azure Container Apps Jobs",
+    "source": "https://azure.microsoft.com/en-us/updates/generally-available-azure-container-apps-jobs/"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Google's V8 Engine Enables Maglev JIT Compiler, Boosting JS Performance by 7.5%",
+    "source": "https://v8.dev/blog/maglev"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "Stanford Unveils Mobile ALOHA, a Low-Cost System for Robot Imitation Learning",
+    "source": "https://mobile-aloha.github.io/"
+  },
+  {
+    "date": "2025-11-20T03:56:39.720Z",
+    "headline": "AI Chipmaker Groq Acquires Definitive Intelligence to Build a Full-Stack Platform",
+    "source": "https://wow.groq.com/press-release-groq-acquires-definitive-intelligence/"
   }
 ]
