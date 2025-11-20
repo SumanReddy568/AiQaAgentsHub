@@ -1,55 +1,5 @@
 [
   {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Google DeepMind Unveils AlphaFold 3, Modeling Interactions Across All of Life's Molecules",
-    "source": "https://www.deepmind.com/blog/alphafold-3-predicts-the-structure-and-interactions-of-all-of-lifes-molecules"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Mirrord 4.0 Released, Allowing Devs to Run Local Processes in a Live Cloud Environment",
-    "source": "https://mirrord.dev/blog/2024/05/08/mirrord-for-vs-code-is-here"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Amazon TimeSync Now Offered as a Public, Cryptographically Secured NTP Service",
-    "source": "https://aws.amazon.com/blogs/aws/aws-public-ntp-now-supports-network-time-security/"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "University of Michigan Researchers Unveil \"Morpheus\" CPU Architecture to Block Control-Flow Attacks",
-    "source": "https://www.eurekalert.org/news-releases/1043513"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Zig Compiler Reaches Self-Hosted Milestone, Building Itself from Source",
-    "source": "https://zig.news/jarredsumner/what-s-up-with-the-self-hosted-compiler-5g2c"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Bauplan Emerges as an Open-Source Declarative Framework for Data Infrastructure",
-    "source": "https://bauplan.io/blog/bauplan-is-now-open-source"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "NREL AI Model Increases Wind Farm Energy Production by 5% Through Wake Steering",
-    "source": "https://www.nrel.gov/news/program/2024/new-nrel-ai-model-boosts-wind-farm-energy-production-by-5-percent.html"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Astro 4.10 Introduces Granular Prefetching with JavaScript \"Prefetch Triggers\"",
-    "source": "https://astro.build/blog/astro-4-10/"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "Suborbital Launches \"Atmo 1.0\" for Building Serverless WebAssembly Applications",
-    "source": "https://blog.suborbital.dev/atmo-v1"
-  },
-  {
-    "date": "2025-11-10T04:02:35.474Z",
-    "headline": "IBM Demonstrates First Utility-Scale Quantum Simulation Beating Classical Supercomputers",
-    "source": "https://research.ibm.com/blog/utility-scale-quantum-simulation"
-  },
-  {
     "date": "2025-11-10T15:51:22.556Z",
     "headline": "Google DeepMind Unveils Mamba-2, a State-Space Model with Linear-Time Inference for Long-Context AI",
     "source": "https://www.marktechpost.com/2024/07/23/google-deepmind-introduces-mamba-2-a-deep-dive-into-the-next-generation-of-state-space-models/"
@@ -753,5 +703,40 @@
     "date": "2025-11-20T03:56:39.720Z",
     "headline": "AI Chipmaker Groq Acquires Definitive Intelligence to Build a Full-Stack Platform",
     "source": "https://wow.groq.com/press-release-groq-acquires-definitive-intelligence/"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Stable API for In-Process OLAP",
+    "source": "https://duckdb.org/2024/06/07/announcing-duckdb-1-0-0.html"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "Linux Kernel 6.10 Released with Bcachefs Enhancements and IO_uring Optimizations",
+    "source": "https://lkml.org/lkml/2024/7/14/278"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "Critical RCE Vulnerability (CVE-2024-37888) Disclosed in Popular MinIO Object Storage",
+    "source": "https://github.com/minio/minio/security/advisories/GHSA-85r9-v9hr-c62x"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "Microsoft Introduces 'Graph of Thoughts', an Advanced Prompting Technique for LLMs",
+    "source": "https://arxiv.org/abs/2308.09687"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "Cloudflare Integrates Hugging Face Models Directly into Workers AI Platform",
+    "source": "https://blog.cloudflare.com/workers-ai-hugging-face"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "DeepMind and Isomorphic Labs Launch AlphaFold 3 Server for Non-Commercial Research",
+    "source": "https://www.nature.com/articles/d41586-024-01431-7"
+  },
+  {
+    "date": "2025-11-20T13:07:01.588Z",
+    "headline": "Ventana Announces Veyron V2, a High-Performance RISC-V Compute Chiplet",
+    "source": "https://www.servethehome.com/ventana-veyron-v2-a-32-core-risc-v-chiplet-for-the-data-center/"
   }
 ]
