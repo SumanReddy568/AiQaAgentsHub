@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "DuckDB Reaches 1.0.0 Milestone, Declaring Stable Storage Format",
-    "source": "https://duckdb.org/2024/06/24/announcing-duckdb-100.html"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Critical RCE Vulnerability (CVE-2024-4323) Disclosed in Fluent Bit Logging Utility",
-    "source": "https://www.tenable.com/blog/linguistic-lumberjack-fluent-bit-critical-memory-corruption-vulnerability-could-lead-to-dos-rce"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Apple Open-Sources Ferret-UI, a Multimodal LLM for Understanding Mobile App Screens",
-    "source": "https://github.com/apple/ferret-ui"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Vercel Re-engineers Edge Functions with New `workerd`-based Runtime for Faster Performance",
-    "source": "https://vercel.com/blog/a-new-engine-for-edge-functions-faster-and-more-efficient"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "NVIDIA Releases Nemotron-4 340B, an Open Model Family for Synthetic Data Generation",
-    "source": "https://developer.nvidia.com/blog/nvidia-nemotron-4-340b-reward-and-instruct-models/"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Signal Deploys PQXDH Protocol, Upgrading Encryption with Quantum Resistance",
-    "source": "https://signal.org/blog/pqxdh/"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Arm Unveils 2024 Compute Platform with Cortex-X925 CPU and Immortalis-G925 GPU",
-    "source": "https://www.anandtech.com/show/21438/arm-unveils-2024-compute-platform-cortex-x925-cortex-a725-immortalis-g925"
-  },
-  {
-    "date": "2025-11-11T03:59:31.864Z",
-    "headline": "Amazon Q in IDE Becomes Generally Available with Java Code Transformation",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-q-ide-generally-available/"
-  },
-  {
     "date": "2025-11-11T13:07:21.202Z",
     "headline": "NASA's Perseverance Rover Discovers Evidence of Ancient Hydrothermal Activity on Mars",
     "source": "https://www.jpl.nasa.gov/news/perseverance-rover-discovers-evidence-of-ancient-hydrothermal-activity-on-mars"
@@ -613,5 +573,45 @@
     "date": "2025-11-21T03:56:35.431Z",
     "headline": "Arbitrum Proposes 'Bold' Protocol Upgrade for Permissionless Validation on L2 Network",
     "source": "https://arbitrum.foundation/news/bold-is-live-on-testnet"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Cohere Releases Aya 23, a Powerful Open Source Multilingual AI Model",
+    "source": "https://txt.cohere.com/aya-23/"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Biome v1.8 Released with New Migration Tool and Astro Support",
+    "source": "https://biomejs.dev/blog/biome-v1-8/"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Cloudflare Workers AI Becomes Generally Available with Llama 3.1 and Fine-Tuning",
+    "source": "https://blog.cloudflare.com/workers-ai-is-generally-available"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Critical RCE Vulnerability 'LinguisticLumberjack' Disclosed in Fluent Bit Logging Utility",
+    "source": "https://www.tenable.com/blog/linguisticlumberjack-fluent-bit-critical-memory-corruption-vulnerability-could-lead-to-rce"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "US Treasury Proposes Rule to Prohibit and Monitor Investments in China's Tech Sector",
+    "source": "https://home.treasury.gov/news/press-releases/jy2414"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Arm Unveils Ethos-U85 NPU, Boosting On-Device AI Performance by 4x",
+    "source": "https://newsroom.arm.com/news/arm-unveils-ethos-u85"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "Boston Dynamics Reveals Technical Details of New All-Electric Atlas Robot",
+    "source": "https://bostondynamics.com/blog/electric-new-era-for-atlas/"
+  },
+  {
+    "date": "2025-11-21T13:05:08.876Z",
+    "headline": "PostgreSQL 17 Beta 1 Released, Featuring Incremental Backup and JSON_TABLE",
+    "source": "https://www.postgresql.org/about/news/postgresql-17-beta-1-released-2852/"
   }
 ]
