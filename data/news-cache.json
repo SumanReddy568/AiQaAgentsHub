@@ -1,170 +1,5 @@
 [
   {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "Google DeepMind Unveils Mamba-2, a State-Space Model with Linear-Time Inference for Long-Context AI",
-    "source": "https://www.marktechpost.com/2024/07/23/google-deepmind-introduces-mamba-2-a-deep-dive-into-the-next-generation-of-state-space-models/"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "Insilico Medicine's Generative AI-Designed Drug for IPF Enters Phase II Clinical Trials",
-    "source": "https://www.globenewswire.com/en/news-release/2024/07/23/2917711/0/en/Insilico-Medicine-Announces-First-Patient-Dosed-in-Phase-II-Trial-of-Generative-AI-discovered-and-Designed-Drug-for-Idiopathic-Pulmonary-Fibrosis.html"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "QuTech Researchers Achieve High-Fidelity Quantum Logic Between Spatially Separated Qubits",
-    "source": "https://www.tudelft.nl/en/2024/tu-delft/researchers-at-qutech-teleport-a-quantum-gate-between-distant-qubits"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "Go Language Team Officially Proposes Adding Arena Memory Management",
-    "source": "https://github.com/golang/go/issues/67496"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "ScyllaDB 6.0 Introduces Raft-based Tablets for Stronger Consistency and Simplicity",
-    "source": "https://www.scylladb.com/press-release/scylladb-6-0-delivers-simpler-scalability-and-stronger-consistency-with-tablets-and-raft/"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "Datadog Releases \"Gostackparse\", a High-Performance Go Goroutine Dump Parser",
-    "source": "https://www.datadoghq.com/blog/engineering/introducing-gostackparse/"
-  },
-  {
-    "date": "2025-11-10T15:51:22.556Z",
-    "headline": "Earth Observation Company Planet Labs Launches \"Field Boundaries\" AI Product",
-    "source": "https://www.planet.com/pulse/planet-launches-field-boundaries-to-map-the-worlds-croplands/"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "NASA and ESA Announce Artemis II Crew, Setting Stage for First Crewed Lunar Flyby Since 1972",
-    "source": "https://www.nasa.gov Artemis/Artemis-ii-crew-announcement"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "Tesla Unveils Full Self-Driving Beta v12.5 with End-to-End Neural Network Architecture",
-    "source": "https://www.tesla.com/ai/blog/fds-beta-v12-5-release"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "Intel Launches Core Ultra 200S Series with Integrated AI Boost for Edge Computing",
-    "source": "https://newsroom.intel.com/core-ultra-200S-launch"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "IBM Quantum Achieves 1,121-Qubit Condor Processor with Improved Error Correction",
-    "source": "https://research.ibm.com/quantum/condor-1121-qubit-announcement"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "Apple Introduces Dynamic Island SDK for iOS 18, Enabling Third-Party Real-Time App Integration",
-    "source": "https://developer.apple.com/dynamic-island-sdk-ios18"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "Amazon Web Services Announces Nitro Express for High-Frequency Trading Workloads",
-    "source": "https://aws.amazon.com/nitro-express-hft-launch"
-  },
-  {
-    "date": "2025-11-10T16:11:42.533Z",
-    "headline": "Samsung Mass-Produces 3rd Gen 1c NAND with 1Tb Density Using V-NAND and Charge Trap Technology",
-    "source": "https://news.samsung.com/3rd-gen-1c-nand-v NAND-236-layers"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "Tesla Unveils Full Self-Driving Beta v12.5 with Neural Network-Based Traffic Light and Stop Sign Recognition",
-    "source": "https://www.tesla.com/ai-day-2024"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "IBM Launches Quantum Heron Processors with Record-Low Error Rates for Commercial Quantum Computing",
-    "source": "https://research.ibm.com/quantum/heron-launch"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "Siemens Debuts Digital Twin Platform for Smart Factory Energy Optimization",
-    "source": "https://www.siemens.com/digital-twin-energy-optimization"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "Apple Files Patent for Haptic Feedback System in Mixed Reality Headset Using Ultrasound Arrays",
-    "source": "https://www.apple.com/patents/ultrasound-haptics-mixed-reality"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "Amazon Web Services Introduces Graviton4-Based Trainium2 Chips for Next-Gen AI Training",
-    "source": "https://aws.amazon.com/blogs/Trainium2-chip-announcement"
-  },
-  {
-    "date": "2025-11-10T16:14:09.420Z",
-    "headline": "OpenAI Releases DALL-E 3 Integration for Microsoft Power Platform, Enabling No-Code AI Image Generation",
-    "source": "https://powerplatform.microsoft.com/dalle-3-integration-announcement"
-  },
-  {
-    "date": "2025-11-10T16:55:32.734Z",
-    "headline": "NASA's Perseverance Rover Discovers Organic Molecules in Martian Meteorite-Like Rock",
-    "source": "https://www.jpl.nasa.gov/news/perseverance-rover-discovers-organic-molecules-in-martian-rock"
-  },
-  {
-    "date": "2025-11-10T16:55:32.734Z",
-    "headline": "Tesla Unveils New 4680 Battery Cell with Structural Anode Design for Higher Energy Density",
-    "source": "https://www.tesla.com/blog/4680-battery-cell-breakthrough"
-  },
-  {
-    "date": "2025-11-10T16:55:32.734Z",
-    "headline": "IBM Launches Quantum Error Mitigation Toolkit for Near-Term Quantum Computing Applications",
-    "source": "https://research.ibm.com/blog/quantum-error-mitigation-toolkit"
-  },
-  {
-    "date": "2025-11-10T16:55:32.734Z",
-    "headline": "Starlink Deploys Laser Inter-Satellite Links Across 1,000+ Satellites in Low Earth Orbit",
-    "source": "https://www.spacex.com/starlink/laser-links-deployment/"
-  },
-  {
-    "date": "2025-11-10T16:55:32.734Z",
-    "headline": "OpenAI Releases Whisper v3 with Multilingual Real-Time Translation and Speaker Diarization",
-    "source": "https://openai.com/research/whisper-v3-release"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "Mistral AI Releases Codestral, a 22B Parameter Generative AI Model for Code",
-    "source": "https://mistral.ai/news/codestral/"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "GitHub Copilot Extensions Now in Public Beta, Integrating Third-Party Tools into the IDE",
-    "source": "https://github.blog/2024-05-29-github-copilot-extensions-public-beta/"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Core API Stable",
-    "source": "https://duckdb.org/2024/05/29/announcing-duckdb-100.html"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "ARM Unveils 2025 Flagship CPU and GPU: Cortex-X925 and Immortalis-G925",
-    "source": "https://www.anandtech.com/show/21403/arm-unveils-2025-flagship-cpu-and-gpu-cortex-x925-and-immortalis-g925"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "OpenAI Forms New Safety and Security Committee Led by Board Members",
-    "source": "https://openai.com/index/openai-board-forms-safety-and-security-committee/"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "Critical Veeam Vulnerability (CVE-2024-29855) Allows NTLM Relay Attacks",
-    "source": "https://www.bleepingcomputer.com/news/security/veeam-warns-of-critical-bug-allowing-ntlm-relay-attacks/"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "MIT Researchers Create 'Photo-gami' Algorithm for Self-Folding Robots",
-    "source": "https://news.mit.edu/2024/photo-gami-designing-robots-that-self-fold-light-0529"
-  },
-  {
-    "date": "2025-11-11T03:49:21.773Z",
-    "headline": "Vercel Integrates V8's Maglev JIT Compiler for Faster Edge Functions",
-    "source": "https://vercel.com/blog/how-we-shaved-35-off-our-cold-starts-with-v8s-maglev-compiler"
-  },
-  {
     "date": "2025-11-11T03:59:31.864Z",
     "headline": "DuckDB Reaches 1.0.0 Milestone, Declaring Stable Storage Format",
     "source": "https://duckdb.org/2024/06/24/announcing-duckdb-100.html"
@@ -738,5 +573,45 @@
     "date": "2025-11-20T13:07:01.588Z",
     "headline": "Ventana Announces Veyron V2, a High-Performance RISC-V Compute Chiplet",
     "source": "https://www.servethehome.com/ventana-veyron-v2-a-32-core-risc-v-chiplet-for-the-data-center/"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Cohere Releases Aya 23: New 8B and 35B Open-Weights Multilingual Models Covering 23 Languages",
+    "source": "https://txt.cohere.com/aya-23/"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Deno 1.44 Released with Private npm Registry Support and Built-in `deno serve`",
+    "source": "https://deno.com/blog/deno-1.44"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Cloudflare Unveils Workers AI Gateway for Caching and Rate Limiting LLM API Calls",
+    "source": "https://blog.cloudflare.com/workers-ai-gateway"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Critical Unauthenticated RCE Vulnerability (CVE-2024-4040) Disclosed in CrushFTP",
+    "source": "https://www.rapid7.com/blog/post/2024/06/03/cve-2024-4040-crushftp-unauthenticated-remote-code-execution-and-file-read/"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Databricks to Acquire Tabular, Unifying Delta Lake and Apache Iceberg Formats",
+    "source": "https://www.databricks.com/blog/databricks-acquire-tabular"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Apple Delays AI Features Rollout in EU, Citing Digital Markets Act (DMA) Interoperability Concerns",
+    "source": "https://www.bloomberg.com/news/articles/2024-06-21/apple-says-it-s-blocking-new-ai-tools-in-eu-due-to-dma-rules"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Broadcom Begins Shipping Tomahawk 5, a 51.2 Tbps Ethernet Switch Chipset for AI/ML Clusters",
+    "source": "https://www.broadcom.com/company/news/product-releases/61581"
+  },
+  {
+    "date": "2025-11-21T03:56:35.431Z",
+    "headline": "Arbitrum Proposes 'Bold' Protocol Upgrade for Permissionless Validation on L2 Network",
+    "source": "https://arbitrum.foundation/news/bold-is-live-on-testnet"
   }
 ]
