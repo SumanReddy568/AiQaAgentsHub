@@ -2,8 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+// Cache file location
 const CACHE_FILE = path.join(__dirname, "../data/news-cache.json");
 
+/* -------------------------------------------------------
+ *  Discord Webhook Validator
+ * -----------------------------------------------------*/
 async function validateWebhook() {
   try {
     const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
@@ -11,387 +15,305 @@ async function validateWebhook() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         content: `🔄 @everyone AI Started Fetching latest tech news... (${new Date().toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-            timeZone: 'Asia/Kolkata'
+          dateStyle: 'medium',
+          timeStyle: 'short',
+          timeZone: 'Asia/Kolkata'
         })})`
-    })
+      })
     });
-    if (!response.ok) throw new Error(`Discord webhook test failed: ${response.status}`);
-    console.log("✅ Discord webhook test successful");
+
+    if (!response.ok) throw new Error(`Webhook test failed: ${response.status}`);
+
+    console.log("✅ Discord webhook validated");
     return true;
-  } catch (error) {
-    console.error("❌ Discord webhook test failed:", error);
+  } catch (err) {
+    console.error("❌ Webhook validation failed:", err);
     return false;
   }
 }
 
+/* -------------------------------------------------------
+ *  Load previous headlines for exclusion
+ * -----------------------------------------------------*/
 function loadPreviousNews() {
   try {
-    // Ensure cache directory exists
+    // Ensure directory exists
     fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
-    
-    // Initialize empty cache if doesn't exist
+
+    // Create empty cache if missing
     if (!fs.existsSync(CACHE_FILE)) {
       fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
-      console.log('📁 Initialized new cache file');
       return [];
     }
 
     const data = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+    if (!Array.isArray(data)) return [];
+
     const tenDaysAgo = new Date();
     tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
 
-    // Filter entries from last 10 days
-    const recentNews = Array.isArray(data) ? data.filter(entry => new Date(entry.date) >= tenDaysAgo) : [];
-    
-    // Clean up old entries and save
-    if (recentNews.length !== data.length) {
-      fs.writeFileSync(CACHE_FILE, JSON.stringify(recentNews, null, 2));
-      console.log(`🧹 Cleaned up ${data.length - recentNews.length} old entries`);
+    // Filter entries newer than 10 days
+    const filtered = data.filter(entry =>
+      new Date(entry.date) >= tenDaysAgo
+    );
+
+    // Cleanup old entries
+    if (filtered.length !== data.length) {
+      fs.writeFileSync(CACHE_FILE, JSON.stringify(filtered, null, 2));
+      console.log(`🧹 Cleaned ${data.length - filtered.length} old cache entries`);
     }
-    
-    console.log(`🗂️ Loaded ${recentNews.length} cached headlines from last 10 days`);
-    return recentNews.map(entry => entry.headline);
-  } catch (error) {
-    console.error('⚠️ Cache read error:', error);
-    // Initialize fresh cache on error
+
+    console.log(`🗂 Loaded ${filtered.length} cached headlines`);
+
+    // Return only headlines list
+    return filtered.map(i => i.headline);
+
+  } catch (err) {
+    console.error("⚠ Cache read error:", err);
     fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
     return [];
   }
 }
 
+
+/* -------------------------------------------------------
+ *  Save new headlines
+ * -----------------------------------------------------*/
 function saveCurrentNews(newsItems) {
   try {
-    const currentDate = new Date().toISOString();
-    const headlines = newsItems.map(item => ({
-      date: currentDate,
-      headline: item.title,
-      source: item.source
-    })).filter(item => item.headline);
+    let existing = [];
 
-    let existingCache = [];
     try {
-      existingCache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+      existing = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+      if (!Array.isArray(existing)) existing = [];
     } catch {
-      existingCache = [];
+      existing = [];
     }
 
-    // Remove duplicates based on headline
-    const uniqueCache = [...existingCache];
-    headlines.forEach(newItem => {
-      if (!uniqueCache.some(item => item.headline === newItem.headline)) {
-        uniqueCache.push(newItem);
-      }
-    });
-    
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(uniqueCache, null, 2));
-    console.log(`💾 Cached ${headlines.length} new headlines (total: ${uniqueCache.length})`);
-  } catch (e) {
-    console.error("⚠️ Failed to write cache:", e);
+    const now = new Date().toISOString();
+
+    const newEntries = newsItems.map(item => ({
+      date: now,
+      headline: item.title,
+      source: item.source
+    }));
+
+    // Avoid duplicates by headline
+    const merged = [...existing];
+    for (const entry of newEntries) {
+      const exists = merged.some(e => e.headline === entry.headline);
+      if (!exists) merged.push(entry);
+    }
+
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(merged, null, 2));
+
+    console.log(`💾 Saved ${newEntries.length} new headlines (total cache: ${merged.length})`);
+  } catch (err) {
+    console.error("⚠ Failed to update cache:", err);
   }
 }
 
+/* -------------------------------------------------------
+ *  UNIVERSAL STRICT REAL-NEWS PROMPT
+ * -----------------------------------------------------*/
+function buildNewsPrompt(previousHeadlines, count) {
+  return `
+You are a strict real-time technology news analyst. Your task is to return ONLY 100% real, verifiable tech news stories from the last 24 hours — NOT AI-generated or fabricated items.
+
+RULES:
+1. NO hallucinated URLs — use only real, existing articles.
+2. NO made-up events — every story must match a real published article.
+3. Include diverse categories:
+   - AI/ML
+   - Developer tools
+   - Cloud/DevOps
+   - Cybersecurity
+   - Data/Analytics
+   - Open source
+   - Tech industry
+   - Hardware/Chips
+
+4. EXCLUDE these previously used headlines:
+${previousHeadlines.slice(0, 30).map(h => `- ${h}`).join("\n")}
+
+5. RETURN EXACTLY ${count} NEWS ITEMS.
+
+FORMAT STRICTLY:
+[
+  {
+    "title": "Exact real headline",
+    "summary": "Real article summary with accurate details only",
+    "impact": "Explain impact for engineers/devs",
+    "source": "Real, valid article URL"
+  }
+]
+
+NO markdown. NO commentary. JSON only.
+  `;
+}
+
+/* -------------------------------------------------------
+ *  Gemini Fetcher - 15 news
+ * -----------------------------------------------------*/
 async function fetchNewsWithGemini(previousHeadlines) {
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
-    const prompt = `
-      Act as an AI news curator focusing on DIVERSE and UNIQUE tech news. Find and summarize 10 significant but DIFFERENT tech stories from the last 24 hours.
+    console.log("🤖 Fetching from Gemini...");
 
-      EXCLUSIONS - SKIP THESE PREVIOUS HEADLINES:
-      ${previousHeadlines.slice(0, 20).map(h => `- ${h}`).join("\n")}
-
-      PRIORITY DOMAINS (find different stories from each):
-      - AI/ML Research & New Models
-      - Developer Tools & Frameworks  
-      - Cloud Computing & Infrastructure
-      - Cybersecurity & Privacy
-      - Data Science & Analytics
-      - Open Source Innovations
-      - Tech Industry News
-
-      FORMAT REQUIREMENTS:
-      Return a JSON array with exactly 10 items. Each item should have:
-      {
-        "title": "Clear, specific headline",
-        "summary": "2-3 sentence technical summary with specific details",
-        "impact": "How this affects developers/engineers",
-        "source": "Working URL to the source"
-      }
-
-      IMPORTANT:
-      - Each story must be from a different domain
-      - Include specific technical details, numbers, version numbers
-      - Ensure URLs are real and accessible
-      - Focus on actionable insights for technical audience
-      - Return ONLY valid JSON, no other text
-    `;
-
-    console.log('🤖 Fetching news from Gemini...');
+    const prompt = buildNewsPrompt(previousHeadlines, 15);
     const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text().trim();
-    
-    // Clean the response to extract JSON
+
+    const text = result.response.text().trim();
     const jsonMatch = text.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) {
-      throw new Error('No JSON array found in Gemini response');
-    }
-    
-    const newsData = JSON.parse(jsonMatch[0]);
-    console.log(`✅ Gemini returned ${newsData.length} news items`);
-    return newsData;
-  } catch (error) {
-    console.error('❌ Gemini API failed:', error.message);
-    throw error; // Re-throw to handle in main function
+    if (!jsonMatch) throw new Error("Gemini: No valid JSON found");
+
+    const items = JSON.parse(jsonMatch[0]);
+    console.log(`✅ Gemini returned ${items.length} items`);
+    return items;
+  } catch (err) {
+    console.error("❌ Gemini failed:", err.message);
+    return [];
   }
 }
 
+/* -------------------------------------------------------
+ *  OpenRouter Fetcher - 15 news
+ * -----------------------------------------------------*/
 async function fetchNewsWithOpenRouter(previousHeadlines) {
   try {
-    const prompt = `
-      As a tech news analyst, find 10 significant and diverse technology news stories from the last 24 hours.
-      
-      EXCLUSIONS - DO NOT INCLUDE:
-      ${previousHeadlines.slice(0, 20).map(h => `- ${h}`).join("\n")}
-      
-      Focus on unique stories across different tech domains.
-      
-      Return a JSON array with exactly 10 items. Each item should have:
-      {
-        "title": "Specific news headline", 
-        "summary": "2-3 sentence technical summary",
-        "impact": "Developer/engineer impact",
-        "source": "Actual source URL"
-      }
-      
-      Requirements:
-      - Each from different sub-domain
-      - Include specific technical details
-      - Ensure URLs are real
-      - Return ONLY valid JSON
-    `;
+    console.log("🔄 Fetching from OpenRouter...");
 
-    console.log('🔄 Fetching news from OpenRouter...');
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+    const prompt = buildNewsPrompt(previousHeadlines, 15);
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://github.com/SumanReddy568/AiQaAgentsHub',
-        'X-Title': 'Tech News Aggregator'
+        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "openai/gpt-oss-20b:free",
-        messages: [
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        max_tokens: 4000,
-        temperature: 0.7
+        model: "openai/gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.4,
+        max_tokens: 4000
       })
     });
 
-    if (!response.ok) {
-      throw new Error(`OpenRouter API error: ${response.status} ${await response.text()}`);
-    }
-
     const data = await response.json();
     const content = data.choices[0].message.content.trim();
-    
+
     const jsonMatch = content.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) {
-      throw new Error('No JSON array found in OpenRouter response');
-    }
-    
-    const newsData = JSON.parse(jsonMatch[0]);
-    console.log(`✅ OpenRouter returned ${newsData.length} news items`);
-    return newsData;
-  } catch (error) {
-    console.error('❌ OpenRouter API failed:', error.message);
-    throw error;
+    if (!jsonMatch) throw new Error("OpenRouter: No JSON found");
+
+    const items = JSON.parse(jsonMatch[0]);
+    console.log(`✅ OpenRouter returned ${items.length} items`);
+    return items;
+  } catch (err) {
+    console.error("❌ OpenRouter failed:", err.message);
+    return [];
   }
 }
 
-function deduplicateNews(items, previousHeadlines) {
-  const uniqueItems = [];
-  const usedTitles = new Set();
-  
-  items.forEach(item => {
-    const title = item.title.toLowerCase().trim();
-    
-    // Check if similar to cached headlines
-    const isCached = previousHeadlines.some(cached => 
-      cached.toLowerCase().includes(title) || title.includes(cached.toLowerCase())
-    );
-    
-    // Check if similar to already used titles
-    const isDuplicate = Array.from(usedTitles).some(existing => {
-      const words = title.split(' ').filter(word => word.length > 4);
-      return words.some(word => existing.includes(word));
-    });
-    
-    if (!isCached && !isDuplicate) {
-      uniqueItems.push(item);
-      usedTitles.add(title);
+/* -------------------------------------------------------
+ *  Format for Discord
+ * -----------------------------------------------------*/
+function formatNewsForDiscord(items) {
+  return items.map((n, i) => `
+**Tech Digest #${i + 1}** 📰
+
+**${n.title}**
+
+📝 ${n.summary}
+
+💡 **Impact:** ${n.impact}
+
+🔗 ${n.source}
+
+━━━━━━━━━━━━━━━━━━━━━━━━`).join("\n");
+}
+
+/* -------------------------------------------------------
+ *  Send to Discord
+ * -----------------------------------------------------*/
+async function sendToDiscordLarge(content) {
+  const MAX = 1900; // avoid hitting 2000 limit
+  const chunks = [];
+
+  // Split by lines safely
+  let buffer = "";
+  for (const line of content.split("\n")) {
+    if ((buffer + line).length > MAX) {
+      chunks.push(buffer);
+      buffer = "";
     }
-  });
-  
-  return uniqueItems;
-}
-
-function formatNewsForDiscord(newsItems) {
-  const timeLabel = new Date().getHours() < 12 ? "Morning" : "Evening";
-  
-  return newsItems.map((item, index) => {
-    // Create clean, readable format for Discord
-    return `**${timeLabel} Tech Digest #${index + 1}** 📰
-
-**${item.title}**
-
-📝 ${item.summary}
-
-💡 **Technical Impact:** ${item.impact}
-
-🔗 ${item.source}
-
-━━━━━━━━━━━━━━━━━━━━━━━━`;
-  });
-}
-
-async function sendNewsToDiscord(formattedMessages) {
-  if (!formattedMessages.length) {
-    throw new Error("No news items to send");
+    buffer += line + "\n";
   }
+  if (buffer.trim().length > 0) chunks.push(buffer);
 
-  console.log(`📨 Sending ${formattedMessages.length} news items to Discord...`);
+  console.log(`📨 Sending ${chunks.length} chunk(s) to Discord...`);
 
-  for (let i = 0; i < formattedMessages.length; i++) {
-    const message = formattedMessages[i];
-    
-    const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+  for (const msg of chunks) {
+    const res = await fetch(process.env.DISCORD_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: message }),
+      body: JSON.stringify({ content: msg })
     });
 
-    if (!response.ok) {
-      throw new Error(`Failed to send news item ${i + 1}: ${response.status}`);
+    if (!res.ok) {
+      throw new Error(`Discord send failed: ${res.status}`);
     }
-    
-    console.log(`✅ Sent news item ${i + 1}/${formattedMessages.length}`);
-    
-    // Add delay between messages to avoid rate limiting
-    if (i < formattedMessages.length - 1) {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-    }
+
+    await new Promise(r => setTimeout(r, 1500)); // rate limit safe
   }
 
-  console.log("✅ All news items sent successfully");
+  console.log("✅ All chunks sent");
 }
 
+/* -------------------------------------------------------
+ *  MAIN
+ * -----------------------------------------------------*/
 async function main() {
   try {
-    if (!await validateWebhook()) {
-      throw new Error("Discord webhook validation failed");
-    }
+    if (!await validateWebhook()) throw new Error("Webhook invalid");
 
     const previousHeadlines = loadPreviousNews();
-    
-    // Fetch news from both services with better error handling
-    console.log('🔄 Fetching news from both AI services...');
-    
-    let geminiNews = [];
-    let openRouterNews = [];
-    let successfulAPIs = 0;
+
+    // Fetch 15 + 15
+    const gemini = await fetchNewsWithGemini(previousHeadlines);
+    const openrouter = await fetchNewsWithOpenRouter(previousHeadlines);
+
+    const allNews = [...gemini, ...openrouter];
+    console.log(`📦 TOTAL FETCHED: ${allNews.length} news items`);
+
+    if (allNews.length === 0) throw new Error("No news fetched");
+
+    // Send 30 directly — no filtering
+    const discordMsg = formatNewsForDiscord(allNews);
+
+    await sendToDiscordLarge(discordMsg);
+    saveCurrentNews(allNews);
+
+    console.log("🎉 News digest sent successfully!");
+  } catch (err) {
+    console.error("❌ Fatal Error:", err.message);
 
     try {
-      geminiNews = await fetchNewsWithGemini(previousHeadlines);
-      successfulAPIs++;
-    } catch (error) {
-      console.log('⚠️ Continuing without Gemini news');
-      geminiNews = [];
-    }
-
-    try {
-      openRouterNews = await fetchNewsWithOpenRouter(previousHeadlines);
-      successfulAPIs++;
-    } catch (error) {
-      console.log('⚠️ Continuing without OpenRouter news');
-      openRouterNews = [];
-    }
-
-    // Check if both APIs failed
-    if (successfulAPIs === 0) {
-      throw new Error("Both Gemini and OpenRouter APIs failed. Cannot fetch news.");
-    }
-
-    console.log(`✅ ${successfulAPIs}/2 APIs successful - Gemini: ${geminiNews.length}, OpenRouter: ${openRouterNews.length}`);
-
-    // Combine and deduplicate news
-    const allNews = [...geminiNews, ...openRouterNews];
-    const uniqueNews = deduplicateNews(allNews, previousHeadlines);
-    
-    console.log(`🔄 Combined ${allNews.length} items, ${uniqueNews.length} after deduplication`);
-
-    // Select top 8 items (reduced for better readability)
-    const topNews = uniqueNews.slice(0, 8);
-    
-    if (topNews.length === 0) {
-      throw new Error("No unique news items found after processing");
-    }
-
-    // Format for Discord readability
-    const discordMessages = formatNewsForDiscord(topNews);
-    
-    // Send to Discord
-    await sendNewsToDiscord(discordMessages);
-    
-    // Save to cache
-    saveCurrentNews(topNews);
-
-    console.log("🎉 News digest completed successfully!");
-
-  } catch (error) {
-    console.error("❌ Critical error:", error.message);
-    
-    // Send error notification to Discord
-    try {
-      await fetch(process.env.DISCORD_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: `❌ **News Digest Failed**\nError: ${error.message}\nTime: ${new Date().toLocaleString()}`
-        }),
-      });
-    } catch (discordError) {
-      console.error("Failed to send error notification to Discord:", discordError);
-    }
-    
-    process.exit(1);
+      await sendToDiscordLarge(`❌ ERROR: ${err.message}`);
+    } catch {}
   }
 }
 
-// Add required environment variables check
-const requiredEnvVars = ['DISCORD_WEBHOOK_URL', 'GEMINI_API_KEY', 'OPENROUTER_API_KEY'];
-const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+/* -------------------------------------------------------
+ *  ENV Checks
+ * -----------------------------------------------------*/
+const required = ["DISCORD_WEBHOOK_URL", "GEMINI_API_KEY", "OPENROUTER_API_KEY"];
+const missing = required.filter(v => !process.env[v]);
 
-if (missingVars.length > 0) {
-  console.error('❌ Missing required environment variables:', missingVars.join(', '));
+if (missing.length) {
+  console.error("❌ Missing env vars:", missing.join(", "));
   process.exit(1);
 }
-
-// Handle uncaught errors
-process.on('unhandledRejection', (error) => {
-  console.error('Unhandled promise rejection:', error);
-});
-
-process.on('uncaughtException', (error) => {
-  console.error('Uncaught exception:', error);
-});
 
 main();
