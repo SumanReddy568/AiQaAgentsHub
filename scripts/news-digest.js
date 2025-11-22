@@ -203,14 +203,38 @@ function formatNewsForDiscord(items) {
 /* -------------------------------------------------------
  *  Send to Discord
  * -----------------------------------------------------*/
-async function sendToDiscord(message) {
-  const res = await fetch(process.env.DISCORD_WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: message })
-  });
+async function sendToDiscordLarge(content) {
+  const MAX = 1900; // avoid hitting 2000 limit
+  const chunks = [];
 
-  if (!res.ok) throw new Error(`Discord send failed: ${res.status}`);
+  // Split by lines safely
+  let buffer = "";
+  for (const line of content.split("\n")) {
+    if ((buffer + line).length > MAX) {
+      chunks.push(buffer);
+      buffer = "";
+    }
+    buffer += line + "\n";
+  }
+  if (buffer.trim().length > 0) chunks.push(buffer);
+
+  console.log(`📨 Sending ${chunks.length} chunk(s) to Discord...`);
+
+  for (const msg of chunks) {
+    const res = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: msg })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Discord send failed: ${res.status}`);
+    }
+
+    await new Promise(r => setTimeout(r, 1500)); // rate limit safe
+  }
+
+  console.log("✅ All chunks sent");
 }
 
 /* -------------------------------------------------------
@@ -234,7 +258,7 @@ async function main() {
     // Send 30 directly — no filtering
     const discordMsg = formatNewsForDiscord(allNews);
 
-    await sendToDiscord(discordMsg);
+    await sendToDiscordLarge(discordMsg);
     saveCurrentNews(allNews);
 
     console.log("🎉 News digest sent successfully!");
@@ -242,7 +266,7 @@ async function main() {
     console.error("❌ Fatal Error:", err.message);
 
     try {
-      await sendToDiscord(`❌ ERROR: ${err.message}`);
+      await sendToDiscordLarge(`❌ ERROR: ${err.message}`);
     } catch {}
   }
 }
