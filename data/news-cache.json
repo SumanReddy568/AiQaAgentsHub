@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "NASA's Perseverance Rover Discovers Evidence of Ancient Hydrothermal Activity on Mars",
-    "source": "https://www.jpl.nasa.gov/news/perseverance-rover-discovers-evidence-of-ancient-hydrothermal-activity-on-mars"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "Intel Launches Core Ultra 200S 'Arrow Lake' Desktop Processors with Integrated AI Acceleration",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/arrow-lake-desktop-launch.html"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "OpenAI Announces GPT-4 Turbo with Vision Now Available via API for All Developers",
-    "source": "https://openai.com/blog/gpt-4-turbo-vision-api-available"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "Tesla Deploys Full Self-Driving Beta to All Paid Subscribers in North America",
-    "source": "https://www.tesla.com/blog/full-self-driving-beta-update"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "IBM Quantum Achieves Error-Corrected Logical Qubit with Break-Even Lifetime",
-    "source": "https://research.ibm.com/blog/quantum-error-correction-breakthrough"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "Apple Introduces Lockdown Mode in iOS 17.5 to Counter Zero-Click Exploits",
-    "source": "https://www.apple.com/ios-17/"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "Siemens Unveils Digital Twin Platform for Real-Time Factory Automation Control",
-    "source": "https://www.siemens.com/digital-twin-manufacturing-launch"
-  },
-  {
-    "date": "2025-11-11T13:07:21.202Z",
-    "headline": "Mozilla Releases Firefox 128 with Rust-Based CSS Engine 'Stylo' Full Integration",
-    "source": "https://blog.mozilla.org/en/products/firefox/firefox-128-quantum-css-engine/"
-  },
-  {
     "date": "2025-11-12T03:57:33.118Z",
     "headline": "Google DeepMind Unveils Mantis: A Visual Language Model for Fine-Grained Visual Reasoning",
     "source": "https://deepmind.google/discover/blog/mantis-a-model-that-can-see-and-reason-at-the-level-of-individual-pixels/"
@@ -613,5 +573,40 @@
     "date": "2025-11-21T13:05:08.876Z",
     "headline": "PostgreSQL 17 Beta 1 Released, Featuring Incremental Backup and JSON_TABLE",
     "source": "https://www.postgresql.org/about/news/postgresql-17-beta-1-released-2852/"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "Kaspersky Software Banned from Sale in the US Over National Security Risks",
+    "source": "https://www.reuters.com/technology/cybersecurity/us-announce-ban-kaspersky-software-over-ties-russia-source-says-2024-06-20/"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "Fluent Bit Discloses 'Linguistic Lumberjack' Vulnerability (CVE-2024-4323) with RCE Potential",
+    "source": "https://www.tenable.com/blog/linguistic-lumberjack-fluent-bit-memory-corruption-vulnerability-cve-2024-4323"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "Cloudflare Launches 'Workers AI Gateway' to Manage and Optimize AI Inferences",
+    "source": "https://blog.cloudflare.com/workers-ai-gateway"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "Salesforce Research Releases X-InstructBLIP, a Cross-Lingual Vision-Language Model",
+    "source": "https://blog.salesforceairesearch.com/x-instructblip/"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "dbt Labs Introduces 'dbt Mesh' for Decentralized, Multi-Project Data Architectures",
+    "source": "https://www.dbt.com/blog/what-is-dbt-mesh"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "Coreboot Open-Source Firmware Now Officially Supports Framework Laptop 16",
+    "source": "https://www.phoronix.com/news/Framework-16-Coreboot-Merged"
+  },
+  {
+    "date": "2025-11-22T03:51:53.119Z",
+    "headline": "QuTech Demonstrates Silicon Qubit Processor Operating Above 1 Kelvin",
+    "source": "https://www.nature.com/articles/s41586-024-07520-5"
   }
 ]
