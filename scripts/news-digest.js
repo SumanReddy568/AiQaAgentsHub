@@ -37,45 +37,79 @@ async function validateWebhook() {
  * -----------------------------------------------------*/
 function loadPreviousNews() {
   try {
+    // Ensure directory exists
     fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
 
+    // Create empty cache if missing
     if (!fs.existsSync(CACHE_FILE)) {
       fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
       return [];
     }
 
     const data = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
-    return Array.isArray(data) ? data.map(entry => entry.headline) : [];
-  } catch {
+    if (!Array.isArray(data)) return [];
+
+    const tenDaysAgo = new Date();
+    tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
+
+    // Filter entries newer than 10 days
+    const filtered = data.filter(entry =>
+      new Date(entry.date) >= tenDaysAgo
+    );
+
+    // Cleanup old entries
+    if (filtered.length !== data.length) {
+      fs.writeFileSync(CACHE_FILE, JSON.stringify(filtered, null, 2));
+      console.log(`🧹 Cleaned ${data.length - filtered.length} old cache entries`);
+    }
+
+    console.log(`🗂 Loaded ${filtered.length} cached headlines`);
+
+    // Return only headlines list
+    return filtered.map(i => i.headline);
+
+  } catch (err) {
+    console.error("⚠ Cache read error:", err);
+    fs.writeFileSync(CACHE_FILE, JSON.stringify([], null, 2));
     return [];
   }
 }
 
+
 /* -------------------------------------------------------
  *  Save new headlines
  * -----------------------------------------------------*/
-function saveCurrentNews(items) {
+function saveCurrentNews(newsItems) {
   try {
-    let cache = [];
+    let existing = [];
+
     try {
-      cache = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+      existing = JSON.parse(fs.readFileSync(CACHE_FILE, "utf-8"));
+      if (!Array.isArray(existing)) existing = [];
     } catch {
-      cache = [];
+      existing = [];
     }
 
-    const timestamp = new Date().toISOString();
-    const entries = items.map(n => ({
-      date: timestamp,
-      headline: n.title,
-      source: n.source
+    const now = new Date().toISOString();
+
+    const newEntries = newsItems.map(item => ({
+      date: now,
+      headline: item.title,
+      source: item.source
     }));
 
-    const merged = [...cache, ...entries];
+    // Avoid duplicates by headline
+    const merged = [...existing];
+    for (const entry of newEntries) {
+      const exists = merged.some(e => e.headline === entry.headline);
+      if (!exists) merged.push(entry);
+    }
+
     fs.writeFileSync(CACHE_FILE, JSON.stringify(merged, null, 2));
 
-    console.log("💾 Cache updated");
-  } catch (e) {
-    console.error("⚠️ Cache write failed:", e);
+    console.log(`💾 Saved ${newEntries.length} new headlines (total cache: ${merged.length})`);
+  } catch (err) {
+    console.error("⚠ Failed to update cache:", err);
   }
 }
 
