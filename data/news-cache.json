@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "Google DeepMind Unveils Mantis: A Visual Language Model for Fine-Grained Visual Reasoning",
-    "source": "https://deepmind.google/discover/blog/mantis-a-model-that-can-see-and-reason-at-the-level-of-individual-pixels/"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "Postman Releases v11 with Spectral Linting, gRPC-Web Support, and Centralized Secret Management",
-    "source": "https://blog.postman.com/postman-v11-is-generally-available/"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "Critical Integer Overflow Vulnerability (CVE-2024-5390) Disclosed in libjpeg-xl Library",
-    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-5390"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "DuckDB Reaches Landmark 1.0.0 Release, Cementing its API and Storage Format",
-    "source": "https://duckdb.org/2024/07/23/announcing-duckdb-100.html"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "Ruff Formatter is Now Stable, Offering a High-Performance Alternative to Black",
-    "source": "https://astral.sh/blog/the-ruff-formatter-is-stable"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "Apple Opens Vision Pro to Enterprise with visionOS 2 and New APIs for Industrial Use",
-    "source": "https://www.apple.com/newsroom/2024/07/apple-vision-pro-arrives-for-enterprise-customers/"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "JEDEC Publishes LPDDR6 Memory Standard, Doubling Peak Bandwidth for Mobile Devices",
-    "source": "https://www.anandtech.com/show/21495/jedec-publishes-lpddr6-standard-up-to-14-4-gbps-for-next-gen-ai-everywhere"
-  },
-  {
-    "date": "2025-11-12T03:57:33.118Z",
-    "headline": "MIT Researchers Develop Scalable Neutral-Atom Qubit with Ytterbium-171",
-    "source": "https://news.mit.edu/2024/new-qubit-design-may-help-unlock-power-quantum-computing-0722"
-  },
-  {
     "date": "2025-11-13T01:05:39.696Z",
     "headline": "AMD's Encrypted VMs Breached by New \"TICK-TOCK\" Side-Channel Attack",
     "source": "https://www.bleepingcomputer.com/news/security/new-tick-tock-attack-breaches-amds-encrypted-virtual-machines/"
@@ -748,5 +708,140 @@
     "date": "2025-11-22T05:01:42.711Z",
     "headline": "Intel Reveals New Chipset for Edge Computing Applications",
     "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-edge-computing-chipset-2023.html"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "GitHub Copilot Enterprise is now generally available",
+    "source": "https://techcrunch.com/2024/04/17/github-copilot-enterprise-is-now-generally-available/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Meta announces the next generation of its custom-made AI chip",
+    "source": "https://techcrunch.com/2024/04/10/meta-announces-the-next-generation-of-its-custom-made-ai-chip/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Critical PuTTY vulnerability allows cryptographic key recovery",
+    "source": "https://www.bleepingcomputer.com/news/security/critical-putty-vulnerability-allows-recovery-of-cryptographic-keys/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "React 19 Beta is now available",
+    "source": "https://react.dev/blog/2024/04/25/react-19-beta"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Google Cloud announces Axion, its first custom Arm-based CPU",
+    "source": "https://cloud.google.com/blog/products/compute/google-axion-custom-arm-based-cpu"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "PostgreSQL 17 Beta 1 Released!",
+    "source": "https://www.postgresql.org/about/news/postgresql-17-beta-1-released-2831/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Intel Launches Gaudi 3 AI Accelerator to Compete With Nvidia's H100",
+    "source": "https://www.hpcwire.com/2024/04/09/intel-launches-gaudi-3-ai-accelerator-to-compete-with-nvidias-h100/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Valkey, the open source alternative to Redis, is now generally available",
+    "source": "https://techcrunch.com/2024/04/18/valkey-the-open-source-alternative-to-redis-is-now-generally-available/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Microsoft researchers reveal VASA-1, a framework for generating lifelike talking faces",
+    "source": "https://techcrunch.com/2024/04/18/microsoft-researchers-reveal-vasa-1-a-framework-for-generating-lifelike-talking-faces/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Hugging Face and Google Cloud announce a new partnership",
+    "source": "https://techcrunch.com/2024/04/09/hugging-face-and-google-cloud-announce-a-new-partnership/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Cloudflare acquires observability startup Baselime",
+    "source": "https://techcrunch.com/2024/04/17/cloudflare-acquires-observability-startup-baselime/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Google announces Gemma 2, its next-gen open model",
+    "source": "https://techcrunch.com/2024/04/09/google-announces-gemma-2-its-next-gen-open-model/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Apple will now let retro game emulators on the App Store",
+    "source": "https://www.theverge.com/2024/04/05/24122358/apple-app-store-retro-game-emulators-allowed"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Emad Mostaque, the CEO of Stability AI, is resigning to pursue decentralized AI",
+    "source": "https://www.theverge.com/2024/03/23/24109782/stability-ai-ceo-emad-mostaque-resigns"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "OpenTofu 1.7 adds state encryption and provider-defined functions",
+    "source": "https://opentofu.org/blog/opentofu-1-7-adds-state-encryption-and-provider-defined-functions/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Google Cloud Introduces AI-Powered Data Analytics Tools",
+    "source": "https://cloud.google.com/blog/products/data-analytics/2023/10/google-cloud-ai-powered-data-analytics-tools"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "GitHub Launches New Copilot Features for Developers",
+    "source": "https://github.blog/2023-10-02-github-copilot-new-features/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Microsoft Azure Expands DevOps Capabilities with New Tools",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-devops-new-tools/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Elastic Launches New Features for Observability Platform",
+    "source": "https://www.elastic.co/blog/elastic-observability-new-features"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "OpenAI Releases New Version of GPT-4 with Enhanced Capabilities",
+    "source": "https://openai.com/research/gpt-4-update"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Docker Introduces New Features for Container Security",
+    "source": "https://www.docker.com/blog/docker-container-security-new-features/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Mozilla Releases Firefox 118 with Enhanced Privacy Features",
+    "source": "https://www.mozilla.org/en-US/firefox/118.0/releasenotes/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Intel Announces New AI-Optimized Xeon Processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/ai-optimized-xeon-processors.html"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "New Open Source Tool for Kubernetes Security Released",
+    "source": "https://kubernetes.io/blog/2023/10/03/kubernetes-security-tool-release/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "AWS Launches New Machine Learning Services",
+    "source": "https://aws.amazon.com/blogs/aws/2023/10/aws-new-machine-learning-services/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Samsung Develops New Memory Technology for Faster Data Processing",
+    "source": "https://www.samsung.com/global/business/semiconductors/newsroom/2023/10/samsung-memory-technology-innovation/"
+  },
+  {
+    "date": "2025-11-22T05:08:03.284Z",
+    "headline": "Salesforce Introduces New AI Features in CRM",
+    "source": "https://www.salesforce.com/news/2023/10/salesforce-ai-features-crm/"
   }
 ]
