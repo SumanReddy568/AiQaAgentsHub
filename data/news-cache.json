@@ -608,5 +608,145 @@
     "date": "2025-11-22T03:51:53.119Z",
     "headline": "QuTech Demonstrates Silicon Qubit Processor Operating Above 1 Kelvin",
     "source": "https://www.nature.com/articles/s41586-024-07520-5"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Databricks to acquire Tabular for more than $1B to champion Apache Iceberg",
+    "source": "https://techcrunch.com/2024/06/27/databricks-to-acquire-tabular-for-more-than-1b-to-champion-apache-iceberg/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Tool use is now generally available in the Claude 3 API",
+    "source": "https://www.anthropic.com/news/tool-use-is-now-generally-available-in-the-claude-3-api"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "HashiCorp to Discontinue Vagrant, Boundary, and Waypoint as Part of IBM Acquisition",
+    "source": "https://www.hashicorp.com/blog/a-new-chapter-for-hashicorp-and-our-communities"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Vercel launches v0, its generative UI tool, to the public",
+    "source": "https://vercel.com/blog/v0-is-now-in-public-beta"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "CISA warns of actively exploited Zyxel NAS command injection flaw",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-actively-exploited-zyxel-nas-command-injection-flaw/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Amazon Says IRS Is Seeking $5.9 Billion in Back Taxes, Penalties",
+    "source": "https://www.bloomberg.com/news/articles/2024-06-27/amazon-says-irs-is-seeking-5-9-billion-in-back-taxes-penalties"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "TSMC gets green light for 2nd Kumamoto chip plant in Japan",
+    "source": "https://asia.nikkei.com/Business/Tech/Semiconductors/TSMC-gets-green-light-for-2nd-Kumamoto-chip-plant-in-Japan"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Apple to use Shutterstock content to train its generative AI models",
+    "source": "https://www.reuters.com/technology/apple-use-shutterstock-content-train-its-generative-ai-models-2024-06-27/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "New 'Tollpatsch' attack leaks secret keys from Intel SGX",
+    "source": "https://www.bleepingcomputer.com/news/security/new-tollpatsch-attack-leaks-secret-keys-from-intel-sgx/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Google Cloud announces Vertex AI Agent Builder, a no-code tool for creating gen AI agents",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-vertex-ai-agent-builder"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Sentry acquires Specto to help developers debug AI apps",
+    "source": "https://sentry.io/blog/sentry-acquires-specto-to-bring-observability-to-ai/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Servo Project: Announcing our 2024 Roadmap",
+    "source": "https://servo.org/blog/2024/06/26/servo-2024-roadmap/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Micron Commences Volume Production of GDDR7 Memory",
+    "source": "https://www.anandtech.com/show/21443/micron-commences-volume-production-of-gddr7-memory"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "EU opens investigation into Booking.com over potential DMA violations",
+    "source": "https://www.theverge.com/2024/6/27/24187219/booking-dma-gatekeeper-eu-investigation-non-compliance"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Snowflake's Investigation into Recent Customer Account Attacks is Complete",
+    "source": "https://www.snowflake.com/blog/snowflakes-investigation-into-recent-customer-account-attacks-is-complete/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Meta's AI Research Team Releases New Open-Source Tool for Data Labeling",
+    "source": "https://www.theverge.com/2023/10/24/meta-ai-open-source-data-labeling-tool"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "AWS Launches New Cloud Services for Enhanced Security and Compliance",
+    "source": "https://aws.amazon.com/blogs/aws/aws-launches-new-cloud-security-services/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Microsoft's New DevOps Tool Aims to Simplify CI/CD Pipelines",
+    "source": "https://techcrunch.com/2023/10/24/microsoft-new-devops-tool/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Google Cloud Introduces New AI-Powered Analytics Features",
+    "source": "https://www.zdnet.com/article/google-cloud-ai-analytics-features/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "New Cybersecurity Framework Released by NIST",
+    "source": "https://www.csoonline.com/article/3775575/nist-releases-new-cybersecurity-framework.html"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "OpenAI Launches New Developer API for Enhanced Model Access",
+    "source": "https://www.forbes.com/sites/bernardmarr/2023/10/24/openai-launches-new-developer-api/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "IBM Introduces New Quantum Computing Software Development Kit",
+    "source": "https://www.ibm.com/blogs/research/2023/10/ibm-quantum-sdk/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "New Open Source Project Aims to Improve IoT Security",
+    "source": "https://www.techrepublic.com/article/open-source-iot-security-project/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "NVIDIA Releases New GPU Architecture for AI Workloads",
+    "source": "https://www.engadget.com/nvidia-new-gpu-architecture-ai-2023-10-24/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Mozilla Introduces New Developer Tools for Web Performance Testing",
+    "source": "https://www.mozilla.org/en-US/blog/2023/10/24/new-web-performance-tools/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Apple's New Privacy Features Aim to Enhance User Data Protection",
+    "source": "https://www.macrumors.com/2023/10/24/apple-new-privacy-features/"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Cisco Expands Its Cybersecurity Portfolio with New Solutions",
+    "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/10/24/cisco-cybersecurity-solutions.html"
+  },
+  {
+    "date": "2025-11-22T05:01:42.711Z",
+    "headline": "Intel Reveals New Chipset for Edge Computing Applications",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-edge-computing-chipset-2023.html"
   }
 ]
