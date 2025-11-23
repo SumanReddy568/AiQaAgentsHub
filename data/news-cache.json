@@ -768,5 +768,135 @@
     "date": "2025-11-23T04:10:48.059Z",
     "headline": "GitLab Enhances CI/CD Features with New Integration Options",
     "source": "https://about.gitlab.com/blog/2023/10/25/gitlab-ci-cd-enhancements"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Mistral AI releases Codestral, its first generative AI model for code",
+    "source": "https://techcrunch.com/2024/05/29/mistral-ai-releases-codestral-its-first-generative-ai-model-for-code/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "GitLab Duo Chat is now generally available",
+    "source": "https://about.gitlab.com/blog/2024/05/30/gitlab-duo-chat-is-now-ga/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "CNCF Announces Kube-OVN Graduation",
+    "source": "https://www.cncf.io/announcements/2024/05/29/cncf-announces-kube-ovn-graduation/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Check Point finds flaws in remote monitoring tools used by MSPs",
+    "source": "https://www.bleepingcomputer.com/news/security/check-point-finds-flaws-in-remote-monitoring-tools-used-by-msps/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "PostgreSQL 17 Beta 1 Released!",
+    "source": "https://www.postgresql.org/about/news/postgresql-17-beta-1-released-2861/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "The Linux Foundation Launches the High-Performance Software Foundation to Foster HPC Ecosystem",
+    "source": "https://www.linuxfoundation.org/press/the-linux-foundation-launches-the-high-performance-software-foundation-to-foster-hpc-ecosystem"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Salesforce shares plunge 16% on weak guidance, first revenue miss since 2006",
+    "source": "https://www.cnbc.com/2024/05/29/salesforce-crm-q1-earnings-report-2025.html"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "AMD Unveils New Ryzen 9000 'Zen 5' Desktop Processors And Ryzen AI 300 Laptop APUs",
+    "source": "https://hothardware.com/news/amd-ryzen-9000-zen-5-desktop-processors-ryzen-ai-300-apus-computex"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "xAI raises $6 billion in Series B funding",
+    "source": "https://x.ai/blog/series-b"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Vercel acquires PonyCode, a collaborative code editor startup",
+    "source": "https://techcrunch.com/2024/05/30/vercel-acquires-ponycode-a-collaborative-code-editor-startup/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "ClickHouse Cloud Is Now Available on Google Cloud",
+    "source": "https://www.prnewswire.com/news-releases/clickhouse-cloud-is-now-available-on-google-cloud-302158356.html"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Stop threats to your LLMs with Firewall for AI",
+    "source": "https://blog.cloudflare.com/firewall-for-ai"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Qualcomm introduces the Snapdragon Dev Kit for Windows with a powerful new exclusive chip",
+    "source": "https://www.theverge.com/2024/5/20/24160759/qualcomm-snapdragon-dev-kit-for-windows-arm-price-release-date-specs"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Akamai Connected Cloud and New GIA Service Available on Oracle Cloud Marketplace",
+    "source": "https://www.akamai.com/newsroom/press-release/akamai-connected-cloud-and-new-gia-service-available-on-oracle-cloud-marketplace"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Google Releases PaliGemma, an Open Vision-Language Model Inspired by PaLI-3",
+    "source": "https://www.infoq.com/news/2024/05/google-paligemma-vlm/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Meta Launches New AI-Powered Tools for Creators",
+    "source": "https://www.theverge.com/2023/10/meta-ai-tools-creators-launch"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Mozilla Releases Firefox 118 with Enhanced Privacy Features",
+    "source": "https://www.engadget.com/firefox-118-privacy-features-2023-10-10"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "GitHub Introduces Copilot X with New Features for Developers",
+    "source": "https://www.zdnet.com/article/github-copilot-x-launch/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Google Cloud Expands Anthos with New Security Features",
+    "source": "https://cloud.google.com/blog/products/anthos/google-cloud-anthos-security-features"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Apple's New iPhone 15 Pro Features Advanced A17 Chip",
+    "source": "https://www.macrumors.com/2023/10/apple-iphone-15-pro-a17-chip/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Elastic Announces New Features for Elasticsearch 8.7",
+    "source": "https://www.elastic.co/blog/whats-new-elasticsearch-8-7"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Intel Announces New Line of Xeon Processors for Data Centers",
+    "source": "https://www.tomshardware.com/news/intel-xeon-processor-launch"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "New Open Source Tool for Kubernetes Monitoring Released",
+    "source": "https://kubernetes.io/blog/2023/10/kubewatch-release/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Zoom Launches New Security Features for Meetings",
+    "source": "https://www.zoom.us/blog/2023/10/zoom-security-features-launch"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Salesforce Introduces New AI Capabilities in CRM",
+    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/10/salesforce-ai-capabilities-crm/"
+  },
+  {
+    "date": "2025-11-23T12:59:15.263Z",
+    "headline": "Microsoft Azure Expands Services with New Regions",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-expansion-new-regions/"
   }
 ]
