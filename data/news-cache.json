@@ -1,40 +1,5 @@
 [
   {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Microsoft Unveils Windows 15 with AI-Integrated Developer Tools",
-    "source": "https://blogs.windows.com/windows-insider/2025/11/14/microsoft-unveils-windows-15/"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Apple Releases M2 Ultra in New MacBook Pro",
-    "source": "https://www.apple.com/newsroom/2025/11/apple-unveils-m2-ultra-macbook-pro/"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Tesla Announces Full Self‑Driving Beta 7.1 with Neural Net Optimizations",
-    "source": "https://www.tesla.com/blog/full-self-driving-beta-7-1"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Google Introduces Quantum Supremacy Benchmark on Sycamore 8.0",
-    "source": "https://blog.google/technology/quantum/sycamore-8-0-benchmark/"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "NVIDIA Launches RTX 6000 for Data Center GPUs",
-    "source": "https://blogs.nvidia.com/blog/2025/11/14/nvidia-rtx-6000/"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Cisco Deploys 5G Edge Cloud with AI‑Optimized Routing",
-    "source": "https://blogs.cisco.com/engineering/cisco-5g-edge-cloud-ai-routing"
-  },
-  {
-    "date": "2025-11-14T13:05:23.586Z",
-    "headline": "Blender 4.0 Released with GPU‑Accelerated Rendering and AI Upscaling",
-    "source": "https://blog.blender.org/2025/11/14/blender-4-0-release/"
-  },
-  {
     "date": "2025-11-15T03:53:06.363Z",
     "headline": "Figure AI Demonstrates Real-Time, Conversational Reasoning in Humanoid Robot",
     "source": "https://www.figure.ai/blog/figure-01-conversation-video"
@@ -1033,5 +998,140 @@
     "date": "2025-11-24T04:11:02.443Z",
     "headline": "New Study Finds Rise in Cyber Attacks on Healthcare Sector",
     "source": "https://www.cybersecurityinsider.com/cyber-attacks-healthcare-report-2023"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Stability AI appoints new CEO as part of a new investment round",
+    "source": "https://techcrunch.com/2024/06/25/stability-ai-appoints-new-ceo-as-part-of-a-new-investment-round/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Apple, Meta Have Discussed an AI Partnership",
+    "source": "https://www.wsj.com/tech/ai/apple-meta-have-discussed-an-ai-partnership-589f4198"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "v0 is now generally available",
+    "source": "https://vercel.com/blog/v0-is-now-generally-available"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Postman v11 is now generally available",
+    "source": "https://blog.postman.com/postman-v11-is-now-generally-available/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Progress Software discloses critical auth bypass in Telerik Report Server",
+    "source": "https://www.bleepingcomputer.com/news/security/progress-software-discloses-critical-auth-bypass-in-telerik-report-server/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "EU charges Apple over App Store rules that block rivals",
+    "source": "https://www.reuters.com/technology/eu-charges-apple-over-app-store-rules-under-new-tech-laws-2024-06-24/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Cohesity closes acquisition of Veritas' data protection business",
+    "source": "https://www.cohesity.com/press/cohesity-closes-acquisition-of-veritas-data-protection-business-creating-new-leader-in-ai-powered-data-security-and-management/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Linux Foundation Europe Announces OpenPlateau to Create Open Source Platform for 3D City Model Data",
+    "source": "https://www.linuxfoundation.eu/press/openplateau"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Cloudflare launches Magic Cloud Networking",
+    "source": "https://blog.cloudflare.com/magic-cloud-networking"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Dell is building a massive supercomputer for Elon Musk's xAI",
+    "source": "https://www.reuters.com/technology/dell-is-building-ai-factory-musks-xai-ceo-says-2024-06-19/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Snowflake hit with investor lawsuit over data breach response",
+    "source": "https://www.reuters.com/legal/litigation/snowflake-hit-with-investor-lawsuit-over-data-breach-response-2024-06-24/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "CISA warns of actively exploited Zyxel NAS bug, patch now",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-actively-exploited-zyxel-nas-bug-patch-now/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Amazon Q in Connect is now a HIPAA-eligible service",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-q-connect-hipaa-eligible-service/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "US court sets September hearing for TikTok ban challenge",
+    "source": "https://www.reuters.com/legal/us-court-sets-september-hearing-tiktok-ban-challenge-2024-06-21/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Perplexity Is in Talks to Raise $250 Million-Plus in Quest to Challenge Google",
+    "source": "https://www.wsj.com/tech/ai/perplexity-is-in-talks-to-raise-250-million-plus-in-quest-to-challenge-google-f269411d"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "NVIDIA Announces New AI-Powered Tools for Developers",
+    "source": "https://www.nvidia.com/en-us/blog/nvidia-ai-tools-developers/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "GitHub Launches Copilot Chat for Enhanced Developer Collaboration",
+    "source": "https://github.blog/2023-10-17-github-copilot-chat-launch/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Microsoft Azure Expands Cloud Services with New Regions",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-expansion-new-regions/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "New Cybersecurity Framework Released to Combat Ransomware",
+    "source": "https://www.cisa.gov/news/2023/10/17/new-cybersecurity-framework-ransomware"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Snowflake Introduces New Features for Data Sharing and Collaboration",
+    "source": "https://www.snowflake.com/blog/data-sharing-collaboration-features/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Red Hat Announces New OpenShift Features for Hybrid Cloud Deployments",
+    "source": "https://www.redhat.com/en/blog/openshift-hybrid-cloud-features"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Intel Launches New Chips for AI and Machine Learning Applications",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/ai-chips-launch.html"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "New Open Source Tool Aims to Simplify API Testing",
+    "source": "https://opensource.com/article/23/10/api-testing-tool"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Google Cloud Introduces New Data Analytics Services",
+    "source": "https://cloud.google.com/blog/products/data-analytics/new-analytics-services"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "New Study Reveals Trends in Cybersecurity Threats for 2024",
+    "source": "https://www.cybersecurityinsights.com/2024-threat-trends"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "Apple Unveils New MacBook Pro Models with M3 Chips",
+    "source": "https://www.apple.com/newsroom/2023/10/apple-unveils-new-macbook-pro/"
+  },
+  {
+    "date": "2025-11-24T13:09:11.405Z",
+    "headline": "New Vulnerabilities Discovered in Popular Open Source Libraries",
+    "source": "https://www.securityweek.com/open-source-vulnerabilities-discovered"
   }
 ]
