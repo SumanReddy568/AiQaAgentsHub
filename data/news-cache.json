@@ -898,5 +898,140 @@
     "date": "2025-11-23T12:59:15.263Z",
     "headline": "Microsoft Azure Expands Services with New Regions",
     "source": "https://azure.microsoft.com/en-us/blog/azure-expansion-new-regions/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "AMD announces Ryzen 9000 desktop CPUs with Zen 5",
+    "source": "https://www.theverge.com/2024/6/2/24169722/amd-ryzen-9000-desktop-cpu-zen-5-computex-2024"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Snowflake launches Polaris Catalog, an open source catalog for Apache Iceberg",
+    "source": "https://www.snowflake.com/blog/polaris-catalog-open-source-for-apache-iceberg/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Mistral AI raising $600 million at a $6 billion valuation",
+    "source": "https://techcrunch.com/2024/06/03/mistral-ai-raising-600-million-at-a-6-billion-valuation/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Live Nation confirms Ticketmaster was hacked, says personal info stolen",
+    "source": "https://www.reuters.com/technology/cybersecurity/live-nation-confirms-ticketmaster-was-hacked-says-personal-info-stolen-2024-05-31/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Intel’s Lunar Lake CPUs are a major redesign for efficiency and AI",
+    "source": "https://www.theverge.com/2024/6/3/24170364/intel-lunar-lake-cpu-ai-pc-computex-2024"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "The PSF has been awarded a grant by the OpenSSF's Alpha-Omega project",
+    "source": "https://pyfound.blogspot.com/2024/06/the-psf-has-been-awarded-grant-by.html"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Generally available: GitHub Copilot for Azure",
+    "source": "https://azure.microsoft.com/en-us/updates/generally-available-github-copilot-for-azure/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "ASML to ship latest chip-making machine to TSMC this year",
+    "source": "https://www.reuters.com/technology/asml-ship-latest-chip-making-machine-tsmc-this-year-2024-06-04/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Fivetran Managed Data Lake Service unifies analytics on open formats",
+    "source": "https://venturebeat.com/data-infrastructure/fivetran-managed-data-lake-service-unifies-analytics-on-open-formats/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Cloudflare acquires BastionZero to boost its secure access services",
+    "source": "https://blog.cloudflare.com/acquiring-bastionzero"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Linux Foundation Announces High-Performance Software Foundation to Accelerate Innovation in HPC",
+    "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-high-performance-software-foundation"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "CISA warns of actively exploited Google Chrome zero-day flaw",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-actively-exploited-google-chrome-zero-day-flaw/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "AI Cloud Startup CoreWeave Nears $7.5 Billion Debt Financing Deal",
+    "source": "https://www.bloomberg.com/news/articles/2024-06-03/ai-cloud-startup-coreweave-nears-7-5-billion-debt-financing-deal"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Mirantis Unveils Major Update to Lens Pro, Adding Enterprise-Ready Features for Kubernetes Troubleshooting and Security",
+    "source": "https://www.mirantis.com/blog/mirantis-announces-new-release-of-lens-pro-with-enterprise-ready-features-for-kubernetes-troubleshooting-and-security/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Redpanda Expands Serverless Offering with Powerful Free Tier for Developers",
+    "source": "https://redpanda.com/blog/redpanda-serverless-developer-tier"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Meta Launches New AI Tools for Creators",
+    "source": "https://www.theverge.com/2023/10/meta-ai-tools-creators-launch"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "GitHub Copilot X Now Supports More Languages",
+    "source": "https://www.techcrunch.com/2023/10/github-copilot-x-languages-update"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "AWS Introduces New Serverless Application Model Features",
+    "source": "https://aws.amazon.com/blogs/aws/2023/10/aws-sam-new-features/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Snowflake Acquires Streamlit to Enhance Data Apps",
+    "source": "https://www.forbes.com/sites/bernardmarr/2023/10/snowflake-acquires-streamlit/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Kubernetes 1.27 Released with New Features",
+    "source": "https://kubernetes.io/blog/2023/10/kubernetes-1-27-release/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Mozilla Launches Firefox 120 with Enhanced Privacy Features",
+    "source": "https://www.engadget.com/firefox-120-launch-2023-10-02/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "New Open Source Tool for API Security Released",
+    "source": "https://www.zdnet.com/article/open-source-api-security-tool-launch/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Intel Reveals New 14th Gen Core Processors",
+    "source": "https://www.tomshardware.com/news/intel-14th-gen-core-processors-launch"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "Cloudflare Introduces New Zero Trust Security Features",
+    "source": "https://www.cloudflare.com/press-releases/2023/10/cloudflare-zero-trust-security-update/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "New Research Highlights Vulnerabilities in IoT Devices",
+    "source": "https://www.securityweek.com/iot-devices-vulnerabilities-research"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "GitLab Enhances CI/CD Tools with New Features",
+    "source": "https://about.gitlab.com/releases/2023/10/gitlab-ci-cd-update/"
+  },
+  {
+    "date": "2025-11-24T04:11:02.443Z",
+    "headline": "New Study Finds Rise in Cyber Attacks on Healthcare Sector",
+    "source": "https://www.cybersecurityinsider.com/cyber-attacks-healthcare-report-2023"
   }
 ]
