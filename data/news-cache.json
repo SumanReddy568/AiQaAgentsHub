@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "Figure AI Demonstrates Real-Time, Conversational Reasoning in Humanoid Robot",
-    "source": "https://www.figure.ai/blog/figure-01-conversation-video"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "Deno 1.45 Released with Sloppy Imports and Enhanced JSR Support",
-    "source": "https://deno.com/blog/deno-1.45"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "AWS Announces General Availability of Amazon Bedrock in Canada West (Calgary) Region",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-bedrock-aws-canada-west-calgary-region/"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "Critical SQL Injection Vulnerability (CVE-2024-5290) Disclosed in Ultimate Member WordPress Plugin",
-    "source": "https://www.bleepingcomputer.com/news/security/critical-ultimate-member-plugin-bug-exposes-200k-wp-sites-to-data-theft/"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "Databricks Releases English SDK for Apache Spark in Public Preview",
-    "source": "https://www.databricks.com/blog/announcing-english-sdk-apache-spark-public-preview"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "OpenSSF Launches \"Sigstore on GKE\" to Simplify Private Software Signing on Kubernetes",
-    "source": "https://openssf.org/blog/2024/07/22/announcing-sigstore-on-gke/"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "Arm Unveils New Compute Subsystems for Windows on Arm Laptops to Compete with Apple Silicon",
-    "source": "https://www.anandtech.com/show/21481/arm-unveils-2024-compute-subsystems-for-client-powering-nextgen-windows-on-arm"
-  },
-  {
-    "date": "2025-11-15T03:53:06.363Z",
-    "headline": "MIT Researchers Create Vertically-Stacked, Full-Color Micro-LED Pixels from 2D Materials",
-    "source": "https://news.mit.edu/2024/new-full-color-vertically-stacked-micro-leds-0722"
-  },
-  {
     "date": "2025-11-15T13:00:02.748Z",
     "headline": "Arm Unveils Neoverse V3AE and N3AE Cores for Software-Defined Vehicles",
     "source": "https://newsroom.arm.com/news/neoverse-ae-software-defined-vehicles"
@@ -1133,5 +1093,135 @@
     "date": "2025-11-24T13:09:11.405Z",
     "headline": "New Vulnerabilities Discovered in Popular Open Source Libraries",
     "source": "https://www.securityweek.com/open-source-vulnerabilities-discovered"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Meta introduces Llama 3.2, our next generation of open source models",
+    "source": "https://ai.meta.com/blog/meta-llama-3-2/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Introducing Med-Gemini: A new family of multimodal models for medicine",
+    "source": "https://blog.google/technology/ai/google-research-gemini-med-gemini/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Introducing Postman v11: The intelligent way to build and use APIs",
+    "source": "https://blog.postman.com/introducing-postman-v11/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Intel Foundry Details 14A Process for 2026, Adds New Nodes for 2027 and Beyond",
+    "source": "https://www.anandtech.com/show/21495/intel-foundry-direct-connect-2024-14a-in-2026-new-nodes-in-2027-and-beyond"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Alphabet (GOOGL) earnings Q2 2024",
+    "source": "https://www.cnbc.com/2024/07/23/alphabet-googl-earnings-q2-2024.html"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Critical RCE Vulnerability in Fluent Bit Dubbed 'Linguistic Lumberjack'",
+    "source": "https://www.darkreading.com/cloud-security/critical-rce-vulnerability-in-fluent-bit-dubbed-linguistic-lumberjack"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Grafana 11.1 release: New features in dashboards, Loki, Prometheus, and more",
+    "source": "https://grafana.com/blog/2024/07/23/grafana-11.1-release/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Introducing GitLab 17.2 with Code Explanations and enhanced VSA",
+    "source": "https://about.gitlab.com/releases/2024/07/24/gitlab-17-2-released/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Researchers find a way to remotely hijack iPhones in Lockdown Mode",
+    "source": "https://arstechnica.com/security/2024/07/researchers-find-a-way-to-remotely-hijack-iphones-in-lockdown-mode/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Accelerating HPC: The Linux Foundation Announces the High-Performance Software Foundation",
+    "source": "https://www.linuxfoundation.org/press/hpsf-announcement"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Micron Begins Sampling 32Gb Monolithic Die, Paving the Way for 128GB DDR5 Modules",
+    "source": "https://www.anandtech.com/show/21494/micron-begins-sampling-32gb-monolithic-die-paving-the-way-for-128gb-ddr5-modules"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "AI SDK 3.2: Generative UI, Object & Tool Validation, and More",
+    "source": "https://vercel.com/blog/ai-sdk-3-2"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Google Cross-Cloud Network is now generally available",
+    "source": "https://cloud.google.com/blog/products/networking/cross-cloud-network-is-now-ga"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Neo4j and Microsoft Partner to Bring Native Graph Analytics to Microsoft Fabric",
+    "source": "https://neo4j.com/press-releases/neo4j-microsoft-fabric/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "ClickHouse Cloud is now available on Google Cloud Marketplace",
+    "source": "https://venturebeat.com/data-infrastructure/clickhouse-cloud-is-now-available-on-google-cloud-marketplace/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "NVIDIA Launches New AI-Powered GPU for Data Centers",
+    "source": "https://www.nvidia.com/en-us/data-center/h100/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "GitHub Copilot X Introduces Advanced Features for Developers",
+    "source": "https://github.blog/2023-10-23-github-copilot-x/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Microsoft Azure Expands AI Services with New Offerings",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-ai-services-expansion/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "PostgreSQL 16 Released with Major Performance Improvements",
+    "source": "https://www.postgresql.org/about/news/postgresql-16-released-2562/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Cloudflare Introduces New Tools for Serverless Applications",
+    "source": "https://blog.cloudflare.com/cloudflare-serverless-tools-launch/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Kubernetes 1.27 Released with New Features and Enhancements",
+    "source": "https://kubernetes.io/blog/2023/10/23/kubernetes-1-27-release/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Intel Announces New Chips for AI and Machine Learning",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chips-launch.html"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Red Hat Launches New OpenShift Features for Hybrid Cloud",
+    "source": "https://www.redhat.com/en/blog/red-hat-openshift-new-features-hybrid-cloud"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "New Vulnerabilities Discovered in Popular Web Frameworks",
+    "source": "https://www.securityweek.com/new-vulnerabilities-popular-web-frameworks/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "Apple Unveils New M3 Chips for MacBooks",
+    "source": "https://www.apple.com/newsroom/2023/10/apple-unveils-new-m3-chips/"
+  },
+  {
+    "date": "2025-11-25T04:01:14.652Z",
+    "headline": "GitLab Introduces New Security Features in Latest Update",
+    "source": "https://about.gitlab.com/releases/2023/10/23/gitlab-15-8-released/"
   }
 ]
