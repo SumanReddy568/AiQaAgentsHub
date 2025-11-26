@@ -1308,5 +1308,125 @@
     "date": "2025-11-25T13:09:06.457Z",
     "headline": "Oracle Cloud Infrastructure Expands Global Reach",
     "source": "https://www.oracle.com/news/2023/10/oracle-cloud-infrastructure-expansion/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Microsoft introduces Phi-3-vision, a multimodal small language model",
+    "source": "https://techcrunch.com/2024/05/21/microsoft-introduces-phi-3-vision-a-multimodal-small-language-model/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Google's Arm-based Axion CPUs are now generally available in Google Cloud",
+    "source": "https://cloud.google.com/blog/products/compute/googles-arm-based-axion-cpus-are-now-ga"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "GitLab patches critical vulnerability allowing account takeovers without user interaction",
+    "source": "https://about.gitlab.com/releases/2024/05/15/critical-security-release-gitlab-16-11-1-released/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Databricks acquires Lilac to help enterprises work with unstructured data",
+    "source": "https://techcrunch.com/2024/05/22/databricks-acquires-lilac-to-help-enterprises-work-with-unstructured-data/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Apple Reportedly Nearing Deal With OpenAI for iPhone Generative AI Features",
+    "source": "https://www.bloomberg.com/news/articles/2024-05-12/apple-closes-in-on-deal-with-openai-for-iphone-generative-ai-features"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Istio joins the C-suite of the CNCF by graduating",
+    "source": "https://www.cncf.io/announcements/2024/05/21/istio-joins-the-c-suite-of-the-cncf-by-graduating/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Intel builds world’s largest neuromorphic system to enable more sustainable AI",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-builds-worlds-largest-neuromorphic-system.html"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Project IDX, Google’s web-based development environment, is now in open beta",
+    "source": "https://blog.google/technology/developers/project-idx-open-beta/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "CISA Warns of Actively Exploited RCE Flaw in CrushFTP",
+    "source": "https://thehackernews.com/2024/05/cisa-warns-of-actively-exploited-rce.html"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Google releases PaliGemma, its first open vision language model",
+    "source": "https://blog.google/technology/developers/google-releases-open-vision-model-paligemma/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Microsoft introduces its first custom silicon, Cobalt 100, now in preview on Azure",
+    "source": "https://azure.microsoft.com/en-us/blog/new-azure-virtual-machines-and-advances-in-confidential-computing-and-ai-at-microsoft-build/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Next.js 14.2 Released with Production-Ready Turbopack and Client/Server Action Improvements",
+    "source": "https://nextjs.org/blog/next-14-2"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "US revokes licenses for Intel and Qualcomm to sell chips to Huawei",
+    "source": "https://www.reuters.com/technology/us-revokes-licenses-intel-qualcomm-sell-chips-huawei-sources-say-2024-05-07/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Snowflake to Acquire AI Observability Platform TruEra’s Technology and Key Personnel",
+    "source": "https://www.snowflake.com/news/snowflake-to-acquire-ai-observability-platform-trueras-technology-and-key-personnel-to-help-customers-deliver-trustworthy-and-effective-ai/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "NVIDIA Launches New AI-Powered Tools for Developers",
+    "source": "https://www.nvidia.com/en-us/deep-learning-ai/ai-tools/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "GitHub Enhances Copilot with New Features for Code Review",
+    "source": "https://github.blog/2023-10-25-github-copilot-code-review-update/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Apache Kafka 3.5 Released with New Features",
+    "source": "https://kafka.apache.org/downloads"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Google Cloud Introduces New Serverless Database Options",
+    "source": "https://cloud.google.com/blog/products/databases/serverless-database-options-launch"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Red Hat OpenShift 4.12 Released with Enhanced Security Features",
+    "source": "https://www.redhat.com/en/blog/whats-new-openshift-412"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "New Open Source Project Aims to Simplify Cloud-Native Development",
+    "source": "https://www.opensourcedevelopment.org/cloud-native-project-launch"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Intel Announces New Chip Architecture for AI Workloads",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chip-architecture.html"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "New Study Reveals Trends in Developer Tool Usage",
+    "source": "https://www.developertrends.com/study-developer-tools-usage/"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "Cisco Patches Critical Vulnerabilities in Networking Equipment",
+    "source": "https://www.cisco.com/c/en/us/support/security/critical-vulnerabilities.html"
+  },
+  {
+    "date": "2025-11-26T04:00:44.045Z",
+    "headline": "New Data Analytics Platform Launched for Small Businesses",
+    "source": "https://www.analyticsplatform.com/small-business-launch"
   }
 ]
