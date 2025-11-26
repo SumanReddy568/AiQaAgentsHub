@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "OpenAI Begins Rolling Out Content Provenance C2PA Standard to DALL-E 3",
-    "source": "https://openai.com/blog/content-credentials-for-dall-e-3"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "Bun v1.1 Released with Stable Windows Support and Single-File Executables",
-    "source": "https://bun.sh/blog/bun-v1.1"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "AWS Announces General Availability of IPv6-Only EKS Clusters",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/05/amazon-eks-ipv6-clusters/"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "New 'TunnelVision' Attack Bypasses Most VPNs Using DHCP Manipulation",
-    "source": "https://www.leviathansecurity.com/blog/tunnelvision"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "Open-Sora-Plan: A Community-Driven Roadmap to Replicate Sora-like Video Models",
-    "source": "https://github.com/PKU-YuanGroup/Open-Sora-Plan"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "Founders of Privacy-Focused Samourai Wallet Charged by U.S. DOJ",
-    "source": "https://www.justice.gov/usao-sdny/pr/samourai-wallet-founders-charged-and-arrested-money-laundering-and-unlicensed-money"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "Brave Browser Introduces 'Forgetful Browsing' to Auto-Clear Data on Site Close",
-    "source": "https://brave.com/blog/forgetful-browsing/"
-  },
-  {
-    "date": "2025-11-16T04:02:21.948Z",
-    "headline": "Google Releases TensorFlow 2.16 with Keras 3 as the Default Backend",
-    "source": "https://github.com/tensorflow/tensorflow/releases/tag/v2.16.1"
-  },
-  {
     "date": "2025-11-17T04:01:18.868Z",
     "headline": "Google AI Proposes 'Mixture-of-Depths' for More Efficient Transformer Models",
     "source": "https://deepmind.google/discover/blog/a-more-efficient-transformer-architecture-for-llms/"
@@ -1428,5 +1388,130 @@
     "date": "2025-11-26T04:00:44.045Z",
     "headline": "New Data Analytics Platform Launched for Small Businesses",
     "source": "https://www.analyticsplatform.com/small-business-launch"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Vercel Releases Next.js 15 Release Candidate",
+    "source": "https://vercel.com/blog/next-js-15-rc"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Oracle and Google Cloud Announce Multicloud Partnership",
+    "source": "https://news.oracle.com/news/announcement/oracle-database-at-google-cloud-2024-06-12/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Critical RCE Vulnerability in PHP (CVE-2024-4577) Actively Exploited on Windows Systems",
+    "source": "https://www.bleepingcomputer.com/news/security/critical-php-rce-vulnerability-exploited-in-the-wild/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Broadcom Ends Sale of Perpetual Licenses for All VMware Products",
+    "source": "https://www.broadcom.com/blog/vmware-by-broadcom-business-transformation"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Godot 4.3 Game Engine Released with Major Rendering and Usability Updates",
+    "source": "https://godotengine.org/article/godot-4-3-is-here/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Snowflake Introduces Cortex AI and AI & ML Studio for Enterprise LLM Development",
+    "source": "https://www.snowflake.com/blog/snowflake-summit-2024-live-blog/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Raspberry Pi Launches an 'AI Kit' Powered by a Hailo Accelerator",
+    "source": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Meta Unveils 'Chameleon', a Family of Early-Fusion Mixed-Modal Models",
+    "source": "https://ai.meta.com/blog/chameleon-meta-mixed-modal-models/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "ClickHouse Cloud Announces General Availability of Tiered Storage",
+    "source": "https://clickhouse.com/blog/tiered-storage-generally-available-in-clickhouse-cloud"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "GitLab 17.1 Released with Duo Chat GA and New CI/CD Components",
+    "source": "https://about.gitlab.com/releases/2024/06/13/gitlab-17-1-released/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "CISA Adds Zyxel NAS Vulnerabilities to Known Exploited List",
+    "source": "https://www.cisa.gov/news-events/alerts/2024/06/13/cisa-adds-two-known-exploited-vulnerabilities-kev-catalog"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Apple Unveils Dedicated 'Passwords' App for All Its Platforms",
+    "source": "https://techcrunch.com/2024/06/10/apple-launches-a-new-passwords-app-for-iphone-ipad-mac-and-vision-pro/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Tesla Shareholders Vote to Approve Elon Musk's $56 Billion Pay Package",
+    "source": "https://www.reuters.com/business/autos-transportation/tesla-shareholders-approve-musks-56-bln-pay-package-2024-06-13/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Adobe Firefly Image 3 Foundation Model Now Generally Available in Photoshop",
+    "source": "https://news.adobe.com/news/news-details/2024/New-Adobe-Firefly-Image-3-Foundation-Model-Now-Generally-Available/default.aspx"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "KubeVirt Project Releases Version 1.2.0 for Running VMs in Kubernetes",
+    "source": "https://kubevirt.io/release-notes/v1.2.0/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "NVIDIA Announces New AI Models for Healthcare Applications",
+    "source": "https://www.nvidia.com/en-us/news/healthcare-ai-models/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "GitHub Introduces New Features to Enhance Code Review Process",
+    "source": "https://github.blog/2023-10-24-new-code-review-features/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "AWS Launches New Data Analytics Tools for Real-Time Insights",
+    "source": "https://aws.amazon.com/blogs/aws/new-data-analytics-tools/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Microsoft Azure Expands Support for Kubernetes",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-kubernetes-service-updates/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "OpenAI Launches New Developer Tools for ChatGPT Integration",
+    "source": "https://openai.com/blog/chatgpt-developer-tools/"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Intel Announces New Line of Energy-Efficient Processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/energy-efficient-processors.html"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Google Cloud Introduces Enhanced Security Features for GKE",
+    "source": "https://cloud.google.com/blog/products/containers-kubernetes/gke-security-enhancements"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Red Hat Releases OpenShift 4.12 with New Developer Tools",
+    "source": "https://www.redhat.com/en/blog/openshift-4-12-released"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Cisco Launches New Security Solutions for Hybrid Workforces",
+    "source": "https://blogs.cisco.com/security/cisco-security-solutions-hybrid-workforce"
+  },
+  {
+    "date": "2025-11-26T13:10:55.259Z",
+    "headline": "Samsung Unveils New Exynos Chips for Mobile Devices",
+    "source": "https://www.samsung.com/global/galaxy/exynos/"
   }
 ]
