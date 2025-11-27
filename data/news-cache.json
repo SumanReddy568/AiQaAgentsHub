@@ -1,40 +1,5 @@
 [
   {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "Google AI Proposes 'Mixture-of-Depths' for More Efficient Transformer Models",
-    "source": "https://deepmind.google/discover/blog/a-more-efficient-transformer-architecture-for-llms/"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "DuckDB Reaches 1.0 Milestone, Declaring Stable API for Production Use",
-    "source": "https://duckdb.org/2024/06/11/announcing-duckdb-100.html"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "Cloudflare Unveils 'Firewall for AI' to Protect LLM Applications from Abuse",
-    "source": "https://blog.cloudflare.com/firewall-for-ai"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "Researchers Detail 'GhostRace' Attack Bypassing Speculative Execution Mitigations",
-    "source": "https://www.vusec.net/projects/ghostrace/"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "Ruff v0.5.0 Released, Unifying Python Linter and Formatter into a Single Tool",
-    "source": "https://astral.sh/blog/ruff-v0.5.0"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "WinterCG Publishes First Draft of a Common Minimum API for JavaScript Runtimes",
-    "source": "https://deno.com/blog/the-future-is-web-interoperable"
-  },
-  {
-    "date": "2025-11-17T04:01:18.868Z",
-    "headline": "HashiCorp Shareholders Approve $6.7 Billion Acquisition by IBM",
-    "source": "https://www.reuters.com/markets/deals/hashicorp-shareholders-vote-favor-ibms-67-billion-deal-2024-06-12/"
-  },
-  {
     "date": "2025-11-18T03:57:45.106Z",
     "headline": "Google Unveils 'Veo', a New Flagship Text-to-Video AI Model to Compete with OpenAI's Sora",
     "source": "https://deepmind.google/technologies/veo/"
@@ -1638,5 +1603,135 @@
     "date": "2025-11-27T03:57:32.623Z",
     "headline": "New JavaScript Framework Gains Popularity Among Developers",
     "source": "https://www.devcommunity.com/new-javascript-framework-gains-popularity/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "OpenAI's new flagship model, GPT-4o, is available to all users — and it's multimodal",
+    "source": "https://techcrunch.com/2024/05/13/openais-new-flagship-model-gpt-4o-is-available-to-all-users-and-its-multimodal/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Google’s Project Astra is a real-time, multimodal AI assistant",
+    "source": "https://www.theverge.com/2024/5/14/24155238/google-ai-astra-project-gemini-assistant"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Google announces Trillium, its sixth-generation TPU",
+    "source": "https://techcrunch.com/2024/05/14/google-announces-trillium-its-sixth-generation-tpu/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Gemini 1.5 Flash: A new, lightweight model for speed and efficiency",
+    "source": "https://developers.googleblog.com/2024/05/gemini-15-flash-a-new-lightweight-model-for-speed-and-efficiency.html"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Microsoft Azure Cobalt 100 Arm-based virtual machines are now generally available",
+    "source": "https://azure.microsoft.com/en-us/blog/microsoft-azure-cobalt-100-arm-based-virtual-machines-are-now-generally-available/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "The Second Beta of Android 15",
+    "source": "https://android-developers.googleblog.com/2024/05/the-second-beta-of-android-15.html"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Build production-ready AI with Google's latest models and Firebase Genkit",
+    "source": "https://firebase.blog/posts/2024/05/build-production-ready-ai-with-google-latest-models-and-firebase-genkit"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "AI Overviews in Search are rolling out now",
+    "source": "https://blog.google/products/search/ai-overviews-in-search-are-rolling-out/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Critical CrushFTP flaw lets hackers escape VFS and steal cloud keys",
+    "source": "https://www.bleepingcomputer.com/news/security/critical-crushftp-flaw-lets-hackers-escape-vfs-and-steal-cloud-keys/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Introducing PaliGemma, a new, open vision-language model",
+    "source": "https://developers.googleblog.com/2024/05/introducing-paligemma-a-new-open-vision-language-model.html"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "OpenAI and Reddit Partner",
+    "source": "https://openai.com/index/openai-and-reddit-partner/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Next.js 14.2",
+    "source": "https://nextjs.org/blog/next-14-2"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Intel reveals details for its next-generation Xeon 6 processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-vision-2024-day-1-news-keynote.html"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "PostgreSQL 16.3, 15.7, 14.12, 13.15, and 12.19 Released!",
+    "source": "https://www.postgresql.org/about/news/postgresql-163-157-1412-1315-and-1219-released-2832/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Astral is now a company",
+    "source": "https://astral.sh/blog/series-a"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "NVIDIA Launches New GPU Architecture for AI Workloads",
+    "source": "https://www.nvidia.com/en-us/news/press-releases/2023/nvidia-launches-new-gpu-architecture/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "GitHub Introduces Copilot for Pull Requests",
+    "source": "https://github.blog/2023-10-24-github-copilot-pull-requests/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "AWS Announces New Features for Lambda Functions",
+    "source": "https://aws.amazon.com/blogs/aws/aws-lambda-new-features/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Mozilla Releases Firefox 119 with Enhanced Privacy Features",
+    "source": "https://www.mozilla.org/en-US/firefox/119.0/releasenotes/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Apple Releases Security Updates for macOS and iOS",
+    "source": "https://support.apple.com/en-us/HT201222"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "OpenAI Releases New API for GPT-4",
+    "source": "https://openai.com/blog/gpt-4-api-release/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Microsoft Azure Updates Offer Enhanced Security Features",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-security-updates/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "New Open Source Framework for IoT Applications Launched",
+    "source": "https://iotframework.org/news/open-source-framework-launch/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Intel Announces New AI-Optimized Processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/ai-optimized-processors.html"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "New Version of Python Released with Performance Improvements",
+    "source": "https://www.python.org/downloads/release/python-3100/"
+  },
+  {
+    "date": "2025-11-27T13:08:47.238Z",
+    "headline": "Salesforce Launches New AI Features for CRM",
+    "source": "https://www.salesforce.com/news/2023/10/ai-features-launch/"
   }
 ]
