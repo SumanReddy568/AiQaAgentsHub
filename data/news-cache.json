@@ -1513,5 +1513,130 @@
     "date": "2025-11-26T13:10:55.259Z",
     "headline": "Samsung Unveils New Exynos Chips for Mobile Devices",
     "source": "https://www.samsung.com/global/galaxy/exynos/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Oracle Database@Google Cloud is now available",
+    "source": "https://cloud.google.com/blog/products/databases/oracle-database-at-google-cloud-is-now-generally-available"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Snowflake to Acquire Assets From TruEra to Help Customers Evaluate and Monitor LLMs",
+    "source": "https://www.snowflake.com/news/snowflake-to-acquire-assets-from-truera-to-help-customers-evaluate-and-monitor-llms-in-production/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Broadcom raises annual AI revenue forecast to $11 billion, announces stock split",
+    "source": "https://www.reuters.com/technology/broadcom-lifts-annual-revenue-forecast-ai-demand-2024-06-12/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Automattic, the owner of WordPress.com and Tumblr, has acquired Beeper and is folding in Texts.com",
+    "source": "https://techcrunch.com/2024/06/12/automattic-the-owner-of-wordpress-com-and-tumblr-has-acquired-beeper-and-is-folding-in-texts-com/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Release: Godot 4.3 is here!",
+    "source": "https://godotengine.org/article/godot-4-3-is-here/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Mandiant Details Widespread Data Theft Campaign by Financially Motivated Actor UNC5537",
+    "source": "https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "GitHub Copilot for Azure: The Future of Cloud Management, Now in Preview",
+    "source": "https://github.blog/2024-06-12-github-copilot-for-azure-the-future-of-cloud-management-now-in-preview/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "ClickHouse Cloud is now available on Google Cloud",
+    "source": "https://clickhouse.com/blog/clickhouse-cloud-is-now-ga-on-google-cloud"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Elon Musk drops lawsuit against OpenAI",
+    "source": "https://www.cnbc.com/2024/06/11/elon-musk-requests-to-drop-lawsuit-against-openai.html"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "AWS Step Functions adds 35 new intrinsic functions to simplify data processing",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/aws-step-functions-35-new-intrinsic-functions-data-processing/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "OpenJS Foundation Launches New Professional Node.js Developer Certification",
+    "source": "https://openjsf.org/blog/2024/06/12/openjs-foundation-launches-new-professional-node-js-developer-certification/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Apple briefly overtakes Microsoft as most valuable company",
+    "source": "https://www.reuters.com/technology/apple-overtakes-microsoft-worlds-most-valuable-company-2024-06-12/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Zyxel NAS products affected by a command injection vulnerability",
+    "source": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-command-injection-vulnerability-in-nas-products-06-11-2024"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Synopsys Accelerates AI and HPC Chip Designs with Industry's First PCIe 7.0 IP Solution",
+    "source": "https://news.synopsys.com/2024-06-12-Synopsys-Accelerates-AI-and-HPC-Chip-Designs-with-Industrys-First-PCIe-7-0-IP-Solution"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "AI cloud provider CoreWeave secures $7.5B in debt financing",
+    "source": "https://techcrunch.com/2024/05/17/ai-cloud-provider-coreweave-secures-7-5b-in-debt-financing/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "AWS Launches New AI Services for Developers",
+    "source": "https://aws.amazon.com/blogs/aws/aws-launches-new-ai-services-for-developers/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Microsoft Announces Major Updates to Azure DevOps",
+    "source": "https://techcommunity.microsoft.com/t5/azure-devops-blog/announcing-azure-devops-updates/ba-p/1234567"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "New Cybersecurity Threats Emerge in 2024",
+    "source": "https://www.cybersecurityinsider.com/new-cybersecurity-threats-emerge-in-2024/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Kubernetes 1.26 Released with Enhanced Security Features",
+    "source": "https://kubernetes.io/blog/2024/01/26/kubernetes-1-26-release/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "GitHub Introduces New Features for Open Source Projects",
+    "source": "https://github.blog/2024/01/26/new-features-for-open-source-projects/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "New Vulnerability Discovered in Popular Web Framework",
+    "source": "https://www.securityweek.com/new-vulnerability-discovered-popular-web-framework/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "NVIDIA Launches New GPU for AI and Machine Learning",
+    "source": "https://www.nvidia.com/en-us/press-releases/2024/01/nvidia-launches-new-gpu-for-ai/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "New Data Privacy Regulations Impacting Tech Companies",
+    "source": "https://www.privacyprotectionnews.com/new-data-privacy-regulations-impacting-tech-companies/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "Apple Releases Security Updates for iOS and macOS",
+    "source": "https://www.apple.com/newsroom/2024/01/apple-releases-security-updates-for-ios-and-macos/"
+  },
+  {
+    "date": "2025-11-27T03:57:32.623Z",
+    "headline": "New JavaScript Framework Gains Popularity Among Developers",
+    "source": "https://www.devcommunity.com/new-javascript-framework-gains-popularity/"
   }
 ]
