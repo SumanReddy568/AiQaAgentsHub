@@ -1733,5 +1733,140 @@
     "date": "2025-11-27T13:08:47.238Z",
     "headline": "Salesforce Launches New AI Features for CRM",
     "source": "https://www.salesforce.com/news/2023/10/ai-features-launch/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Scarlett Johansson says she is 'shocked, angered' over new ChatGPT voice that sounds 'eerily similar' to hers",
+    "source": "https://www.theverge.com/2024/05/20/24160839/scarlett-johansson-openai-chatgpt-voice-sky-samantha-morton-her"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Microsoft's first Copilot+ PCs are here",
+    "source": "https://www.theverge.com/2024/05/20/24159133/microsoft-copilot-plus-pc-arm-qualcomm-surface-laptop-pro"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "NVIDIA Announces Financial Results for First Quarter Fiscal 2025",
+    "source": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2025"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "CISA warns admins to patch critical Veeam auth bypass vulnerability",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-patch-critical-veeam-auth-bypass-vulnerability/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Microsoft's custom Cobalt 100 Arm-based processors are now generally available on Azure",
+    "source": "https://techcrunch.com/2024/05/21/microsofts-custom-cobalt-100-arm-based-processors-are-now-generally-available-on-azure/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Announcing Next.js 14.2",
+    "source": "https://nextjs.org/blog/next-14-2"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "OpenAI’s GPT-4o is now available in Azure AI Studio",
+    "source": "https://techcrunch.com/2024/05/21/openais-gpt-4o-is-now-available-in-azure-ai-studio/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Announcing the public preview of GitHub Copilot for Azure",
+    "source": "https://github.blog/2024-05-21-announcing-the-public-preview-of-github-copilot-for-azure/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Announcing Real-Time Intelligence in Microsoft Fabric",
+    "source": "https://www.microsoft.com/en-us/microsoft-fabric/blog/2024/05/21/announcing-real-time-intelligence-in-microsoft-fabric/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "SSID Confusion attack lets Wi-Fi snoops trick you into connecting to the wrong network",
+    "source": "https://arstechnica.com/security/2024/05/ssid-confusion-attack-lets-wi-fi-snoops-trick-you-into-connecting-to-the-wrong-network/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Introducing Dev Home: a new experience for all developers on Windows",
+    "source": "https://blogs.windows.com/windowsdeveloper/2024/05/21/introducing-dev-home-a-new-experience-for-all-developers-on-windows/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Justice Department Sues Live Nation-Ticketmaster for Monopolizing Markets Across the Live Concert Industry",
+    "source": "https://www.justice.gov/opa/pr/justice-department-sues-live-nation-ticketmaster-monopolizing-markets-across-live-concert"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "AWS announces general availability of Amazon Bedrock in the AWS Canada West (Calgary) Region",
+    "source": "https://press.aboutamazon.com/2024/5/aws-announces-general-availability-of-amazon-bedrock-in-the-aws-canada-west-calgary-region"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Team collaboration in Postman is now free and unlimited",
+    "source": "https://blog.postman.com/postman-collaboration-is-now-free/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "NVIDIA Launches New AI Models for Enhanced Image Generation",
+    "source": "https://www.nvidia.com/en-us/research/ai-models/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "AWS Introduces New Features for Amazon SageMaker",
+    "source": "https://aws.amazon.com/blogs/machine-learning/aws-sagemaker-new-features/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Microsoft Azure Expands Support for Kubernetes with New Features",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-kubernetes-service-new-features/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Google Cloud Introduces New Data Analytics Solutions",
+    "source": "https://cloud.google.com/blog/products/data-analytics/new-data-analytics-solutions"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "New Cybersecurity Measures Announced by Cisco",
+    "source": "https://blogs.cisco.com/security/cybersecurity-measures-announcement"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Red Hat's OpenShift 4.12 Released with Enhanced Developer Tools",
+    "source": "https://www.redhat.com/en/blog/openshift-4-12-released"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Intel Launches New Line of Energy-Efficient Processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/energy-efficient-processors.html"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "GitHub Enhances Security Features with New Dependency Scanning",
+    "source": "https://github.blog/2023-10-23-github-security-dependency-scanning/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Mozilla Releases Firefox 118 with Performance Improvements",
+    "source": "https://www.mozilla.org/en-US/firefox/118.0/releasenotes/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "New Open Source Project Aims to Simplify API Development",
+    "source": "https://opensource.com/article/23/10/api-development-tool"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Samsung Introduces New Memory Chips for AI Applications",
+    "source": "https://www.samsung.com/global/business/semiconductor/news/ai-memory-chips-launch"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Docker Announces New Features to Enhance Container Security",
+    "source": "https://www.docker.com/blog/docker-security-enhancements/"
+  },
+  {
+    "date": "2025-11-28T03:57:35.637Z",
+    "headline": "Slack Introduces New Workflow Builder Features",
+    "source": "https://slack.com/blog/news/slack-workflow-builder-updates"
   }
 ]
