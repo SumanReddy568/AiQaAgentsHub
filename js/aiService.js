@@ -1,106 +1,117 @@
 // js/aiService.js
 
-import { state } from './state.js';
-import { addApiCall, initDB } from './db.js'; // <-- import initDB
+import { state } from "./state.js";
+import { addApiCall, initDB } from "./db.js"; // <-- import initDB
 
 export async function fetchFromApi(prompt) {
-    // Route based on provider
-    const provider = state.provider || 'gemini';
-    
-    if (provider === 'deepseek') {
-        const apiKey = state.deepseekApiKey || state.apiKey;
-        if (!apiKey) throw new Error('DeepSeek API key not configured.');
-        const response = await fetch('https://api.deepseek.com/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: 'deepseek-chat',
-                messages: [
-                    { role: 'system', content: 'You are a helpful assistant.' },
-                    { role: 'user', content: prompt }
-                ],
-                stream: false
-            })
-        });
-        if (!response.ok) {
-            let errorText = `API Error: ${response.status}`;
-            try {
-                const errorData = await response.json();
-                errorText = errorData.error?.message || errorText;
-            } catch {}
-            throw new Error(errorText);
-        }
-        const result = await response.json();
-        const content = result.choices?.[0]?.message?.content || '';
-        const totalTokens = (result.usage?.prompt_tokens || 0) + (result.usage?.completion_tokens || 0);
-        return { content, usage: { totalTokenCount: totalTokens } };
-    } else if (provider === 'openrouter') {
-        const apiKey = state.openrouterApiKey || state.apiKey;
-        if (!apiKey) throw new Error('OpenRouter API key not configured.');
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: state.selectedModel || 'openai/gpt-4o',
-                messages: [
-                    { role: 'system', content: 'You are a helpful assistant.' },
-                    { role: 'user', content: prompt }
-                ]
-            })
-        });
-        if (!response.ok) {
-            let errorText = `API Error: ${response.status}`;
-            try {
-                const errorData = await response.json();
-                errorText = errorData.error?.message || errorText;
-            } catch {}
-            throw new Error(errorText);
-        }
-        const result = await response.json();
-        const content = result.choices?.[0]?.message?.content || '';
-        const totalTokens = (result.usage?.prompt_tokens || 0) + (result.usage?.completion_tokens || 0);
-        return { content, usage: { totalTokenCount: totalTokens } };
-    }
+  // Route based on provider
+  const provider = state.provider || "gemini";
 
-    // Default: Gemini
-    const apiKey = state.geminiApiKey || state.apiKey;
-    if (!apiKey) {
-        throw new Error('API key not configured. Please set one on the main page.');
-    }
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${state.selectedModel || 'gemini-2.5-flash'}:generateContent?key=${apiKey}`;
-
-    const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-                temperature: 1
-            }
-        })
+  if (provider === "deepseek") {
+    const apiKey = state.deepseekApiKey || state.apiKey;
+    if (!apiKey) throw new Error("DeepSeek API key not configured.");
+    const response = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: prompt },
+        ],
+        stream: false,
+      }),
     });
-
     if (!response.ok) {
+      let errorText = `API Error: ${response.status}`;
+      try {
         const errorData = await response.json();
-        throw new Error(errorData.error?.message || `API Error: ${response.status}`);
+        errorText = errorData.error?.message || errorText;
+      } catch {}
+      throw new Error(errorText);
     }
-
     const result = await response.json();
-    const content = result.candidates?.[0]?.content?.parts?.[0]?.text;
-    const usage = result.usageMetadata || { totalTokenCount: 0 };
+    const content = result.choices?.[0]?.message?.content || "";
+    const totalTokens =
+      (result.usage?.prompt_tokens || 0) +
+      (result.usage?.completion_tokens || 0);
+    return { content, usage: { totalTokenCount: totalTokens } };
+  } else if (provider === "openrouter") {
+    const apiKey = state.openrouterApiKey || state.apiKey;
+    if (!apiKey) throw new Error("OpenRouter API key not configured.");
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: state.selectedModel || "openai/gpt-4o",
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: prompt },
+          ],
+        }),
+      }
+    );
+    if (!response.ok) {
+      let errorText = `API Error: ${response.status}`;
+      try {
+        const errorData = await response.json();
+        errorText = errorData.error?.message || errorText;
+      } catch {}
+      throw new Error(errorText);
+    }
+    const result = await response.json();
+    const content = result.choices?.[0]?.message?.content || "";
+    const totalTokens =
+      (result.usage?.prompt_tokens || 0) +
+      (result.usage?.completion_tokens || 0);
+    return { content, usage: { totalTokenCount: totalTokens } };
+  }
 
-    return { content, usage };
+  // Default: Gemini
+  const apiKey = state.geminiApiKey || state.apiKey;
+  if (!apiKey) {
+    throw new Error("API key not configured. Please set one on the main page.");
+  }
+  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${
+    state.selectedModel || "gemini-2.5-flash"
+  }:generateContent?key=${apiKey}`;
+
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 1,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(
+      errorData.error?.message || `API Error: ${response.status}`
+    );
+  }
+
+  const result = await response.json();
+  const content = result.candidates?.[0]?.content?.parts?.[0]?.text;
+  const usage = result.usageMetadata || { totalTokenCount: 0 };
+
+  return { content, usage };
 }
 
 export async function getCodeExplanation(options) {
-    const { code, language, framework } = options;
-    const prompt = `
+  const { code, language, framework } = options;
+  const prompt = `
         Act as an expert Senior QA Automation Engineer providing a detailed code review and explanation for a junior engineer.
         The user has provided a code snippet written in ${language} using the ${framework} framework.
 
@@ -129,88 +140,86 @@ export async function getCodeExplanation(options) {
         \`\`\`
     `;
 
-    const startTime = Date.now(); // START TIMER
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime; // END TIMER
+  const startTime = Date.now(); // START TIMER
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime; // END TIMER
 
-    await initDB(); // <-- ensure DB is ready before saving
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: 0,
-        type: 'explainer',
-        duration: duration // ADD DURATION
-    }).catch(err => console.error("DB save failed:", err));
+  await initDB(); // <-- ensure DB is ready before saving
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: 0,
+    type: "explainer",
+    duration: duration, // ADD DURATION
+  }).catch((err) => console.error("DB save failed:", err));
 
-    return content;
+  return content;
 }
 
 export async function generateAiLocators(htmlContent) {
-    const prompt = `Analyze this HTML. Identify key interactive elements. For each element, provide the most robust cssSelector and xpath. Prioritize selectors using id, data-testid, name, or other unique attributes. Return ONLY a valid JSON object following this exact schema: {"recommendations": [{"element": "description", "cssSelector": "selector", "xpath": "selector", "priority": "high|medium|low", "explanation": "reasoning"}]}.
+  const prompt = `Analyze this HTML. Identify key interactive elements. For each element, provide the most robust cssSelector and xpath. Prioritize selectors using id, data-testid, name, or other unique attributes. Return ONLY a valid JSON object following this exact schema: {"recommendations": [{"element": "description", "cssSelector": "selector", "xpath": "selector", "priority": "high|medium|low", "explanation": "reasoning"}]}.
     HTML: \`\`\`html\n${htmlContent}\n\`\`\``;
 
-    const startTime = Date.now(); // START TIMER
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime; // END TIMER
-    let recommendations = [];
+  const startTime = Date.now(); // START TIMER
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime; // END TIMER
+  let recommendations = [];
 
-    try {
-        // UPDATED: This now cleans the string before parsing, making it robust.
-        const cleanJsonString = (str) => {
-            if (!str) return null;
-            const match = str.match(/```json\s*([\s\S]*?)\s*```/);
-            return match ? match[1] : str;
-        };
+  try {
+    // UPDATED: This now cleans the string before parsing, making it robust.
+    const cleanJsonString = (str) => {
+      if (!str) return null;
+      const match = str.match(/```json\s*([\s\S]*?)\s*```/);
+      return match ? match[1] : str;
+    };
 
-        const cleanedContent = cleanJsonString(content);
-        const parsed = JSON.parse(cleanedContent);
-        recommendations = parsed.recommendations || [];
+    const cleanedContent = cleanJsonString(content);
+    const parsed = JSON.parse(cleanedContent);
+    recommendations = parsed.recommendations || [];
+  } catch (e) {
+    console.error("Could not parse JSON from AI response:", e);
+    console.error("Problematic AI response content:", content); // Log the bad response for debugging
+    throw new Error("The AI returned an invalid format. Please try again.");
+  }
 
-    } catch (e) {
-        console.error("Could not parse JSON from AI response:", e);
-        console.error("Problematic AI response content:", content); // Log the bad response for debugging
-        throw new Error("The AI returned an invalid format. Please try again.");
-    }
+  await initDB(); // <-- ensure DB is ready before saving
+  // Save to DB
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: recommendations.length,
+    type: "locator",
+    duration: duration, // ADD DURATION
+  }).catch((err) => console.error("DB save failed:", err));
 
-    await initDB(); // <-- ensure DB is ready before saving
-    // Save to DB
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: recommendations.length,
-        type: 'locator',
-        duration: duration // ADD DURATION
-    }).catch(err => console.error("DB save failed:", err));
-
-    return recommendations.map(rec => ({ ...rec, isAI: true }));
+  return recommendations.map((rec) => ({ ...rec, isAI: true }));
 }
 
 export async function getChatResponse(query, htmlContent) {
-    const prompt = `You are a web testing assistant. The user provides HTML and a question.
-    HTML Context: \`\`\`html\n${htmlContent || 'No HTML provided.'}\n\`\`\`
+  const prompt = `You are a web testing assistant. The user provides HTML and a question.
+    HTML Context: \`\`\`html\n${htmlContent || "No HTML provided."}\n\`\`\`
     User Question: ${query}
     Provide a concise, helpful response using markdown.`;
 
-    // Note: getChatResponse doesn't need the JSON cleaning because it expects markdown text.
-    const startTime = Date.now(); // START TIMER
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime; // END TIMER
+  // Note: getChatResponse doesn't need the JSON cleaning because it expects markdown text.
+  const startTime = Date.now(); // START TIMER
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime; // END TIMER
 
+  await initDB(); // <-- ensure DB is ready before saving
+  // Save to DB
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: 0,
+    type: "chat",
+    duration: duration, // ADD DURATION
+  }).catch((err) => console.error("DB save failed:", err));
 
-    await initDB(); // <-- ensure DB is ready before saving
-    // Save to DB
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: 0,
-        type: 'chat',
-        duration: duration // ADD DURATION
-    }).catch(err => console.error("DB save failed:", err));
-
-    return content;
+  return content;
 }
 
 /**
@@ -222,7 +231,7 @@ export async function getChatResponse(query, htmlContent) {
  * @returns {Promise<{diff: string, summary: string}>}
  */
 export async function getDiffAnalysis({ left, right, type }) {
-    const prompt = `
+  const prompt = `
         Compare the following two ${type.toUpperCase()} files/contents.
         1. Show a unified diff (in markdown code block, language "diff") highlighting all differences.
         2. Provide a concise AI summary of the key differences, breaking down added, removed, and changed items.
@@ -244,53 +253,55 @@ export async function getDiffAnalysis({ left, right, type }) {
         ${right}
         \`\`\`
     `;
-    const startTime = Date.now();
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime;
+  const startTime = Date.now();
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime;
 
-    await initDB(); // <-- ensure DB is ready before saving
-    // Save to DB
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: 0,
-        type: 'diff',
-        duration
-    }).catch(err => console.error("DB save failed:", err));
+  await initDB(); // <-- ensure DB is ready before saving
+  // Save to DB
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: 0,
+    type: "diff",
+    duration,
+  }).catch((err) => console.error("DB save failed:", err));
 
-    // Parse out diff and summary
-    let diff = '', summary = '';
-    if (content) {
-        console.log("Raw API response:", content);
+  // Parse out diff and summary
+  let diff = "",
+    summary = "";
+  if (content) {
+    console.log("Raw API response:", content);
 
-        // More robust regex that handles empty diffs better
-        const diffMatch = content.match(/```diff\s*([\s\S]*?)```/);
+    // More robust regex that handles empty diffs better
+    const diffMatch = content.match(/```diff\s*([\s\S]*?)```/);
 
-        if (diffMatch) {
-            diff = diffMatch[1].trim();
-            // If diff is just the file headers with no actual differences, set a clearer message
-            if (diff.match(/^---.*\n\+\+\+.*$/) && !diff.includes('@@ ')) {
-                diff = "No differences found between files.";
-            }
-        } else {
-            // If no diff block found but we have content, something might be wrong with the format
-            console.warn("No diff block found in response");
-            diff = "No formatted diff available.";
-        }
-
-        const summaryMatch = content.match(/## AI Summary\s*([\s\S]*)$/i);
-        if (summaryMatch) {
-            summary = summaryMatch[1].trim();
-        } else {
-            // If we have content but no summary section, use all content after removing any diff blocks
-            summary = content.replace(/## Diff\s*```diff[\s\S]*?```/g, '').trim();
-        }
+    if (diffMatch) {
+      diff = diffMatch[1].trim();
+      // If diff is just the file headers with no actual differences, set a clearer message
+      if (diff.match(/^---.*\n\+\+\+.*$/) && !diff.includes("@@ ")) {
+        diff = "No differences found between files.";
+      }
     } else {
-        summary = "The AI returned an empty response. Please check your API key and model configuration.";
+      // If no diff block found but we have content, something might be wrong with the format
+      console.warn("No diff block found in response");
+      diff = "No formatted diff available.";
     }
 
-    return { diff, summary };
+    const summaryMatch = content.match(/## AI Summary\s*([\s\S]*)$/i);
+    if (summaryMatch) {
+      summary = summaryMatch[1].trim();
+    } else {
+      // If we have content but no summary section, use all content after removing any diff blocks
+      summary = content.replace(/## Diff\s*```diff[\s\S]*?```/g, "").trim();
+    }
+  } else {
+    summary =
+      "The AI returned an empty response. Please check your API key and model configuration.";
+  }
+
+  return { diff, summary };
 }
 
 /**
@@ -299,13 +310,13 @@ export async function getDiffAnalysis({ left, right, type }) {
  * @returns {Promise<string>} - Markdown formatted analysis
  */
 export async function analyzePagePerformance(metrics) {
-    // Format metrics into readable blocks
-    const loadTime = metrics.timing.duration.toFixed(2);
-    const transferSize = (metrics.resources.sizes.transfer / 1024).toFixed(2);
-    const resourceCount = metrics.resources.totalResources;
-    const fcp = metrics.paint?.firstContentfulPaint?.toFixed(2) || 'N/A';
+  // Format metrics into readable blocks
+  const loadTime = metrics.timing.duration.toFixed(2);
+  const transferSize = (metrics.resources.sizes.transfer / 1024).toFixed(2);
+  const resourceCount = metrics.resources.totalResources;
+  const fcp = metrics.paint?.firstContentfulPaint?.toFixed(2) || "N/A";
 
-    const prompt = `
+  const prompt = `
         Analyze these web performance metrics and provide recommendations:
         
         Load Time: ${loadTime}ms
@@ -327,7 +338,7 @@ export async function analyzePagePerformance(metrics) {
         - **Load Time**: ${loadTime}ms
         - **Resources**: ${resourceCount} items loaded
         - **Transfer Size**: ${transferSize}KB
-        - **First Paint**: ${metrics.paint?.firstPaint?.toFixed(2) || 'N/A'}ms
+        - **First Paint**: ${metrics.paint?.firstPaint?.toFixed(2) || "N/A"}ms
         - **First Contentful Paint**: ${fcp}ms
 
         ## Performance Score
@@ -343,21 +354,21 @@ export async function analyzePagePerformance(metrics) {
         Brief analysis of any relevant technical metrics.
     `;
 
-    const startTime = Date.now();
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime;
+  const startTime = Date.now();
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime;
 
-    await initDB(); // <-- ensure DB is ready before saving
-    // Save to DB
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        type: 'perf',
-        duration
-    }).catch(err => console.error("DB save failed:", err));
+  await initDB(); // <-- ensure DB is ready before saving
+  // Save to DB
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    type: "perf",
+    duration,
+  }).catch((err) => console.error("DB save failed:", err));
 
-    return content;
+  return content;
 }
 
 /**
@@ -367,7 +378,7 @@ export async function analyzePagePerformance(metrics) {
  * @returns {Promise<string>} - The optimized code snippet.
  */
 export async function optimizeCodeWithSnippet(code, language) {
-    const prompt = `
+  const prompt = `
     You are an expert code optimizer. The user provides a code snippet in ${language}.
     Your task:
     - Remove all redundant, dead, or duplicate code.
@@ -382,21 +393,21 @@ export async function optimizeCodeWithSnippet(code, language) {
     \`\`\`
         `;
 
-    const startTime = Date.now();
-    const { content, usage } = await fetchFromApi(prompt);
-    const duration = Date.now() - startTime;
+  const startTime = Date.now();
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime;
 
-    await initDB();
-    await addApiCall({
-        timestamp: new Date(),
-        model: state.selectedModel,
-        totalTokens: usage.totalTokenCount,
-        locatorsGenerated: 0,
-        type: 'optimizer',
-        duration
-    }).catch(err => console.error("DB save failed:", err));
+  await initDB();
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: 0,
+    type: "optimizer",
+    duration,
+  }).catch((err) => console.error("DB save failed:", err));
 
-    return content;
+  return content;
 }
 
 /**
@@ -409,21 +420,104 @@ export async function optimizeCodeWithSnippet(code, language) {
  * @param {number} responseTokens - (optional) Response tokens
  */
 export async function logTechNewsApiCall({
-    duration = 0,
-    count = 0,
-    totalTokens = 0,
-    promptTokens = 0,
-    responseTokens = 0
+  duration = 0,
+  count = 0,
+  totalTokens = 0,
+  promptTokens = 0,
+  responseTokens = 0,
 } = {}) {
-    await initDB();
-    await addApiCall({
-        timestamp: new Date(),
-        model: 'external-news',
-        totalTokens,
-        promptTokens,
-        responseTokens,
-        locatorsGenerated: count,
-        type: 'technews',
-        duration
-    }).catch(err => console.error("DB save failed (technews):", err));
+  await initDB();
+  await addApiCall({
+    timestamp: new Date(),
+    model: "external-news",
+    totalTokens,
+    promptTokens,
+    responseTokens,
+    locatorsGenerated: count,
+    type: "technews",
+    duration,
+  }).catch((err) => console.error("DB save failed (technews):", err));
+}
+
+/**
+ * Generates test cases based on file content and specified test type.
+ * @param {string} fileContent - The content of the file to generate test cases for.
+ * @param {string} testType - The type of test cases to generate (e.g., functional, unit, integration).
+ * @param {string} additionalDetails - Any additional details or requirements for the test cases.
+ * @returns {Promise<string>} - The generated test cases in markdown format.
+ */
+export async function getTestCaseResponse(
+  fileContent,
+  testType,
+  additionalDetails
+) {
+  const systemPrompt = `You are an expert QA engineer specializing in creating comprehensive test cases. Generate detailed, actionable test cases based on the provided code/documentation.`;
+
+  const testTypeDescriptions = {
+    functional:
+      "Functional testing validates that the software operates according to specified requirements",
+    unit: "Unit testing focuses on testing individual components or functions in isolation",
+    integration:
+      "Integration testing validates that different modules/services work together correctly",
+    e2e: "End-to-end testing validates complete user workflows from start to finish",
+    api: "API testing validates REST/GraphQL endpoints, request/response formats, and error handling",
+    security:
+      "Security testing identifies vulnerabilities, authentication issues, and data protection",
+    performance:
+      "Performance testing validates system behavior under load, response times, and scalability",
+    accessibility:
+      "Accessibility testing ensures the application is usable by people with disabilities",
+    regression:
+      "Regression testing ensures existing functionality still works after changes",
+    smoke:
+      "Smoke testing performs basic checks to verify critical functionality works",
+  };
+
+  const prompt = `
+Generate comprehensive ${testType} test cases for the following code/documentation.
+
+${testTypeDescriptions[testType]}
+
+FILES CONTENT:
+${fileContent}
+
+${additionalDetails ? `\nADDITIONAL REQUIREMENTS:\n${additionalDetails}` : ""}
+
+Please generate detailed test cases with the following structure for EACH test case:
+
+Test Case [Number]: [Clear, descriptive title]
+Type: ${testType}
+Priority: [High/Medium/Low]
+Description: [What this test validates]
+Steps:
+1. [First step]
+2. [Second step]
+3. [Continue...]
+Expected Result: [What should happen]
+
+Generate at least 8-15 comprehensive test cases covering:
+- Happy path scenarios
+- Edge cases
+- Error handling
+- Boundary conditions
+- Negative test cases
+
+Make each test case specific, actionable, and easy to execute.
+`;
+
+  const startTime = Date.now();
+  const { content, usage } = await fetchFromApi(prompt);
+  const duration = Date.now() - startTime;
+
+  await initDB();
+  await addApiCall({
+    timestamp: new Date(),
+    model: state.selectedModel,
+    totalTokens: usage.totalTokenCount,
+    locatorsGenerated: 0,
+    type: "testcase",
+    duration,
+  }).catch((err) => console.error("DB save failed (testcase):", err));
+
+  return content;
 }

@@ -131,6 +131,22 @@
                         outages—auto-refreshed every visit.</p>
                     <span class="mt-4 inline-block font-semibold text-yellow-700">View News &rarr;</span>
                 </a>
+                <!-- Test Case Generator Card - NEW -->
+                <a href="testcasegen.html"
+                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block border-2 border-purple-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">NEW</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800">Test Case Generator</h3>
+                    <p class="text-slate-600 mt-2">Upload files and generate comprehensive test cases for any testing
+                        type
+                    </p>
+                    <span class="mt-4 inline-block font-semibold text-purple-600">Launch Agent &rarr;</span>
+                </a>
                 <a href="locator.html"
                     class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
                     <h3 class="text-2xl font-bold text-slate-800">Locator Generator</h3>
@@ -200,14 +216,16 @@
                     <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
                 <div id="deepseek-key-section" class="hidden">
-                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API Key</label>
+                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API
+                        Key</label>
                     <input type="password" id="deepseek-api-key-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="Enter your DeepSeek API key">
                     <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
                 <div id="openrouter-key-section" class="hidden">
-                    <label for="openrouter-api-key-input" class="block text-sm font-semibold mb-2">OpenRouter API Key</label>
+                    <label for="openrouter-api-key-input" class="block text-sm font-semibold mb-2">OpenRouter API
+                        Key</label>
                     <input type="password" id="openrouter-api-key-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="Enter your OpenRouter API key">
@@ -227,7 +245,8 @@
                     <input type="text" id="custom-model-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="e.g., openai/gpt-4o, deepseek-chat">
-                    <p class="text-xs mt-2">Enter your model identifier (e.g., openai/gpt-4o for OpenRouter, deepseek-chat for DeepSeek).</p>
+                    <p class="text-xs mt-2">Enter your model identifier (e.g., openai/gpt-4o for OpenRouter,
+                        deepseek-chat for DeepSeek).</p>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-2">Theme Preference</label>

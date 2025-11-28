@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Generator - AI QA Agent Hub</title>
+    <link rel="icon" type="image/png" href="assets/ai_png.png">
+    <link rel="shortcut icon" type="image/png" href="assets/ai_png.png">
+    <link rel="apple-touch-icon" href="assets/ai_png.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .file-upload-area {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .file-upload-area:hover {
+            border-color: #667eea;
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        .file-upload-area.dragover {
+            border-color: #667eea;
+            background-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .test-case-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .test-case-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .horizontal-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .horizontal-layout {
+                flex-direction: row;
+            }
+
+            .input-section,
+            .output-section {
+                flex: 1 1 0%;
+                min-height: 0;
+            }
+        }
+
+        .input-section,
+        .output-section {
+            flex: 1 1 0%;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-content {
+            flex: 1 1 0%;
+            min-height: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .scrollable-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sticky-button-container {
+            position: sticky;
+            bottom: 0;
+            padding: 1rem 0 0 0;
+            margin-top: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            flex: 1;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .file-list-container {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body class="gradient-bg">
+    <div class="flex flex-1 min-h-screen flex-col">
+        <!-- Navigation -->
+        <header class="glass-effect shadow-lg sticky top-0 z-50">
+            <div class="max-w-full mx-auto px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-white rounded-xl shadow-lg flex items-center justify-center"
+                            style="width:48px;height:48px;">
+                            <img src="assets/ai_png.png" alt="AI Logo" width="24" height="24"
+                                style="display:block;max-width:100%;max-height:100%;">
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-slate-800">Test Case Generator Agent</h1>
+                            <p class="text-sm text-slate-600">AI-powered test automation assistant</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a href="index.html"
+                            class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
+                            &larr; Home
+                        </a>
+                        <a href="dashboard.html" title="Usage Dashboard"
+                            class="p-2 rounded-xl hover:bg-white/50 transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20V10"></path>
+                                <path d="M18 20V4"></path>
+                                <path d="M6 20V16"></path>
+                            </svg>
+                        </a>
+                        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+                            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
+                            title="Check Gemini API Status">
+                            Gemini Status
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex flex-1 min-h-0 max-w-full mx-auto w-full px-6 py-6">
+            <div class="horizontal-layout flex-1 min-h-0">
+                <!-- Input Section -->
+                <div class="input-section min-h-0">
+                    <div class="glass-effect rounded-2xl shadow-xl p-6 section-content min-h-0 h-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold text-slate-800">Input Configuration</h2>
+                            <button onclick="clearAllFiles()"
+                                class="text-sm text-red-600 hover:text-red-800 font-medium">
+                                Clear All
+                            </button>
+                        </div>
+
+                        <div class="scrollable-content custom-scrollbar">
+                            <!-- File Upload -->
+                            <div class="mb-4">
+                                <h3 class="text-lg font-medium text-slate-700 mb-3">Upload Files</h3>
+                                <div id="fileUploadArea" class="file-upload-area mb-3">
+                                    <svg class="mx-auto h-12 w-12 text-slate-400 mb-3" stroke="currentColor" fill="none"
+                                        viewBox="0 0 48 48">
+                                        <path
+                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <p class="text-slate-700 mb-2 font-medium">Drag & drop files here or click to browse
+                                    </p>
+                                    <p class="text-sm text-slate-500">Supports: .txt, .md, .js, .py, .java, .json, .xml,
+                                        .csv,
+                                        .html, .css, .tsx, .jsx, .ts</p>
+                                    <input type="file" id="fileInput" multiple
+                                        accept=".txt,.md,.js,.py,.java,.json,.xml,.csv,.html,.css,.tsx,.jsx,.ts"
+                                        class="hidden">
+                                </div>
+
+                                <div id="fileList" class="file-list-container space-y-2 custom-scrollbar mb-4"></div>
+                            </div>
+
+                            <!-- Configuration -->
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Test Case Type</label>
+                                    <select id="testType"
+                                        class="w-full bg-white border-2 border-slate-200 text-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors">
+                                        <option value="functional">Functional Testing</option>
+                                        <option value="unit">Unit Testing</option>
+                                        <option value="integration">Integration Testing</option>
+                                        <option value="e2e">End-to-End Testing</option>
+                                        <option value="api">API Testing</option>
+                                        <option value="security">Security Testing</option>
+                                        <option value="performance">Performance Testing</option>
+                                        <option value="accessibility">Accessibility Testing</option>
+                                        <option value="regression">Regression Testing</option>
+                                        <option value="smoke">Smoke Testing</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Additional Details
+                                        (Optional)</label>
+                                    <textarea id="additionalDetails" rows="3"
+                                        placeholder="Add any specific requirements, edge cases, or context you want the test cases to cover..."
+                                        class="w-full bg-white border-2 border-slate-200 text-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-400 transition-colors custom-scrollbar resize-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sticky-button-container">
+                            <button id="generateBtn"
+                                class="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                                <span class="flex items-center justify-center space-x-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
+                                    </svg>
+                                    <span>Generate Test Cases</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="output-section min-h-0">
+                    <div class="glass-effect rounded-2xl shadow-xl p-6 flex flex-col h-full">
+                        <!-- Action Buttons at Top -->
+                        <div class="action-buttons w-full mb-4">
+                            <button id="exportCsvBtn"
+                                class="action-btn bg-green-100 hover:bg-green-200 text-green-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                disabled>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span>Export CSV</span>
+                            </button>
+                            <button id="exportJsonBtn"
+                                class="action-btn bg-blue-100 hover:bg-blue-200 text-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                disabled>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                                </svg>
+                                <span>Export JSON</span>
+                            </button>
+                            <button id="copyAllBtn"
+                                class="action-btn bg-purple-100 hover:bg-purple-200 text-purple-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                disabled>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                                <span>Copy All</span>
+                            </button>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="text-xl font-semibold text-slate-800 mb-4">Generated Test Cases</h2>
+                        <!-- Output Container -->
+                        <div id="output-container" class="flex-1 overflow-y-auto custom-scrollbar -mr-2 pr-2 relative">
+                            <div id="empty-state"
+                                class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 py-12">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <path
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <p class="mt-4 text-center font-semibold">Your generated test cases will appear here</p>
+                                <p class="text-sm text-slate-400 mt-2">Upload files and click "Generate Test Cases" to
+                                    get started</p>
+                            </div>
+                            <div id="testCaseList" class="space-y-4 hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+    </div>
+
+    <script>
+        // Required for pdf.js to work correctly
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js`;
+
+        // Clear all files function
+        window.clearAllFiles = function () {
+            if (window.uploadedFiles && window.uploadedFiles.length > 0) {
+                window.uploadedFiles = [];
+                window.displayFileList();
+                window.showNotification("All files cleared", "success");
+            }
+        };
+    </script>
+    <!-- Agent Script -->
+    <script type="module" src="js/testcasegen.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script>
+        // Dynamically update status button name/tooltips based on provider
+        function updateProviderStatusBtn() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const statusBtn = document.getElementById('status-btn');
+            if (!statusBtn) return;
+
+            if (provider === 'openrouter') {
+                statusBtn.textContent = "OpenRouter Status";
+                statusBtn.title = "Check OpenRouter API Status";
+                statusBtn.href = "openrouterStatus.html";
+            } else if (provider === 'deepseek') {
+                statusBtn.textContent = "DeepSeek Status";
+                statusBtn.title = "Check DeepSeek API Status";
+                statusBtn.href = "deepseekStatus.html";
+            } else {
+                statusBtn.textContent = "Gemini Status";
+                statusBtn.title = "Check Gemini API Status";
+                statusBtn.href = "geminiStatus.html";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
+        window.addEventListener('storage', updateProviderStatusBtn);
+
+        function displayFileList() {
+            const fileList = document.getElementById('fileList');
+            const uploadArea = document.getElementById('fileUploadArea');
+            if (window.uploadedFiles && window.uploadedFiles.length > 0) {
+                uploadArea.style.display = 'none';
+            } else {
+                uploadArea.style.display = '';
+            }
+        }
+        window.displayFileList = displayFileList;
+        document.getElementById('fileInput').addEventListener('change', function () {
+            if (this.files.length > 0) {
+                if (!window.uploadedFiles) window.uploadedFiles = [];
+                for (let file of this.files) {
+                    window.uploadedFiles.push(file);
+                }
+                window.displayFileList();
+            }
+        });
+    </script>
+</body>
+
+</html>
