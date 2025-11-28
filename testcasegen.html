@@ -350,27 +350,24 @@
     <script>
         // Dynamically update status button name/tooltips based on provider
         function updateProviderStatusBtn() {
-            const provider = localStorage.getItem('ai-provider') || 'gemini';
-            const statusBtn = document.getElementById('status-btn');
-            if (!statusBtn) return;
+                const provider = localStorage.getItem('ai-provider') || 'gemini';
+                const statusBtn = document.getElementById('status-btn');
+                if (!statusBtn) return;
 
-            if (provider === 'openrouter') {
-                statusBtn.textContent = "OpenRouter Status";
-                statusBtn.title = "Check OpenRouter API Status";
-                statusBtn.href = "openrouterStatus.html";
-            } else if (provider === 'deepseek') {
-                statusBtn.textContent = "DeepSeek Status";
-                statusBtn.title = "Check DeepSeek API Status";
-                statusBtn.href = "deepseekStatus.html";
-            } else {
-                statusBtn.textContent = "Gemini Status";
-                statusBtn.title = "Check Gemini API Status";
-                statusBtn.href = "geminiStatus.html";
+                if (provider === 'openrouter') {
+                    statusBtn.textContent = "OpenRouter Status";
+                    statusBtn.title = "Check OpenRouter API Status";
+                } else if (provider === 'deepseek') {
+                    statusBtn.textContent = "DeepSeek Status";
+                    statusBtn.title = "Check DeepSeek API Status";
+                } else {
+                    statusBtn.textContent = "Gemini Status";
+                    statusBtn.title = "Check Gemini API Status";
+                }
             }
-        }
 
-        document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
-        window.addEventListener('storage', updateProviderStatusBtn);
+            document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
+            window.addEventListener('storage', updateProviderStatusBtn);
 
         function displayFileList() {
             const fileList = document.getElementById('fileList');
