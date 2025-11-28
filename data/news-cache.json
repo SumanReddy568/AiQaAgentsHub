@@ -1,40 +1,5 @@
 [
   {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "Google Unveils 'Veo', a New Flagship Text-to-Video AI Model to Compete with OpenAI's Sora",
-    "source": "https://deepmind.google/technologies/veo/"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "OpenTofu, the Open Source Terraform Fork, Reaches General Availability with Version 1.7.0",
-    "source": "https://opentofu.org/blog/opentofu-is-going-ga/"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "Critical Path Traversal Vulnerability (CVE-2024-4956) Disclosed in Keycloak IAM",
-    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-4956"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "Astro Web Framework Releases v4.8 with Built-in i18n Routing and View Transition Improvements",
-    "source": "https://astro.build/blog/astro-4-8/"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "Microsoft Introduces Copilot-Powered 'Workload-Specific' Debugging in Visual Studio",
-    "source": "https://devblogs.microsoft.com/visualstudio/introducing-workload-specific-debugging-with-visual-studio-and-copilot/"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "IBM Details 'Kookaburra' Modular Quantum Processor and Roadmap to Fault-Tolerance",
-    "source": "https://research.ibm.com/blog/quantum-development-roadmap-2033"
-  },
-  {
-    "date": "2025-11-18T03:57:45.106Z",
-    "headline": "Tesla Launches Dojo 3: A Next‑Generation AI Accelerator for Autopilot",
-    "source": "https://www.cnn.com/2025/11/17/business/tesla-dojo-3"
-  },
-  {
     "date": "2025-11-19T03:57:18.019Z",
     "headline": "Mamba-2 Unveiled as a New Class of Selective State Space Models with Quadratic Complexity",
     "source": "https://www.haiper.ai/blog/mamba-2-a-new-state-space-model-that-rivals-the-transformer/"
@@ -1868,5 +1833,135 @@
     "date": "2025-11-28T03:57:35.637Z",
     "headline": "Slack Introduces New Workflow Builder Features",
     "source": "https://slack.com/blog/news/slack-workflow-builder-updates"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Nvidia surpasses Microsoft as world's most valuable company",
+    "source": "https://www.reuters.com/technology/nvidia-surpasses-microsoft-worlds-most-valuable-company-2024-06-18/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "OpenAI cofounder Ilya Sutskever is starting a new AI company",
+    "source": "https://www.theverge.com/2024/6/19/24180829/ilya-sutskever-safe-superintelligence-ssi-openai"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Databricks to acquire Tabular, a data management startup from the creators of Apache Iceberg",
+    "source": "https://techcrunch.com/2024/06/04/databricks-to-acquire-tabular-a-data-management-startup-from-the-creators-of-apache-iceberg/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "TellMeThePass ransomware exploits recent PHP CGI vulnerability",
+    "source": "https://www.bleepingcomputer.com/news/security/tellmethepass-ransomware-exploits-recent-php-cgi-vulnerability/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Bun is now a supported package manager on Vercel",
+    "source": "https://vercel.com/blog/bun-is-now-a-supported-package-manager-on-vercel"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Amazon Route 53 now supports DNS over QUIC",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-route-53-supports-dns-quic/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Open Programmable Infrastructure (OPI) Project Announces Version 1.0 of Key Specifications",
+    "source": "https://www.linuxfoundation.org/press/open-programmable-infrastructure-opi-project-announces-version-1-0-of-key-specifications"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "New Gemini Code Assist features help developers build higher-quality applications, faster",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/new-gemini-code-assist-features-help-developers-build-better-apps-faster"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Slack's new AI features can summarize channels and recap threads",
+    "source": "https://www.theverge.com/2024/6/18/24180026/slack-ai-features-recap-summaries-search"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Dell, Super Micro to provide server racks for xAI's supercomputer",
+    "source": "https://www.reuters.com/technology/dell-super-micro-provide-server-racks-xais-supercomputer-musk-says-2024-06-19/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Apple is discontinuing its Pay Later service in the US",
+    "source": "https://techcrunch.com/2024/06/17/apple-is-discontinuing-its-pay-later-service-in-the-u-s/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Google DeepMind’s ‘Safe-RLHF’ trains less harmful LLMs without sacrificing helpfulness",
+    "source": "https://venturebeat.com/ai/google-deepminds-safe-rlhf-trains-less-harmful-llms-without-sacrificing-helpfulness/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "PostgresML raises $4.7M to let you add AI-powered features to your app with just SQL",
+    "source": "https://techcrunch.com/2024/06/18/postgresml-raises-4-7m-to-let-you-add-ai-powered-features-to-your-app-with-just-sql/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Amazon earmarks another $230M for startups building generative AI apps on AWS",
+    "source": "https://techcrunch.com/2024/06/18/amazon-earmarks-another-230m-for-startups-building-generative-ai-apps-on-aws/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "NVIDIA Launches New AI-Powered Supercomputer for Climate Research",
+    "source": "https://www.nvidia.com/en-us/research/ai-supercomputer-climate/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "GitHub Introduces Copilot Chat for Enhanced Developer Collaboration",
+    "source": "https://github.blog/2023-10-24-github-copilot-chat-launch/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "AWS Announces New AI Services for Financial Institutions",
+    "source": "https://aws.amazon.com/blogs/aws/aws-ai-services-financial-institutions/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Microsoft Azure Introduces New Data Analytics Tools",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-data-analytics-tools-launch/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "OpenAI Releases New Version of DALL-E with Improved Image Generation",
+    "source": "https://openai.com/dall-e-2-release/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Google Cloud Expands Its AI Offerings with Vertex AI Updates",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-updates"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Apple Announces New Security Features for iOS 17",
+    "source": "https://www.apple.com/newsroom/2023/10/apple-ios-17-security-updates/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "IBM Launches New Quantum Computing Platform for Developers",
+    "source": "https://www.ibm.com/blogs/research/2023/10/ibm-quantum-developer-platform/"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Intel Unveils New Chip Architecture for AI Workloads",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chip-architecture-launch.html"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Slack Enhances API with New Features for Developers",
+    "source": "https://slack.com/blog/news/slack-api-updates"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Cisco Releases Critical Security Update for Networking Devices",
+    "source": "https://www.cisco.com/c/en/us/support/security/critical-security-update.html"
+  },
+  {
+    "date": "2025-11-28T13:07:02.202Z",
+    "headline": "Docker Introduces New Features for Container Management",
+    "source": "https://www.docker.com/blog/docker-container-management-update/"
   }
 ]
