@@ -40,7 +40,7 @@
                                 <path d="M6 20V16"></path>
                             </svg>
                         </a>
-                        <a href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+                        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
                             class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
                             title="Check Gemini API Status">
                             Gemini Status
@@ -125,6 +125,28 @@
         <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
         <script type="module" src="js/codeOptimizer.js"></script>
         <script src="js/theme-switcher.js"></script>
+        <script>
+            // Dynamically update status button name/tooltips based on provider
+            function updateProviderStatusBtn() {
+                const provider = localStorage.getItem('ai-provider') || 'gemini';
+                const statusBtn = document.getElementById('status-btn');
+                if (!statusBtn) return;
+
+                if (provider === 'openrouter') {
+                    statusBtn.textContent = "OpenRouter Status";
+                    statusBtn.title = "Check OpenRouter API Status";
+                } else if (provider === 'deepseek') {
+                    statusBtn.textContent = "DeepSeek Status";
+                    statusBtn.title = "Check DeepSeek API Status";
+                } else {
+                    statusBtn.textContent = "Gemini Status";
+                    statusBtn.title = "Check Gemini API Status";
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
+            window.addEventListener('storage', updateProviderStatusBtn);
+        </script>
     </div>
 </body>
 

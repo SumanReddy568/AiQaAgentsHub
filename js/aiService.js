@@ -6,6 +6,7 @@ import { addApiCall, initDB } from './db.js'; // <-- import initDB
 export async function fetchFromApi(prompt) {
     // Route based on provider
     const provider = state.provider || 'gemini';
+    
     if (provider === 'deepseek') {
         const apiKey = state.deepseekApiKey || state.apiKey;
         if (!apiKey) throw new Error('DeepSeek API key not configured.');
@@ -22,6 +23,35 @@ export async function fetchFromApi(prompt) {
                     { role: 'user', content: prompt }
                 ],
                 stream: false
+            })
+        });
+        if (!response.ok) {
+            let errorText = `API Error: ${response.status}`;
+            try {
+                const errorData = await response.json();
+                errorText = errorData.error?.message || errorText;
+            } catch {}
+            throw new Error(errorText);
+        }
+        const result = await response.json();
+        const content = result.choices?.[0]?.message?.content || '';
+        const totalTokens = (result.usage?.prompt_tokens || 0) + (result.usage?.completion_tokens || 0);
+        return { content, usage: { totalTokenCount: totalTokens } };
+    } else if (provider === 'openrouter') {
+        const apiKey = state.openrouterApiKey || state.apiKey;
+        if (!apiKey) throw new Error('OpenRouter API key not configured.');
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: state.selectedModel || 'openai/gpt-4o',
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant.' },
+                    { role: 'user', content: prompt }
+                ]
             })
         });
         if (!response.ok) {

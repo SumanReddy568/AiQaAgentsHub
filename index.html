@@ -67,12 +67,12 @@
             </svg>
         </button>
 
-        <a href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
             class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
             title="Check Gemini API Status">
             Gemini Status
         </a>
-        <a href="geminiDocs.html" target="_blank" rel="noopener noreferrer"
+        <a id="docs-btn" href="geminiDocs.html" target="_blank" rel="noopener noreferrer"
             class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
             title="Check Gemini API Docs">
             Gemini Docs
@@ -189,24 +189,31 @@
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none">
                         <option value="gemini" selected>Google Gemini</option>
                         <option value="deepseek">DeepSeek</option>
+                        <option value="openrouter">OpenRouter</option>
                     </select>
                 </div>
-                <div>
+                <div id="gemini-key-section">
                     <label for="api-key-input" class="block text-sm font-semibold mb-2">Gemini API Key</label>
                     <input type="password" id="api-key-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="Enter your Gemini API key">
                     <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
-                <div>
-                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API
-                        Key</label>
+                <div id="deepseek-key-section" class="hidden">
+                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API Key</label>
                     <input type="password" id="deepseek-api-key-input"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                         placeholder="Enter your DeepSeek API key">
                     <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
-                <div>
+                <div id="openrouter-key-section" class="hidden">
+                    <label for="openrouter-api-key-input" class="block text-sm font-semibold mb-2">OpenRouter API Key</label>
+                    <input type="password" id="openrouter-api-key-input"
+                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        placeholder="Enter your OpenRouter API key">
+                    <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
+                </div>
+                <div id="gemini-model-section">
                     <label for="model-select" class="block text-sm font-semibold mb-2">AI Model</label>
                     <select id="model-select"
                         class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none">
@@ -214,6 +221,13 @@
                         <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Recommended)</option>
                         <option value="gemini-pro">Gemini Pro (Legacy)</option>
                     </select>
+                </div>
+                <div id="custom-model-section" class="hidden">
+                    <label for="custom-model-input" class="block text-sm font-semibold mb-2">Model Name</label>
+                    <input type="text" id="custom-model-input"
+                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        placeholder="e.g., openai/gpt-4o, deepseek-chat">
+                    <p class="text-xs mt-2">Enter your model identifier (e.g., openai/gpt-4o for OpenRouter, deepseek-chat for DeepSeek).</p>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-2">Theme Preference</label>
@@ -249,17 +263,23 @@
     <script>
         let geminiStatusInterval = null;
 
-        function getGeminiSettings() {
-            // Use the same keys as in aiService.js
-            const apiKey = localStorage.getItem('gemini-api-key');
+        function getAiSettings() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const geminiKey = localStorage.getItem('gemini-api-key');
+            const deepseekKey = localStorage.getItem('deepseek-api-key');
+            const openrouterKey = localStorage.getItem('openrouter-api-key');
             const selectedModel = localStorage.getItem('selected-model') || 'gemini-2.5-flash';
-            return { apiKey, selectedModel };
+            let apiKey = '';
+            if (provider === 'deepseek') apiKey = deepseekKey;
+            else if (provider === 'openrouter') apiKey = openrouterKey;
+            else apiKey = geminiKey;
+            return { provider, apiKey, selectedModel };
         }
 
-        async function checkGeminiStatus() {
+        async function checkAiStatus() {
             const dot = document.getElementById('gemini-status-dot');
             const label = document.getElementById('gemini-status-label');
-            const { apiKey, selectedModel } = getGeminiSettings();
+            const { provider, apiKey, selectedModel } = getAiSettings();
 
             if (!apiKey) {
                 dot.className = "inline-block w-3 h-3 rounded-full bg-gray-400";
@@ -270,61 +290,61 @@
             }
 
             try {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
-                const resp = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: "ping" }] }],
-                        generationConfig: { temperature: 0 }
-                    })
-                });
+                let resp, errorMsg = "";
+                if (provider === 'gemini') {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
+                    resp = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: "ping" }] }],
+                            generationConfig: { temperature: 0 }
+                        })
+                    });
+                } else if (provider === 'deepseek') {
+                    const apiUrl = 'https://api.deepseek.com/chat/completions';
+                    resp = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: selectedModel || 'deepseek-chat',
+                            messages: [{ role: 'user', content: 'ping' }],
+                            stream: false
+                        })
+                    });
+                } else if (provider === 'openrouter') {
+                    const apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+                    resp = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: selectedModel || 'openai/gpt-4o',
+                            messages: [{ role: 'user', content: 'ping' }]
+                        })
+                    });
+                }
 
-                if (resp.ok) {
+                if (resp && resp.ok) {
                     dot.className = "inline-block w-3 h-3 rounded-full bg-green-500";
                     label.textContent = "Online";
                     label.className = "text-xs font-semibold text-green-600 dark:text-green-400";
                     label.removeAttribute('title');
                 } else {
-                    let errorData, errorMsg = "";
+                    let errorData;
                     try { errorData = await resp.json(); } catch { }
                     if (errorData && errorData.error && errorData.error.message) {
                         errorMsg = errorData.error.message;
                     }
-                    if (
-                        resp.status === 403 &&
-                        errorData &&
-                        errorData.error &&
-                        errorData.error.status === "PERMISSION_DENIED"
-                    ) {
-                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
-                        label.textContent = "Invalid API Key";
-                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
-                        label.title = errorMsg || "Invalid API Key";
-                    } else if (resp.status === 429) {
-                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
-                        label.textContent = "Rate Limited";
-                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
-                        label.title = errorMsg || "Rate Limited";
-                    } else if (
-                        resp.status === 503 &&
-                        errorMsg.toLowerCase().includes("model is overloaded")
-                    ) {
-                        dot.className = "inline-block w-3 h-3 rounded-full bg-orange-500";
-                        label.textContent = "Gemini Service Down";
-                        label.className = "text-xs font-semibold text-orange-600 dark:text-orange-400";
-                        label.title = errorMsg;
-                    } else if (resp.status >= 500) {
-                        dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
-                        label.textContent = "Offline";
-                        label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
-                        label.title = errorMsg || "Offline";
-                    } else {
-                        dot.className = "inline-block w-3 h-3 rounded-full bg-yellow-400";
-                        label.textContent = "Degraded";
-                        label.className = "text-xs font-semibold text-yellow-700 dark:text-yellow-400";
-                        label.title = errorMsg || "Degraded";
-                    }
+                    dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
+                    label.textContent = "Offline";
+                    label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
+                    label.title = errorMsg || "Offline";
                 }
             } catch (e) {
                 dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
@@ -336,8 +356,8 @@
 
         function startGeminiStatusPolling() {
             if (geminiStatusInterval) return;
-            checkGeminiStatus();
-            geminiStatusInterval = setInterval(checkGeminiStatus, 30000);
+            checkAiStatus();
+            geminiStatusInterval = setInterval(checkAiStatus, 30000);
         }
 
         function stopGeminiStatusPolling() {
@@ -347,7 +367,6 @@
             }
         }
 
-        // Only poll when page is visible/active
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
                 startGeminiStatusPolling();
@@ -356,7 +375,6 @@
             }
         });
 
-        // Start polling if page is visible on load
         if (document.visibilityState === 'visible') {
             startGeminiStatusPolling();
         }
@@ -398,6 +416,36 @@
                 }, 300);
             });
         });
+    </script>
+    <script>
+        // Dynamically update button names/tooltips based on provider
+        function updateProviderButtons() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const statusBtn = document.getElementById('status-btn');
+            const docsBtn = document.getElementById('docs-btn');
+            if (!statusBtn || !docsBtn) return;
+
+            if (provider === 'openrouter') {
+                statusBtn.textContent = "OpenRouter Status";
+                statusBtn.title = "Check OpenRouter API Status";
+                docsBtn.textContent = "OpenRouter Docs";
+                docsBtn.title = "Check OpenRouter API Docs";
+            } else if (provider === 'deepseek') {
+                statusBtn.textContent = "DeepSeek Status";
+                statusBtn.title = "Check DeepSeek API Status";
+                docsBtn.textContent = "DeepSeek Docs";
+                docsBtn.title = "Check DeepSeek API Docs";
+            } else {
+                statusBtn.textContent = "Gemini Status";
+                statusBtn.title = "Check Gemini API Status";
+                docsBtn.textContent = "Gemini Docs";
+                docsBtn.title = "Check Gemini API Docs";
+            }
+        }
+
+        // Call on load and whenever settings change
+        document.addEventListener('DOMContentLoaded', updateProviderButtons);
+        window.addEventListener('storage', updateProviderButtons); // In case settings change in another tab
     </script>
 </body>
 

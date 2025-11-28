@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini API Status | AI QA Agent Hub</title>
+    <title id="status-title">Gemini API Status | AI QA Agent Hub</title>
     <link rel="icon" type="image/png" href="assets/ai_png.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
             <div class="flex items-center justify-between h-16">
                 <a href="index.html" class="flex items-center space-x-3">
                     <img src="assets/ai_png.png" alt="AI Logo" class="w-8 h-8">
-                    <span class="font-semibold text-slate-800">AI QA Agent Hub</span>
+                    <span class="font-semibold text-slate-800" id="nav-provider-label">AI QA Agent Hub</span>
                 </a>
                 <div class="flex items-center space-x-4">
                     <a href="index.html" class="text-slate-600 hover:text-slate-800 transition-colors">
@@ -36,8 +36,9 @@
     <main class="pt-20 px-4 sm:px-6 lg:px-8 pb-8">
         <div class="max-w-7xl mx-auto">
             <header class="mb-8">
-                <h1 class="text-3xl font-bold text-slate-800">Gemini API Status</h1>
-                <p class="text-slate-600 mt-2">Real-time status information for the Gemini API service.</p>
+                <h1 class="text-3xl font-bold text-slate-800" id="main-title">Gemini API Status</h1>
+                <p class="text-slate-600 mt-2" id="main-desc">Real-time status information for the Gemini API service.
+                </p>
             </header>
 
             <!-- Status iframe container with loading state -->
@@ -55,11 +56,48 @@
     <!-- Footer -->
     <footer class="bg-white/10 backdrop-blur-md mt-8">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-slate-600 text-sm">
+            <p class="text-center text-slate-600 text-sm" id="footer-note">
                 This page embeds the official Gemini API status dashboard from Google AI Studio.
             </p>
         </div>
     </footer>
+
+    <script>
+        // Dynamically set provider status page
+        window.addEventListener('DOMContentLoaded', () => {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const mainTitle = document.getElementById('main-title');
+            const mainDesc = document.getElementById('main-desc');
+            const statusFrame = document.getElementById('status-frame');
+            const footerNote = document.getElementById('footer-note');
+            const navLabel = document.getElementById('nav-provider-label');
+            const statusTitle = document.getElementById('status-title');
+
+            if (provider === 'openrouter') {
+                mainTitle.textContent = "OpenRouter API Status";
+                mainDesc.textContent = "Real-time status information for the OpenRouter API service.";
+                statusFrame.src = "https://status.openrouter.ai/";
+                footerNote.textContent = "This page embeds the official OpenRouter API status dashboard.";
+                navLabel.textContent = "AI QA Agent Hub (OpenRouter)";
+                statusTitle.textContent = "OpenRouter API Status | AI QA Agent Hub";
+            } else if (provider === 'deepseek') {
+                mainTitle.textContent = "DeepSeek API Status";
+                mainDesc.textContent = "Real-time status information for the DeepSeek API service.";
+                statusFrame.src = "https://status.deepseek.com/"; // Use actual DeepSeek status URL if available
+                footerNote.textContent = "This page embeds the official DeepSeek API status dashboard.";
+                navLabel.textContent = "AI QA Agent Hub (DeepSeek)";
+                statusTitle.textContent = "DeepSeek API Status | AI QA Agent Hub";
+            } else {
+                // Default: Gemini
+                mainTitle.textContent = "Gemini API Status";
+                mainDesc.textContent = "Real-time status information for the Gemini API service.";
+                statusFrame.src = "https://aistudio.google.com/status";
+                footerNote.textContent = "This page embeds the official Gemini API status dashboard from Google AI Studio.";
+                navLabel.textContent = "AI QA Agent Hub";
+                statusTitle.textContent = "Gemini API Status | AI QA Agent Hub";
+            }
+        });
+    </script>
 </body>
 
 </html>
