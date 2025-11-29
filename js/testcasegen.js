@@ -399,7 +399,8 @@ async function handleGenerate() {
     currentTokens = tokensUsed;
     currentCost = cost;
 
-    // Log to database
+    // The agent now handles logging, so this is removed to prevent double counting.
+    /*
     await initDB();
     await addApiCall({
       timestamp: Date.now(),
@@ -408,6 +409,7 @@ async function handleGenerate() {
       type: "testcasegen",
       locatorsGenerated: generatedTestCases.length,
     });
+    */
 
     updateStats(generatedTestCases.length);
 

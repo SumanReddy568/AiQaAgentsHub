@@ -38,10 +38,11 @@ export async function fetchFromApi(
     }
     const result = await response.json();
     const content = result.choices?.[0]?.message?.content || "";
-    const totalTokens =
-      (result.usage?.prompt_tokens || 0) +
-      (result.usage?.completion_tokens || 0);
-    return { content, usage: { totalTokenCount: totalTokens } };
+    const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+    usage.totalTokenCount =
+      usage.total_tokens ||
+      (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
+    return { content, usage };
   } else if (provider === "openrouter") {
     const apiKey = state.openrouterApiKey || state.apiKey;
     if (!apiKey) throw new Error("OpenRouter API key not configured.");
@@ -72,10 +73,11 @@ export async function fetchFromApi(
     }
     const result = await response.json();
     const content = result.choices?.[0]?.message?.content || "";
-    const totalTokens =
-      (result.usage?.prompt_tokens || 0) +
-      (result.usage?.completion_tokens || 0);
-    return { content, usage: { totalTokenCount: totalTokens } };
+    const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+    usage.totalTokenCount =
+      usage.total_tokens ||
+      (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
+    return { content, usage };
   }
 
   // Default: Gemini
@@ -152,6 +154,8 @@ export async function getCodeExplanation(options) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: 0,
     type: "explainer",
     duration: duration, // ADD DURATION
@@ -192,6 +196,8 @@ export async function generateAiLocators(htmlContent) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: recommendations.length,
     type: "locator",
     duration: duration, // ADD DURATION
@@ -217,6 +223,8 @@ export async function getChatResponse(query, htmlContent) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: 0,
     type: "chat",
     duration: duration, // ADD DURATION
@@ -266,6 +274,8 @@ export async function getDiffAnalysis({ left, right, type }) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: 0,
     type: "diff",
     duration,
@@ -367,6 +377,8 @@ export async function analyzePagePerformance(metrics) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     type: "perf",
     duration,
   }).catch((err) => console.error("DB save failed:", err));
@@ -405,6 +417,8 @@ export async function optimizeCodeWithSnippet(code, language) {
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: 0,
     type: "optimizer",
     duration,

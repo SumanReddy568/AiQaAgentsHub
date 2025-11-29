@@ -56,173 +56,28 @@
             </div>
         </header>
 
-        <!-- Key Metrics Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5 mb-8">
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total API Calls</h2>
-                <p id="total-calls" class="stat-value text-blue-600 dark:text-blue-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-total-calls"></canvas>
+        <!-- Model Usage -->
+        <div class="dashboard-card mt-8">
+            <h2 class="card-title">Usage Breakdown by Model</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
+                <div class="relative h-64 md:h-80">
+                    <canvas id="model-usage-chart"></canvas>
                 </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Tokens Used
-                </h2>
-                <p id="total-tokens" class="stat-value text-purple-600 dark:text-purple-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-total-tokens"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Tokens/Call
-                </h2>
-                <p id="avg-tokens" class="stat-value text-cyan-600 dark:text-cyan-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-avg-tokens"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Estimated Cost
-                </h2>
-                <p id="estimated-cost" class="stat-value text-amber-600 dark:text-amber-400">$0.00</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-cost"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Locator Calls
-                </h2>
-                <p id="locator-calls" class="stat-value text-green-600 dark:text-green-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-locator"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Chat Calls</h2>
-                <p id="chat-calls" class="stat-value text-pink-600 dark:text-pink-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-chat"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Explainer Calls
-                </h2>
-                <p id="explainer-calls" class="stat-value text-indigo-600 dark:text-indigo-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-explainer"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Optimizer Calls
-                </h2>
-                <p id="optimizer-calls" class="stat-value text-lime-600 dark:text-lime-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-optimizer"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Diff Checker Calls
-                </h2>
-                <p id="diff-checker-calls" class="stat-value text-teal-600 dark:text-teal-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-diff"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Performance Checker
-                    Calls
-                </h2>
-                <p id="perf-calls" class="stat-value text-orange-600 dark:text-orange-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-perf"></canvas>
-                </div>
-            </div>
-            <div class="stat-card group">
-                <h2 class="stat-title text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tech News Calls</h2>
-                <p id="technews-calls" class="stat-value text-sky-600 dark:text-sky-400">0</p>
-                <div class="mt-3 h-12">
-                    <canvas id="spark-technews"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Performance Spike Graph -->
-        <div class="dashboard-card mb-8">
-            <h2 class="card-title text-slate-800 dark:text-slate-100">Real-time Performance Spikes</h2>
-            <div class="mt-6 h-64">
-                <canvas id="performance-spike-chart"></canvas>
-            </div>
-        </div>
-
-        <!-- Call Distribution & Agent Performance -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">Call Distribution Over Time</h2>
-                <div class="mt-6 h-72">
-                    <canvas id="calls-timeline-chart"></canvas>
-                </div>
-            </div>
-
-            <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">Agent Performance</h2>
-                <div class="mt-6 overflow-auto max-h-72">
+                <div class="overflow-x-auto">
                     <table class="w-full text-left">
-                        <thead
-                            class="border-b-2 border-slate-200 dark:border-slate-700 sticky top-0 bg-white dark:bg-slate-800">
+                        <thead class="border-b-2 border-slate-200 dark:border-slate-700">
                             <tr>
-                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Agent</th>
-                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Calls</th>
-                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">P90 Time (ms)
+                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Model Name
                                 </th>
-                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Trend</th>
+                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">API Calls
+                                </th>
+                                <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Total
+                                    Tokens</th>
                             </tr>
                         </thead>
-                        <tbody id="agent-performance-body">
+                        <tbody id="model-stats-body">
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Token Usage Analysis -->
-        <div class="dashboard-card mb-8">
-            <h2 class="card-title text-slate-800 dark:text-slate-100">Token Usage Analysis</h2>
-            <div class="mt-6 h-80">
-                <canvas id="token-analysis-chart"></canvas>
-            </div>
-        </div>
-
-        <!-- Model Usage & Response Time -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div class="dashboard-card lg:col-span-2">
-                <h2 class="card-title">Usage Breakdown by Model</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
-                    <div class="relative h-64 md:h-80">
-                        <canvas id="model-usage-chart"></canvas>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left">
-                            <thead class="border-b-2 border-slate-200 dark:border-slate-700">
-                                <tr>
-                                    <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Model Name
-                                    </th>
-                                    <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">API Calls
-                                    </th>
-                                    <th class="p-3 text-sm font-semibold text-slate-600 dark:text-slate-400">Total
-                                        Tokens</th>
-                                </tr>
-                            </thead>
-                            <tbody id="model-stats-body">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-card">
-                <h2 class="card-title text-slate-800 dark:text-slate-100">Response Time Distribution</h2>
-                <div class="mt-6 h-80">
-                    <canvas id="response-time-chart"></canvas>
                 </div>
             </div>
         </div>

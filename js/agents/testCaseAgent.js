@@ -202,6 +202,8 @@ TEST CASE GENERATION GUIDELINES:
     timestamp: new Date(),
     model: state.selectedModel,
     totalTokens: usage.totalTokenCount,
+    promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+    responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
     locatorsGenerated: 0,
     type: "testcasegen",
     duration,
