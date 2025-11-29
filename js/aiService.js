@@ -1,6 +1,67 @@
 // js/aiService.js
 import { state } from "./state.js";
 
+const DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
+const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+const GEMINI_API_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/";
+
+async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
+  let lastError;
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options);
+
+      // If response is ok, return it
+      if (response.ok) {
+        return response;
+      }
+
+      // Don't retry on client errors (4xx), except for 429 (Too Many Requests)
+      if (
+        response.status >= 400 &&
+        response.status < 500 &&
+        response.status !== 429
+      ) {
+        let errorText = `API Error: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorText = errorData.error?.message || errorText;
+        } catch (e) {
+          // Ignore if response is not json
+        }
+        throw new Error(errorText); // Fail immediately for non-retriable client errors
+      }
+
+      // For server errors (5xx) or 429, prepare to retry
+      lastError = new Error(`API Error: ${response.status}`);
+      try {
+        const errorData = await response.json();
+        lastError = new Error(
+          errorData.error?.message || `API Error: ${response.status}`
+        );
+      } catch (e) {
+        // Ignore if response is not json
+      }
+    } catch (error) {
+      lastError = error;
+      // This will catch network errors and non-retriable client errors
+      if (error.message.startsWith("API Error: 4")) {
+        // Non-retriable as thrown above
+        throw error;
+      }
+    }
+
+    if (i < retries - 1) {
+      const delay = initialDelay * Math.pow(2, i);
+      console.warn(
+        `Request failed. Retrying in ${delay}ms... (${i + 1}/${retries})`
+      );
+      await new Promise((res) => setTimeout(res, delay));
+    }
+  }
+  throw lastError; // All retries failed
+}
+
 export async function fetchFromApi(
   prompt,
   systemPrompt = "You are a helpful assistant."
@@ -11,7 +72,7 @@ export async function fetchFromApi(
   if (provider === "deepseek") {
     const apiKey = state.deepseekApiKey || state.apiKey;
     if (!apiKey) throw new Error("DeepSeek API key not configured.");
-    const response = await fetch("https://api.deepseek.com/chat/completions", {
+    const response = await fetchWithRetry(DEEPSEEK_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,23 +105,20 @@ export async function fetchFromApi(
   } else if (provider === "openrouter") {
     const apiKey = state.openrouterApiKey || state.apiKey;
     if (!apiKey) throw new Error("OpenRouter API key not configured.");
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: state.selectedModel || "openai/gpt-4o",
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: prompt },
-          ],
-        }),
-      }
-    );
+    const response = await fetchWithRetry(OPENROUTER_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: state.selectedModel || "openai/gpt-4o",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: prompt },
+        ],
+      }),
+    });
     if (!response.ok) {
       let errorText = `API Error: ${response.status}`;
       try {
@@ -83,11 +141,11 @@ export async function fetchFromApi(
   if (!apiKey) {
     throw new Error("API key not configured. Please set one on the main page.");
   }
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${
+  const apiUrl = `${GEMINI_API_URL_BASE}${
     state.selectedModel || "gemini-2.5-flash"
   }:generateContent?key=${apiKey}`;
 
-  const response = await fetch(apiUrl, {
+  const response = await fetchWithRetry(apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

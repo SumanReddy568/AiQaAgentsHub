@@ -1,201 +1,258 @@
 // news.js
-import { state } from './state.js';
-import { fetchFromApi} from './aiService.js';
-import {logTechNewsApiCall} from './agents/techNewAgent.js';
-import { loadSettingsFromStorage } from './settings.js';
+import { state } from "./state.js";
+import { fetchFromApi } from "./aiService.js";
+import { logTechNewsApiCall } from "./agents/techNewAgent.js";
+import { loadSettingsFromStorage } from "./settings.js";
 
-const newsList = document.getElementById('news-list');
-const loading = document.getElementById('news-loading');
-const errorDiv = document.getElementById('news-error');
+const newsList = document.getElementById("news-list");
+const loading = document.getElementById("news-loading");
+const errorDiv = document.getElementById("news-error");
 
 // External API Keys
-const NEWS_API_KEY = '40a582d4d4fc4c038f6d425213d09f83';
-const NEWSDATA_API_KEY = 'pub_872dd00f93e04da988383949bebd2aa5';
+const NEWS_API_KEY = "40a582d4d4fc4c038f6d425213d09f83";
+const NEWSDATA_API_KEY = "pub_872dd00f93e04da988383949bebd2aa5";
 
 // ==============================
 // 1️⃣ Fetch from NewsAPI.org (multiple companies + topics)
 // ==============================
 function getNewsApiRequestCount() {
-    const today = getTodayDate();
-    const requestCountKey = `newsApiRequestCount_${today}`;
-    return parseInt(localStorage.getItem(requestCountKey) || '0', 10);
+  const today = getTodayDate();
+  const requestCountKey = `newsApiRequestCount_${today}`;
+  return parseInt(localStorage.getItem(requestCountKey) || "0", 10);
 }
 
 function incrementNewsApiRequestCount() {
-    const today = getTodayDate();
-    const requestCountKey = `newsApiRequestCount_${today}`;
-    const currentCount = getNewsApiRequestCount();
-    localStorage.setItem(requestCountKey, currentCount + 1);
+  const today = getTodayDate();
+  const requestCountKey = `newsApiRequestCount_${today}`;
+  const currentCount = getNewsApiRequestCount();
+  localStorage.setItem(requestCountKey, currentCount + 1);
 }
 
 async function fetchNewsApiData() {
-    const maxRequestsPerDay = 50;
-    const currentRequestCount = getNewsApiRequestCount();
+  const maxRequestsPerDay = 50;
+  const currentRequestCount = getNewsApiRequestCount();
 
-    if (currentRequestCount >= maxRequestsPerDay) {
-        console.warn(`NewsAPI request limit reached (${maxRequestsPerDay} requests per day).`);
-        return [];
-    }
-
-    const companies = [
-        'OpenAI', 'Google AI', 'Anthropic', 'Perplexity AI', 'Microsoft AI',
-        'DeepMind', 'Amazon AWS', 'Nvidia AI', 'Meta AI', 'Tesla AI',
-        'Claude AI', 'Gemini AI', 'Mistral AI', 'Inflection AI'
-    ];
-    const topics = ['AI Testing', 'Software Testing', 'DevOps', 'Cloud Computing', 'LLM'];
-
-    const queries = [...companies, ...topics];
-    const endpoints = queries.map(q =>
-        `https://newsapi.org/v2/everything?q=${encodeURIComponent(q)}&from=${new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
+  if (currentRequestCount >= maxRequestsPerDay) {
+    console.warn(
+      `NewsAPI request limit reached (${maxRequestsPerDay} requests per day).`
     );
+    return [];
+  }
 
-    const startTime = Date.now();
-    try {
-        const limitedEndpoints = endpoints.slice(0, maxRequestsPerDay - currentRequestCount); // Limit requests
-        const responses = await Promise.all(limitedEndpoints.map(url => fetch(url)));
-        const jsonResults = await Promise.all(responses.map(res => res.json()));
-        const allArticles = jsonResults.flatMap(r => r.articles || []);
+  const companies = [
+    "OpenAI",
+    "Google AI",
+    "Anthropic",
+    "Perplexity AI",
+    "Microsoft AI",
+    "DeepMind",
+    "Amazon AWS",
+    "Nvidia AI",
+    "Meta AI",
+    "Tesla AI",
+    "Claude AI",
+    "Gemini AI",
+    "Mistral AI",
+    "Inflection AI",
+  ];
+  const topics = [
+    "AI Testing",
+    "Software Testing",
+    "DevOps",
+    "Cloud Computing",
+    "LLM",
+  ];
 
-        // Increment the request count
-        incrementNewsApiRequestCount();
+  const queries = [...companies, ...topics];
+  const endpoints = queries.map(
+    (q) =>
+      `https://newsapi.org/v2/everything?q=${encodeURIComponent(
+        q
+      )}&from=${new Date(
+        Date.now() - 2 * 24 * 60 * 60 * 1000
+      ).toISOString()}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
+  );
 
-        const articles = allArticles.map(a => ({
-            title: a.title || 'Untitled',
-            summary: a.description || a.content || 'No summary available.',
-            technicalExplanation: '',
-            sourceName: a.source?.name || 'NewsAPI',
-            publishedAt: a.publishedAt || new Date().toISOString(),
-            category: detectCategory(a.title, a.description || a.content || ''),
-            url: a.url || a.urlToImage || '#'
-        }));
-        // Log API call for dashboard (token metrics set to 0 for external APIs)
-        await logTechNewsApiCall({
-            duration: Date.now() - startTime,
-            count: articles.length,
-            totalTokens: 0,
-            promptTokens: 0,
-            responseTokens: 0
-        });
-        return articles;
-    } catch (err) {
-        console.warn('NewsAPI fetch failed:', err);
-        await logTechNewsApiCall({
-            duration: Date.now() - startTime,
-            count: 0,
-            totalTokens: 0,
-            promptTokens: 0,
-            responseTokens: 0
-        });
-        return [];
-    }
+  const startTime = Date.now();
+  try {
+    const limitedEndpoints = endpoints.slice(
+      0,
+      maxRequestsPerDay - currentRequestCount
+    ); // Limit requests
+    const responses = await Promise.all(
+      limitedEndpoints.map((url) => fetch(url))
+    );
+    const jsonResults = await Promise.all(responses.map((res) => res.json()));
+    const allArticles = jsonResults.flatMap((r) => r.articles || []);
+
+    // Increment the request count
+    incrementNewsApiRequestCount();
+
+    const articles = allArticles.map((a) => ({
+      title: a.title || "Untitled",
+      summary: a.description || a.content || "No summary available.",
+      technicalExplanation: "",
+      sourceName: a.source?.name || "NewsAPI",
+      publishedAt: a.publishedAt || new Date().toISOString(),
+      category: detectCategory(a.title, a.description || a.content || ""),
+      url: a.url || a.urlToImage || "#",
+    }));
+    // Log API call for dashboard (token metrics set to 0 for external APIs)
+    await logTechNewsApiCall({
+      duration: Date.now() - startTime,
+      count: articles.length,
+      totalTokens: 0,
+      promptTokens: 0,
+      responseTokens: 0,
+    });
+    return articles;
+  } catch (err) {
+    console.warn("NewsAPI fetch failed:", err);
+    await logTechNewsApiCall({
+      duration: Date.now() - startTime,
+      count: 0,
+      totalTokens: 0,
+      promptTokens: 0,
+      responseTokens: 0,
+    });
+    return [];
+  }
 }
 
 // ==============================
 // 2️⃣ Fetch from NewsData.io
 // ==============================
 async function fetchNewsDataIo() {
-    const q = encodeURIComponent('tech, ai, dev, software testing, cloud, hardware');
-    const url = `https://newsdata.io/api/1/latest?apikey=${NEWSDATA_API_KEY}&q=${q}`;
+  const q = encodeURIComponent(
+    "tech, ai, dev, software testing, cloud, hardware"
+  );
+  const url = `https://newsdata.io/api/1/latest?apikey=${NEWSDATA_API_KEY}&q=${q}`;
 
-    const startTime = Date.now();
-    try {
-        const resp = await fetch(url);
-        const data = await resp.json();
-        const results = data.results || [];
+  const startTime = Date.now();
+  try {
+    const resp = await fetch(url);
+    const data = await resp.json();
+    const results = data.results || [];
 
-        const articles = results.map(item => ({
-            title: item.title || 'Untitled',
-            summary: item.description || item.content || 'No summary available.',
-            technicalExplanation: '',
-            sourceName: item.source_id || item.source || 'NewsData.io',
-            publishedAt: item.pubDate || new Date().toISOString(),
-            category: detectCategory(item.title, item.description || item.content || ''),
-            url: item.link || '#'
-        }));
-        // Log API call for dashboard (token metrics set to 0 for external APIs)
-        await logTechNewsApiCall({
-            duration: Date.now() - startTime,
-            count: articles.length,
-            totalTokens: 0,
-            promptTokens: 0,
-            responseTokens: 0
-        });
-        return articles;
-    } catch (err) {
-        console.warn('NewsData.io fetch failed:', err);
-        await logTechNewsApiCall({
-            duration: Date.now() - startTime,
-            count: 0,
-            totalTokens: 0,
-            promptTokens: 0,
-            responseTokens: 0
-        });
-        return [];
-    }
+    const articles = results.map((item) => ({
+      title: item.title || "Untitled",
+      summary: item.description || item.content || "No summary available.",
+      technicalExplanation: "",
+      sourceName: item.source_id || item.source || "NewsData.io",
+      publishedAt: item.pubDate || new Date().toISOString(),
+      category: detectCategory(
+        item.title,
+        item.description || item.content || ""
+      ),
+      url: item.link || "#",
+    }));
+    // Log API call for dashboard (token metrics set to 0 for external APIs)
+    await logTechNewsApiCall({
+      duration: Date.now() - startTime,
+      count: articles.length,
+      totalTokens: 0,
+      promptTokens: 0,
+      responseTokens: 0,
+    });
+    return articles;
+  } catch (err) {
+    console.warn("NewsData.io fetch failed:", err);
+    await logTechNewsApiCall({
+      duration: Date.now() - startTime,
+      count: 0,
+      totalTokens: 0,
+      promptTokens: 0,
+      responseTokens: 0,
+    });
+    return [];
+  }
 }
 
 // Helper to detect news category
 function detectCategory(title, content) {
-    const text = (title + ' ' + content).toLowerCase();
+  const text = (title + " " + content).toLowerCase();
 
-    if (text.includes('ai') || text.includes('artificial intelligence') || text.includes('machine learning') ||
-        text.includes('neural') || text.includes('llm') || text.includes('chatgpt')) {
-        return 'ai';
-    } else if (text.includes('test') || text.includes('qa') || text.includes('quality assurance') ||
-        text.includes('unit test') || text.includes('integration test')) {
-        return 'testing';
-    } else if (text.includes('cloud') || text.includes('aws') || text.includes('azure') ||
-        text.includes('google cloud') || text.includes('serverless')) {
-        return 'cloud';
-    } else if (text.includes('dev') || text.includes('code') || text.includes('programming') ||
-        text.includes('software') || text.includes('api') || text.includes('backend') ||
-        text.includes('frontend')) {
-        return 'development';
-    }
+  if (
+    text.includes("ai") ||
+    text.includes("artificial intelligence") ||
+    text.includes("machine learning") ||
+    text.includes("neural") ||
+    text.includes("llm") ||
+    text.includes("chatgpt")
+  ) {
+    return "ai";
+  } else if (
+    text.includes("test") ||
+    text.includes("qa") ||
+    text.includes("quality assurance") ||
+    text.includes("unit test") ||
+    text.includes("integration test")
+  ) {
+    return "testing";
+  } else if (
+    text.includes("cloud") ||
+    text.includes("aws") ||
+    text.includes("azure") ||
+    text.includes("google cloud") ||
+    text.includes("serverless")
+  ) {
+    return "cloud";
+  } else if (
+    text.includes("dev") ||
+    text.includes("code") ||
+    text.includes("programming") ||
+    text.includes("software") ||
+    text.includes("api") ||
+    text.includes("backend") ||
+    text.includes("frontend")
+  ) {
+    return "development";
+  }
 
-    return 'other';
+  return "other";
 }
 
 // ==============================
 // 3️⃣ Handle AI Fetch + Merge (Progressive Rendering)
 // ==============================
 async function handleFetchNews() {
-    loading.classList.remove('hidden');
-    errorDiv.classList.add('hidden');
-    newsList.innerHTML = '';
+  loading.classList.remove("hidden");
+  errorDiv.classList.add("hidden");
+  newsList.innerHTML = "";
 
-    loadSettingsFromStorage();
+  loadSettingsFromStorage();
 
-    if (!state.apiKey) {
-        loading.classList.add('hidden');
-        errorDiv.textContent = "API key not configured. Please set one on the main page (Settings).";
-        errorDiv.classList.remove('hidden');
-        return;
-    }
+  if (!state.apiKey) {
+    loading.classList.add("hidden");
+    errorDiv.textContent =
+      "API key not configured. Please set one on the main page (Settings).";
+    errorDiv.classList.remove("hidden");
+    return;
+  }
 
-    // Start fetching NewsAPI and NewsData.io in parallel
+  try {
+    // Start all fetches in parallel
     let newsApiPromise = fetchNewsApiData();
     let newsDataPromise = fetchNewsDataIo();
+    let aiNewsPromise = fetchAiNews();
 
-    try {
-        const [newsApiArticles, newsDataArticles] = await Promise.all([newsApiPromise, newsDataPromise]);
-        const initialArticles = dedupeArticles([...newsApiArticles, ...newsDataArticles]);
-        renderNews(initialArticles);
+    const [newsApiArticles, newsDataArticles, aiArticles] = await Promise.all([
+      newsApiPromise,
+      newsDataPromise,
+      aiNewsPromise,
+    ]);
 
-        // Show a loading indicator for AI news
-        showAiLoadingIndicator();
+    const allArticles = dedupeArticles([
+      ...newsApiArticles,
+      ...newsDataArticles,
+      ...aiArticles,
+    ]);
 
-        // Start AI fetch in parallel
-        const aiNewsSuccess = await fetchAndRenderAiNews(initialArticles);
-
-        // If no news at all (external + AI), show error
-        const hasExternal = initialArticles && initialArticles.length > 0;
-        const aiArticles = JSON.parse(localStorage.getItem(`aiNewsCache_${getTodayDate()}`) || '[]');
-        const hasAI = aiArticles && aiArticles.length > 0;
-
-        if (!hasExternal && !hasAI && !aiNewsSuccess) {
-            loading.classList.add('hidden');
-            errorDiv.innerHTML = `
+    if (allArticles.length > 0) {
+      renderNews(allArticles);
+    } else {
+      loading.classList.add("hidden");
+      errorDiv.innerHTML = `
                 <div class="text-center py-12">
                     <svg class="w-14 h-14 text-yellow-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -205,57 +262,55 @@ async function handleFetchNews() {
                     <div class="text-slate-500 dark:text-slate-400 text-sm">Please check your internet connection or try again later.</div>
                 </div>
             `;
-            errorDiv.classList.remove('hidden');
-        }
-    } catch (err) {
-        loading.classList.add('hidden');
-        errorDiv.innerHTML = `
+      errorDiv.classList.remove("hidden");
+    }
+  } catch (err) {
+    loading.classList.add("hidden");
+    errorDiv.innerHTML = `
             <div class="text-center py-12">
                 <svg class="w-14 h-14 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <div class="font-bold text-lg mb-2 text-red-600">Failed to load news</div>
                 <div class="text-slate-600 dark:text-slate-300 mb-2">Unable to fetch any news from external or AI sources.</div>
-                <div class="text-slate-500 dark:text-slate-400 text-sm">Error: ${err.message || err}</div>
+                <div class="text-slate-500 dark:text-slate-400 text-sm">Error: ${
+                  err.message || err
+                }</div>
             </div>
         `;
-        errorDiv.classList.remove('hidden');
-    }
+    errorDiv.classList.remove("hidden");
+  }
 }
 
 // Helper to get today's date in YYYY-MM-DD format
 function getTodayDate() {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
+  const today = new Date();
+  return today.toISOString().split("T")[0];
 }
 
 // Fetch AI news with caching
-async function fetchAndRenderAiNews(existingArticles) {
-    const currentDate = getTodayDate();
-    const cacheKey = `aiNewsCache_${currentDate}`;
-    let cachedData = JSON.parse(localStorage.getItem(cacheKey)) || [];
+async function fetchAiNews() {
+  const currentDate = getTodayDate();
+  const cacheKey = `aiNewsCache_${currentDate}`;
+  let cachedData = JSON.parse(localStorage.getItem(cacheKey)) || [];
 
-    // Show cached data immediately if available
-    if (cachedData.length > 0) {
-        cachedData.forEach(article => {
-            article.sourceName = "AI Generated";
-        });
-        renderNews(dedupeArticles([...existingArticles, ...cachedData]));
-        removeAiLoadingIndicator();
-        return true;
-    }
+  // Return cached data immediately if available
+  if (cachedData.length > 0) {
+    cachedData.forEach((article) => {
+      article.sourceName = "AI Generated";
+    });
+    return cachedData;
+  }
 
-    const combinedTopics = `
+  const combinedTopics = `
         AI artificial intelligence machine learning LLM GPT,
         cloud AWS Azure Google Cloud serverless,
         software development programming language framework,
         software testing QA quality assurance test automation
     `;
 
-    showAiLoadingIndicator();
-
-    try {
-        const aiPrompt = `
+  try {
+    const aiPrompt = `
             You are a tech news aggregator focusing on the latest technology news.
             The current date is ${currentDate}.
             Find and return 50 of the most important tech news articles published within the last 48 hours realted to AI, SOftware teseting, Devops, cloud, major outages in software.
@@ -286,102 +341,109 @@ async function fetchAndRenderAiNews(existingArticles) {
             ]
         `;
 
-        const response = await fetchFromApi(aiPrompt);
+    const response = await fetchFromApi(aiPrompt);
 
-        if (!response || !response.content) {
-            removeAiLoadingIndicator();
-            return false;
-        }
-
-        let jsonStr = response.content.trim();
-        if (jsonStr.startsWith('```json')) jsonStr = jsonStr.slice(7, -3).trim();
-        else if (jsonStr.startsWith('```')) jsonStr = jsonStr.slice(3, -3).trim();
-
-        const aiArticles = JSON.parse(jsonStr);
-
-        aiArticles.forEach(article => {
-            article.category = detectCategory(article.title, article.summary + ' ' + (article.technicalExplanation || ''));
-            if (!article.url) article.url = '#';
-            article.sourceName = "AI Generated";
-        });
-
-        const allArticles = dedupeArticles([...existingArticles, ...aiArticles]);
-        renderNews(allArticles);
-
-        if (aiArticles.length > 0) {
-            localStorage.setItem(cacheKey, JSON.stringify(aiArticles));
-        }
-        removeAiLoadingIndicator();
-        return aiArticles.length > 0;
-    } catch (err) {
-        removeAiLoadingIndicator();
-        return false;
+    if (!response || !response.content) {
+      return [];
     }
+
+    let jsonStr = response.content.trim();
+    if (jsonStr.startsWith("```json")) jsonStr = jsonStr.slice(7, -3).trim();
+    else if (jsonStr.startsWith("```")) jsonStr = jsonStr.slice(3, -3).trim();
+
+    const aiArticles = JSON.parse(jsonStr);
+
+    aiArticles.forEach((article) => {
+      article.category = detectCategory(
+        article.title,
+        article.summary + " " + (article.technicalExplanation || "")
+      );
+      if (!article.url) article.url = "#";
+      article.sourceName = "AI Generated";
+    });
+
+    if (aiArticles.length > 0) {
+      localStorage.setItem(cacheKey, JSON.stringify(aiArticles));
+    }
+    return aiArticles;
+  } catch (err) {
+    console.warn("AI news fetch failed:", err);
+    return [];
+  }
 }
 
 // ==============================
 // 4️⃣ Deduplicate (Heuristic)
 // ==============================
 function dedupeArticles(articles) {
-    const seen = new Map();
-    for (const art of articles) {
-        // Clean and validate URL
-        if (art.url && !isValidUrl(art.url)) {
-            // Extract domain if possible
-            try {
-                const domain = new URL(art.url).hostname;
-                art.url = `https://${domain}`;
-            } catch {
-                art.url = '#';
-            }
-        }
-
-        const key = art.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (!seen.has(key)) {
-            seen.set(key, art);
-        } else {
-            const existing = seen.get(key);
-            // Prefer articles with valid URLs
-            if (isValidUrl(art.url) && !isValidUrl(existing.url)) {
-                seen.set(key, art);
-            } else if ((art.summary || '').length > (existing.summary || '').length) {
-                seen.set(key, art);
-            }
-        }
+  const seen = new Map();
+  for (const art of articles) {
+    // Clean and validate URL
+    if (art.url && !isValidUrl(art.url)) {
+      // Extract domain if possible
+      try {
+        const domain = new URL(art.url).hostname;
+        art.url = `https://${domain}`;
+      } catch {
+        art.url = "#";
+      }
     }
-    return Array.from(seen.values());
+
+    const key = art.title.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (!seen.has(key)) {
+      seen.set(key, art);
+    } else {
+      const existing = seen.get(key);
+      // Prefer articles with valid URLs
+      if (isValidUrl(art.url) && !isValidUrl(existing.url)) {
+        seen.set(key, art);
+      } else if ((art.summary || "").length > (existing.summary || "").length) {
+        seen.set(key, art);
+      }
+    }
+  }
+  return Array.from(seen.values());
 }
 
 // ==============================
 // 5️⃣ Render Final News Cards
 // ==============================
 function renderNews(newsArr) {
-    loading.classList.add('hidden');
-    newsList.innerHTML = '';
+  loading.classList.add("hidden");
+  newsList.innerHTML = "";
 
-    const fragment = document.createDocumentFragment();
-    newsArr.forEach((news, index) => {
-        const card = document.createElement('div');
-        card.className = "news-item bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 mb-4 mx-auto";
-        card.dataset.category = news.category || 'other';
-        card.style.animationDelay = `${index * 50}ms`;
-        card.style.width = "95%"; // Adjusted width for better responsiveness
-        card.style.maxWidth = "1200px"; // Adjusted max width for better layout
+  const fragment = document.createDocumentFragment();
+  newsArr.forEach((news, index) => {
+    const card = document.createElement("div");
+    card.className =
+      "news-item bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 mb-4 mx-auto";
+    card.dataset.category = news.category || "other";
+    card.style.animationDelay = `${index * 50}ms`;
+    card.style.width = "95%"; // Adjusted width for better responsiveness
+    card.style.maxWidth = "1200px"; // Adjusted max width for better layout
 
-        card.innerHTML = `
+    card.innerHTML = `
             <div class="flex items-center justify-between mb-4">
-                <div class="font-semibold text-blue-600 dark:text-blue-400 text-lg">${news.sourceName || 'Tech News'}</div>
+                <div class="font-semibold text-blue-600 dark:text-blue-400 text-lg">${
+                  news.sourceName || "Tech News"
+                }</div>
                 <div class="flex items-center gap-4">
-                    ${news.sourceName === 'AI Generated' ? `
+                    ${
+                      news.sourceName === "AI Generated"
+                        ? `
                         <img src="assets/ai.png" alt="AI Badge" class="w-6 h-6" title="Generated by AI">
-                    ` : ''}
+                    `
+                        : ""
+                    }
                     <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <span>${formatTimeAgo(news.publishedAt)}</span>
                     </div>
-                    ${isValidUrl(news.url) ? `
+                    ${
+                      isValidUrl(news.url)
+                        ? `
                         <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
                            class="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-medium rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -389,19 +451,32 @@ function renderNews(newsArr) {
                             </svg>
                             Read Source
                         </a>
-                    ` : ''}
+                    `
+                        : ""
+                    }
                 </div>
             </div>
-            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 leading-tight">${news.title}</h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg leading-relaxed">${news.summary}</p>
+            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 leading-tight">${
+              news.title
+            }</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg leading-relaxed">${
+              news.summary
+            }</p>
             <div class="bg-slate-100 dark:bg-slate-700 border-l-4 border-slate-300 dark:border-slate-600 p-4 rounded-r-lg mb-4">
                 <h4 class="font-bold text-base text-slate-700 dark:text-slate-300 mb-2">Technical Insight</h4>
-                <p class="text-base text-slate-700 dark:text-slate-400 leading-relaxed">${news.technicalExplanation || 'No technical explanation provided.'}</p>
+                <p class="text-base text-slate-700 dark:text-slate-400 leading-relaxed">${
+                  news.technicalExplanation ||
+                  "No technical explanation provided."
+                }</p>
             </div>
-            ${isValidUrl(news.url) ? `
+            ${
+              isValidUrl(news.url)
+                ? `
                 <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-600">
                     <span class="text-sm text-slate-500 dark:text-slate-400">Source:</span>
-                    <a href="${news.url}" target="_blank" rel="noopener noreferrer" 
+                    <a href="${
+                      news.url
+                    }" target="_blank" rel="noopener noreferrer" 
                        class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium flex items-center gap-1 hover:underline">
                         ${new URL(news.url).hostname}
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -409,115 +484,96 @@ function renderNews(newsArr) {
                         </svg>
                     </a>
                 </div>
-            ` : ''}
+            `
+                : ""
+            }
         `;
-        fragment.appendChild(card);
-    });
+    fragment.appendChild(card);
+  });
 
-    newsList.appendChild(fragment);
+  newsList.appendChild(fragment);
 
-    // Setup filter handlers after rendering
-    setupFilterHandlers();
+  // Setup filter handlers after rendering
+  setupFilterHandlers();
 }
 
 // ==============================
 // 6️⃣ Helper - Relative Time
 // ==============================
 function formatTimeAgo(dateString) {
-    try {
-        const date = new Date(dateString);
-        const now = new Date();
-        const diffMs = now - date;
-        const mins = Math.round(diffMs / 60000);
-        const hrs = Math.round(diffMs / 3600000);
-        const days = Math.floor(diffMs / 86400000);
-        if (mins < 1) return 'Just now';
-        if (mins < 60) return `${mins} min${mins > 1 ? 's' : ''} ago`;
-        if (hrs < 24) return `${hrs} hour${hrs > 1 ? 's' : ''} ago`;
-        if (days < 7) return `${days} day${days > 1 ? 's' : ''} ago`;
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    } catch {
-        return 'Recently';
-    }
+  try {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now - date;
+    const mins = Math.round(diffMs / 60000);
+    const hrs = Math.round(diffMs / 3600000);
+    const days = Math.floor(diffMs / 86400000);
+    if (mins < 1) return "Just now";
+    if (mins < 60) return `${mins} min${mins > 1 ? "s" : ""} ago`;
+    if (hrs < 24) return `${hrs} hour${hrs > 1 ? "s" : ""} ago`;
+    if (days < 7) return `${days} day${days > 1 ? "s" : ""} ago`;
+    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return "Recently";
+  }
 }
 
 // Add filter functionality
 function setupFilterHandlers() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active state
-            filterButtons.forEach(b => b.classList.remove('active', 'bg-blue-500', 'text-white'));
-            filterButtons.forEach(b => b.classList.add('bg-slate-100', 'text-slate-700'));
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Update active state
+      filterButtons.forEach((b) =>
+        b.classList.remove("active", "bg-blue-500", "text-white")
+      );
+      filterButtons.forEach((b) =>
+        b.classList.add("bg-slate-100", "text-slate-700")
+      );
 
-            btn.classList.remove('bg-slate-100', 'text-slate-700');
-            btn.classList.add('active', 'bg-blue-500', 'text-white');
+      btn.classList.remove("bg-slate-100", "text-slate-700");
+      btn.classList.add("active", "bg-blue-500", "text-white");
 
-            const filter = btn.dataset.filter;
+      const filter = btn.dataset.filter;
 
-            // Get all cards
-            const cards = document.querySelectorAll('.news-item');
+      // Get all cards
+      const cards = document.querySelectorAll(".news-item");
 
-            cards.forEach(card => {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        });
+      cards.forEach((card) => {
+        if (filter === "all" || card.dataset.category === filter) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
     });
+  });
 }
 
 // ==============================
-// Helper: Show "AI news loading" indicator
-function showAiLoadingIndicator() {
-    // Prevent multiple banners
-    if (document.getElementById('ai-loading-banner')) return;
+// Helper: Show "AI news loading" indicator - REMOVED
 
-    // Create a banner instead of a card
-    const aiLoadingBanner = document.createElement('div');
-    aiLoadingBanner.id = 'ai-loading-banner';
-    aiLoadingBanner.className = "fixed top-0 left-0 right-0 bg-blue-100 dark:bg-blue-900 py-3 px-4 shadow-md z-50 flex items-center justify-center gap-3";
-    aiLoadingBanner.innerHTML = `
-        <svg class="animate-spin w-5 h-5 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-        </svg>
-        <span class="font-medium text-blue-700 dark:text-blue-300">Loading AI-powered news...</span>
-    `;
-    document.body.appendChild(aiLoadingBanner);
-
-    // Add padding to body to prevent content from being hidden under the banner
-    document.body.style.paddingTop = '50px';
-}
-
-// Helper: Remove AI loading indicator
-function removeAiLoadingIndicator() {
-    const aiLoadingBanner = document.getElementById('ai-loading-banner');
-    if (aiLoadingBanner) {
-        aiLoadingBanner.remove();
-        document.body.style.paddingTop = ''; // Reset padding
-    }
-}
+// Helper: Remove AI loading indicator - REMOVED
 
 // Helper to validate URLs
 function isValidUrl(url) {
-    try {
-        const parsed = new URL(url);
-        // Check if URL is not just a domain
-        return parsed.pathname !== '/' &&
-            parsed.pathname !== '' &&
-            !url.includes('?') && // Avoid URLs with query parameters
-            !parsed.pathname.endsWith('.jpg') &&
-            !parsed.pathname.endsWith('.png');
-    } catch {
-        return false;
-    }
+  try {
+    const parsed = new URL(url);
+    // Check if URL is not just a domain
+    return (
+      parsed.pathname !== "/" &&
+      parsed.pathname !== "" &&
+      !url.includes("?") && // Avoid URLs with query parameters
+      !parsed.pathname.endsWith(".jpg") &&
+      !parsed.pathname.endsWith(".png")
+    );
+  } catch {
+    return false;
+  }
 }
 
 // ==============================
-document.addEventListener('DOMContentLoaded', () => {
-    handleFetchNews();
+document.addEventListener("DOMContentLoaded", () => {
+  handleFetchNews();
 });

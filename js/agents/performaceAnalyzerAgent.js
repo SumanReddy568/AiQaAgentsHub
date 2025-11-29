@@ -13,51 +13,98 @@ export async function analyzePagePerformance(metrics) {
   const transferSize = (metrics.resources.sizes.transfer / 1024).toFixed(2);
   const resourceCount = metrics.resources.totalResources;
   const fcp = metrics.paint?.firstContentfulPaint?.toFixed(2) || "N/A";
+  const firstPaint = metrics.paint?.firstPaint?.toFixed(2) || "N/A";
 
-  const prompt = `
-        Analyze these web performance metrics and provide recommendations:
-        
-        Load Time: ${loadTime}ms
-        Resources: ${resourceCount}
-        Transfer Size: ${transferSize}KB
-        First Contentful Paint: ${fcp}ms
-        Protocol: ${metrics.security.protocol}
-        
-        Full metrics: ${JSON.stringify(metrics, null, 2)}
+  const prompt = `You are a senior web performance engineer analyzing page performance data. Provide a comprehensive, actionable performance audit.
 
-        Provide analysis in this exact markdown format:
+CONTEXT:
+- URL: ${metrics.url}
+- Protocol: ${metrics.security.protocol}
+- DOM Complexity: ${metrics.dom?.totalElements || "N/A"} elements
 
-        # Performance Analysis for ${metrics.url}
+PERFORMANCE METRICS:
+• Load Time: ${loadTime}ms
+• First Contentful Paint: ${fcp}ms
+• First Paint: ${firstPaint}ms  
+• Total Resources: ${resourceCount}
+• Transfer Size: ${transferSize}KB
+• DOM Content Loaded: ${
+    metrics.timing.domContentLoadedEvent?.toFixed(2) || "N/A"
+  }ms
+• Largest Contentful Paint: ${
+    metrics.paint?.largestContentfulPaint?.toFixed(2) || "N/A"
+  }ms
+• Cumulative Layout Shift: ${
+    metrics.paint?.cumulativeLayoutShift?.toFixed(4) || "N/A"
+  }
 
-        ## Overview
-        Quick summary of the page's performance (1-2 sentences).
+RESOURCE BREAKDOWN:
+- CSS Files: ${metrics.resources.byType?.css?.count || 0}
+- JavaScript Files: ${metrics.resources.byType?.script?.count || 0}
+- Image Files: ${metrics.resources.byType?.image?.count || 0}
+- Font Files: ${metrics.resources.byType?.font?.count || 0}
 
-        ## Key Metrics
-        - **Load Time**: ${loadTime}ms
-        - **Resources**: ${resourceCount} items loaded
-        - **Transfer Size**: ${transferSize}KB
-        - **First Paint**: ${metrics.paint?.firstPaint?.toFixed(2) || "N/A"}ms
-        - **First Contentful Paint**: ${fcp}ms
+ANALYSIS FRAMEWORK:
+1. Evaluate against Core Web Vitals thresholds
+2. Identify the 2-3 biggest performance bottlenecks
+3. Provide specific, prioritized recommendations
+4. Estimate potential impact of each optimization
 
-        ## Performance Score
-        Rate the performance as Great ✅, Good ⚠️, or Needs Improvement ❌
+RESPONSE FORMAT - Return in this exact markdown structure:
 
-        ## Critical Issues
-        List any performance bottlenecks or concerns.
+# Performance Analysis for ${metrics.url}
 
-        ## Recommendations
-        Provide 3-5 specific, actionable improvements.
+## 📊 Executive Summary
+[Brief overview - 2-3 sentences highlighting the overall performance state and key findings]
 
-        ## Technical Details
-        Brief analysis of any relevant technical metrics.
-    `;
+## 🎯 Core Web Vitals Assessment
+| Metric | Value | Status | Target |
+|--------|-------|--------|---------|
+| First Contentful Paint | ${fcp}ms | [✅ Good/⚠️ Needs Improvement/❌ Poor] | < 1.8s |
+| Largest Contentful Paint | ${
+    metrics.paint?.largestContentfulPaint?.toFixed(2) || "N/A"
+  }ms | [Status] | < 2.5s |
+| Cumulative Layout Shift | ${
+    metrics.paint?.cumulativeLayoutShift?.toFixed(4) || "N/A"
+  } | [Status] | < 0.1 |
+
+## ⚠️ Critical Issues
+[Bulleted list of the top 3 most critical performance problems with specific data points]
+
+## 🚀 Prioritized Recommendations
+
+### High Impact
+1. **[Specific actionable recommendation with technical details]**
+   - **Expected Impact**: [Estimated improvement]
+   - **Effort**: [Low/Medium/High]
+   - **How to implement**: [Brief technical guidance]
+
+### Medium Impact  
+2. **[Specific recommendation]**
+   - **Expected Impact**: [Estimated improvement]
+   - **Effort**: [Low/Medium/High]
+
+### Low Impact
+3. **[Quick wins or optimizations]**
+   - **Expected Impact**: [Estimated improvement]
+   - **Effort**: [Low/Medium/High]
+
+## 📈 Performance Score
+**Overall Grade**: [A/B/C/D/F] - [Brief justification]
+
+## 🔧 Technical Deep Dive
+[Analysis of specific technical metrics and their implications for this page]
+
+## 🎪 Quick Wins
+- [List 2-3 immediate actions that can be taken without major refactoring]
+
+IMPORTANT: Be specific, data-driven, and actionable. Reference the actual metric values in your analysis.`;
 
   const startTime = Date.now();
   const { content, usage } = await fetchFromApi(prompt);
   const duration = Date.now() - startTime;
 
-  await initDB(); // <-- ensure DB is ready before saving
-  // Save to DB
+  await initDB();
   await addApiCall({
     timestamp: new Date(),
     model: state.selectedModel,

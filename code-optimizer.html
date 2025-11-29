@@ -92,8 +92,9 @@
                     </div>
                 </div>
                 <div class="output-section">
-                    <div class="glass-effect rounded-2xl shadow-xl p-6 section-content">
-                        <div class="flex items-center justify-between mb-4">
+                    <div class="glass-effect rounded-2xl shadow-xl p-6 section-content flex flex-col"
+                        style="max-height: 550px;">
+                        <div class="flex items-center justify-between mb-4 flex-shrink-0">
                             <h2 class="text-xl font-semibold text-slate-800">Optimization Result</h2>
                             <button id="copy-optimized-btn"
                                 class="hidden px-3 py-1 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
@@ -114,7 +115,7 @@
                                 AI is optimizing your code...
                             </div>
                         </div>
-                        <div id="optimizer-output" class="space-y-4">
+                        <div id="optimizer-output" class="space-y-4 overflow-y-auto custom-scrollbar">
                             <div class="text-slate-400 text-center py-8">Paste your code and click "Optimize Code" to
                                 generate optimized code</div>
                         </div>
