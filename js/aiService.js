@@ -1,9 +1,12 @@
 // js/aiService.js
 
 import { state } from "./state.js";
-import { addApiCall, initDB } from "./db.js"; // <-- import initDB
+import { addApiCall, initDB } from "./db.js";
 
-export async function fetchFromApi(prompt) {
+export async function fetchFromApi(
+  prompt,
+  systemPrompt = "You are a helpful assistant."
+) {
   // Route based on provider
   const provider = state.provider || "gemini";
 
@@ -19,7 +22,7 @@ export async function fetchFromApi(prompt) {
       body: JSON.stringify({
         model: "deepseek-chat",
         messages: [
-          { role: "system", content: "You are a helpful assistant." },
+          { role: "system", content: systemPrompt },
           { role: "user", content: prompt },
         ],
         stream: false,
@@ -53,7 +56,7 @@ export async function fetchFromApi(prompt) {
         body: JSON.stringify({
           model: state.selectedModel || "openai/gpt-4o",
           messages: [
-            { role: "system", content: "You are a helpful assistant." },
+            { role: "system", content: systemPrompt },
             { role: "user", content: prompt },
           ],
         }),
@@ -437,87 +440,4 @@ export async function logTechNewsApiCall({
     type: "technews",
     duration,
   }).catch((err) => console.error("DB save failed (technews):", err));
-}
-
-/**
- * Generates test cases based on file content and specified test type.
- * @param {string} fileContent - The content of the file to generate test cases for.
- * @param {string} testType - The type of test cases to generate (e.g., functional, unit, integration).
- * @param {string} additionalDetails - Any additional details or requirements for the test cases.
- * @returns {Promise<string>} - The generated test cases in markdown format.
- */
-export async function getTestCaseResponse(
-  fileContent,
-  testType,
-  additionalDetails
-) {
-  const systemPrompt = `You are an expert QA engineer specializing in creating comprehensive test cases. Generate detailed, actionable test cases based on the provided code/documentation.`;
-
-  const testTypeDescriptions = {
-    functional:
-      "Functional testing validates that the software operates according to specified requirements",
-    unit: "Unit testing focuses on testing individual components or functions in isolation",
-    integration:
-      "Integration testing validates that different modules/services work together correctly",
-    e2e: "End-to-end testing validates complete user workflows from start to finish",
-    api: "API testing validates REST/GraphQL endpoints, request/response formats, and error handling",
-    security:
-      "Security testing identifies vulnerabilities, authentication issues, and data protection",
-    performance:
-      "Performance testing validates system behavior under load, response times, and scalability",
-    accessibility:
-      "Accessibility testing ensures the application is usable by people with disabilities",
-    regression:
-      "Regression testing ensures existing functionality still works after changes",
-    smoke:
-      "Smoke testing performs basic checks to verify critical functionality works",
-  };
-
-  const prompt = `
-Generate comprehensive ${testType} test cases for the following code/documentation.
-
-${testTypeDescriptions[testType]}
-
-FILES CONTENT:
-${fileContent}
-
-${additionalDetails ? `\nADDITIONAL REQUIREMENTS:\n${additionalDetails}` : ""}
-
-Please generate detailed test cases with the following structure for EACH test case:
-
-Test Case [Number]: [Clear, descriptive title]
-Type: ${testType}
-Priority: [High/Medium/Low]
-Description: [What this test validates]
-Steps:
-1. [First step]
-2. [Second step]
-3. [Continue...]
-Expected Result: [What should happen]
-
-Generate at least 8-15 comprehensive test cases covering:
-- Happy path scenarios
-- Edge cases
-- Error handling
-- Boundary conditions
-- Negative test cases
-
-Make each test case specific, actionable, and easy to execute.
-`;
-
-  const startTime = Date.now();
-  const { content, usage } = await fetchFromApi(prompt);
-  const duration = Date.now() - startTime;
-
-  await initDB();
-  await addApiCall({
-    timestamp: new Date(),
-    model: state.selectedModel,
-    totalTokens: usage.totalTokenCount,
-    locatorsGenerated: 0,
-    type: "testcase",
-    duration,
-  }).catch((err) => console.error("DB save failed (testcase):", err));
-
-  return content;
 }

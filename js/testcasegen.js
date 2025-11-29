@@ -1,5 +1,5 @@
 import { addApiCall, initDB } from "./db.js";
-import { getTestCaseResponse } from "./aiService.js";
+import { getTestCaseResponse } from "./agents/testCaseAgent.js";
 import {
   parseMultipleFiles,
   combineFileContents,
@@ -365,19 +365,8 @@ async function handleGenerate() {
 
     console.log("Full API Response:", response);
 
-    // Extract response text from common fields returned by different providers
-    let responseText = response;
-
-    // Handle different response formats
-    if (typeof response === "object") {
-      responseText =
-        response.content ||
-        response.response ||
-        response.choices?.[0]?.message?.content ||
-        response.choices?.[0]?.content ||
-        response.choices?.[0]?.text ||
-        JSON.stringify(response);
-    }
+    // Extract response text from the 'content' property of the response object
+    let responseText = response.content || "";
 
     console.log("Response content length:", responseText.length);
     console.log("Response content preview:", responseText.substring(0, 200));
