@@ -1963,5 +1963,130 @@
     "date": "2025-11-28T13:07:02.202Z",
     "headline": "Docker Introduces New Features for Container Management",
     "source": "https://www.docker.com/blog/docker-container-management-update/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Introducing Llama 3.1: Our most capable models to date",
+    "source": "https://ai.meta.com/blog/llama-3-1/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Tailwind CSS v4.0 alpha",
+    "source": "https://tailwindcss.com/blog/tailwindcss-v4-alpha"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Google Cloud Cross-Cloud Network is now generally available",
+    "source": "https://cloud.google.com/blog/products/networking/cross-cloud-network-is-now-generally-available"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Malicious code published in `faker-js/faker`, the popular fake data generator",
+    "source": "https://socket.dev/blog/malicious-code-published-in-faker-js-faker"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "PostgreSQL 17 Beta 3 Released!",
+    "source": "https://www.postgresql.org/about/news/postgresql-17-beta-3-released-2877/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Visual Studio Code July 2024",
+    "source": "https://code.visualstudio.com/updates/v1_92"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Check Point Research Discloses Vulnerability in Qualcomm Mobile Chip That Could Have Led to Android User Data Leakage",
+    "source": "https://research.checkpoint.com/2024/check-point-research-discloses-vulnerability-in-qualcomm-mobile-chip-that-could-have-led-to-android-user-data-leakage/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "AWS growth reaccelerates to 25% as AI demand continues to surge",
+    "source": "https://techcrunch.com/2024/07/31/aws-growth-reaccelerates-to-25-as-ai-demand-continues-to-surge/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Announcing SurrealDB 1.5",
+    "source": "https://surrealdb.com/blog/announcing-surrealdb-1-5"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "The Apache Software Foundation Announces Apache® Pinot™ v1.1.0",
+    "source": "https://news.apache.org/2024/07/31/the-apache-software-foundation-announces-apache-pinot-v1-1-0.html"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "The JetBrains 2024.2 IDEs Are Here!",
+    "source": "https://blog.jetbrains.com/blog/2024/07/31/the-jetbrains-2024-2-ides-are-here/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "safetensors with Quantized Tensors",
+    "source": "https://huggingface.co/blog/safetensors-quantization"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "CISA Warns of Actively Exploited Zabbix Vulnerability",
+    "source": "https://thehackernews.com/2024/07/cisa-warns-of-actively-exploited.html"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Announcing KubeVirt v1.3.0",
+    "source": "https://kubevirt.io/2024/Announcing-KubeVirt-v1.3.0.html"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Introducing Vercel Shield: Enterprise-grade security for your entire software development lifecycle",
+    "source": "https://vercel.com/blog/introducing-vercel-shield"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Google Cloud Expands Anthos with New Multi-Cloud Capabilities",
+    "source": "https://cloud.google.com/blog/products/anthos/google-cloud-expands-anthos-multi-cloud-capabilities"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Microsoft Azure Enhances Security Features for DevOps",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-devops-security-enhancements/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "New Open Source Framework for Data Privacy Launched",
+    "source": "https://opensource.com/article/23/10/data-privacy-framework"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Cybersecurity Firm Reports Surge in Ransomware Attacks",
+    "source": "https://www.cybersecuritynews.com/ransomware-attacks-surge-report/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "New Data Analytics Tool Launched for Real-Time Insights",
+    "source": "https://www.analyticsinsight.net/new-data-analytics-tool-real-time-insights/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Open Source Project Releases Major Update to Popular Database",
+    "source": "https://www.databasejournal.com/news/open-source-database-major-update-released/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "GitHub Introduces New Features for Code Review",
+    "source": "https://github.blog/2023-10-10-new-features-code-review/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "New Cybersecurity Standards Proposed for IoT Devices",
+    "source": "https://www.iotsecuritynews.com/cybersecurity-standards-iot-devices/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "Cloudflare Launches Enhanced DDoS Protection Services",
+    "source": "https://www.cloudflare.com/press-releases/cloudflare-ddos-protection-launch/"
+  },
+  {
+    "date": "2025-11-29T03:57:06.250Z",
+    "headline": "New Developer Tool Aims to Simplify API Integration",
+    "source": "https://www.developernews.com/new-tool-api-integration/"
   }
 ]
