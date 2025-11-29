@@ -1,7 +1,7 @@
-import { getDiffAnalysis } from './aiService.js';
 import { state } from './state.js';
 import { initDB } from './db.js';
 import { loadSettingsFromStorage } from './settings.js';
+import { getDiffAnalysis } from './agents/diffAgent.js';
 
 /**
  * Object to hold references to key DOM elements.

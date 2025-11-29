@@ -1,4 +1,3 @@
-import { addApiCall, initDB } from "./db.js";
 import { getTestCaseResponse } from "./agents/testCaseAgent.js";
 import {
   parseMultipleFiles,

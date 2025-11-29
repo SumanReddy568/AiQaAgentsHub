@@ -1,6 +1,7 @@
 // news.js
 import { state } from './state.js';
-import { fetchFromApi, logTechNewsApiCall } from './aiService.js';
+import { fetchFromApi} from './aiService.js';
+import {logTechNewsApiCall} from './agents/techNewAgent.js';
 import { loadSettingsFromStorage } from './settings.js';
 
 const newsList = document.getElementById('news-list');

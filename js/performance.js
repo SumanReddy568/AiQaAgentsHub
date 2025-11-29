@@ -1,6 +1,5 @@
-import { analyzePagePerformance } from './aiService.js';
 import { loadSettingsFromStorage } from './settings.js';
-
+import { analyzePagePerformance } from './agents/performaceAnalyzerAgent.js';
 loadSettingsFromStorage();
 
 const urlInput = document.getElementById('url-input');

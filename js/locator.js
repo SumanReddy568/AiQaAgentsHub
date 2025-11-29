@@ -1,14 +1,13 @@
 // js/main.js
-
 import * as DOM from './dom.js';
 import { state, updateState } from './state.js';
 import * as UI from './ui.js';
-import * as AI from './aiService.js';
 import * as Rules from './ruleService.js';
 import * as Utils from './utils.js';
 import { initDB } from './db.js';
 import { loadSettingsFromStorage } from './settings.js';
-
+import { generateAiLocators } from "./agents/locatorGenAgent.js";
+import { getChatResponse } from "./agents/chatAgent.js";
 async function handleGenerateClick() {
     const htmlContent = DOM.htmlInput.value.trim();
     if (!htmlContent) {
@@ -26,7 +25,7 @@ async function handleGenerateClick() {
 
         // 2. Get AI locators and transform them into the standard format
         if (DOM.includeAiCheckbox.checked) {
-            const aiResults = await AI.generateAiLocators(htmlContent);
+            const aiResults = await generateAiLocators(htmlContent);
 
             // This new block standardizes the AI data
             aiResults.forEach(rec => {
@@ -78,7 +77,7 @@ async function handleChatSend() {
     const thinkingMessage = UI.appendChatMessage('...', 'ai');
 
     try {
-        const response = await AI.getChatResponse(query, DOM.htmlInput.value);
+        const response = await getChatResponse(query, DOM.htmlInput.value);
         thinkingMessage.remove();
         UI.appendChatMessage(response, 'ai');
     } catch (error) {

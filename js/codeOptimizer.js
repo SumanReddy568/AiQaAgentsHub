@@ -1,4 +1,4 @@
-import { optimizeCodeWithSnippet } from './aiService.js';
+import { optimizeCodeWithSnippet } from './agents/codeOptimiserAgent.js';
 import { loadSettingsFromStorage } from './settings.js';
 import { initDB } from './db.js';
 

@@ -1,16 +1,15 @@
 // js/explainer.js
 
 import { initDB } from './db.js';
-import * as AI from './aiService.js';
 import { loadSettingsFromStorage } from './settings.js';
-
+import { getCodeExplanation } from './agents/codeExplainerAgent.js';
 // DOM Elements
 const languageSelect = document.getElementById('language-select');
 const frameworkSelect = document.getElementById('framework-select');
 const codeInput = document.getElementById('code-input');
 const explainBtn = document.getElementById('explain-btn');
 const outputContent = document.getElementById('output-content');
-const loader = document.getElementById('optimizer-loader'); // fixed ID
+const loader = document.getElementById('optimizer-loader');
 const emptyState = document.getElementById('explainer-empty-state');
 
 const showdownConverter = new showdown.Converter({
@@ -40,7 +39,7 @@ async function handleExplainClick() {
     explainBtn.textContent = 'Analyzing...';
 
     try {
-        const explanation = await AI.getCodeExplanation(options);
+        const explanation = await getCodeExplanation(options);
         outputContent.innerHTML = showdownConverter.makeHtml(explanation);
         outputContent.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block);
