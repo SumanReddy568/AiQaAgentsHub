@@ -8,76 +8,116 @@ export function parseTestCases(responseText) {
     return [];
   }
 
-  const testCases = [];
-  const testCaseBlocks = responseText.split(/\*\*Test Case \d+:/);
+  console.log("Raw response text:", responseText);
 
-  // Skip the first element as it's content before the first test case
-  for (let i = 1; i < testCaseBlocks.length; i++) {
-    const block = testCaseBlocks[i].trim();
-    if (!block) continue;
+  // Handle different response formats
+  let textToParse = responseText;
 
-    const lines = block
-      .split("\n")
-      .map((line) => line.trim())
-      .filter((line) => line);
-
-    // Extract title from first line
-    const title = lines[0]?.replace(/\*\*/g, "").trim() || `Test Case ${i}`;
-
-    // Initialize test case object
-    const testCase = {
-      id: i,
-      title: title,
-      type: "functional",
-      priority: "Medium",
-      description: "",
-      steps: [],
-      expectedResult: "",
-    };
-
-    let currentSection = "";
-
-    // Process remaining lines
-    for (let j = 1; j < lines.length; j++) {
-      const line = lines[j];
-
-      if (line.toLowerCase().startsWith("type:")) {
-        testCase.type = line.replace(/type:/i, "").trim().toLowerCase();
-      } else if (line.toLowerCase().startsWith("priority:")) {
-        testCase.priority = line.replace(/priority:/i, "").trim();
-      } else if (line.toLowerCase().startsWith("description:")) {
-        testCase.description = line.replace(/description:/i, "").trim();
-        currentSection = "description";
-      } else if (line.toLowerCase().startsWith("steps:")) {
-        currentSection = "steps";
-      } else if (line.toLowerCase().startsWith("expected result:")) {
-        testCase.expectedResult = line.replace(/expected result:/i, "").trim();
-        currentSection = "expectedResult";
-      } else if (line.match(/^\d+\./)) {
-        // This is a step
-        const step = line.replace(/^\d+\.\s*/, "").trim();
-        if (step) testCase.steps.push(step);
-      } else if (line) {
-        // Add to current section
-        if (currentSection === "description") {
-          testCase.description += " " + line;
-        } else if (currentSection === "expectedResult") {
-          testCase.expectedResult += " " + line;
-        } else if (currentSection === "steps" && testCase.steps.length > 0) {
-          // Continue the last step
-          testCase.steps[testCase.steps.length - 1] += " " + line;
-        }
-      }
-    }
-
-    // Clean up the text
-    testCase.description = testCase.description.trim();
-    testCase.expectedResult = testCase.expectedResult.trim();
-    testCase.steps = testCase.steps.filter((step) => step.trim().length > 0);
-
-    testCases.push(testCase);
+  // If it's a JSON response with content field, extract the content
+  if (typeof responseText === "object") {
+    textToParse =
+      responseText.content ||
+      responseText.choices?.[0]?.message?.content ||
+      responseText.choices?.[0]?.text ||
+      JSON.stringify(responseText);
   }
 
+  // Clean up the text - remove markdown formatting if present
+  textToParse = textToParse.replace(/\*\*/g, "").trim();
+
+  // Split by "Test Case X:" pattern
+  const testCaseRegex = /Test Case\s+\d+:\s*(.*?)(?=Test Case\s+\d+:|$)/gs;
+  const testCaseBlocks = textToParse.match(testCaseRegex) || [];
+
+  console.log("Found test case blocks:", testCaseBlocks.length);
+
+  const testCases = [];
+
+  testCaseBlocks.forEach((block, index) => {
+    try {
+      const lines = block
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line);
+
+      if (lines.length === 0) return;
+
+      // Extract title from first line
+      const titleLine = lines[0];
+      const title = titleLine.replace(/Test Case\s+\d+:\s*/, "").trim();
+
+      const testCase = {
+        id: testCases.length + 1,
+        title: title || `Test Case ${testCases.length + 1}`,
+        type: "functional",
+        priority: "Medium",
+        description: "",
+        steps: [],
+        expectedResult: "",
+      };
+
+      let currentSection = null;
+
+      // Process remaining lines
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        const lowerLine = line.toLowerCase();
+
+        if (lowerLine.startsWith("type:")) {
+          testCase.type = line.substring(line.indexOf(":") + 1).trim();
+        } else if (lowerLine.startsWith("priority:")) {
+          testCase.priority = line.substring(line.indexOf(":") + 1).trim();
+        } else if (lowerLine.startsWith("description:")) {
+          testCase.description = line.substring(line.indexOf(":") + 1).trim();
+          currentSection = "description";
+        } else if (lowerLine.startsWith("steps:")) {
+          currentSection = "steps";
+        } else if (lowerLine.startsWith("expected result:")) {
+          testCase.expectedResult = line
+            .substring(line.indexOf(":") + 1)
+            .trim();
+          currentSection = "expectedResult";
+        } else if (currentSection === "steps" && line.match(/^\d+\./)) {
+          // Handle numbered steps
+          const step = line.replace(/^\d+\.\s*/, "").trim();
+          if (step) testCase.steps.push(step);
+        } else if (currentSection && line.trim()) {
+          // Continue adding to current section
+          if (currentSection === "description") {
+            testCase.description +=
+              (testCase.description ? " " : "") + line.trim();
+          } else if (currentSection === "expectedResult") {
+            testCase.expectedResult +=
+              (testCase.expectedResult ? " " : "") + line.trim();
+          }
+        }
+      }
+
+      // Clean up the fields
+      testCase.description = testCase.description.trim();
+      testCase.expectedResult = testCase.expectedResult.trim();
+
+      // If no steps were found with numbering, try to extract from the block
+      if (testCase.steps.length === 0) {
+        const stepsMatch = block.match(
+          /Steps:\s*([\s\S]*?)(?=Expected Result:|$)/i
+        );
+        if (stepsMatch) {
+          const stepsText = stepsMatch[1].trim();
+          const steps = stepsText.split(/\d+\./).filter((step) => step.trim());
+          testCase.steps = steps.map((step) => step.trim());
+        }
+      }
+
+      if (testCase.title && testCase.title !== "Test Case") {
+        testCases.push(testCase);
+      }
+    } catch (error) {
+      console.error(`Error parsing test case ${index + 1}:`, error);
+    }
+  });
+
+  console.log("Parsed test cases:", testCases);
   return testCases;
 }
 

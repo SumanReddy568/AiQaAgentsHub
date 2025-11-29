@@ -321,41 +321,6 @@ function updateStats(count) {
   }
 }
 
-// Helper: Robust parser for OpenRouter/StreamLake style responses
-function robustTestCaseParser(rawText) {
-  // Split by "Test Case" and parse blocks
-  const blocks = rawText.split(/(?:^|\n)Test Case\s*\d*:/i).filter(Boolean);
-  return blocks.map((block, idx) => {
-    const titleMatch = block.match(/^(.*?)(?:\n|$)/);
-    const title = titleMatch ? titleMatch[1].trim() : `Test Case ${idx + 1}`;
-    const typeMatch = block.match(/Type:\s*(.*)/i);
-    const priorityMatch = block.match(/Priority:\s*(.*)/i);
-    const descMatch = block.match(/Description:\s*(.*)/i);
-    const stepsMatch = block.match(/Steps:\s*([\s\S]*?)Expected Result:/i);
-    const expectedMatch = block.match(/Expected Result:\s*([\s\S]*)/i);
-
-    let steps = [];
-    if (stepsMatch && stepsMatch[1]) {
-      steps = stepsMatch[1]
-        .split(/\n\d+\.\s+/)
-        .map((s) => s.trim())
-        .filter((s) => s.length > 0);
-    }
-
-    return {
-      id: idx + 1,
-      title,
-      type: typeMatch ? typeMatch[1].trim() : "",
-      priority: priorityMatch ? priorityMatch[1].trim() : "",
-      description: descMatch ? descMatch[1].trim() : "",
-      steps,
-      expectedResult: expectedMatch ? expectedMatch[1].trim() : "",
-      success: true,
-      name: title,
-    };
-  });
-}
-
 // Main Generation Function
 async function handleGenerate() {
   if (!state.apiKey) {
@@ -398,22 +363,27 @@ async function handleGenerate() {
       additionalDetails
     );
 
-    console.log("API Response received:", response);
+    console.log("Full API Response:", response);
 
-    const responseText = response.content || response.response || "";
+    // Extract response text from common fields returned by different providers
+    let responseText = response;
+
+    // Handle different response formats
+    if (typeof response === "object") {
+      responseText =
+        response.content ||
+        response.response ||
+        response.choices?.[0]?.message?.content ||
+        response.choices?.[0]?.content ||
+        response.choices?.[0]?.text ||
+        JSON.stringify(response);
+    }
+
     console.log("Response content length:", responseText.length);
+    console.log("Response content preview:", responseText.substring(0, 200));
 
     // Parse and display test cases using the parser
     let parsedCases = parseTestCases(responseText);
-    // If OpenRouter/StreamLake and parser fails, use robust parser
-    if (
-      (!parsedCases || parsedCases.length === 0) &&
-      (state.provider === "openrouter" ||
-        state.provider === "streamlake" ||
-        (response.model && response.model.includes("kwaipilot")))
-    ) {
-      parsedCases = robustTestCaseParser(responseText);
-    }
     generatedTestCases = parsedCases;
     console.log("Parsed test cases:", generatedTestCases);
 
@@ -429,8 +399,12 @@ async function handleGenerate() {
       fallbackDisplayTestCases(generatedTestCases);
     }
 
-    // Get token information
-    const tokensUsed = response.usage?.totalTokenCount || 0;
+    // Get token information (supporting multiple usage field names)
+    const tokensUsed =
+      response.usage?.totalTokenCount ||
+      response.usage?.total_tokens ||
+      response.usage?.totalTokens ||
+      0;
     const cost = (tokensUsed / 1000) * 0.001;
 
     currentTokens = tokensUsed;

@@ -350,24 +350,24 @@
     <script>
         // Dynamically update status button name/tooltips based on provider
         function updateProviderStatusBtn() {
-                const provider = localStorage.getItem('ai-provider') || 'gemini';
-                const statusBtn = document.getElementById('status-btn');
-                if (!statusBtn) return;
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const statusBtn = document.getElementById('status-btn');
+            if (!statusBtn) return;
 
-                if (provider === 'openrouter') {
-                    statusBtn.textContent = "OpenRouter Status";
-                    statusBtn.title = "Check OpenRouter API Status";
-                } else if (provider === 'deepseek') {
-                    statusBtn.textContent = "DeepSeek Status";
-                    statusBtn.title = "Check DeepSeek API Status";
-                } else {
-                    statusBtn.textContent = "Gemini Status";
-                    statusBtn.title = "Check Gemini API Status";
-                }
+            if (provider === 'openrouter') {
+                statusBtn.textContent = "OpenRouter Status";
+                statusBtn.title = "Check OpenRouter API Status";
+            } else if (provider === 'deepseek') {
+                statusBtn.textContent = "DeepSeek Status";
+                statusBtn.title = "Check DeepSeek API Status";
+            } else {
+                statusBtn.textContent = "Gemini Status";
+                statusBtn.title = "Check Gemini API Status";
             }
+        }
 
-            document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
-            window.addEventListener('storage', updateProviderStatusBtn);
+        document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
+        window.addEventListener('storage', updateProviderStatusBtn);
 
         function displayFileList() {
             const fileList = document.getElementById('fileList');
@@ -388,6 +388,68 @@
                 window.displayFileList();
             }
         });
+
+        function parseTextResponse(text) {
+            if (!text || typeof text !== 'string') {
+                return [];
+            }
+
+            const testCases = [];
+            const rawTestCases = text.split(/Test Case \d+:/).filter(tc => tc.trim() !== '');
+
+            rawTestCases.forEach((rawTc, index) => {
+                const lines = rawTc.trim().split('\n');
+                const title = lines.shift().trim();
+                const testCase = {
+                    id: `TC-${String(index + 1).padStart(3, '0')}`,
+                    title: title,
+                    type: 'N/A',
+                    priority: 'N/A',
+                    description: '',
+                    steps: [],
+                    expected_result: ''
+                };
+
+                let currentSection = 'description'; // Default to description after title
+
+                lines.forEach(line => {
+                    const lowerLine = line.trim().toLowerCase();
+                    if (lowerLine.startsWith('type:')) {
+                        testCase.type = line.substring(line.indexOf(':') + 1).trim();
+                        currentSection = null;
+                    } else if (lowerLine.startsWith('priority:')) {
+                        testCase.priority = line.substring(line.indexOf(':') + 1).trim();
+                        currentSection = null;
+                    } else if (lowerLine.startsWith('description:')) {
+                        testCase.description = line.substring(line.indexOf(':') + 1).trim();
+                        currentSection = 'description';
+                    } else if (lowerLine.startsWith('steps:')) {
+                        currentSection = 'steps';
+                    } else if (lowerLine.startsWith('expected result:')) {
+                        testCase.expected_result = line.substring(line.indexOf(':') + 1).trim();
+                        currentSection = 'expected_result';
+                    } else if (currentSection) {
+                        const trimmedLine = line.trim();
+                        if (trimmedLine) {
+                            if (currentSection === 'steps') {
+                                // remove numbering like "1. " or "1) "
+                                testCase.steps.push(trimmedLine.replace(/^\d+[.)]\s*/, ''));
+                            } else if (currentSection === 'description') {
+                                testCase.description += (testCase.description ? ' ' : '') + trimmedLine;
+                            } else if (currentSection === 'expected_result') {
+                                testCase.expected_result += (testCase.expected_result ? ' ' : '') + trimmedLine;
+                            }
+                        }
+                    }
+                });
+                if (testCase.title) {
+                    testCases.push(testCase);
+                }
+            });
+
+            return testCases;
+        }
+        window.parseTextResponse = parseTextResponse;
     </script>
 </body>
 
