@@ -66,6 +66,7 @@ export async function fetchFromApi(
   prompt,
   systemPrompt = "You are a helpful assistant."
 ) {
+  const startTime = Date.now();
   // Route based on provider
   const provider = state.provider || "gemini";
 
@@ -101,7 +102,8 @@ export async function fetchFromApi(
     usage.totalTokenCount =
       usage.total_tokens ||
       (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
-    return { content, usage };
+    const duration = Date.now() - startTime;
+    return { content, usage, duration };
   } else if (provider === "openrouter") {
     const apiKey = state.openrouterApiKey || state.apiKey;
     if (!apiKey) throw new Error("OpenRouter API key not configured.");
@@ -133,7 +135,8 @@ export async function fetchFromApi(
     usage.totalTokenCount =
       usage.total_tokens ||
       (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
-    return { content, usage };
+    const duration = Date.now() - startTime;
+    return { content, usage, duration };
   }
 
   // Default: Gemini
@@ -166,6 +169,6 @@ export async function fetchFromApi(
   const result = await response.json();
   const content = result.candidates?.[0]?.content?.parts?.[0]?.text;
   const usage = result.usageMetadata || { totalTokenCount: 0 };
-
-  return { content, usage };
+  const duration = Date.now() - startTime;
+  return { content, usage, duration };
 }

@@ -23,6 +23,13 @@
             overflow-y: auto !important;
         }
     </style>
+    <script>
+        // Carry theme from localStorage (light/dark/system)
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 
 <body class="gradient-bg">
@@ -81,9 +88,32 @@
                 </div>
             </div>
         </div>
+
+        <!-- Recent API Calls -->
+        <div class="dashboard-card mt-8">
+            <h2 class="card-title">Recent API Calls (Last 10)</h2>
+            <div class="overflow-x-auto mt-6">
+                <table class="w-full text-left text-sm">
+                    <thead class="border-b-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                        <tr>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Agent Type</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Model</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Tokens</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Response Time</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Input Token Size</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Output Token Size</th>
+                            <th class="p-3 font-semibold text-slate-600 dark:text-slate-400">Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-calls-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="js/dashboard.js"></script>
+    <script src="js/theme-switcher.js"></script>
     <script>
         // Apply reusable classes with Tailwind's @apply directive for cleaner HTML
         const style = document.createElement('style');

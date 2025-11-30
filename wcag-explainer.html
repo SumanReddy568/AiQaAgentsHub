@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Rule Explainer - AI QA Agent Hub</title>
+    <link rel="icon" type="image/png" href="assets/ai_png.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="gradient-bg h-full overflow-hidden">
+    <div class="fixed top-8 right-8 flex items-center gap-4 z-10">
+        <a href="index.html"
+            class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
+            &larr; Home
+        </a>
+        <a href="dashboard.html" title="Usage Dashboard"
+            class="p-2 rounded-xl hover:bg-white/50 transition-colors bg-white/80">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20V10"></path>
+                <path d="M18 20V4"></path>
+                <path d="M6 20V16"></path>
+            </svg>
+        </a>
+        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
+            title="Check Gemini API Status">
+            Gemini Status
+        </a>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-screen flex flex-col">
+        <header class="text-center mb-10 flex-shrink-0">
+            <a href="index.html" class="inline-block mb-4">
+                <img src="assets/ai_png.png" alt="AI Logo" class="w-16 h-16 bg-white rounded-2xl shadow-lg p-3">
+            </a>
+            <h1 class="text-4xl font-bold text-slate-800">WCAG Rule Explainer</h1>
+            <p class="text-slate-600 mt-2">Get detailed explanations of WCAG 2.1 accessibility guidelines with examples and testing methods.</p>
+        </header>
+
+        <div class="glass-effect p-8 rounded-2xl shadow-lg mb-8 flex-shrink-0">
+            <div class="mb-6">
+                <label class="block text-sm font-semibold text-slate-700 mb-3">WCAG Rule Name</label>
+                <div class="flex gap-3">
+                    <input 
+                        type="text" 
+                        id="wcagRuleInput" 
+                        placeholder="e.g., 1.1.1 Non-text Content, 2.4.3 Focus Order" 
+                        class="flex-1 border-2 border-slate-300 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none text-slate-700 placeholder-slate-400"
+                    >
+                    <button 
+                        id="explainBtn" 
+                        class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all"
+                    >
+                        Explain
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">Examples: WCAG 1.4.3 Contrast (Minimum), WCAG 2.1.1 Keyboard, WCAG 3.2.4 Consistent Identification</p>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+            <p class="mt-4 text-slate-600">AI Analyzing WCAG rule...</p>
+        </div>
+
+        <div id="output" class="hidden glass-effect rounded-2xl shadow-lg overflow-y-auto flex-1 flex flex-col">
+            <div id="explanation" class="prose prose-slate prose-headings:text-lg prose-p:leading-relaxed max-w-none text-slate-700 p-8 space-y-6"></div>
+        </div>
+
+        <div id="emptyState" class="glass-effect p-12 rounded-2xl shadow-lg text-center flex-1 flex items-center justify-center">
+            <div>
+                <svg class="mx-auto h-16 w-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <p class="text-slate-500 text-lg">Enter a WCAG rule name above to get started</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.AI_PROVIDER = localStorage.getItem('ai-provider') || 'gemini';
+        window.AI_MODEL = localStorage.getItem('selected-model') || 'gemini-2.5-flash';
+
+        function updateProviderStatusBtn() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const statusBtn = document.getElementById('status-btn');
+            if (!statusBtn) return;
+
+            if (provider === 'openrouter') {
+                statusBtn.textContent = "OpenRouter Status";
+                statusBtn.title = "Check OpenRouter API Status";
+            } else if (provider === 'deepseek') {
+                statusBtn.textContent = "DeepSeek Status";
+                statusBtn.title = "Check DeepSeek API Status";
+            } else {
+                statusBtn.textContent = "Gemini Status";
+                statusBtn.title = "Check Gemini API Status";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
+        window.addEventListener('storage', updateProviderStatusBtn);
+    </script>
+    <script type="module" src="js/wcag-explainer.js"></script>
+    <script src="js/theme-switcher.js"></script>
+</body>
+</html>

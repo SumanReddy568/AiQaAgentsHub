@@ -61,7 +61,7 @@ function renderDashboard(records = []) {
     return acc;
   }, {});
 
-  // --- 2. Populate the Model Stats Data Table ---
+  // --- 2. Populate the Model Stats Data Table and Chart ---
   const modelTableBody = document.getElementById("model-stats-body");
   if (modelTableBody) {
     if (Object.keys(modelStats).length === 0) {
@@ -133,4 +133,66 @@ function renderDashboard(records = []) {
       },
     },
   });
+
+  // --- 4. Render Recent API Calls Table ---
+  renderRecentCallsTable(records);
+}
+
+function renderRecentCallsTable(records = []) {
+  const recentCallsBody = document.getElementById("recent-calls-body");
+  if (!recentCallsBody) return;
+
+  // Get last 10 records in reverse chronological order
+  const recentCalls = records
+    .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0))
+    .slice(0, 10);
+
+  if (recentCalls.length === 0) {
+    recentCallsBody.innerHTML = `<tr><td colspan="7" class="p-3 text-center text-slate-500">No API calls recorded yet.</td></tr>`;
+    return;
+  }
+
+  recentCallsBody.innerHTML = recentCalls
+    .map((record) => {
+      const agentType = record.type || "unknown";
+      const model = record.model || "unknown";
+      const tokens = record.totalTokens || record.tokensUsed || 0;
+      const responseTime = record.duration || 0;
+      const timestamp = record.timestamp
+        ? new Date(record.timestamp).toLocaleString()
+        : "N/A";
+
+      // Input/output token size
+      const inputTokens =
+        record.promptTokens ||
+        record.prompt_tokens ||
+        (record.usage?.prompt_tokens ?? 0);
+      const outputTokens =
+        record.responseTokens ||
+        record.completion_tokens ||
+        record.response_tokens ||
+        (record.usage?.completion_tokens ?? 0);
+
+      return `
+        <tr class="border-b border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+          <td class="p-3 font-medium text-slate-800 dark:text-slate-200">
+            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded font-semibold">
+              ${agentType}
+            </span>
+          </td>
+          <td class="p-3 text-slate-700 dark:text-slate-300 text-xs">${model}</td>
+          <td class="p-3 text-slate-700 dark:text-slate-300 font-mono text-xs">${tokens.toLocaleString()}</td>
+          <td class="p-3 text-slate-700 dark:text-slate-300 text-xs">${responseTime}ms</td>
+          <td class="p-3 text-slate-600 dark:text-slate-400 text-xs font-mono">${inputTokens.toLocaleString()}</td>
+          <td class="p-3 text-slate-600 dark:text-slate-400 text-xs font-mono">${outputTokens.toLocaleString()}</td>
+          <td class="p-3 text-slate-500 dark:text-slate-500 text-xs whitespace-nowrap">${timestamp}</td>
+        </tr>`;
+    })
+    .join("");
+}
+
+function truncateText(text, maxLength = 50) {
+  if (!text) return "—";
+  if (typeof text !== "string") return "—";
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }

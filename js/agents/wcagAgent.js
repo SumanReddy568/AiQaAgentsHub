@@ -2,6 +2,91 @@ import { fetchFromApi } from "../aiService.js";
 import { state } from "../state.js";
 import { addApiCall, initDB } from "../db.js";
 
+export async function getWcagExplanation(ruleName) {
+  // Check for API key in localStorage
+  const provider = window.AI_PROVIDER || localStorage.getItem('ai-provider') || 'gemini';
+  const apiKeyField = `${provider}-api-key`;
+  const apiKey = localStorage.getItem(apiKeyField);
+  
+  if (!apiKey) {
+    throw new Error(`API key not configured for ${provider}. Please set one in settings.`);
+  }
+
+  const prompt = `You are an expert web accessibility specialist explaining WCAG guidelines to beginners.
+
+A user is asking for an explanation of this WCAG rule: "${ruleName}"
+
+Please provide a BEGINNER-FRIENDLY explanation with this exact structure:
+
+## Rule Overview
+- **What is this rule?** (explain in simple terms, no jargon)
+- **Why does it matter?** (who benefits and why)
+- **Who might be affected?** (e.g., people with screen readers, keyboard users, etc.)
+
+## Real-World Example
+Include a simple, relatable scenario showing why this rule matters in everyday use.
+
+## The Good Way ✅
+\`\`\`html
+[Show the CORRECT implementation with comments explaining each part]
+\`\`\`
+
+## The Bad Way ❌
+\`\`\`html
+[Show the WRONG implementation with comments explaining what's missing]
+\`\`\`
+
+## How to Check If Your Code Passes
+Provide 2-3 simple, practical testing steps anyone can follow:
+1. [Step 1 - what to look for]
+2. [Step 2 - what to check]
+3. [Step 3 - verification]
+
+## Impact Level
+- **Severity:** High/Medium/Low (how critical is this?)
+- **Who it affects:** [Brief description]
+
+## Quick Tips
+- Bullet point 1: Easy way to remember this rule
+- Bullet point 2: Common mistake to avoid
+- Bullet point 3: Tool or technique to help
+
+## Learn More
+- Official WCAG Guideline: [Link]
+- MDN Documentation: [Link if available]
+- Web Accessibility Initiative (WAI): [Link if available]
+
+---
+**Remember:** Accessibility isn't just about following rules—it's about making the web usable for everyone!`;
+
+  try {
+    const { content, usage, duration } = await fetchFromApi(prompt, null, {
+      provider: provider,
+      model: window.AI_MODEL || localStorage.getItem('selected-model')
+    });
+
+    await initDB();
+    // Only call addApiCall ONCE per request
+    await addApiCall({
+      timestamp: new Date(),
+      model: state.selectedModel,
+      totalTokens: usage.totalTokenCount,
+      promptTokens: usage.prompt_tokens || usage.promptTokenCount,
+      responseTokens: usage.completion_tokens || usage.candidatesTokenCount,
+      type: "wcag-explainer",
+      duration: duration || 0,
+    }).catch((err) => console.error("DB save failed:", err));
+
+    return {
+      explanation: content,
+      tokens: usage.totalTokenCount || 0,
+    };
+  } catch (error) {
+    console.error("Error fetching WCAG explanation:", error);
+    throw error;
+  }
+}
+
 export async function generateWcagA11yExplainer(htmlContent, wcagRule = null) {
   const rulePrompt = wcagRule
     ? `Focus specifically on WCAG rule: ${wcagRule}`
