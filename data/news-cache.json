@@ -1,85 +1,5 @@
 [
   {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "GitLab Discloses Critical RCE Vulnerability (CVE-2024-4835) Allowing Account Takeover",
-    "source": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-security-update/"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "The Deno Team Launches JSR, a Modern JavaScript Registry Alternative to NPM",
-    "source": "https://deno.com/blog/jsr_open_beta"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "Apple M-Series Chips Vulnerable to New 'GoFetch' Side-Channel Attack",
-    "source": "https://gofetch.fail/"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "OpenTofu 1.7 Released with Provider-Defined Functions and Encrypted State",
-    "source": "https://opentofu.org/blog/opentofu-1-7-is-here/"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "Cloudflare Workers AI Now Supports Llama-3 and Fine-Tuning via LoRA",
-    "source": "https://blog.cloudflare.com/workers-ai-fine-tuning"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "DuckDB Reaches Stable 1.0.0 Release, Dubbed 'Snowduck'",
-    "source": "https://duckdb.org/2024/05/07/announcing-duckdb-100.html"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "Zed, the High-Performance Rust-Based Code Editor, is Now Open Source",
-    "source": "https://zed.dev/blog/zed-is-now-open-source"
-  },
-  {
-    "date": "2025-11-19T13:07:53.911Z",
-    "headline": "Microsoft Unveils Project Petridish for Simulating Complex Biological Systems",
-    "source": "https://news.microsoft.com/source/features/ai/petridish-microsofts-new-platform-for-accelerating-synthetic-biology/"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "DuckDB Reaches Production-Ready Milestone with Version 1.0.0",
-    "source": "https://duckdb.org/2024/05/10/announcing-duckdb-1-0.html"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Signal Rolls Out Usernames and Quantum-Resistant Encryption",
-    "source": "https://signal.org/blog/phone-number-privacy-usernames/"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Linux Kernel 6.9 Released with Intel FRED and BPF Token Support",
-    "source": "https://www.phoronix.com/news/Linux-6.9-Released"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Critical RCE Vulnerability (CVE-2024-24786) Disclosed in Go Language for Windows",
-    "source": "https://nvd.nist.gov/vuln/detail/CVE-2024-24786"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Microsoft Announces General Availability of Azure Container Apps Jobs",
-    "source": "https://azure.microsoft.com/en-us/updates/generally-available-azure-container-apps-jobs/"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Google's V8 Engine Enables Maglev JIT Compiler, Boosting JS Performance by 7.5%",
-    "source": "https://v8.dev/blog/maglev"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "Stanford Unveils Mobile ALOHA, a Low-Cost System for Robot Imitation Learning",
-    "source": "https://mobile-aloha.github.io/"
-  },
-  {
-    "date": "2025-11-20T03:56:39.720Z",
-    "headline": "AI Chipmaker Groq Acquires Definitive Intelligence to Build a Full-Stack Platform",
-    "source": "https://wow.groq.com/press-release-groq-acquires-definitive-intelligence/"
-  },
-  {
     "date": "2025-11-20T13:07:01.588Z",
     "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Stable API for In-Process OLAP",
     "source": "https://duckdb.org/2024/06/07/announcing-duckdb-1-0-0.html"
@@ -2178,5 +2098,135 @@
     "date": "2025-11-29T13:02:53.257Z",
     "headline": "Salesforce Enhances Analytics Capabilities with New AI Features",
     "source": "https://www.salesforce.com/blogs/2023/10/23/salesforce-analytics-ai-enhancements/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Meta releases Llama 3.1, its most powerful open source AI models yet",
+    "source": "https://ai.meta.com/blog/meta-llama-3-1/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "OpenAI’s former safety lead Jan Leike joins rival Anthropic",
+    "source": "https://www.theverge.com/2024/7/23/24203613/openai-jan-leike-safety-anthropic"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "CISA Warns of Actively Exploited Critical VMware vCenter Server Vulnerability",
+    "source": "https://thehackernews.com/2024/07/cisa-warns-of-actively-exploited.html"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Samsung Details HBM4 Memory: 2048-bit Interface, Up to 16-Hi Stacks",
+    "source": "https://www.anandtech.com/show/21481/samsung-details-hbm4-memory-2048bit-interface-up-to-16hi-stacks"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "V8 release v12.8",
+    "source": "https://v8.dev/blog/v8-release-128"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Intel tops Q2 estimates, but offers disappointing guidance as it ramps up AI chip production",
+    "source": "https://www.cnbc.com/2024/07/25/intel-intc-q2-2024-earnings.html"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Amazon Bedrock is now available in the AWS Canada West (Calgary) region",
+    "source": "https://press.aboutamazon.com/2024/7/amazon-bedrock-is-now-available-in-the-aws-canada-west-calgary-region"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "The Open Source Initiative Publishes the Open Source AI Definition v1.0",
+    "source": "https://blog.opensource.org/the-osi-publishes-the-open-source-ai-definition-v1-0/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "HashiCorp adds generative AI to Terraform and other developer tools",
+    "source": "https://www.infoworld.com/article/3716035/hashicorp-adds-generative-ai-to-terraform-and-other-developer-tools.html"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Critical Flaw in LiteSpeed Cache WordPress Plugin Lets Attackers Escalate Privileges",
+    "source": "https://www.wordfence.com/blog/2024/07/critical-privilege-escallation-vulnerability-in-litespeed-cache-wordpress-plugin/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Google Cloud enhances BigQuery with new gen AI features for data exploration and preparation",
+    "source": "https://venturebeat.com/data-infrastructure/google-cloud-enhances-bigquery-with-new-gen-ai-features-for-data-exploration-and-preparation/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "AMD Launches Ryzen PRO 8000 and 8040 Series for Business Laptops and Desktops",
+    "source": "https://www.tomshardware.com/pc-components/cpus/amd-launches-ryzen-pro-8000-and-8040-series-for-business-laptops-and-desktops-brings-ryzen-ai-to-the-masses"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Mistral AI is in talks to raise a new round at a $15 billion valuation",
+    "source": "https://techcrunch.com/2024/07/23/mistral-ai-is-in-talks-to-raise-a-new-round-at-a-15-billion-valuation/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Node v22.5.0 (Current)",
+    "source": "https://nodejs.org/en/blog/release/v22.5.0"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Google Cloud Introduces New AI-Powered Features for Vertex AI",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-introduces-new-ai-powered-features-for-vertex-ai"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "AWS Launches New Serverless Application Repository for Developers",
+    "source": "https://aws.amazon.com/blogs/aws/aws-launches-new-serverless-application-repository-for-developers/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Microsoft Azure Expands Support for Open-Source Databases",
+    "source": "https://azure.microsoft.com/en-us/blog/microsoft-azure-expands-support-for-open-source-databases/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "GitHub Introduces New Code Scanning Features",
+    "source": "https://github.blog/2023-10-24-github-introduces-new-code-scanning-features/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Intel Launches New 14th Gen Core Processors for Laptops",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/14th-gen-core-laptop-processors-launch.html"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "New Open Source Project Aims to Simplify Kubernetes Management",
+    "source": "https://kubernetes.io/blog/2023/10/24/new-open-source-project-simplifies-kubernetes-management/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Cisco Releases Security Updates for Critical Vulnerabilities",
+    "source": "https://www.cisco.com/c/en/us/support/docs/security/critical-vulnerabilities-security-updates.html"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Salesforce Unveils New Data Analytics Tools for Businesses",
+    "source": "https://www.salesforce.com/news/2023/10/salesforce-unveils-new-data-analytics-tools/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "NVIDIA Announces New AI Toolkit for Developers",
+    "source": "https://www.nvidia.com/en-us/deep-learning-ai/ai-toolkit-developers/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Oracle Cloud Introduces New Features for Data Security",
+    "source": "https://www.oracle.com/cloud/data-security-features/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Meta Releases New Open Source AI Framework",
+    "source": "https://ai.facebook.com/blog/meta-releases-new-open-source-ai-framework/"
+  },
+  {
+    "date": "2025-11-30T04:11:38.980Z",
+    "headline": "Samsung Unveils New Line of High-Performance SSDs",
+    "source": "https://www.samsung.com/semiconductor/ssd/high-performance-ssds-launch/"
   }
 ]
