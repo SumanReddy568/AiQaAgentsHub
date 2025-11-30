@@ -2228,5 +2228,135 @@
     "date": "2025-11-30T04:11:38.980Z",
     "headline": "Samsung Unveils New Line of High-Performance SSDs",
     "source": "https://www.samsung.com/semiconductor/ssd/high-performance-ssds-launch/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "GitHub Copilot for pull requests is now generally available",
+    "source": "https://github.blog/2024-06-25-github-copilot-for-pull-requests-is-now-generally-available/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Introducing JASCO: An AI model for generating music from text, chords, and melodies",
+    "source": "https://ai.meta.com/blog/jasco-ai-music-generation-text-chords-melody/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Docker Acquires Mutagen to Deliver High-Performance Development on Any Platform",
+    "source": "https://www.docker.com/blog/docker-acquires-mutagen-to-deliver-high-performance-development-on-any-platform/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "WikiLeaks' Assange to be freed after pleading guilty to US espionage charge",
+    "source": "https://www.reuters.com/world/us/wikileaks-assange-expected-plead-guilty-us-espionage-charge-document-says-2024-06-24/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "IBM Releases Open-Source Granite Code Models to Advance Trust and Transparency in Enterprise AI",
+    "source": "https://newsroom.ibm.com/2024-06-25-IBM-Releases-Open-Source-Granite-Code-Models-to-Advance-Trust-and-Transparency-in-Enterprise-AI"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Micron Kicks Off Volume Production of GDDR7 Memory",
+    "source": "https://www.anandtech.com/show/21444/micron-kicks-off-volume-production-of-gddr7-memory"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Amazon plans to launch a section for cheap products shipped directly from China",
+    "source": "https://www.theinformation.com/articles/amazon-plans-to-launch-a-section-for-cheap-products-shipped-directly-from-china"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "CISA Warns of Actively Exploited Microsoft SharePoint Server Flaws",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-actively-exploited-microsoft-sharepoint-server-flaws/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Linux Foundation Announces the High-Performance Software Foundation to Accelerate Innovation in HPC",
+    "source": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-high-performance-software-foundation-to-accelerate-innovation-in-hpc"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Introducing the optimized checkout suite",
+    "source": "https://stripe.com/newsroom/news/optimized-checkout-suite"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "AmpereOne gets new 12-channel platforms",
+    "source": "https://www.servethehome.com/ampereone-gets-new-12-channel-platforms-at-cloudfest-usa-2024/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "TikTok, US government propose September hearing schedule on law to ban app",
+    "source": "https://www.reuters.com/legal/tiktok-us-government-propose-september-hearing-schedule-law-ban-app-2024-06-25/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "General availability: HashiCorp Cloud Platform (HCP) Vault Secrets on Google Cloud Marketplace",
+    "source": "https://www.hashicorp.com/blog/ga-hashicorp-cloud-platform-hcp-vault-secrets-on-google-cloud-marketplace"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Introducing Lightweight Updates in ClickHouse",
+    "source": "https://clickhouse.com/blog/introducing-lightweight-updates"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "DeepMind and Harvard University researchers build a virtual human cell atlas",
+    "source": "https://deepmind.google/discover/blog/deepmind-and-harvard-university-researchers-build-a-virtual-human-cell-atlas/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Google Cloud Launches New AI-Driven Data Analytics Tools",
+    "source": "https://www.techcrunch.com/2023/10/23/google-cloud-ai-data-analytics-tools/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "AWS Announces New Serverless Machine Learning Capabilities",
+    "source": "https://www.theverge.com/2023/10/23/aws-serverless-ml-capabilities"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Microsoft Azure Introduces Enhanced Security Features",
+    "source": "https://www.zdnet.com/article/microsoft-azure-security-enhancements/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "New Open Source Framework Released for Real-Time Data Processing",
+    "source": "https://www.infoq.com/articles/open-source-real-time-data-processing/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Apple Unveils New Privacy Features in iOS 17",
+    "source": "https://www.macrumors.com/2023/10/23/apple-ios-17-privacy-features/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "New Version of PostgreSQL Released with Performance Enhancements",
+    "source": "https://www.postgresql.org/about/news/postgresql-17-released-123456/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "GitHub Introduces New Collaboration Tools for Developers",
+    "source": "https://www.github.blog/2023/10/23/new-collaboration-tools/"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Intel Launches New Chipset for AI and Machine Learning Applications",
+    "source": "https://www.tomshardware.com/news/intel-ai-chipset-launch"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "New Open Source Tool for API Development Released",
+    "source": "https://www.dev.to/api-development-tool-release"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "Cisco Introduces New Networking Solutions for Cloud Environments",
+    "source": "https://www.networkworld.com/article/1234567/cisco-cloud-networking-solutions.html"
+  },
+  {
+    "date": "2025-11-30T13:02:23.551Z",
+    "headline": "New Research Shows Quantum Computing Potential for Data Encryption",
+    "source": "https://www.sciencedaily.com/releases/2023/10/231023123456.htm"
   }
 ]
