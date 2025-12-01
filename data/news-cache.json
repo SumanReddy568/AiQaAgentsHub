@@ -1,45 +1,5 @@
 [
   {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Cohere Releases Aya 23, a Powerful Open Source Multilingual AI Model",
-    "source": "https://txt.cohere.com/aya-23/"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Biome v1.8 Released with New Migration Tool and Astro Support",
-    "source": "https://biomejs.dev/blog/biome-v1-8/"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Cloudflare Workers AI Becomes Generally Available with Llama 3.1 and Fine-Tuning",
-    "source": "https://blog.cloudflare.com/workers-ai-is-generally-available"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Critical RCE Vulnerability 'LinguisticLumberjack' Disclosed in Fluent Bit Logging Utility",
-    "source": "https://www.tenable.com/blog/linguisticlumberjack-fluent-bit-critical-memory-corruption-vulnerability-could-lead-to-rce"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "US Treasury Proposes Rule to Prohibit and Monitor Investments in China's Tech Sector",
-    "source": "https://home.treasury.gov/news/press-releases/jy2414"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Arm Unveils Ethos-U85 NPU, Boosting On-Device AI Performance by 4x",
-    "source": "https://newsroom.arm.com/news/arm-unveils-ethos-u85"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "Boston Dynamics Reveals Technical Details of New All-Electric Atlas Robot",
-    "source": "https://bostondynamics.com/blog/electric-new-era-for-atlas/"
-  },
-  {
-    "date": "2025-11-21T13:05:08.876Z",
-    "headline": "PostgreSQL 17 Beta 1 Released, Featuring Incremental Backup and JSON_TABLE",
-    "source": "https://www.postgresql.org/about/news/postgresql-17-beta-1-released-2852/"
-  },
-  {
     "date": "2025-11-22T03:51:53.119Z",
     "headline": "Kaspersky Software Banned from Sale in the US Over National Security Risks",
     "source": "https://www.reuters.com/technology/cybersecurity/us-announce-ban-kaspersky-software-over-ties-russia-source-says-2024-06-20/"
@@ -2403,5 +2363,130 @@
     "date": "2025-12-01T04:36:29.229Z",
     "headline": "Cisco Expands Security Offerings with New Cloud Solutions",
     "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/10/cisco-cloud-security-solutions.html"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Hugging Face and Google Cloud announce strategic partnership to accelerate generative AI and ML development",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/hugging-face-and-google-cloud-partnership"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Expanding testing for the Privacy Sandbox and phasing out third-party cookies",
+    "source": "https://privacysandbox.com/intl/en_us/news/expanding-testing-for-the-privacy-sandbox-and-phasing-out-third-party-cookies/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Announcing Postman v11: The only complete, integrated API platform",
+    "source": "https://blog.postman.com/announcing-postman-v11/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "GitLab warns users to patch critical account takeover vulnerability",
+    "source": "https://www.bleepingcomputer.com/news/security/gitlab-warns-users-to-patch-critical-account-takeover-vulnerability/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Amazon EFS now supports increasing file system throughput while in use",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-efs-increasing-file-system-throughput/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Qualcomm Expands its Leading PC Platform Portfolio with Snapdragon X Plus",
+    "source": "https://www.qualcomm.com/news/releases/2024/07/qualcomm-expands-its-leading-pc-platform-portfolio-with-snapdr"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "OpenTofu 1.7 adds state encryption, provider-defined functions, and more",
+    "source": "https://opentofu.org/blog/opentofu-1-7-adds-state-encryption-provider-defined-functions-and-more/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Welcoming Lilac to Databricks: Curate Unstructured Data for Production AI",
+    "source": "https://www.databricks.com/blog/welcoming-lilac-databricks-curate-unstructured-data-production-ai"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Commission opens non-compliance investigation against Apple over new contractual terms for third-party app developers and app stores",
+    "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_24_4101"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "TSMC Details A16 and N2P Process Technologies, Charting a Course to Angstrom-Era Chips",
+    "source": "https://www.anandtech.com/show/21487/tsmc-details-a16-and-n2p-process-technologies-charting-a-course-to-angstrom-era-chips"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Announcing managed Network Access Control",
+    "source": "https://tailscale.com/blog/managed-nac"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Angular v18.1 is now available!",
+    "source": "https://blog.angular.io/angular-v18-1-is-now-available-e7138407481f"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "CISA Adds One Known Exploited Vulnerability to Catalog",
+    "source": "https://www.cisa.gov/news-events/alerts/2024/07/23/cisa-adds-one-known-exploited-vulnerability-catalog"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "The OpenJS Foundation Launches Specification Collaboration to Unify JavaScript Security Efforts",
+    "source": "https://www.linuxfoundation.org/press/openjs-launches-specification-collaboration-to-unify-javascript-security-efforts"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Mirantis announces Lens 2024, the Kubernetes platform for developers",
+    "source": "https://www.mirantis.com/blog/mirantis-announces-lens-2024-the-kubernetes-platform-for-developers/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Microsoft Azure Launches New AI-Driven Security Features",
+    "source": "https://www.zdnet.com/article/microsoft-azure-launches-new-ai-driven-security-features/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "GitLab Introduces New DevSecOps Features in Latest Release",
+    "source": "https://www.techrepublic.com/article/gitlab-introduces-new-devsecops-features-in-latest-release/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Oracle Cloud Infrastructure Enhances Data Management Tools",
+    "source": "https://www.oracle.com/news/announcement/oracle-cloud-infrastructure-data-management-tools/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "NVIDIA Announces New AI Research Center in Europe",
+    "source": "https://www.nvidia.com/en-us/research/ai-research-center-europe/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "New Cybersecurity Bill Introduced in US Congress",
+    "source": "https://www.cnet.com/news/new-cybersecurity-bill-introduced-in-us-congress/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Palo Alto Networks Acquires Cloud Security Startup",
+    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/23/palo-alto-networks-acquires-cloud-security-startup/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "GitHub Introduces New Features for Managing Open Source Projects",
+    "source": "https://github.blog/2023-10-23-new-features-for-managing-open-source-projects/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Cisco Launches New Cybersecurity Solutions for Small Businesses",
+    "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/10/cisco-launches-new-cybersecurity-solutions-small-businesses.html"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "Samsung Unveils New Galaxy Devices with Enhanced AI Features",
+    "source": "https://www.samsung.com/global/galaxy/launch-event-2023/"
+  },
+  {
+    "date": "2025-12-01T13:11:28.377Z",
+    "headline": "New Open Source Project Aims to Simplify Cloud Migration",
+    "source": "https://www.infoq.com/articles/open-source-cloud-migration-tools/"
   }
 ]
