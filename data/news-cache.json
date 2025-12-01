@@ -1,80 +1,5 @@
 [
   {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "DuckDB Reaches Major 1.0.0 Milestone, Declaring Stable API for In-Process OLAP",
-    "source": "https://duckdb.org/2024/06/07/announcing-duckdb-1-0-0.html"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "Linux Kernel 6.10 Released with Bcachefs Enhancements and IO_uring Optimizations",
-    "source": "https://lkml.org/lkml/2024/7/14/278"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "Critical RCE Vulnerability (CVE-2024-37888) Disclosed in Popular MinIO Object Storage",
-    "source": "https://github.com/minio/minio/security/advisories/GHSA-85r9-v9hr-c62x"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "Microsoft Introduces 'Graph of Thoughts', an Advanced Prompting Technique for LLMs",
-    "source": "https://arxiv.org/abs/2308.09687"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "Cloudflare Integrates Hugging Face Models Directly into Workers AI Platform",
-    "source": "https://blog.cloudflare.com/workers-ai-hugging-face"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "DeepMind and Isomorphic Labs Launch AlphaFold 3 Server for Non-Commercial Research",
-    "source": "https://www.nature.com/articles/d41586-024-01431-7"
-  },
-  {
-    "date": "2025-11-20T13:07:01.588Z",
-    "headline": "Ventana Announces Veyron V2, a High-Performance RISC-V Compute Chiplet",
-    "source": "https://www.servethehome.com/ventana-veyron-v2-a-32-core-risc-v-chiplet-for-the-data-center/"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Cohere Releases Aya 23: New 8B and 35B Open-Weights Multilingual Models Covering 23 Languages",
-    "source": "https://txt.cohere.com/aya-23/"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Deno 1.44 Released with Private npm Registry Support and Built-in `deno serve`",
-    "source": "https://deno.com/blog/deno-1.44"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Cloudflare Unveils Workers AI Gateway for Caching and Rate Limiting LLM API Calls",
-    "source": "https://blog.cloudflare.com/workers-ai-gateway"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Critical Unauthenticated RCE Vulnerability (CVE-2024-4040) Disclosed in CrushFTP",
-    "source": "https://www.rapid7.com/blog/post/2024/06/03/cve-2024-4040-crushftp-unauthenticated-remote-code-execution-and-file-read/"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Databricks to Acquire Tabular, Unifying Delta Lake and Apache Iceberg Formats",
-    "source": "https://www.databricks.com/blog/databricks-acquire-tabular"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Apple Delays AI Features Rollout in EU, Citing Digital Markets Act (DMA) Interoperability Concerns",
-    "source": "https://www.bloomberg.com/news/articles/2024-06-21/apple-says-it-s-blocking-new-ai-tools-in-eu-due-to-dma-rules"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Broadcom Begins Shipping Tomahawk 5, a 51.2 Tbps Ethernet Switch Chipset for AI/ML Clusters",
-    "source": "https://www.broadcom.com/company/news/product-releases/61581"
-  },
-  {
-    "date": "2025-11-21T03:56:35.431Z",
-    "headline": "Arbitrum Proposes 'Bold' Protocol Upgrade for Permissionless Validation on L2 Network",
-    "source": "https://arbitrum.foundation/news/bold-is-live-on-testnet"
-  },
-  {
     "date": "2025-11-21T13:05:08.876Z",
     "headline": "Cohere Releases Aya 23, a Powerful Open Source Multilingual AI Model",
     "source": "https://txt.cohere.com/aya-23/"
@@ -2358,5 +2283,125 @@
     "date": "2025-11-30T13:02:23.551Z",
     "headline": "New Research Shows Quantum Computing Potential for Data Encryption",
     "source": "https://www.sciencedaily.com/releases/2023/10/231023123456.htm"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Apple Intelligence, other new AI features will not be released in the EU this year",
+    "source": "https://www.theverge.com/2024/6/21/24183063/apple-intelligence-eu-rollout-delay-dma"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Raspberry Pi launches AI Kit for the Raspberry Pi 5",
+    "source": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-for-sale-now-at-70/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Anthropic’s Claude iOS app gets a major update with new business features",
+    "source": "https://techcrunch.com/2024/07/23/anthropics-claude-ios-app-gets-a-major-update-with-new-business-features/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Hugging Face and Google Cloud expand partnership to advance open AI development",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/hugging-face-and-google-cloud-expand-partnership"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Cisco warns of critical RCE flaw in Emergency Responder",
+    "source": "https://www.bleepingcomputer.com/news/security/cisco-warns-of-critical-rce-flaw-in-emergency-responder/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "HashiCorp Announces General Availability of HCP Terraform Explorer",
+    "source": "https://www.hashicorp.com/blog/hcp-terraform-explorer-is-now-generally-available"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Google Cloud simplifies multi-cloud networking with Cross-Cloud Network",
+    "source": "https://cloud.google.com/blog/products/networking/google-cloud-cross-cloud-network-is-now-ga"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "US sanctions leaders of spyware firm Intellexa for targeting officials",
+    "source": "https://home.treasury.gov/news/press-releases/jy2491"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Mistral AI releases Codestral 22B, its first generative AI model for coding",
+    "source": "https://mistral.ai/news/codestral-22b/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Samsung Begins Mass Production of Industry's First 9th-Gen V-NAND for the AI Era",
+    "source": "https://news.samsung.com/global/samsung-electronics-begins-mass-production-of-industrys-first-9th-gen-v-nand-for-the-ai-era"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "The Open Source Security Foundation Launches Project Malbec to Secure AI/ML Supply Chains",
+    "source": "https://openssf.org/press-release/2024/07/23/the-open-source-security-foundation-launches-project-malbec-to-secure-ai-ml-supply-chains/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Microsoft open-sources its framework for building smaller language models",
+    "source": "https://www.theverge.com/2024/7/23/24204481/microsoft-small-language-models-slm-open-source-framework-phi-3"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Snowflake Cortex AI is Now Generally Available",
+    "source": "https://www.snowflake.com/blog/snowflake-cortex-ai-generally-available/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Introducing Temporal CLI v0.1.0",
+    "source": "https://temporal.io/blog/introducing-temporal-cli"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "EU opens new investigation into Microsoft over security failings",
+    "source": "https://www.reuters.com/technology/eu-opens-new-investigation-into-microsoft-over-security-failings-2024-07-22/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Google Cloud Introduces New AI-Powered Tools for Developers",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-introduces-new-ai-powered-tools-for-developers"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Microsoft Azure Expands DevOps Capabilities with New Features",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-devops-new-features/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "GitLab Announces Major Updates to CI/CD Pipeline Features",
+    "source": "https://about.gitlab.com/releases/2023/10/25/gitlab-15-8-released/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "New Open Source Data Visualization Tool Launched",
+    "source": "https://www.techcrunch.com/2023/10/25/vizgen-launch/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "AWS Introduces New Features for SageMaker",
+    "source": "https://aws.amazon.com/blogs/machine-learning/aws-sagemaker-new-features/"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Intel Reveals New Chip Architecture for AI Applications",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chip-architecture.html"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "New Cybersecurity Tool Launched to Combat Phishing Attacks",
+    "source": "https://www.securityweek.com/phishguard-launch"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "New Open Source Framework for Building Web Applications Launched",
+    "source": "https://www.dev.to/webflex-launch"
+  },
+  {
+    "date": "2025-12-01T04:36:29.229Z",
+    "headline": "Cisco Expands Security Offerings with New Cloud Solutions",
+    "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/10/cisco-cloud-security-solutions.html"
   }
 ]
