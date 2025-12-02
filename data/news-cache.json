@@ -1,40 +1,5 @@
 [
   {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "Kaspersky Software Banned from Sale in the US Over National Security Risks",
-    "source": "https://www.reuters.com/technology/cybersecurity/us-announce-ban-kaspersky-software-over-ties-russia-source-says-2024-06-20/"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "Fluent Bit Discloses 'Linguistic Lumberjack' Vulnerability (CVE-2024-4323) with RCE Potential",
-    "source": "https://www.tenable.com/blog/linguistic-lumberjack-fluent-bit-memory-corruption-vulnerability-cve-2024-4323"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "Cloudflare Launches 'Workers AI Gateway' to Manage and Optimize AI Inferences",
-    "source": "https://blog.cloudflare.com/workers-ai-gateway"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "Salesforce Research Releases X-InstructBLIP, a Cross-Lingual Vision-Language Model",
-    "source": "https://blog.salesforceairesearch.com/x-instructblip/"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "dbt Labs Introduces 'dbt Mesh' for Decentralized, Multi-Project Data Architectures",
-    "source": "https://www.dbt.com/blog/what-is-dbt-mesh"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "Coreboot Open-Source Firmware Now Officially Supports Framework Laptop 16",
-    "source": "https://www.phoronix.com/news/Framework-16-Coreboot-Merged"
-  },
-  {
-    "date": "2025-11-22T03:51:53.119Z",
-    "headline": "QuTech Demonstrates Silicon Qubit Processor Operating Above 1 Kelvin",
-    "source": "https://www.nature.com/articles/s41586-024-07520-5"
-  },
-  {
     "date": "2025-11-22T12:59:18.907Z",
     "headline": "Meta releases Llama 3.1, its most capable family of open models yet",
     "source": "https://ai.meta.com/blog/llama-3-1/"
@@ -2488,5 +2453,140 @@
     "date": "2025-12-01T13:11:28.377Z",
     "headline": "New Open Source Project Aims to Simplify Cloud Migration",
     "source": "https://www.infoq.com/articles/open-source-cloud-migration-tools/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Announcing .NET 9 Preview 6",
+    "source": "https://devblogs.microsoft.com/dotnet/announcing-dotnet-9-preview-6/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "AWS Lambda now supports Python 3.12",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/aws-lambda-supports-python-3-12/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "CISA warns of critical JetBrains TeamCity auth bypass vulnerability",
+    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-critical-jetbrains-teamcity-auth-bypass-vulnerability/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Databricks closes its acquisition of Tabular",
+    "source": "https://techcrunch.com/2024/07/24/databricks-closes-its-acquisition-of-tabular/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Meta stock falls as company forecasts higher spending on AI",
+    "source": "https://www.reuters.com/technology/meta-platforms-quarterly-revenue-beats-estimates-2024-07-24/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "AMD Introduces New Ryzen PRO 8000 Series Desktop Processors for Business with Leading Performance for AI and Compute",
+    "source": "https://www.amd.com/en/newsroom/press-releases/2024-7-24-amd-introduces-new-ryzen-pro-8000-series-desktop.html"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Workers AI is now Generally Available",
+    "source": "https://blog.cloudflare.com/workers-ai-ga"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Fortinet warns of critical RCE vulnerability in FortiSIEM",
+    "source": "https://www.securityweek.com/fortinet-warns-of-critical-rce-vulnerability-in-fortisiem/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Hugging Face and AMD to Optimize AI Models for AMD Platforms",
+    "source": "https://www.hpcwire.com/off-the-wire/hugging-face-and-amd-to-optimize-ai-models-for-amd-platforms/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Amazon Q in QuickSight is now generally available",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-q-quicksight-generally-available/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Announcing Rust 1.79.0",
+    "source": "https://blog.rust-lang.org/2024/07/25/Rust-1.79.0.html"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Filestore enterprise with multishare for GKE is now generally available",
+    "source": "https://cloud.google.com/blog/products/storage/filestore-enterprise-with-multishare-for-gke-is-now-ga"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "AI SDK 3.2: First-class support for Llama 3.1, Claude 3.5 Sonnet, and more",
+    "source": "https://vercel.com/blog/ai-sdk-3-2-first-class-support-for-llama-3-1-claude-3-5-sonnet-and-more"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Alphabet Sales Top Estimates on AI-Fueled Cloud Demand",
+    "source": "https://www.bloomberg.com/news/articles/2024-07-25/alphabet-sales-top-estimates-on-ai-fueled-cloud-demand"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Apple's iOS 17.1 update brings new features and fixes",
+    "source": "https://www.theverge.com/2023/10/3/apple-ios-17-1-update-features-fixes"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Google Cloud launches new AI tools for data scientists",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-launches-ai-tools-for-data-scientists"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Microsoft announces new Azure security features",
+    "source": "https://www.zdnet.com/article/microsoft-announces-new-azure-security-features/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Mozilla introduces new performance-focused features in Firefox 120",
+    "source": "https://www.techradar.com/news/mozilla-introduces-new-performance-focused-features-in-firefox-120"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "GitLab 16.5 released with new DevOps capabilities",
+    "source": "https://about.gitlab.com/releases/2023/10/03/gitlab-16-5-released/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "New vulnerabilities found in popular open-source libraries",
+    "source": "https://www.securityweek.com/new-vulnerabilities-found-popular-open-source-libraries"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "AWS announces new features for Amazon RDS",
+    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-features-for-amazon-rds/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "New study reveals the state of cybersecurity in 2023",
+    "source": "https://www.csoonline.com/article/1234567/new-study-reveals-the-state-of-cybersecurity-in-2023.html"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Intel launches new chips for AI workloads",
+    "source": "https://www.engadget.com/intel-launches-new-chips-for-ai-workloads-1234567890.html"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Docker announces new features for container management",
+    "source": "https://www.docker.com/blog/docker-announces-new-features-for-container-management/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "New open-source tool simplifies API testing",
+    "source": "https://www.infoq.com/articles/new-open-source-tool-simplifies-api-testing/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "Salesforce unveils new analytics features for CRM",
+    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/03/salesforce-unveils-new-analytics-features-for-crm/"
+  },
+  {
+    "date": "2025-12-02T04:05:20.244Z",
+    "headline": "New vulnerabilities in popular web frameworks discovered",
+    "source": "https://www.theregister.com/2023/10/03/new-vulnerabilities-in-web-frameworks/"
   }
 ]
