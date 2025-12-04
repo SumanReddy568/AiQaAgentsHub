@@ -2578,5 +2578,120 @@
     "date": "2025-12-03T13:12:31.280Z",
     "headline": "Samsung Announces New Memory Chips for AI Applications",
     "source": "https://www.samsung.com/global/semiconductor/news/memory-chips-ai-applications"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "HPE signs $7 billion deal to build and run AI cloud services for Elon Musk’s xAI",
+    "source": "https://arstechnica.com/information-technology/2024/06/hpe-signs-7-billion-deal-to-build-and-run-ai-cloud-services-for-elon-musks-xai/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Introducing DuckDB 1.0",
+    "source": "https://duckdb.org/2024/06/26/announcing-duckdb-1-0.html"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Docker acquires Mutagen to speed up cloud development",
+    "source": "https://techcrunch.com/2024/06/25/docker-acquires-mutagen-to-speed-up-cloud-development/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Critical RCE flaw in popular LayerSlider WordPress plugin affects 1M+ sites",
+    "source": "https://www.bleepingcomputer.com/news/security/critical-rce-flaw-in-popular-layerslider-wordpress-plugin-affects-1m-plus-sites/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Micron says HBM chips for Nvidia's 2025 AI GPUs are sold out",
+    "source": "https://www.reuters.com/technology/micron-says-hbm-chips-nvidias-2025-ai-gpus-are-sold-out-2024-06-26/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Amazon makes its Q business chatbot generally available",
+    "source": "https://techcrunch.com/2024/06/26/amazon-makes-its-q-business-chatbot-generally-available/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Runway raises $27.5M to bring its mobile CI/CD platform to more developers",
+    "source": "https://techcrunch.com/2024/06/26/runway-raises-27-5m-to-bring-its-mobile-ci-cd-platform-to-more-developers/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "OpenTelemetry Logs are Stable",
+    "source": "https://opentelemetry.io/blog/2024/logs-are-stable/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "The Framework Laptop 13 is finally getting an OLED display",
+    "source": "https://www.theverge.com/2024/6/25/24185590/framework-laptop-13-oled-display-price-release-date-specs"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Amazon fined $5.9 million for violating warehouse quota law in California",
+    "source": "https://www.nytimes.com/2024/06/25/technology/amazon-california-warehouse-fined.html"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Tailscale now offers an exit node for Apple TV",
+    "source": "https://tailscale.com/blog/apple-tv"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Google Cloud tells staff to start sharing desks, rotate days in office",
+    "source": "https://www.theregister.com/2024/06/25/google_cloud_desk_sharing/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Oracle Unveils New Generative AI Capabilities to Help Organizations Boost Productivity",
+    "source": "https://www.oracle.com/news/announcement/oracle-unveils-new-generative-ai-capabilities-2024-06-25/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "New 'Destiny' Stealer Malware Spreads via YouTube Gaming Videos",
+    "source": "https://thehackernews.com/2024/06/new-destiny-stealer-malware-spreads.html"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "The open source ReadingDS app is an ambitious Kindle alternative",
+    "source": "https://www.theverge.com/24184693/readingds-kindle-alternative-android-open-source-e-reader"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Microsoft Azure Expands Hybrid Cloud Offerings",
+    "source": "https://www.zdnet.com/article/microsoft-azure-hybrid-cloud-expansion/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Salesforce Acquires AI Startup to Enhance Customer Insights",
+    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/23/salesforce-ai-acquisition/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "New Research Reveals Trends in Cloud Adoption",
+    "source": "https://www.techrepublic.com/article/cloud-adoption-trends-2023/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "New Open Source Framework for Data Visualization Released",
+    "source": "https://www.open-source.com/data-visualization-framework-launch/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Intel Partners with Universities for Chip Design Innovation",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-university-partnerships-chip-design.html"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "New Cybersecurity Tool Launched to Combat Ransomware",
+    "source": "https://www.securityweek.com/new-tool-combat-ransomware/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "Apple's New Developer Tools Focus on Privacy",
+    "source": "https://www.apple.com/newsroom/2023/10/apple-developer-tools-privacy/"
+  },
+  {
+    "date": "2025-12-04T04:05:59.134Z",
+    "headline": "New Study Shows Increase in Open Source Software Adoption",
+    "source": "https://www.infoq.com/articles/open-source-adoption-study-2023/"
   }
 ]
