@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="gradient-bg h-full overflow-hidden">
     <div class="fixed top-8 right-8 flex items-center gap-4 z-10">
         <a href="index.html"
@@ -17,8 +19,8 @@
         </a>
         <a href="dashboard.html" title="Usage Dashboard"
             class="p-2 rounded-xl hover:bg-white/50 transition-colors bg-white/80">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20V10"></path>
                 <path d="M18 20V4"></path>
                 <path d="M6 20V16"></path>
@@ -38,14 +40,14 @@
             <h1 class="text-4xl font-bold text-slate-800">Performance Analyzer</h1>
             <p class="text-slate-600 mt-2">Get AI-powered insights about your webpage's performance.</p>
         </header>
-        
+
         <div class="glass-effect p-8 rounded-2xl shadow-lg mb-8 flex-shrink-0">
             <div class="mb-4 p-4 bg-blue-50 rounded-xl text-sm text-blue-700">
-                <strong>Note:</strong> Due to browser security restrictions, some metrics may be limited. 
+                <strong>Note:</strong> Due to browser security restrictions, some metrics may be limited.
                 For detailed analysis of non-public URLs, consider using Lighthouse or browser DevTools.
             </div>
             <div class="flex gap-4">
-                <input type="url" id="url-input" 
+                <input type="url" id="url-input"
                     class="flex-1 border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
                     placeholder="Enter webpage URL (e.g., https://example.com)">
                 <button id="analyze-btn"
@@ -56,7 +58,8 @@
         </div>
 
         <div id="loading" class="hidden text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent">
+            </div>
             <p class="mt-4 text-slate-600">AI Analyzing page performance...</p>
         </div>
 
@@ -67,7 +70,14 @@
 
         <div id="results"
             class="glass-effect p-8 rounded-2xl shadow-lg prose prose-slate max-w-none overflow-y-auto flex-1">
-            <!-- Results will be inserted here -->  
+            <div class="flex flex-col items-center justify-center h-full text-slate-400">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    class="mb-4">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                <p class="text-center font-semibold text-lg">No analysis yet</p>
+                <p class="text-sm text-slate-400 mt-2">Enter a URL and click "Analyze Page" to get started</p>
+            </div>
         </div>
     </div>
 
@@ -96,4 +106,5 @@
         window.addEventListener('storage', updateProviderStatusBtn);
     </script>
 </body>
+
 </html>

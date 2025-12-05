@@ -18,7 +18,7 @@
 <body class="gradient-bg">
     <div class="min-h-screen flex flex-col">
         <header class="glass-effect shadow-lg sticky top-0 z-50">
-            <div class="max-w-full mx-auto px-6 py-4">
+            <div class="max-w-full mx-auto px-4 py-2">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-4">
                         <div class="p-3 bg-white rounded-xl shadow-lg flex items-center justify-center"
@@ -55,10 +55,10 @@
             </div>
         </header>
 
-        <main class="flex-1 max-w-full mx-auto w-full px-6 py-6">
+        <main class="flex-1 max-w-full mx-auto w-full px-4 py-3">
             <div class="horizontal-layout">
                 <div class="input-section">
-                    <div class="glass-effect rounded-2xl shadow-xl p-6 section-content">
+                    <div class="glass-effect rounded-2xl shadow-xl p-4 section-content">
                         <div class="flex items-center justify-between mb-2">
                             <h2 class="text-xl font-semibold text-slate-800">HTML Input</h2>
                             <div class="flex space-x-2">
@@ -70,40 +70,87 @@
                         </div>
                         <textarea id="html-input"
                             class="flex-1 w-full border-2 border-slate-200 rounded-xl p-4 focus:border-blue-400 focus:outline-none transition-colors custom-scrollbar resize-none"
-                            style="max-height: 450px; min-height: 200px; height: 300px; overflow-y: auto;" placeholder="Paste your HTML snippet here...
-                        Example:
-                        <button id='submit-btn' class='btn primary'>Submit</button>
-                        <div class='form-group'>
-                        <input type='email' name='email' placeholder='Enter email'>
-                        </div>">
+                            style="max-height: 180px; min-height: 60px; height: 60px; overflow-y: auto;" placeholder="Paste your HTML snippet here...
+                            Example:
+                            <button id='submit-btn' class='btn primary'>Submit</button>
+                            <div class='form-group'>
+                            <input type='email' name='email' placeholder='Enter email'>
+                            </div>">
                         </textarea>
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
-                            <div class="flex flex-wrap items-center gap-4">
-                                <div class="flex items-center space-x-2">
-                                    <input type="checkbox" id="include-ai" class="rounded" checked>
-                                    <label for="include-ai" class="text-sm text-slate-700 flex items-center gap-1">
-                                        <img src="assets/ai_png.png" alt="AI"
-                                            class="inline-block w-5 h-5 align-middle rounded-full" /> AI Suggestions
-                                    </label>
+                        <button id="generate-btn"
+                            class="mt-2 w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            <span class="flex items-center justify-center space-x-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
+                                </svg>
+                                <span>Generate Locators</span>
+                            </span>
+                        </button>
+                        <div class="flex items-center space-x-2 mt-2">
+                            <input type="checkbox" id="include-ai" class="rounded" checked>
+                            <label for="include-ai" class="text-sm text-slate-700 flex items-center gap-1">
+                                <img src="assets/ai_png.png" alt="AI"
+                                    class="inline-block w-5 h-5 align-middle rounded-full" /> AI Suggestions
+                            </label>
+                        </div>
+
+                        <!-- Usage Generator Section -->
+                        <div class="mt-3 border-t border-slate-200 pt-3">
+                            <h3 class="text-sm font-semibold text-slate-700 mb-2">Code Usage Generator</h3>
+                            <div id="usage-options" class="space-y-2">
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <label class="text-xs text-slate-600 block mb-1">Language</label>
+                                        <select id="usage-language"
+                                            class="w-full text-xs px-2 py-1 border border-slate-200 rounded-lg bg-white">
+                                            <option value="java">Java</option>
+                                            <option value="python">Python</option>
+                                            <option value="javascript">JavaScript</option>
+                                            <option value="csharp">C#</option>
+                                            <option value="ruby">Ruby</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-xs text-slate-600 block mb-1">Framework</label>
+                                        <select id="usage-framework"
+                                            class="w-full text-xs px-2 py-1 border border-slate-200 rounded-lg bg-white">
+                                            <option value="selenium">Selenium</option>
+                                            <option value="playwright">Playwright</option>
+                                            <option value="cypress">Cypress</option>
+                                            <option value="webdriverio">WebdriverIO</option>
+                                            <option value="puppeteer">Puppeteer</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" id="advanced-usage" class="rounded">
+                                    <label for="advanced-usage" class="text-xs text-slate-700">Show advanced
+                                        patterns</label>
+                                </div>
+                                <button id="generate-usage-btn"
+                                    class="mt-2 w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                                    disabled>
+                                    <span class="flex items-center justify-center space-x-2">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="16 18 22 12 16 6"></polyline>
+                                            <polyline points="8 6 2 12 8 18"></polyline>
+                                        </svg>
+                                        <span>Generate Usage</span>
+                                    </span>
+                                </button>
                             </div>
-                            <button id="generate-btn"
-                                class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none w-full sm:w-auto">
-                                <span class="flex items-center justify-center space-x-2">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
-                                    </svg>
-                                    <span>Generate Locators</span>
-                                </span>
-                            </button>
+
+                            <!-- Usage Examples Display Container -->
+                            <div id="usage-display-container" class="mt-3"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="output-section">
-                    <div class="glass-effect rounded-2xl shadow-xl p-6 section-content">
-                        <div class="flex items-center justify-between mb-4">
+                    <div class="glass-effect rounded-2xl shadow-xl p-4 section-content">
+                        <div class="flex items-center justify-between mb-2">
                             <h2 class="text-xl font-semibold text-slate-800">Generated Locators</h2>
                             <div class="flex space-x-2">
                                 <button id="export-btn"
@@ -121,12 +168,16 @@
                         </div>
 
                         <div id="output-container" class="flex-1 overflow-y-auto custom-scrollbar -mr-2 pr-2">
-                            <div id="crazy-loader" class="hidden flex flex-col items-center justify-center py-12">
-                                <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
-                                    <span class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
-                                    <img src="assets/ai.png" alt="AI" class="w-10 h-10 rounded-full shadow relative z-10" />
+                            <div id="crazy-loader" class="hidden flex flex-col items-center justify-center py-6">
+                                <div class="relative flex items-center justify-center mb-4"
+                                    style="width:56px;height:56px;">
+                                    <span
+                                        class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
+                                    <img src="assets/ai.png" alt="AI"
+                                        class="w-10 h-10 rounded-full shadow relative z-10" />
                                 </div>
-                                <div class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
+                                <div
+                                    class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
                                     <img src="assets/ai_png.png" alt="AI" class="w-6 h-6 rounded-full" />
                                     AI is conjuring magical locators...
                                 </div>
@@ -153,7 +204,7 @@
         </main>
 
         <div id="chat-bubble"
-            class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300">
+            class="fixed bottom-4 right-4 z-50 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
@@ -162,8 +213,8 @@
         <div id="chat-modal"
             class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
             <div
-                class="modal-content glass-effect w-full max-w-lg p-6 rounded-2xl shadow-2xl transform scale-95 flex flex-col max-h-[90vh]">
-                <div class="flex justify-between items-center mb-4">
+                class="modal-content glass-effect w-full max-w-lg p-4 rounded-2xl shadow-2xl transform scale-95 flex flex-col max-h-[90vh]">
+                <div class="flex justify-between items-center mb-3">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
                         <img src="assets/ai_png.png" alt="AI" class="inline-block w-6 h-6 align-middle rounded-full" />
                         Chat
@@ -177,7 +228,7 @@
                         </svg>
                     </button>
                 </div>
-                <div id="chat-history" class="flex-1 overflow-y-auto custom-scrollbar p-2 mb-4 space-y-4">
+                <div id="chat-history" class="flex-1 overflow-y-auto custom-scrollbar p-2 mb-3 space-y-3">
                     <div class="flex justify-start">
                         <div class="bg-slate-100 text-slate-800 p-3 rounded-xl max-w-[80%] flex items-start gap-2">
                             <img src="assets/ai_png.png" alt="AI"
@@ -202,10 +253,10 @@
             </div>
         </div>
 
-        <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+        <div id="toast-container" class="fixed bottom-4 left-4 space-y-2 z-50"></div>
         <script type="module" src="js/locator.js"></script>
     </div>
-    <div id="toast-container" class="fixed bottom-6 left-6 space-y-2 z-50"></div>
+    <div id="toast-container" class="fixed bottom-4 left-4 space-y-2 z-50"></div>
     <script type="module" src="js/main.js"></script>
     <script src="js/theme-switcher.js"></script>
     <script>
@@ -232,4 +283,5 @@
     </script>
     </div>
 </body>
+
 </html>

@@ -34,3 +34,12 @@ export const chatInput = document.getElementById('chat-input');
 export const chatSendBtn = document.getElementById('chat-send-btn');
 
 export const toastContainer = document.getElementById('toast-container');
+
+// Usage Generator elements
+export const toggleUsageBtn = document.getElementById('toggle-usage-btn');
+export const usageOptions = document.getElementById('usage-options');
+export const usageLanguage = document.getElementById('usage-language');
+export const usageFramework = document.getElementById('usage-framework');
+export const advancedUsage = document.getElementById('advanced-usage');
+export const usageDisplayContainer = document.getElementById('usage-display-container');
+export const generateUsageBtn = document.getElementById('generate-usage-btn');

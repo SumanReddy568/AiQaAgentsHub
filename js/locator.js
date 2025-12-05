@@ -1,4 +1,5 @@
 // js/main.js
+
 import * as DOM from './dom.js';
 import { state, updateState } from './state.js';
 import * as UI from './ui.js';
@@ -8,6 +9,8 @@ import { initDB } from './db.js';
 import { loadSettingsFromStorage } from './settings.js';
 import { generateAiLocators } from "./agents/locatorGenAgent.js";
 import { getChatResponse } from "./agents/chatAgent.js";
+import { generateUsageExamples } from "./agents/usageGenAgent.js";
+
 async function handleGenerateClick() {
     const htmlContent = DOM.htmlInput.value.trim();
     if (!htmlContent) {
@@ -29,29 +32,38 @@ async function handleGenerateClick() {
 
             // This new block standardizes the AI data
             aiResults.forEach(rec => {
-                if (rec.cssSelector) {
-                    allLocators.push({
-                        locator: rec.cssSelector,
-                        type: 'CSS',
-                        explanation: rec.explanation,
-                        priority: rec.priority.toLowerCase(),
-                        isAI: true
-                    });
-                }
-                if (rec.xpath) {
-                    allLocators.push({
-                        locator: rec.xpath,
-                        type: 'XPath',
-                        explanation: rec.explanation,
-                        priority: rec.priority.toLowerCase(),
-                        isAI: true
-                    });
-                }
+                const types = [
+                    { key: 'cssSelector', type: 'CSS' },
+                    { key: 'xpath', type: 'XPath' },
+                    { key: 'id', type: 'ID' },
+                    { key: 'name', type: 'Name' },
+                    { key: 'tagName', type: 'TagName' },
+                    { key: 'className', type: 'ClassName' },
+                    { key: 'linkText', type: 'LinkText' },
+                    { key: 'partialLinkText', type: 'PartialLinkText' }
+                ];
+
+                types.forEach(t => {
+                    if (rec[t.key]) {
+                        allLocators.push({
+                            locator: rec[t.key],
+                            type: t.type,
+                            explanation: rec.explanation,
+                            priority: (rec.priority && typeof rec.priority === 'string') ? rec.priority.toLowerCase() : 'medium',
+                            isAI: true
+                        });
+                    }
+                });
             });
         }
 
         updateState({ generatedLocators: allLocators });
         UI.renderResults(allLocators);
+
+        // Enable the Generate Usage button if locators were generated
+        if (allLocators.length > 0 && DOM.generateUsageBtn) {
+            DOM.generateUsageBtn.disabled = false;
+        }
 
     } catch (error) {
         console.error('Generation failed:', error);
@@ -89,6 +101,31 @@ async function handleChatSend() {
     }
 }
 
+async function handleUsageGeneration(locators = null) {
+    const locsToUse = locators || state.generatedLocators;
+    
+    if (!locsToUse || locsToUse.length === 0) {
+        Utils.showToast('Generate locators first', 'warning');
+        return;
+    }
+
+    const language = DOM.usageLanguage.value;
+    const framework = DOM.usageFramework.value;
+    const advanced = DOM.advancedUsage.checked;
+
+    try {
+        UI.showUsageLoader(true);
+        const usageData = await generateUsageExamples(locsToUse, language, framework, advanced);
+        UI.showUsageLoader(false);
+        UI.renderUsageExamples(usageData, language, framework);
+        Utils.showToast('Usage examples generated!', 'success');
+    } catch (error) {
+        console.error('Usage generation failed:', error);
+        UI.showUsageLoader(false);
+        Utils.showToast(`Failed to generate usage: ${error.message}`, 'error');
+    }
+}
+
 function handleFilterChange() {
     const filter = DOM.filterSelect.value;
     document.querySelectorAll('#output-content .locator-card').forEach(card => {
@@ -122,6 +159,11 @@ async function init() {
     DOM.clearBtn.addEventListener('click', () => { DOM.htmlInput.value = ''; UI.clearOutput(); });
     DOM.formatBtn.addEventListener('click', () => { DOM.htmlInput.value = Utils.formatHtml(DOM.htmlInput.value); });
     DOM.filterSelect.addEventListener('change', handleFilterChange);
+
+    // Usage Generator button click handler
+    if (DOM.generateUsageBtn) {
+        DOM.generateUsageBtn.addEventListener('click', () => handleUsageGeneration());
+    }
 
     if (!DOM.htmlInput.value.trim()) {
         const sampleHtml = `<form>\n  <h2>Login</h2>\n  <input type="email" id="email" name="user_email" placeholder="Enter your email">\n  <button data-testid="submit-btn">Submit</button>\n</form>`;
