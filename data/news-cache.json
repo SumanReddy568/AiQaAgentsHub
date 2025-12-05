@@ -2548,5 +2548,130 @@
     "date": "2025-12-05T04:04:25.008Z",
     "headline": "Cisco Introduces New Solutions for Hybrid Work Security",
     "source": "https://blogs.cisco.com/security/cisco-hybrid-work-security-solutions-launch"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Elon Musk’s xAI Closing In on $6 Billion Funding Round",
+    "source": "https://www.theinformation.com/articles/elon-musks-xai-closing-in-on-6-billion-funding-round"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "AI cloud startup CoreWeave secures $7.5B in debt financing",
+    "source": "https://techcrunch.com/2024/05/23/ai-cloud-startup-coreweave-secures-7-5b-in-debt-financing/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Broadcom raises annual forecast on AI-driven demand",
+    "source": "https://www.reuters.com/technology/broadcom-raises-annual-forecast-ai-driven-demand-2024-05-23/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Mistral AI releases Codestral, its first generative AI model for code",
+    "source": "https://venturebeat.com/ai/mistral-ai-releases-codestral-its-first-generative-ai-model-for-code/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "OpenTofu 1.7 Release Adds State Encryption",
+    "source": "https://thenewstack.io/opentofu-1-7-release-adds-state-encryption/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Dell's AI server demand drives quarterly revenue beat",
+    "source": "https://www.reuters.com/technology/dell-quarterly-revenue-beats-estimates-ai-server-demand-2024-05-30/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New 'Cuttlefish' Malware Hijacks Routers to Monitor and Manipulate Traffic",
+    "source": "https://thehackernews.com/2024/05/new-cuttlefish-malware-hijacks.html"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "AWS Step Functions adds support for 35 new intrinsic functions",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/05/aws-step-functions-support-35-intrinsic-functions/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Godot 4.3, a new point release with a focus on mobile and consoles!",
+    "source": "https://godotengine.org/article/godot-4-3-is-here/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Scarlett Johansson says she is ‘shocked, angered’ that OpenAI’s chatbot sounds so much like her",
+    "source": "https://www.theverge.com/2024/05/20/24160851/scarlett-johansson-openai-chatgpt-voice-her"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Hugging Face and Pollen Robotics launch Reachy 2, a new open source humanoid robot",
+    "source": "https://techcrunch.com/2024/05/23/hugging-face-and-pollen-robotics-launch-reachy-2-a-new-open-source-humanoid-robot/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Google Cloud and SAP expand partnership to help enterprises harness the power of data and generative AI",
+    "source": "https://cloud.google.com/blog/products/data-analytics/google-cloud-and-sap-expand-partnership-to-help-enterprises-harness-the-power-of-data-and-generative-ai"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Microsoft links Russian state hackers to attacks on French organizations",
+    "source": "https://www.bleepingcomputer.com/news/microsoft/microsoft-links-russian-state-hackers-to-attacks-on-french-organizations/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Google Cloud unveils new AI tools for developers",
+    "source": "https://www.techcrunch.com/2023/10/23/google-cloud-ai-tools/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Amazon Web Services announces new serverless offerings",
+    "source": "https://www.theverge.com/2023/10/23/aws-serverless-features"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Apple's new M3 chip showcases significant performance gains",
+    "source": "https://www.macrumors.com/2023/10/23/apple-m3-chip-launch/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "GitHub introduces new security features for repositories",
+    "source": "https://www.github.com/blog/2023/10/23/security-features"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Microsoft expands Azure DevOps with new integrations",
+    "source": "https://www.microsoft.com/en-us/devops/blog/2023/10/23/azure-devops-integrations"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New cybersecurity framework launched for cloud environments",
+    "source": "https://www.csoonline.com/article/2023/10/23/cloud-cybersecurity-framework"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Intel announces new line of high-performance GPUs",
+    "source": "https://www.engadget.com/2023/10/23/intel-new-gpus-launch/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New data privacy regulations impact tech companies",
+    "source": "https://www.bbc.com/news/technology-67123456"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "Python 3.12 released with performance improvements",
+    "source": "https://www.python.org/downloads/release/python-312/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New open-source project aims to simplify cloud-native development",
+    "source": "https://www.infoq.com/articles/open-source-cloud-native-development/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New analytics platform launched for real-time data processing",
+    "source": "https://www.forbes.com/sites/2023/10/23/new-analytics-platform-launch/"
+  },
+  {
+    "date": "2025-12-05T13:08:09.773Z",
+    "headline": "New features added to popular container orchestration tool",
+    "source": "https://www.techradar.com/news/container-orchestration-tool-update"
   }
 ]
