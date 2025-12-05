@@ -4,8 +4,8 @@
     --bg-secondary: #f8f9fa;
     --bg-tertiary: #f1f5f9;
     --border-color: #e5e7eb;
-    --text-primary: #1f2937;
-    --text-secondary: #4b5563;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
     --accent-color: #3b82f6;
 }
 
@@ -295,18 +295,18 @@ select:focus {
     color: var(--text-primary) !important;
 }
 
-.text-blue-800,
-.text-purple-800,
-.text-green-800,
-.text-yellow-800,
-.text-red-800,
-.text-slate-800,
-.text-slate-600,
-.text-slate-400,
-.text-green-700,
-.text-blue-700,
-.text-yellow-700,
-.text-red-700 {
+[data-theme="dark"] .text-blue-800,
+[data-theme="dark"] .text-purple-800,
+[data-theme="dark"] .text-green-800,
+[data-theme="dark"] .text-yellow-800,
+[data-theme="dark"] .text-red-800,
+[data-theme="dark"] .text-slate-800,
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-slate-400,
+[data-theme="dark"] .text-green-700,
+[data-theme="dark"] .text-blue-700,
+[data-theme="dark"] .text-yellow-700,
+[data-theme="dark"] .text-red-700 {
     color: var(--text-primary) !important;
 }
 
@@ -386,7 +386,7 @@ select:focus {
     transition: 0.3s;
 }
 
-.theme-switch:checked + .theme-toggle:after {
+.theme-switch:checked+.theme-toggle:after {
     left: 25px;
 }
 
@@ -396,6 +396,7 @@ select:focus {
     visibility: hidden;
     position: absolute;
 }
+
 .hidden {
     display: none !important;
 }
