@@ -1,81 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WCAG Rule Explainer - AI QA Agent Hub</title>
     <link rel="icon" type="image/png" href="assets/ai_png.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="gradient-bg h-full overflow-hidden">
-    <div class="fixed top-8 right-8 flex items-center gap-4 z-10">
-        <a href="index.html"
-            class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
-            &larr; Home
-        </a>
-        <a href="dashboard.html" title="Usage Dashboard"
-            class="p-2 rounded-xl hover:bg-white/50 transition-colors bg-white/80">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20V10"></path>
-                <path d="M18 20V4"></path>
-                <path d="M6 20V16"></path>
-            </svg>
-        </a>
-        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
-            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
-            title="Check Gemini API Status">
-            Gemini Status
-        </a>
-    </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-screen flex flex-col">
-        <header class="text-center mb-10 flex-shrink-0">
-            <a href="index.html" class="inline-block mb-4">
-                <img src="assets/ai_png.png" alt="AI Logo" class="w-16 h-16 bg-white rounded-2xl shadow-lg p-3">
-            </a>
-            <h1 class="text-4xl font-bold text-slate-800">WCAG Rule Explainer</h1>
-            <p class="text-slate-600 mt-2">Get detailed explanations of WCAG 2.1 accessibility guidelines with examples and testing methods.</p>
-        </header>
+<body class="gradient-bg h-full overflow-auto lg:overflow-hidden">
 
-        <div class="glass-effect p-8 rounded-2xl shadow-lg mb-8 flex-shrink-0">
-            <div class="mb-6">
-                <label class="block text-sm font-semibold text-slate-700 mb-3">WCAG Rule Name</label>
-                <div class="flex gap-3">
-                    <input 
-                        type="text" 
-                        id="wcagRuleInput" 
-                        placeholder="e.g., 1.1.1 Non-text Content, 2.4.3 Focus Order" 
-                        class="flex-1 border-2 border-slate-300 rounded-xl px-4 py-3 focus:border-blue-400 focus:outline-none text-slate-700 placeholder-slate-400"
-                    >
-                    <button 
-                        id="explainBtn" 
-                        class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all"
-                    >
-                        Explain
-                    </button>
+
+    <div
+        class="max-w-[1920px] mx-auto w-full min-h-screen lg:h-screen p-4 sm:p-6 lg:p-8 flex flex-col overflow-visible lg:overflow-hidden text-slate-800">
+        <div class="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-0">
+            <!-- Left Panel: Header & Input -->
+            <div class="lg:col-span-4 flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar">
+                <div class="flex items-center gap-2 mb-4">
+                    <a href="index.html"
+                        class="px-3 py-2 bg-white/50 text-slate-600 font-medium rounded-lg hover:bg-white hover:text-blue-600 transition-colors border border-slate-200/50 text-sm flex items-center gap-1">
+                        <span>&larr;</span> Home
+                    </a>
+                    <a href="dashboard.html" title="Usage Dashboard"
+                        class="p-2 rounded-lg bg-white/50 text-slate-600 hover:bg-white hover:text-blue-600 transition-colors border border-slate-200/50">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20V10"></path>
+                            <path d="M18 20V4"></path>
+                            <path d="M6 20V16"></path>
+                        </svg>
+                    </a>
+                    <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+                        class="ml-auto px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-[10px] font-bold hover:bg-red-100 transition-colors border border-red-100 uppercase tracking-wide"
+                        title="Check Gemini API Status">
+                        Gemini Status
+                    </a>
                 </div>
-                <p class="text-xs text-slate-500 mt-3">Examples: WCAG 1.4.3 Contrast (Minimum), WCAG 2.1.1 Keyboard, WCAG 3.2.4 Consistent Identification</p>
+                <header class="text-left">
+                    <a href="index.html" class="inline-block mb-4 hover:scale-105 transition-transform">
+                        <img src="assets/ai_png.png" alt="AI Logo" class="w-14 h-14 bg-white rounded-2xl shadow-lg p-3">
+                    </a>
+                    <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">WCAG Rule Explainer</h1>
+                    <p class="text-slate-600 mt-3 leading-relaxed">
+                        Get detailed explanations of WCAG 2.1 accessibility guidelines with examples, testing methods,
+                        and remediation steps.
+                    </p>
+                </header>
+
+                <div class="glass-effect p-6 rounded-3xl shadow-lg border border-white/20">
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold text-slate-700 mb-3 ml-1">Enter WCAG Rule</label>
+                        <div class="flex flex-col gap-3">
+                            <input type="text" id="wcagRuleInput" placeholder="e.g., 1.4.3 Contrast, 2.1.1 Keyboard"
+                                class="w-full border-2 border-slate-200 rounded-xl px-4 py-3 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none text-slate-700 placeholder-slate-400 transition-all font-medium">
+                            <button id="explainBtn"
+                                class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all vars-shadow hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98]">
+                                Explain Rule
+                            </button>
+                        </div>
+                        <div class="mt-4 p-4 bg-slate-50/50 rounded-xl border border-slate-100">
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Popular Rules
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="cursor-pointer hover:bg-blue-100 hover:text-blue-700 px-2 py-1 rounded-lg bg-white border border-slate-200 text-xs text-slate-600 transition-colors"
+                                    onclick="document.getElementById('wcagRuleInput').value = '1.1.1 Non-text Content';">1.1.1
+                                    Images</span>
+                                <span
+                                    class="cursor-pointer hover:bg-blue-100 hover:text-blue-700 px-2 py-1 rounded-lg bg-white border border-slate-200 text-xs text-slate-600 transition-colors"
+                                    onclick="document.getElementById('wcagRuleInput').value = '1.4.3 Contrast';">1.4.3
+                                    Contrast</span>
+                                <span
+                                    class="cursor-pointer hover:bg-blue-100 hover:text-blue-700 px-2 py-1 rounded-lg bg-white border border-slate-200 text-xs text-slate-600 transition-colors"
+                                    onclick="document.getElementById('wcagRuleInput').value = '2.1.1 Keyboard';">2.1.1
+                                    Keyboard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Section -->
+                <div class="bg-blue-50/50 p-6 rounded-3xl border border-blue-100 hidden lg:block">
+                    <h3 class="font-bold text-blue-900 mb-2">Did you know?</h3>
+                    <p class="text-sm text-blue-800/80 leading-relaxed">
+                        WCAG has three levels of conformance: A (lowest), AA (mid-range), and AAA (highest). Most laws
+                        and regulations target Level AA compliance.
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div id="loading" class="hidden text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
-            <p class="mt-4 text-slate-600">AI Analyzing WCAG rule...</p>
-        </div>
+            <!-- Right Panel: Output Area -->
+            <div class="lg:col-span-8 h-full min-h-0">
+                <div
+                    class="glass-effect rounded-3xl shadow-xl h-full overflow-hidden flex flex-col relative border border-white/20">
 
-        <div id="output" class="hidden glass-effect rounded-2xl shadow-lg overflow-y-auto flex-1 flex flex-col">
-            <div id="explanation" class="prose prose-slate prose-headings:text-lg prose-p:leading-relaxed max-w-none text-slate-700 p-8 space-y-6"></div>
-        </div>
+                    <!-- Loading State -->
+                    <div id="loading"
+                        class="hidden flex-1 flex flex-col items-center justify-center p-8 bg-white/50 backdrop-blur-sm z-20">
+                        <div class="relative">
+                            <div class="animate-spin rounded-full h-16 w-16 border-[5px] border-slate-200"></div>
+                            <div class="absolute top-0 left-0 animate-spin rounded-full h-16 w-16 border-[5px] border-blue-600 border-t-transparent"
+                                style="animation-delay: 150ms;">
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-slate-700">Analyzing Guideline</h3>
+                        <p class="mt-2 text-slate-500 animate-pulse">Consulting the knowledge base...</p>
+                    </div>
 
-        <div id="emptyState" class="glass-effect p-12 rounded-2xl shadow-lg text-center flex-1 flex items-center justify-center">
-            <div>
-                <svg class="mx-auto h-16 w-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <p class="text-slate-500 text-lg">Enter a WCAG rule name above to get started</p>
+                    <!-- Output Content -->
+                    <div id="output" class="hidden flex-1 overflow-y-auto custom-scrollbar bg-white/40">
+                        <div id="explanation" class="prose prose-slate prose-lg max-w-none p-8 lg:p-12 text-slate-700">
+                            <!-- Content injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState"
+                        class="flex-1 flex flex-col items-center justify-center p-12 text-center bg-white/30">
+                        <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center mb-6">
+                            <svg class="h-10 w-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800 mb-2">Ready to Explain</h2>
+                        <p class="text-slate-500 max-w-md mx-auto text-lg">
+                            Enter a WCAG success criterion name or number on the left to get a comprehensive
+                            explanation.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -107,4 +165,5 @@
     <script type="module" src="js/wcag-explainer.js"></script>
     <script src="js/theme-switcher.js"></script>
 </body>
+
 </html>

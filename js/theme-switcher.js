@@ -106,16 +106,33 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+
         if (theme === 'system') {
             // Use system preference
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+
+            // Toggle tailwind class
+            if (prefersDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
             if (themeSwitch) {
                 themeSwitch.checked = prefersDark;
             }
         } else {
             // Use explicit preference
             document.documentElement.setAttribute('data-theme', theme);
+
+            // Toggle tailwind class
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
             if (themeSwitch) {
                 themeSwitch.checked = theme === 'dark';
             }

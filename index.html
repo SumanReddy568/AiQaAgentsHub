@@ -1,271 +1,555 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI QA Agent Hub</title>
+    <title>AI QA Agent Hub - Intelligent Test Automation</title>
     <link rel="icon" type="image/png" href="assets/ai_png.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            750: '#2d3b55',
+                            850: '#1a2233',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Analytics -->
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "tidt8rylu3");
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "tidt8rylu3");
     </script>
 </head>
 
-<body class="gradient-bg min-h-screen overflow-y-auto">
-    <!-- Onboarding Walkthrough Overlay -->
-    <div id="onboarding-overlay"
-        class="fixed inset-0 flex items-center justify-center z-50 invisible opacity-0 transition-opacity duration-300 gradient-bg">
-        <div class="rounded-2xl shadow-2xl max-w-md w-full p-8 text-center border border-white/30 backdrop-blur-md">
-            <img src="assets/ai_png.png" alt="AI Logo" class="mx-auto mb-4 w-14 h-14 rounded-xl shadow">
-            <h2 class="text-2xl font-bold text-slate-800 mb-2">Welcome to AI Agent Hub!</h2>
-            <p class="text-slate-600 mb-4">
-                To get started, please add your <span class="font-semibold text-blue-600">Gemini API key</span> and
-                configure your global AI service settings.<br>
-                Click <span class="font-semibold text-blue-600">Settings</span> <svg
-                    class="inline-block align-text-bottom" width="18" height="18" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path
-                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
-                    </path>
-                </svg> at the top right to begin.
-            </p>
-            <button id="onboarding-settings-btn"
-                class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow hover:from-blue-700 hover:to-purple-700 transition-colors">
-                Open Settings
-            </button>
-        </div>
-    </div>
+<body
+    class="gradient-bg min-h-screen text-slate-800 dark:text-slate-100 font-sans selection:bg-blue-100 selection:text-blue-900 overflow-y-auto h-auto transition-colors duration-300">
 
-    <!-- Settings and theme toggle icons at top-right -->
-    <div class="fixed top-8 right-8 z-50 flex items-center space-x-4">
-        <!-- Gemini Status Indicator -->
-        <div id="gemini-status-indicator" class="flex items-center space-x-2">
-            <span id="gemini-status-dot" class="inline-block w-3 h-3 rounded-full bg-gray-400 animate-pulse"></span>
-            <span id="gemini-status-label" class="text-xs font-semibold text-gray-600">Checking...</span>
-        </div>
-        <!-- Theme toggle switch - simplified version -->
-        <div class="flex items-center">
-            <input type="checkbox" id="theme-switch" class="theme-switch" />
-            <label for="theme-switch" class="theme-toggle"></label>
-        </div>
-
-        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
-            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
-            title="Check Gemini API Status">
-            Gemini Status
-        </a>
-        <a id="docs-btn" href="geminiDocs.html" target="_blank" rel="noopener noreferrer"
-            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
-            title="Check Gemini API Docs">
-            Gemini Docs
-        </a>
-
-        <button id="settings-btn" class="p-2 rounded-xl hover:bg-white/50 transition-colors" title="Settings">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path
-                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
-                </path>
-            </svg>
-        </button>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
-        <header class="text-center mb-10">
-            <img src="assets/ai_png.png" alt="AI Logo"
-                class="mx-auto mb-4 w-16 h-16 bg-white rounded-2xl shadow-lg p-3">
-            <h1 class="text-4xl font-bold text-slate-800">AI Agent Hub</h1>
-            <p class="text-slate-600 mt-2">Your suite of AI-powered test automation assistants.</p>
-        </header>
-
-        <div class="mb-12">
-            <div class="text-center mt-4">
-                <a href="dashboard.html" class="text-sm font-semibold text-blue-600 hover:underline">View Usage Dashboard
-                    &rarr;</a>
-            </div>
-        </div>
-
-        <div>
-            <h2 class="text-xl font-bold text-slate-700 mb-4 text-center">Choose an Agent</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Tech News Widget Card -->
-                <a href="tech-news.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block border-2 border-yellow-400">
-                    <h3 class="text-2xl font-bold text-yellow-700 flex items-center gap-2">
-                        <svg class="inline-block" width="28" height="28" fill="none" stroke="currentColor"
-                            stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M4 4h16v16H4z" fill="#facc15" />
-                            <path d="M8 8h8v2H8zM8 12h5v2H8z" stroke="#92400e" stroke-width="1.5" />
-                        </svg>
-                        Tech News
-                    </h3>
-                    <p class="text-slate-700 mt-2">See the latest AI, software, and testing news, launches, and
-                        outages—auto-refreshed every visit.</p>
-                    <span class="mt-4 inline-block font-semibold text-yellow-700">View News &rarr;</span>
-                </a>
-                <!-- Test Case Generator Card - NEW -->
-                <a href="testcasegen.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block border-2 border-purple-400">
-                    <div class="flex items-center justify-between mb-4">
-                        <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">NEW</span>
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 w-full z-40 px-6 py-4 transition-all duration-300 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-white/50 dark:border-slate-800/50 supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-slate-900/40">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="relative">
+                    <div
+                        class="absolute inset-0 bg-blue-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity rounded-full">
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-800">Test Case Generator</h3>
-                    <p class="text-slate-600 mt-2">Upload files and generate comprehensive test cases for any testing
-                        type
-                    </p>
-                    <span class="mt-4 inline-block font-semibold text-purple-600">Launch Agent &rarr;</span>
+                    <img src="assets/ai_png.png" alt="Logo"
+                        class="w-10 h-10 relative z-10 rounded-xl shadow-sm group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <span class="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Agent<span
+                        class="text-blue-600 dark:text-blue-400">Hub</span></span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Docs Button -->
+                <a id="docs-btn" href="geminiDocs.html" target="_blank"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 bg-white/50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg>
+                    <span>Gemini Docs</span>
                 </a>
-                <a href="locator.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">Locator Generator</h3>
-                    <p class="text-slate-600 mt-2">Instantly generate stable and reliable CSS & XPath locators from any
-                        HTML snippet.</p>
-                    <span class="mt-4 inline-block font-semibold text-blue-600">Launch Agent &rarr;</span>
+
+                <!-- Status Button -->
+                <a id="status-btn-link" href="geminiStatus.html" target="_blank"
+                    class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-white/50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-700 transition-all shadow-sm group">
+                    <div id="gemini-status-indicator" class="flex items-center gap-2">
+                        <span id="gemini-status-dot"
+                            class="w-2.5 h-2.5 rounded-full bg-slate-400 animate-pulse group-hover:scale-110 transition-transform"></span>
+                        <span id="status-btn-text"
+                            class="text-slate-600 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Gemini
+                            Status</span>
+                    </div>
                 </a>
-                <a href="explainer.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">Code Explainer</h3>
-                    <p class="text-slate-600 mt-2">Get detailed, expert-level explanations and improvement suggestions
-                        for your test code.</p>
-                    <span class="mt-4 inline-block font-semibold text-cyan-600">Launch Agent &rarr;</span>
-                </a>
-                <a href="code-optimizer.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">Code Optimizer</h3>
-                    <p class="text-slate-600 mt-2">Remove redundant code and see a git-style diff for your code
-                        snippet.</p>
-                    <span class="mt-4 inline-block font-semibold text-green-600">Launch Agent &rarr;</span>
-                </a>
-                <a href="diff-checker.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">Diff Checker</h3>
-                    <p class="text-slate-600 mt-2">Compare two files (JSON, CSV, text, etc.), see highlighted
-                        differences, and get an AI-powered summary.</p>
-                    <span class="mt-4 inline-block font-semibold text-pink-600">Launch Agent &rarr;</span>
-                </a>
-                <a href="performance.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">Performance Analyzer</h3>
-                    <p class="text-slate-600 mt-2">Analyze webpage performance metrics and get AI-powered optimization
-                        recommendations.</p>
-                    <span class="mt-4 inline-block font-semibold text-purple-600">Launch Agent &rarr;</span>
-                </a>
-                <a href="wcag-explainer.html"
-                    class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow transform hover:-translate-y-1 block">
-                    <h3 class="text-2xl font-bold text-slate-800">WCAG Explainer</h3>
-                    <p class="text-slate-600 mt-2">Get detailed explanations of WCAG 2.1 accessibility guidelines with good/bad examples and testing methods.</p>
-                    <span class="mt-4 inline-block font-semibold text-blue-600">Launch Agent &rarr;</span>
-                </a>
+
+
+                <!-- Settings Button -->
+                <button id="settings-btn"
+                    class="p-2 rounded-xl bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-sm border border-slate-200/50 dark:border-slate-700/50 group"
+                    title="Settings">
+                    <svg class="w-5 h-5 group-hover:rotate-45 transition-transform duration-500 dark:text-slate-300"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </button>
+
+                 <!-- Theme Toggle -->
+                <div class="flex items-center">
+                    <input type="checkbox" id="theme-switch" class="theme-switch" />
+                    <label for="theme-switch" class="theme-toggle" aria-label="Toggle Theme"></label>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <header class="pt-32 pb-2 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1
+                class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight animate-fade-in-up delay-100">
+                Intelligent QA <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">Powered
+                    by Agents</span>
+            </h1>
+            <p
+                class="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+                Your dedicated suite of AI assistants. Generate test cases, optimize code, debug issues, and analyze
+                performance in seconds.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up delay-300">
+                <a href="#agents"
+                    class="px-8 py-3.5 bg-slate-900 dark:bg-blue-600 text-white font-semibold rounded-xl hover:bg-slate-800 dark:hover:bg-blue-500 hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1">
+                    Explore Agents
+                </a>
+                <a href="dashboard.html"
+                    class="px-8 py-3.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 transition-all group flex items-center gap-2">
+                    View Dashboard
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-fade-in-up delay-500">
+                <div
+                    class="glass-effect dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
+                    <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wide">Total
+                        Calls</div>
+                    <div id="total-calls" class="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-1">-</div>
+                </div>
+                <div
+                    class="glass-effect dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
+                    <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wide">Tokens
+                        Used</div>
+                    <div id="total-tokens" class="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1">-</div>
+                </div>
+                <div
+                    class="glass-effect dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
+                    <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wide">Tasks
+                        Done</div>
+                    <div id="tasks-completed" class="text-2xl font-bold text-green-600 dark:text-green-400 mt-1">-</div>
+                </div>
+                <div
+                    class="glass-effect dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
+                    <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wide">Est.
+                        Cost</div>
+                    <div id="estimated-cost" class="text-2xl font-bold text-purple-600 dark:text-purple-400 mt-1">-
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative background elements -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-blue-100/50 to-purple-100/50 dark:from-blue-900/20 dark:to-purple-900/20 blur-3xl opacity-50 -z-10 rounded-full">
+        </div>
+    </header>
+
+    <!-- Agents Grid -->
+    <section id="agents" class="max-w-7xl mx-auto px-6 pt-4 pb-24">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                Available Agents
+                <span
+                    class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-normal border border-slate-200 dark:border-slate-700">New
+                    agents</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            <!-- Tech News Agent -->
+            <a href="tech-news.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-yellow-300 dark:hover:border-yellow-500/50 shadow-sm hover:shadow-xl hover:shadow-yellow-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-yellow-400 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-yellow-600 dark:text-yellow-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                        </path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-yellow-700 dark:group-hover:text-yellow-400 transition-colors">
+                    Tech Radar</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Latest industry news, AI updates,
+                    and outages relevant to QA.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Test Case Gen Agent -->
+            <a href="testcasegen.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-purple-300 dark:hover:border-purple-500/50 shadow-sm hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 relative overflow-hidden">
+                <div
+                    class="absolute top-4 right-4 px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-[10px] font-bold uppercase rounded-full tracking-wide">
+                    Featured</div>
+                <div class="absolute top-0 left-0 w-1 h-full bg-purple-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-purple-600 dark:text-purple-300">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                        </path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">
+                    Test Case Gen</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Generate comprehensive test
+                    scenarios from requirements.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-purple-600 dark:text-purple-300 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Locator Agent -->
+            <a href="locator.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-blue-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-blue-600 dark:text-blue-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+                    Locator Pro</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify stable CSS/XPath
+                    selectors for automation.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Explainer Agent -->
+            <a href="explainer.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-cyan-300 dark:hover:border-cyan-500/50 shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-cyan-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-cyan-600 dark:text-cyan-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                        </path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-cyan-700 dark:group-hover:text-cyan-400 transition-colors">
+                    Code Explainer</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Understand complex code logic and
+                    get documentation.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-cyan-600 dark:text-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Optimizer Agent -->
+            <a href="code-optimizer.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-emerald-300 dark:hover:border-emerald-500/50 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-emerald-600 dark:text-emerald-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+                    Code Optimizer</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Refactor and optimize code for
+                    performance and readability.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Diff Checker Agent -->
+            <a href="diff-checker.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-pink-300 dark:hover:border-pink-500/50 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-pink-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-pink-600 dark:text-pink-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2">
+                        </path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-pink-700 dark:group-hover:text-pink-400 transition-colors">
+                    Diff Checker</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Compare text/code versions with
+                    intelligent summary.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-pink-600 dark:text-pink-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Performance Agent -->
+            <a href="performance.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-indigo-300 dark:hover:border-indigo-500/50 shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-indigo-600 dark:text-indigo-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors">
+                    Performance</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Analyze web vitals and get
+                    optimization tips.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- WCAG Agent -->
+            <a href="wcag-explainer.html"
+                class="group glass-effect dark:bg-slate-800/40 p-6 rounded-3xl border border-white/40 dark:border-slate-700/50 hover:border-blue-400 dark:hover:border-blue-500/50 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-blue-600 group-hover:w-1.5 transition-all"></div>
+                <div
+                    class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-blue-600 dark:text-blue-400">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                        </path>
+                    </svg>
+                </div>
+                <h3
+                    class="text-lg font-bold text-slate-800 dark:text-white mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+                    WCAG Helper</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Accessibility guidelines and
+                    remediation assistant.</p>
+                <div
+                    class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                    Launch Agent <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer
+        class="text-center py-8 text-slate-500 dark:text-slate-400 text-sm mt-12 bg-white/30 dark:bg-slate-900/30 backdrop-blur-sm border-t border-white/50 dark:border-slate-800/50">
+        <p>&copy; 2025 AI QA Agent Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- SETTINGS MODAL (Preserved Logic) -->
     <div id="settings-modal"
-        class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50">
-        <div class="modal-content glass-effect w-full max-w-lg p-8 rounded-2xl shadow-2xl">
+        class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 invisible opacity-0 z-50 backdrop-blur-sm transition-all duration-300">
+        <div
+            class="modal-content glass-effect dark:glass-effect-dark w-full max-w-lg p-8 rounded-3xl shadow-2xl transform scale-95 transition-all duration-300 dark:bg-slate-900 border dark:border-slate-700">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Settings</h2>
-                <button id="close-modal-btn" class="p-2 rounded-xl hover:bg-slate-200 transition-colors">
+                <h2
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                    Settings</h2>
+                <button id="close-modal-btn"
+                    class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-500 dark:text-slate-400">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            <div class="space-y-6">
+            <div class="space-y-6 max-h-[60vh] overflow-y-auto px-1 custom-scrollbar">
                 <div>
-                    <label for="provider-select" class="block text-sm font-semibold mb-2">AI Provider</label>
-                    <select id="provider-select"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none">
-                        <option value="gemini" selected>Google Gemini</option>
-                        <option value="deepseek">DeepSeek</option>
-                        <option value="openrouter">OpenRouter</option>
-                    </select>
+                    <label for="provider-select"
+                        class="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">AI Provider</label>
+                    <div class="relative">
+                        <select id="provider-select"
+                            class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:border-blue-500 focus:outline-none appearance-none bg-white dark:bg-slate-800 font-medium text-slate-700 dark:text-slate-200">
+                            <option value="gemini" selected>Google Gemini</option>
+                            <option value="deepseek">DeepSeek</option>
+                            <option value="openrouter">OpenRouter</option>
+                        </select>
+                        <svg class="w-4 h-4 absolute right-4 top-4 text-slate-400 pointer-events-none" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
                 </div>
-                <div id="gemini-key-section">
-                    <label for="api-key-input" class="block text-sm font-semibold mb-2">Gemini API Key</label>
+                <div id="gemini-key-section"
+                    class="bg-blue-50/50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-800/30">
+                    <label for="api-key-input"
+                        class="block text-sm font-bold text-blue-900 dark:text-blue-300 mb-2">Gemini API Key</label>
                     <input type="password" id="api-key-input"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        class="w-full border-2 border-blue-200 dark:border-blue-700/50 rounded-xl p-3 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/10 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200"
                         placeholder="Enter your Gemini API key">
-                    <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
+                    <p class="text-xs mt-2 text-blue-700 dark:text-blue-400">Key stored locally in browser.</p>
                 </div>
-                <div id="deepseek-key-section" class="hidden">
-                    <label for="deepseek-api-key-input" class="block text-sm font-semibold mb-2">DeepSeek API
-                        Key</label>
+                <!-- Other key sections hidden by default -->
+                <div id="deepseek-key-section"
+                    class="hidden bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <label for="deepseek-api-key-input"
+                        class="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">DeepSeek API Key</label>
                     <input type="password" id="deepseek-api-key-input"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:border-blue-500 focus:outline-none bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200"
                         placeholder="Enter your DeepSeek API key">
-                    <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
-                <div id="openrouter-key-section" class="hidden">
-                    <label for="openrouter-api-key-input" class="block text-sm font-semibold mb-2">OpenRouter API
+                <div id="openrouter-key-section"
+                    class="hidden bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <label for="openrouter-api-key-input"
+                        class="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">OpenRouter API
                         Key</label>
                     <input type="password" id="openrouter-api-key-input"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:border-blue-500 focus:outline-none bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200"
                         placeholder="Enter your OpenRouter API key">
-                    <p class="text-xs mt-2">Your API key is stored locally in your browser.</p>
                 </div>
+
                 <div id="gemini-model-section">
-                    <label for="model-select" class="block text-sm font-semibold mb-2">AI Model</label>
-                    <select id="model-select"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none">
-                        <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced)</option>
-                        <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Recommended)</option>
-                        <option value="gemini-pro">Gemini Pro (Legacy)</option>
-                    </select>
+                    <label for="model-select" class="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">AI
+                        Model</label>
+                    <div class="relative">
+                        <select id="model-select"
+                            class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:border-blue-500 focus:outline-none appearance-none bg-white dark:bg-slate-800 font-medium text-slate-700 dark:text-slate-200">
+                            <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced)</option>
+                            <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Recommended)</option>
+                            <option value="gemini-pro">Gemini Pro (Legacy)</option>
+                        </select>
+                        <svg class="w-4 h-4 absolute right-4 top-4 text-slate-400 pointer-events-none" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
                 </div>
                 <div id="custom-model-section" class="hidden">
-                    <label for="custom-model-input" class="block text-sm font-semibold mb-2">Model Name</label>
+                    <label for="custom-model-input"
+                        class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">Model Name</label>
                     <input type="text" id="custom-model-input"
-                        class="w-full border-2 rounded-xl p-3 focus:border-blue-400 focus:outline-none"
+                        class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-xl p-3 focus:border-blue-400 focus:outline-none bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200"
                         placeholder="e.g., openai/gpt-4o, deepseek-chat">
-                    <p class="text-xs mt-2">Enter your model identifier (e.g., openai/gpt-4o for OpenRouter,
+                    <p class="text-xs mt-2 text-slate-500 dark:text-slate-400">Enter your model identifier (e.g.,
+                        openai/gpt-4o for OpenRouter,
                         deepseek-chat for DeepSeek).</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-2">Theme Preference</label>
-                    <div class="flex space-x-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="theme-preference" value="light" class="mr-2" checked>
-                            Light Mode
+                    <label class="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">Theme
+                        Preference</label>
+                    <div class="flex space-x-3 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl">
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="theme-preference" value="light" class="peer sr-only" checked>
+                            <div
+                                class="text-center py-2 px-3 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-slate-900 dark:peer-checked:text-white peer-checked:shadow-sm transition-all">
+                                Light</div>
                         </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="theme-preference" value="dark" class="mr-2">
-                            Dark Mode
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="theme-preference" value="dark" class="peer sr-only">
+                            <div
+                                class="text-center py-2 px-3 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-slate-900 dark:peer-checked:text-white peer-checked:shadow-sm transition-all">
+                                Dark</div>
                         </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="theme-preference" value="system" class="mr-2">
-                            System Preference
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="theme-preference" value="system" class="peer sr-only">
+                            <div
+                                class="text-center py-2 px-3 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-slate-900 dark:peer-checked:text-white peer-checked:shadow-sm transition-all">
+                                System</div>
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="flex justify-end space-x-3 mt-8">
+            <div class="flex justify-end space-x-3 mt-8 pt-4 border-t border-slate-100 dark:border-slate-700">
                 <button id="cancel-settings-btn"
-                    class="px-4 py-2 hover:text-slate-800 transition-colors">Cancel</button>
+                    class="px-5 py-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-medium transition-colors">Cancel</button>
                 <button id="save-settings-btn"
-                    class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl">Save
-                    Settings</button>
+                    class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 hover:scale-[1.02] transition-all">Save
+                    Changes</button>
             </div>
         </div>
     </div>
 
+    <!-- Onboarding Overlay -->
+    <div id="onboarding-overlay"
+        class="fixed inset-0 flex items-center justify-center z-[60] invisible opacity-0 transition-opacity duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+        <div
+            class="rounded-3xl shadow-2xl max-w-md w-full p-10 text-center border border-white dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 animate-bounce-in">
+            <div
+                class="w-20 h-20 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                <img src="assets/ai_png.png" alt="AI Logo" class="w-12 h-12 brightness-200 grayscale contrast-200">
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-3">Welcome to AgentHub</h2>
+            <p class="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                Connect your AI provider to unlock the full potential of your intelligent QA assistants.
+            </p>
+            <button id="onboarding-settings-btn"
+                class="w-full py-4 bg-slate-900 dark:bg-blue-600 text-white font-bold rounded-xl shadow-xl shadow-slate-900/20 hover:bg-slate-800 dark:hover:bg-blue-500 hover:scale-[1.02] transition-all">
+                Configure API Key
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script type="module" src="js/landing.js"></script>
     <script type="module" src="js/theme-switcher.js"></script>
-    <!-- Gemini Status Polling Script -->
+
+    <!-- Polling Logic (Preserved) -->
     <script>
         let geminiStatusInterval = null;
 
@@ -288,75 +572,44 @@
             const { provider, apiKey, selectedModel } = getAiSettings();
 
             if (!apiKey) {
-                dot.className = "inline-block w-3 h-3 rounded-full bg-gray-400";
+                dot.className = "w-2 h-2 rounded-full bg-slate-400";
                 label.textContent = "Not Configured";
-                label.className = "text-xs font-semibold text-gray-500";
-                label.removeAttribute('title');
                 return;
             }
 
             try {
-                let resp, errorMsg = "";
+                let resp;
                 if (provider === 'gemini') {
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
                     resp = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: "ping" }] }],
-                            generationConfig: { temperature: 0 }
-                        })
+                        body: JSON.stringify({ contents: [{ parts: [{ text: "ping" }] }], generationConfig: { temperature: 0 } })
                     });
                 } else if (provider === 'deepseek') {
-                    const apiUrl = 'https://api.deepseek.com/chat/completions';
-                    resp = await fetch(apiUrl, {
+                    resp = await fetch('https://api.deepseek.com/chat/completions', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${apiKey}`
-                        },
-                        body: JSON.stringify({
-                            model: selectedModel || 'deepseek-chat',
-                            messages: [{ role: 'user', content: 'ping' }],
-                            stream: false
-                        })
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+                        body: JSON.stringify({ model: selectedModel || 'deepseek-chat', messages: [{ role: 'user', content: 'ping' }], stream: false })
                     });
                 } else if (provider === 'openrouter') {
-                    const apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-                    resp = await fetch(apiUrl, {
+                    resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${apiKey}`
-                        },
-                        body: JSON.stringify({
-                            model: selectedModel || 'openai/gpt-4o',
-                            messages: [{ role: 'user', content: 'ping' }]
-                        })
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+                        body: JSON.stringify({ model: selectedModel || 'openai/gpt-4o', messages: [{ role: 'user', content: 'ping' }] })
                     });
                 }
 
                 if (resp && resp.ok) {
-                    dot.className = "inline-block w-3 h-3 rounded-full bg-green-500";
+                    dot.className = "w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]";
                     label.textContent = "Online";
-                    label.className = "text-xs font-semibold text-green-600 dark:text-green-400";
-                    label.removeAttribute('title');
                 } else {
-                    let errorData;
-                    try { errorData = await resp.json(); } catch { }
-                    if (errorData && errorData.error && errorData.error.message) {
-                        errorMsg = errorData.error.message;
-                    }
-                    dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
+                    dot.className = "w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]";
                     label.textContent = "Offline";
-                    label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
-                    label.title = errorMsg || "Offline";
                 }
             } catch (e) {
-                dot.className = "inline-block w-3 h-3 rounded-full bg-red-500";
-                label.textContent = "Offline";
-                label.className = "text-xs font-semibold text-red-600 dark:text-red-400";
-                label.title = e?.message || "Offline";
+                dot.className = "w-2 h-2 rounded-full bg-red-500";
+                label.textContent = "Error";
             }
         }
 
@@ -384,75 +637,119 @@
         if (document.visibilityState === 'visible') {
             startGeminiStatusPolling();
         }
-    </script>
-    <script>
-        // Onboarding logic
+
+        // Provider Button Text Updater
+        function updateProviderButtons() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const docsBtnSpan = document.querySelector('#docs-btn span');
+            const statusBtnText = document.getElementById('status-btn-text');
+
+            let name = "Gemini";
+            if (provider === 'deepseek') name = "DeepSeek";
+            if (provider === 'openrouter') name = "OpenRouter";
+
+            if (docsBtnSpan) docsBtnSpan.textContent = `${name} Docs`;
+            if (statusBtnText) statusBtnText.textContent = `${name} Status`;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateProviderButtons);
+        window.addEventListener('storage', updateProviderButtons);
+        function updateProviderButtons() {
+            const provider = localStorage.getItem('ai-provider') || 'gemini';
+            const docsBtnSpan = document.querySelector('#docs-btn span');
+            const statusBtnText = document.getElementById('status-btn-text');
+
+            let name = "Gemini";
+            if (provider === 'deepseek') name = "DeepSeek";
+            if (provider === 'openrouter') name = "OpenRouter";
+
+            if (docsBtnSpan) docsBtnSpan.textContent = `${name} Docs`;
+            if (statusBtnText) statusBtnText.textContent = `${name} Status`;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateProviderButtons);
+        window.addEventListener('storage', updateProviderButtons);
+
+        // Onboarding Logic
         document.addEventListener('DOMContentLoaded', function () {
-            const apiKey = localStorage.getItem('gemini_api_key');
+            const apiKey = localStorage.getItem('gemini_api_key') || localStorage.getItem('gemini-api-key'); // Check variations
             const onboardingCompleted = localStorage.getItem('onboarding_completed') === 'true';
             const overlay = document.getElementById('onboarding-overlay');
-            // Only show overlay if onboarding not completed AND API key missing
+
             if (!onboardingCompleted && !apiKey) {
                 overlay.classList.remove('invisible', 'opacity-0');
                 overlay.classList.add('visible', 'opacity-100');
             }
+
             document.getElementById('onboarding-settings-btn')?.addEventListener('click', function () {
                 document.getElementById('settings-btn').click();
                 overlay.classList.add('invisible', 'opacity-0');
                 overlay.classList.remove('visible', 'opacity-100');
-                // Mark onboarding as completed
                 localStorage.setItem('onboarding_completed', 'true');
             });
-            // Hide overlay when modal is closed (optional, for smoother UX)
-            document.getElementById('close-modal-btn')?.addEventListener('click', function () {
-                // Only show overlay again if onboarding not completed AND API key missing
-                if (!localStorage.getItem('onboarding_completed') && !localStorage.getItem('gemini_api_key')) {
-                    overlay.classList.remove('invisible', 'opacity-0');
-                    overlay.classList.add('visible', 'opacity-100');
-                }
-            });
-            // Hide overlay when settings are saved and API key is present
+
             document.getElementById('save-settings-btn')?.addEventListener('click', function () {
                 setTimeout(() => {
-                    if (localStorage.getItem('gemini_api_key')) {
-                        overlay.classList.add('invisible', 'opacity-0');
-                        overlay.classList.remove('visible', 'opacity-100');
-                        localStorage.setItem('onboarding_completed', 'true');
-                    }
+                    overlay.classList.add('invisible', 'opacity-0');
+                    overlay.classList.remove('visible', 'opacity-100');
+                    localStorage.setItem('onboarding_completed', 'true');
                 }, 300);
             });
         });
     </script>
-    <script>
-        // Dynamically update button names/tooltips based on provider
-        function updateProviderButtons() {
-            const provider = localStorage.getItem('ai-provider') || 'gemini';
-            const statusBtn = document.getElementById('status-btn');
-            const docsBtn = document.getElementById('docs-btn');
-            if (!statusBtn || !docsBtn) return;
+    <style>
+        /* Custom Animations not in Tailwind */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-            if (provider === 'openrouter') {
-                statusBtn.textContent = "OpenRouter Status";
-                statusBtn.title = "Check OpenRouter API Status";
-                docsBtn.textContent = "OpenRouter Docs";
-                docsBtn.title = "Check OpenRouter API Docs";
-            } else if (provider === 'deepseek') {
-                statusBtn.textContent = "DeepSeek Status";
-                statusBtn.title = "Check DeepSeek API Status";
-                docsBtn.textContent = "DeepSeek Docs";
-                docsBtn.title = "Check DeepSeek API Docs";
-            } else {
-                statusBtn.textContent = "Gemini Status";
-                statusBtn.title = "Check Gemini API Status";
-                docsBtn.textContent = "Gemini Docs";
-                docsBtn.title = "Check Gemini API Docs";
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        // Call on load and whenever settings change
-        document.addEventListener('DOMContentLoaded', updateProviderButtons);
-        window.addEventListener('storage', updateProviderButtons); // In case settings change in another tab
-    </script>
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Dark mode overrides for glass effect */
+        html.dark .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            border-color: rgba(51, 65, 85, 0.5);
+        }
+
+        /* FORCE SCROLLING FOR LANDING PAGE */
+        html,
+        body {
+            overflow: auto !important;
+            height: auto !important;
+        }
+    </style>
 </body>
 
 </html>
