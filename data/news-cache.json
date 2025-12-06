@@ -1,125 +1,5 @@
 [
   {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Microsoft introduces Phi-3-vision, a powerful, cost-effective multimodal AI model",
-    "source": "https://blogs.microsoft.com/ai/phi-3-vision-a-powerful-multimodal-model-that-can-see-and-reason/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "GitHub Copilot extensions are now in public beta",
-    "source": "https://github.blog/2024-05-21-github-copilot-extensions-are-now-in-public-beta/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Microsoft's new 'Recall' feature for Windows sparks major privacy and security backlash",
-    "source": "https://www.theverge.com/2024/5/24/24163453/microsoft-recall-windows-11-feature-security-privacy-nightmare"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Kotlin 2.0.0 is released, featuring the stable K2 compiler by default",
-    "source": "https://blog.jetbrains.com/kotlin/2024/05/kotlin-2-0-0-is-here/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Microsoft announces general availability of its custom Azure Cobalt 100 Arm-based processors",
-    "source": "https://techcrunch.com/2024/05/21/microsofts-custom-arm-based-cobalt-chips-are-now-generally-available/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Critical 'Linguistic Lumberjack' vulnerability disclosed in Fluent Bit logging utility",
-    "source": "https://www.bleepingcomputer.com/news/security/new-critical-fluent-bit-flaw-lets-attackers-crash-services-leak-info/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Google releases PaliGemma, its first open vision-language model",
-    "source": "https://blog.google/technology/developers/paligemma-open-vision-language-model/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Docker acquires Mutagen to improve remote development performance",
-    "source": "https://www.docker.com/blog/docker-welcomes-mutagen-to-the-team-to-solve-remote-development-performance-challenges/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "U.S. Justice Department sues to break up Live Nation-Ticketmaster",
-    "source": "https://www.theverge.com/2024/5/23/24162788/doj-live-nation-ticketmaster-lawsuit-monopoly-antitrust"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Vercel adds beta support for PHP, Python, Go, and Bun runtimes",
-    "source": "https://vercel.com/blog/vercel-welcomes-php-python-and-go"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Salvatore Sanfilippo, the creator of Redis, joins Microsoft",
-    "source": "https://antirez.com/news/140"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Amazon Q, AWS's AI-powered enterprise assistant, is now generally available",
-    "source": "https://aws.amazon.com/blogs/aws/amazon-q-is-now-generally-available-with-new-features-and-capabilities/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "CISA warns of actively exploited zero-day in Check Point VPNs",
-    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-check-point-vpn-zero-day-exploited-in-the-wild/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Microsoft launches Surface Pro and Surface Laptop with Snapdragon X Elite chips",
-    "source": "https://www.theverge.com/2024/5/20/24159333/microsoft-surface-pro-11-laptop-7-qualcomm-snapdragon-x-elite-plus-price-release-date"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Meta's AI Chatbot 'LLaMA 3' Set for Release in December",
-    "source": "https://www.theverge.com/2023/10/meta-ai-chatbot-llama-3-release-date"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Microsoft Launches New Azure AI Services for Developers",
-    "source": "https://www.zdnet.com/article/microsoft-launches-new-azure-ai-services-for-developers/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Google Cloud Introduces New Data Analytics Tools",
-    "source": "https://www.techcrunch.com/2023/10/google-cloud-data-analytics-tools-launch/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "NVIDIA Launches New AI Model for Real-Time Video Processing",
-    "source": "https://www.engadget.com/nvidia-ai-real-time-video-processing-2023-10-10"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Docker Introduces New Features for Enhanced Container Security",
-    "source": "https://www.docker.com/blog/docker-security-updates-2023/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Mozilla Firefox 119 Released with Enhanced Privacy Features",
-    "source": "https://www.engadget.com/firefox-119-privacy-features-release-2023-10-10"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Kubernetes 1.27 Released with New Features and Improvements",
-    "source": "https://kubernetes.io/blog/2023/10/10/kubernetes-1-27-release/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Salesforce Launches New AI-Powered Analytics Tool",
-    "source": "https://www.salesforce.com/news/2023/10/ai-powered-analytics-tool-launch/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "OpenAI Releases API for DALL-E 3",
-    "source": "https://www.openai.com/blog/dall-e-3-api-release/"
-  },
-  {
-    "date": "2025-11-25T13:09:06.457Z",
-    "headline": "Oracle Cloud Infrastructure Expands Global Reach",
-    "source": "https://www.oracle.com/news/2023/10/oracle-cloud-infrastructure-expansion/"
-  },
-  {
     "date": "2025-11-26T04:00:44.045Z",
     "headline": "Microsoft introduces Phi-3-vision, a multimodal small language model",
     "source": "https://techcrunch.com/2024/05/21/microsoft-introduces-phi-3-vision-a-multimodal-small-language-model/"
@@ -2673,5 +2553,140 @@
     "date": "2025-12-05T13:08:09.773Z",
     "headline": "New features added to popular container orchestration tool",
     "source": "https://www.techradar.com/news/container-orchestration-tool-update"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Apple Intelligence: a new personal intelligence system for iPhone, iPad, and Mac",
+    "source": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Elon Musk threatens to ban Apple devices over OpenAI partnership",
+    "source": "https://www.reuters.com/technology/elon-musk-threatens-ban-apple-devices-over-openai-integration-2024-06-10/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Raspberry Pi shares surge 31% in London stock market debut",
+    "source": "https://www.cnbc.com/2024/06/11/raspberry-pi-shares-surge-in-london-stock-market-debut.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Oracle stock pops after company announces cloud deals with Google, OpenAI",
+    "source": "https://www.cnbc.com/2024/06/11/oracle-orcl-q4-earnings-report-2024.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Xcode 16 supercharges developer productivity",
+    "source": "https://developer.apple.com/news/?id=155cadyg"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "DuckDB 1.0.0 Released",
+    "source": "https://duckdb.org/2024/06/11/announcing-duckdb-100.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Cloudflare acquires BastionZero to bolster its SASE offering",
+    "source": "https://techcrunch.com/2024/06/11/cloudflare-acquires-bastionzero-to-bolster-its-sase-offering/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Warning as Actively Exploited Arm Mali GPU Flaw Haunts Android Devices",
+    "source": "https://thehackernews.com/2024/06/warning-as-actively-exploited-arm-mali.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Microsoft's deal with Inflection AI under antitrust investigation",
+    "source": "https://www.wsj.com/tech/ai/microsofts-deal-with-inflection-ai-under-antitrust-investigation-f8b171f1"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "OpenJS and OpenSSF Launch New Certification to Strengthen Node.js Security Skills",
+    "source": "https://openjsf.org/blog/2024/06/11/new-certification-strengthens-node-js-security-skills-for-developers/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Swift 6 brings a new level of concurrency safety",
+    "source": "https://www.swift.org/blog/swift-6-released/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "AMD Ryzen AI 300 Series Enables Ultimate AI PC Experiences",
+    "source": "https://www.amd.com/en/newsroom/press-releases/2024-6-3-amd-ryzen-ai-300-series-enables-ultimate-ai-pc-expe.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Progress Patches Critical Flaw in Telerik Report Server",
+    "source": "https://www.securityweek.com/progress-patches-critical-flaw-in-telerik-report-server/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Chrome 126: A New View Transitions API, and Cross-document View Transitions",
+    "source": "https://developer.chrome.com/blog/new-in-chrome-126"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "macOS Sequoia takes productivity and intelligence to the next level",
+    "source": "https://www.apple.com/newsroom/2024/06/macos-sequoia-takes-productivity-and-intelligence-to-the-next-level/"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Meta's New AI Chatbot 'LLaMA 3' Set to Launch",
+    "source": "https://www.techcrunch.com/meta-announces-llama-3-chatbot"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "AWS Launches New AI-Powered Code Review Tool",
+    "source": "https://aws.amazon.com/blogs/aws/aws-launches-ai-code-review-tool"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Microsoft Azure Expands Its AI Services Portfolio",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-ai-services-expansion"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "GitHub Announces New Features for Project Management",
+    "source": "https://github.blog/2023/10/24/new-project-management-features"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Docker Announces Major Update to Docker Desktop",
+    "source": "https://www.docker.com/blog/docker-desktop-update"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Google Cloud Introduces New Data Analytics Tools",
+    "source": "https://cloud.google.com/blog/products/data-analytics/google-cloud-new-analytics-tools"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "New Open Source Project Aims to Enhance Kubernetes Security",
+    "source": "https://kubernetes.io/blog/2023/10/24/kubernetes-security-project-launch"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Intel Unveils New Chipset for Edge Computing",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/edge-computing-chipset-launch.html"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Salesforce Enhances Its AI Capabilities with New Features",
+    "source": "https://www.salesforce.com/news/2023/10/24/salesforce-ai-enhancements"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "New Study Reveals Trends in Cloud Adoption Among Enterprises",
+    "source": "https://www.forbes.com/sites/2023/10/24/cloud-adoption-trends-study"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "New Vulnerabilities Found in Popular Open Source Libraries",
+    "source": "https://www.zdnet.com/article/open-source-libraries-vulnerabilities"
+  },
+  {
+    "date": "2025-12-06T03:55:29.067Z",
+    "headline": "Zoom Introduces New Security Features for Meetings",
+    "source": "https://blog.zoom.us/2023/10/24/zoom-security-features"
   }
 ]
