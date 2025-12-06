@@ -1,125 +1,5 @@
 [
   {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Microsoft introduces Phi-3-vision, a multimodal small language model",
-    "source": "https://techcrunch.com/2024/05/21/microsoft-introduces-phi-3-vision-a-multimodal-small-language-model/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Google's Arm-based Axion CPUs are now generally available in Google Cloud",
-    "source": "https://cloud.google.com/blog/products/compute/googles-arm-based-axion-cpus-are-now-ga"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "GitLab patches critical vulnerability allowing account takeovers without user interaction",
-    "source": "https://about.gitlab.com/releases/2024/05/15/critical-security-release-gitlab-16-11-1-released/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Databricks acquires Lilac to help enterprises work with unstructured data",
-    "source": "https://techcrunch.com/2024/05/22/databricks-acquires-lilac-to-help-enterprises-work-with-unstructured-data/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Apple Reportedly Nearing Deal With OpenAI for iPhone Generative AI Features",
-    "source": "https://www.bloomberg.com/news/articles/2024-05-12/apple-closes-in-on-deal-with-openai-for-iphone-generative-ai-features"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Istio joins the C-suite of the CNCF by graduating",
-    "source": "https://www.cncf.io/announcements/2024/05/21/istio-joins-the-c-suite-of-the-cncf-by-graduating/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Intel builds world’s largest neuromorphic system to enable more sustainable AI",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-builds-worlds-largest-neuromorphic-system.html"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Project IDX, Google’s web-based development environment, is now in open beta",
-    "source": "https://blog.google/technology/developers/project-idx-open-beta/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "CISA Warns of Actively Exploited RCE Flaw in CrushFTP",
-    "source": "https://thehackernews.com/2024/05/cisa-warns-of-actively-exploited-rce.html"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Google releases PaliGemma, its first open vision language model",
-    "source": "https://blog.google/technology/developers/google-releases-open-vision-model-paligemma/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Microsoft introduces its first custom silicon, Cobalt 100, now in preview on Azure",
-    "source": "https://azure.microsoft.com/en-us/blog/new-azure-virtual-machines-and-advances-in-confidential-computing-and-ai-at-microsoft-build/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Next.js 14.2 Released with Production-Ready Turbopack and Client/Server Action Improvements",
-    "source": "https://nextjs.org/blog/next-14-2"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "US revokes licenses for Intel and Qualcomm to sell chips to Huawei",
-    "source": "https://www.reuters.com/technology/us-revokes-licenses-intel-qualcomm-sell-chips-huawei-sources-say-2024-05-07/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Snowflake to Acquire AI Observability Platform TruEra’s Technology and Key Personnel",
-    "source": "https://www.snowflake.com/news/snowflake-to-acquire-ai-observability-platform-trueras-technology-and-key-personnel-to-help-customers-deliver-trustworthy-and-effective-ai/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "NVIDIA Launches New AI-Powered Tools for Developers",
-    "source": "https://www.nvidia.com/en-us/deep-learning-ai/ai-tools/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "GitHub Enhances Copilot with New Features for Code Review",
-    "source": "https://github.blog/2023-10-25-github-copilot-code-review-update/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Apache Kafka 3.5 Released with New Features",
-    "source": "https://kafka.apache.org/downloads"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Google Cloud Introduces New Serverless Database Options",
-    "source": "https://cloud.google.com/blog/products/databases/serverless-database-options-launch"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Red Hat OpenShift 4.12 Released with Enhanced Security Features",
-    "source": "https://www.redhat.com/en/blog/whats-new-openshift-412"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "New Open Source Project Aims to Simplify Cloud-Native Development",
-    "source": "https://www.opensourcedevelopment.org/cloud-native-project-launch"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Intel Announces New Chip Architecture for AI Workloads",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chip-architecture.html"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "New Study Reveals Trends in Developer Tool Usage",
-    "source": "https://www.developertrends.com/study-developer-tools-usage/"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "Cisco Patches Critical Vulnerabilities in Networking Equipment",
-    "source": "https://www.cisco.com/c/en/us/support/security/critical-vulnerabilities.html"
-  },
-  {
-    "date": "2025-11-26T04:00:44.045Z",
-    "headline": "New Data Analytics Platform Launched for Small Businesses",
-    "source": "https://www.analyticsplatform.com/small-business-launch"
-  },
-  {
     "date": "2025-11-26T13:10:55.259Z",
     "headline": "Vercel Releases Next.js 15 Release Candidate",
     "source": "https://vercel.com/blog/next-js-15-rc"
@@ -2688,5 +2568,135 @@
     "date": "2025-12-06T03:55:29.067Z",
     "headline": "Zoom Introduces New Security Features for Meetings",
     "source": "https://blog.zoom.us/2023/10/24/zoom-security-features"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Adobe stock soars 14% after strong earnings and rosier outlook on AI demand",
+    "source": "https://www.reuters.com/technology/adobe-raises-annual-forecasts-strong-demand-ai-integrated-software-2024-06-13/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "OpenAI Appoints Gen. Paul M. Nakasone to Board of Directors",
+    "source": "https://openai.com/index/openai-appoints-gen-paul-m-nakasone-to-board-of-directors/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Introducing Firewall for AI",
+    "source": "https://blog.cloudflare.com/introducing-firewall-for-ai"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Arm warns of actively exploited vulnerability in Mali GPU drivers",
+    "source": "https://www.bleepingcomputer.com/news/security/arm-warns-of-actively-exploited-vulnerability-in-mali-gpu-drivers/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Postman public beta for gRPC: A new era for API development",
+    "source": "https://blog.postman.com/postman-public-beta-for-grpc-a-new-era-for-api-development/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Hugging Face and Google Cloud Expand Partnership to Advance Open AI Innovation",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/hugging-face-and-google-cloud-expand-partnership"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Check Point Research Uncovers Significant Security Vulnerabilities in Microsoft Azure",
+    "source": "https://blog.checkpoint.com/security-research/check-point-research-uncovers-significant-security-vulnerabilities-in-microsoft-azure-potential-risk-of-cross-tenant-data-leakage-in-azure-bastion-and-azure-container-registry/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Alpha-Omega Announces New Project to Improve Python Supply Chain Security",
+    "source": "https://openssf.org/blog/2024/06/13/alpha-omega-announces-new-project-to-improve-python-supply-chain-security-in-partnership-with-python-software-foundation/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Multicloud adoption is the new default, HashiCorp report finds",
+    "source": "https://siliconangle.com/2024/06/13/multicloud-adoption-new-default-hashicorp-report-finds/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Stability AI releases its text-to-image model Stable Diffusion 3 Medium",
+    "source": "https://techcrunch.com/2024/06/12/stability-ai-releases-its-text-to-image-model-stable-diffusion-3-medium/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Micron breaks ground for $2.75 bln chip assembly, test facility in India",
+    "source": "https://www.reuters.com/technology/micron-breaks-ground-275-bln-chip-assembly-test-facility-india-2024-06-13/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Perplexity Pages lets you curate and share what you learn with AI",
+    "source": "https://www.theverge.com/2024/6/13/24177579/perplexity-pages-ai-research-report"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "DuckDuckGo launches AI Chat, a privacy-focused chatbot aggregator",
+    "source": "https://techcrunch.com/2024/06/13/duckduckgo-launches-ai-chat-a-privacy-focused-chatbot-aggregator/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Linux Foundation Europe Announces Formation of Open Programmable Infrastructure Project",
+    "source": "https://www.linuxfoundation.org/press/linux-foundation-europe-announces-formation-of-open-programmable-infrastructure-project"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Cisco warns of critical RCE bug in security manager software",
+    "source": "https://www.theregister.com/2024/06/13/cisco_rce_bug_security_manager/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Microsoft Launches New Security Features for Azure",
+    "source": "https://www.zdnet.com/article/microsoft-launches-new-security-features-for-azure/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "GitHub Copilot X Now Supports More Languages",
+    "source": "https://www.theverge.com/2023/10/12/github-copilot-x-new-languages-support"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "New Ransomware Targets VMware ESXi Servers",
+    "source": "https://www.bbc.com/news/technology-67123456"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Google Cloud Introduces New AI-Powered Data Analytics Tools",
+    "source": "https://www.techcrunch.com/2023/10/12/google-cloud-ai-data-analytics-tools/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Red Hat Enhances OpenShift with New Features",
+    "source": "https://www.redhat.com/en/blog/red-hat-openshift-new-features"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "AWS Announces New Serverless Framework for Microservices",
+    "source": "https://aws.amazon.com/blogs/aws/aws-serverless-framework/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Mozilla Releases Firefox 118 with Enhanced Privacy Features",
+    "source": "https://www.mozilla.org/en-US/firefox/118.0/releasenotes/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "New Open Source Tool for Kubernetes Monitoring Released",
+    "source": "https://www.infoq.com/articles/kubernetes-monitoring-tool-release/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Intel Announces New AI Hardware for Data Centers",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-hardware-data-centers.html"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "New Version of PostgreSQL Released with Performance Improvements",
+    "source": "https://www.postgresql.org/about/news/postgresql-16-released-2533/"
+  },
+  {
+    "date": "2025-12-06T13:03:19.948Z",
+    "headline": "Cisco Expands Security Portfolio with New Offerings",
+    "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/cisco-security-portfolio-expansion.html"
   }
 ]
