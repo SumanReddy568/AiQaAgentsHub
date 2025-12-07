@@ -1,255 +1,5 @@
 [
   {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Vercel Releases Next.js 15 Release Candidate",
-    "source": "https://vercel.com/blog/next-js-15-rc"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Oracle and Google Cloud Announce Multicloud Partnership",
-    "source": "https://news.oracle.com/news/announcement/oracle-database-at-google-cloud-2024-06-12/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Critical RCE Vulnerability in PHP (CVE-2024-4577) Actively Exploited on Windows Systems",
-    "source": "https://www.bleepingcomputer.com/news/security/critical-php-rce-vulnerability-exploited-in-the-wild/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Broadcom Ends Sale of Perpetual Licenses for All VMware Products",
-    "source": "https://www.broadcom.com/blog/vmware-by-broadcom-business-transformation"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Godot 4.3 Game Engine Released with Major Rendering and Usability Updates",
-    "source": "https://godotengine.org/article/godot-4-3-is-here/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Snowflake Introduces Cortex AI and AI & ML Studio for Enterprise LLM Development",
-    "source": "https://www.snowflake.com/blog/snowflake-summit-2024-live-blog/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Raspberry Pi Launches an 'AI Kit' Powered by a Hailo Accelerator",
-    "source": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Meta Unveils 'Chameleon', a Family of Early-Fusion Mixed-Modal Models",
-    "source": "https://ai.meta.com/blog/chameleon-meta-mixed-modal-models/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "ClickHouse Cloud Announces General Availability of Tiered Storage",
-    "source": "https://clickhouse.com/blog/tiered-storage-generally-available-in-clickhouse-cloud"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "GitLab 17.1 Released with Duo Chat GA and New CI/CD Components",
-    "source": "https://about.gitlab.com/releases/2024/06/13/gitlab-17-1-released/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "CISA Adds Zyxel NAS Vulnerabilities to Known Exploited List",
-    "source": "https://www.cisa.gov/news-events/alerts/2024/06/13/cisa-adds-two-known-exploited-vulnerabilities-kev-catalog"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Apple Unveils Dedicated 'Passwords' App for All Its Platforms",
-    "source": "https://techcrunch.com/2024/06/10/apple-launches-a-new-passwords-app-for-iphone-ipad-mac-and-vision-pro/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Tesla Shareholders Vote to Approve Elon Musk's $56 Billion Pay Package",
-    "source": "https://www.reuters.com/business/autos-transportation/tesla-shareholders-approve-musks-56-bln-pay-package-2024-06-13/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Adobe Firefly Image 3 Foundation Model Now Generally Available in Photoshop",
-    "source": "https://news.adobe.com/news/news-details/2024/New-Adobe-Firefly-Image-3-Foundation-Model-Now-Generally-Available/default.aspx"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "KubeVirt Project Releases Version 1.2.0 for Running VMs in Kubernetes",
-    "source": "https://kubevirt.io/release-notes/v1.2.0/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "NVIDIA Announces New AI Models for Healthcare Applications",
-    "source": "https://www.nvidia.com/en-us/news/healthcare-ai-models/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "GitHub Introduces New Features to Enhance Code Review Process",
-    "source": "https://github.blog/2023-10-24-new-code-review-features/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "AWS Launches New Data Analytics Tools for Real-Time Insights",
-    "source": "https://aws.amazon.com/blogs/aws/new-data-analytics-tools/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Microsoft Azure Expands Support for Kubernetes",
-    "source": "https://azure.microsoft.com/en-us/blog/azure-kubernetes-service-updates/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "OpenAI Launches New Developer Tools for ChatGPT Integration",
-    "source": "https://openai.com/blog/chatgpt-developer-tools/"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Intel Announces New Line of Energy-Efficient Processors",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/energy-efficient-processors.html"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Google Cloud Introduces Enhanced Security Features for GKE",
-    "source": "https://cloud.google.com/blog/products/containers-kubernetes/gke-security-enhancements"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Red Hat Releases OpenShift 4.12 with New Developer Tools",
-    "source": "https://www.redhat.com/en/blog/openshift-4-12-released"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Cisco Launches New Security Solutions for Hybrid Workforces",
-    "source": "https://blogs.cisco.com/security/cisco-security-solutions-hybrid-workforce"
-  },
-  {
-    "date": "2025-11-26T13:10:55.259Z",
-    "headline": "Samsung Unveils New Exynos Chips for Mobile Devices",
-    "source": "https://www.samsung.com/global/galaxy/exynos/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Oracle Database@Google Cloud is now available",
-    "source": "https://cloud.google.com/blog/products/databases/oracle-database-at-google-cloud-is-now-generally-available"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Snowflake to Acquire Assets From TruEra to Help Customers Evaluate and Monitor LLMs",
-    "source": "https://www.snowflake.com/news/snowflake-to-acquire-assets-from-truera-to-help-customers-evaluate-and-monitor-llms-in-production/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Broadcom raises annual AI revenue forecast to $11 billion, announces stock split",
-    "source": "https://www.reuters.com/technology/broadcom-lifts-annual-revenue-forecast-ai-demand-2024-06-12/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Automattic, the owner of WordPress.com and Tumblr, has acquired Beeper and is folding in Texts.com",
-    "source": "https://techcrunch.com/2024/06/12/automattic-the-owner-of-wordpress-com-and-tumblr-has-acquired-beeper-and-is-folding-in-texts-com/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Release: Godot 4.3 is here!",
-    "source": "https://godotengine.org/article/godot-4-3-is-here/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Mandiant Details Widespread Data Theft Campaign by Financially Motivated Actor UNC5537",
-    "source": "https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "GitHub Copilot for Azure: The Future of Cloud Management, Now in Preview",
-    "source": "https://github.blog/2024-06-12-github-copilot-for-azure-the-future-of-cloud-management-now-in-preview/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "ClickHouse Cloud is now available on Google Cloud",
-    "source": "https://clickhouse.com/blog/clickhouse-cloud-is-now-ga-on-google-cloud"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Elon Musk drops lawsuit against OpenAI",
-    "source": "https://www.cnbc.com/2024/06/11/elon-musk-requests-to-drop-lawsuit-against-openai.html"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "AWS Step Functions adds 35 new intrinsic functions to simplify data processing",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/aws-step-functions-35-new-intrinsic-functions-data-processing/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "OpenJS Foundation Launches New Professional Node.js Developer Certification",
-    "source": "https://openjsf.org/blog/2024/06/12/openjs-foundation-launches-new-professional-node-js-developer-certification/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Apple briefly overtakes Microsoft as most valuable company",
-    "source": "https://www.reuters.com/technology/apple-overtakes-microsoft-worlds-most-valuable-company-2024-06-12/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Zyxel NAS products affected by a command injection vulnerability",
-    "source": "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-command-injection-vulnerability-in-nas-products-06-11-2024"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Synopsys Accelerates AI and HPC Chip Designs with Industry's First PCIe 7.0 IP Solution",
-    "source": "https://news.synopsys.com/2024-06-12-Synopsys-Accelerates-AI-and-HPC-Chip-Designs-with-Industrys-First-PCIe-7-0-IP-Solution"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "AI cloud provider CoreWeave secures $7.5B in debt financing",
-    "source": "https://techcrunch.com/2024/05/17/ai-cloud-provider-coreweave-secures-7-5b-in-debt-financing/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "AWS Launches New AI Services for Developers",
-    "source": "https://aws.amazon.com/blogs/aws/aws-launches-new-ai-services-for-developers/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Microsoft Announces Major Updates to Azure DevOps",
-    "source": "https://techcommunity.microsoft.com/t5/azure-devops-blog/announcing-azure-devops-updates/ba-p/1234567"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "New Cybersecurity Threats Emerge in 2024",
-    "source": "https://www.cybersecurityinsider.com/new-cybersecurity-threats-emerge-in-2024/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Kubernetes 1.26 Released with Enhanced Security Features",
-    "source": "https://kubernetes.io/blog/2024/01/26/kubernetes-1-26-release/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "GitHub Introduces New Features for Open Source Projects",
-    "source": "https://github.blog/2024/01/26/new-features-for-open-source-projects/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "New Vulnerability Discovered in Popular Web Framework",
-    "source": "https://www.securityweek.com/new-vulnerability-discovered-popular-web-framework/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "NVIDIA Launches New GPU for AI and Machine Learning",
-    "source": "https://www.nvidia.com/en-us/press-releases/2024/01/nvidia-launches-new-gpu-for-ai/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "New Data Privacy Regulations Impacting Tech Companies",
-    "source": "https://www.privacyprotectionnews.com/new-data-privacy-regulations-impacting-tech-companies/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "Apple Releases Security Updates for iOS and macOS",
-    "source": "https://www.apple.com/newsroom/2024/01/apple-releases-security-updates-for-ios-and-macos/"
-  },
-  {
-    "date": "2025-11-27T03:57:32.623Z",
-    "headline": "New JavaScript Framework Gains Popularity Among Developers",
-    "source": "https://www.devcommunity.com/new-javascript-framework-gains-popularity/"
-  },
-  {
     "date": "2025-11-27T13:08:47.238Z",
     "headline": "OpenAI's new flagship model, GPT-4o, is available to all users — and it's multimodal",
     "source": "https://techcrunch.com/2024/05/13/openais-new-flagship-model-gpt-4o-is-available-to-all-users-and-its-multimodal/"
@@ -2698,5 +2448,60 @@
     "date": "2025-12-06T13:03:19.948Z",
     "headline": "Cisco Expands Security Portfolio with New Offerings",
     "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/cisco-security-portfolio-expansion.html"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Meta’s AI Model Can Now Generate Video from Text Descriptions",
+    "source": "https://www.theverge.com/2023/10/12/meta-ai-video-generation"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Google Cloud Introduces New Tools for Data Analytics",
+    "source": "https://cloud.google.com/blog/products/data-analytics/2023/10/google-cloud-new-data-analytics-tools"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Microsoft’s New DevOps Tools Aim to Streamline CI/CD Processes",
+    "source": "https://techcrunch.com/2023/10/12/microsoft-devops-tools-update"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Red Hat Announces Major Update to OpenShift",
+    "source": "https://www.redhat.com/en/blog/red-hat-openshift-4-12-released"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "New Study Reveals the Growing Importance of Data Privacy",
+    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/12/data-privacy-study"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Apple’s New M3 Chips Set to Revolutionize Mac Performance",
+    "source": "https://www.macrumors.com/2023/10/12/apple-m3-chips-announcement"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "GitLab Enhances CI/CD Capabilities with New Features",
+    "source": "https://about.gitlab.com/blog/2023/10/12/gitlab-ci-cd-enhancements"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "IBM Unveils New Quantum Computing Advancements",
+    "source": "https://www.ibm.com/blogs/research/2023/10/ibm-quantum-computing-advancements"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "AWS Introduces New Serverless Features for Developers",
+    "source": "https://aws.amazon.com/blogs/aws/2023/10/aws-serverless-features"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "New Data Visualization Tool Launched for Analysts",
+    "source": "https://www.datavisualization.com/news/new-tool-launch"
+  },
+  {
+    "date": "2025-12-07T04:10:04.533Z",
+    "headline": "Cisco Announces New Security Solutions for Hybrid Work",
+    "source": "https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/blogs/2023/10/cisco-hybrid-work-security.html"
   }
 ]
