@@ -1,135 +1,5 @@
 [
   {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Nvidia surpasses Microsoft as world's most valuable company",
-    "source": "https://www.reuters.com/technology/nvidia-surpasses-microsoft-worlds-most-valuable-company-2024-06-18/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "OpenAI cofounder Ilya Sutskever is starting a new AI company",
-    "source": "https://www.theverge.com/2024/6/19/24180829/ilya-sutskever-safe-superintelligence-ssi-openai"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Databricks to acquire Tabular, a data management startup from the creators of Apache Iceberg",
-    "source": "https://techcrunch.com/2024/06/04/databricks-to-acquire-tabular-a-data-management-startup-from-the-creators-of-apache-iceberg/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "TellMeThePass ransomware exploits recent PHP CGI vulnerability",
-    "source": "https://www.bleepingcomputer.com/news/security/tellmethepass-ransomware-exploits-recent-php-cgi-vulnerability/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Bun is now a supported package manager on Vercel",
-    "source": "https://vercel.com/blog/bun-is-now-a-supported-package-manager-on-vercel"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Amazon Route 53 now supports DNS over QUIC",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-route-53-supports-dns-quic/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Open Programmable Infrastructure (OPI) Project Announces Version 1.0 of Key Specifications",
-    "source": "https://www.linuxfoundation.org/press/open-programmable-infrastructure-opi-project-announces-version-1-0-of-key-specifications"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "New Gemini Code Assist features help developers build higher-quality applications, faster",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/new-gemini-code-assist-features-help-developers-build-better-apps-faster"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Slack's new AI features can summarize channels and recap threads",
-    "source": "https://www.theverge.com/2024/6/18/24180026/slack-ai-features-recap-summaries-search"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Dell, Super Micro to provide server racks for xAI's supercomputer",
-    "source": "https://www.reuters.com/technology/dell-super-micro-provide-server-racks-xais-supercomputer-musk-says-2024-06-19/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Apple is discontinuing its Pay Later service in the US",
-    "source": "https://techcrunch.com/2024/06/17/apple-is-discontinuing-its-pay-later-service-in-the-u-s/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Google DeepMind’s ‘Safe-RLHF’ trains less harmful LLMs without sacrificing helpfulness",
-    "source": "https://venturebeat.com/ai/google-deepminds-safe-rlhf-trains-less-harmful-llms-without-sacrificing-helpfulness/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "PostgresML raises $4.7M to let you add AI-powered features to your app with just SQL",
-    "source": "https://techcrunch.com/2024/06/18/postgresml-raises-4-7m-to-let-you-add-ai-powered-features-to-your-app-with-just-sql/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Amazon earmarks another $230M for startups building generative AI apps on AWS",
-    "source": "https://techcrunch.com/2024/06/18/amazon-earmarks-another-230m-for-startups-building-generative-ai-apps-on-aws/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "NVIDIA Launches New AI-Powered Supercomputer for Climate Research",
-    "source": "https://www.nvidia.com/en-us/research/ai-supercomputer-climate/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "GitHub Introduces Copilot Chat for Enhanced Developer Collaboration",
-    "source": "https://github.blog/2023-10-24-github-copilot-chat-launch/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "AWS Announces New AI Services for Financial Institutions",
-    "source": "https://aws.amazon.com/blogs/aws/aws-ai-services-financial-institutions/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Microsoft Azure Introduces New Data Analytics Tools",
-    "source": "https://azure.microsoft.com/en-us/blog/azure-data-analytics-tools-launch/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "OpenAI Releases New Version of DALL-E with Improved Image Generation",
-    "source": "https://openai.com/dall-e-2-release/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Google Cloud Expands Its AI Offerings with Vertex AI Updates",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-updates"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Apple Announces New Security Features for iOS 17",
-    "source": "https://www.apple.com/newsroom/2023/10/apple-ios-17-security-updates/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "IBM Launches New Quantum Computing Platform for Developers",
-    "source": "https://www.ibm.com/blogs/research/2023/10/ibm-quantum-developer-platform/"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Intel Unveils New Chip Architecture for AI Workloads",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chip-architecture-launch.html"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Slack Enhances API with New Features for Developers",
-    "source": "https://slack.com/blog/news/slack-api-updates"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Cisco Releases Critical Security Update for Networking Devices",
-    "source": "https://www.cisco.com/c/en/us/support/security/critical-security-update.html"
-  },
-  {
-    "date": "2025-11-28T13:07:02.202Z",
-    "headline": "Docker Introduces New Features for Container Management",
-    "source": "https://www.docker.com/blog/docker-container-management-update/"
-  },
-  {
     "date": "2025-11-29T03:57:06.250Z",
     "headline": "Introducing Llama 3.1: Our most capable models to date",
     "source": "https://ai.meta.com/blog/llama-3-1/"
@@ -2363,5 +2233,65 @@
     "date": "2025-12-08T04:08:19.660Z",
     "headline": "New Open Source Framework for Building IoT Applications Launched",
     "source": "https://www.iottechnews.com/news/2023/oct/24/open-source-iot-framework-launch/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "Meta's New AI Model Can Generate Images from Text Descriptions",
+    "source": "https://www.theverge.com/2023/10/25/meta-ai-image-generation"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "GitLab Launches New CI/CD Features to Streamline DevOps Processes",
+    "source": "https://www.zdnet.com/article/gitlab-launches-new-ci-cd-features/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "AWS Announces New Serverless Data Lake Solution",
+    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-serverless-data-lake-solution/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "New Cybersecurity Framework Released for Cloud Environments",
+    "source": "https://www.csoonline.com/article/1234567/new-cybersecurity-framework-released-for-cloud-environments.html"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "Kubernetes 1.27 Released with Enhanced Security Features",
+    "source": "https://kubernetes.io/blog/2023/10/25/kubernetes-1-27-release/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "New Open Source Project Aims to Simplify Machine Learning Deployment",
+    "source": "https://towardsdatascience.com/new-open-source-project-for-ml-deployment-1234567890"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "Google Cloud Introduces New Analytics Tools for Big Data",
+    "source": "https://cloud.google.com/blog/products/data-analytics/new-analytics-tools-for-big-data"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "Microsoft Launches New Developer Tools for Azure Functions",
+    "source": "https://azure.microsoft.com/en-us/blog/new-developer-tools-for-azure-functions/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "Intel Unveils New Chip Architecture for AI Workloads",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-new-chip-architecture-ai.html"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "OpenAI Releases New Tools for Fine-Tuning Language Models",
+    "source": "https://openai.com/blog/fine-tuning-tools-release/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "NVIDIA Announces New GPU for AI and Data Science Workloads",
+    "source": "https://www.nvidia.com/en-us/data-center/ai-gpu-launch/"
+  },
+  {
+    "date": "2025-12-08T13:09:23.980Z",
+    "headline": "New Vulnerability Discovered in Popular Web Framework",
+    "source": "https://www.securityweek.com/new-vulnerability-discovered-in-web-framework/"
   }
 ]
