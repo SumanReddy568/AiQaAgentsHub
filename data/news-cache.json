@@ -1,135 +1,5 @@
 [
   {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Mistral AI Releases Codestral, a Generative AI Model for Code",
-    "source": "https://techcrunch.com/2024/05/29/mistral-ai-releases-codestral-a-generative-ai-model-for-code/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Critical PHP RCE Vulnerability (CVE-2024-4577) Exploited in the Wild",
-    "source": "https://www.bleepingcomputer.com/news/security/critical-php-rce-vulnerability-exploited-in-the-wild/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Announcing Tailwind CSS v4.0",
-    "source": "https://tailwindcss.com/blog/tailwindcss-v4-is-coming"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Snowflake launches Polaris Catalog, an open-source data catalog for Apache Iceberg",
-    "source": "https://venturebeat.com/data-infrastructure/snowflake-launches-polaris-catalog-an-open-source-data-catalog-for-apache-iceberg/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "GitHub brings more powerful, GPU-powered Codespaces to all users",
-    "source": "https://techcrunch.com/2024/06/04/github-brings-more-powerful-gpu-powered-codespaces-to-all-users/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "AMD announces new Ryzen 9000-series 'Zen 5' desktop CPUs",
-    "source": "https://arstechnica.com/gadgets/2024/06/amd-announces-new-ryzen-9000-series-zen-5-desktop-cpus/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Microsoft lays off hundreds in its Azure cloud business",
-    "source": "https://www.reuters.com/technology/microsoft-lays-off-hundreds-its-azure-cloud-business-business-insider-2024-06-03/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Intel details Lunar Lake architecture, says it will ship 80 million AI PC chips by 2025",
-    "source": "https://www.theverge.com/2024/6/4/24170660/intel-lunar-lake-ai-pc-chips-computex-2024"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Hugging Face and Pollen Robotics launch Reachy 2, an open source humanoid robot for AI research",
-    "source": "https://techcrunch.com/2024/06/03/hugging-face-and-pollen-robotics-launch-reachy-2-an-open-source-humanoid-robot-for-ai-research/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "OpenSSF Announces Project Maelstrom to Bolster Security of Open Source Compilers and Build Tools",
-    "source": "https://openssf.org/press-release/2024/06/04/openssf-announces-project-maelstrom-to-bolster-security-of-open-source-compilers-and-build-tools/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Introducing the Arm Compute Subsystems for Client",
-    "source": "https://www.anandtech.com/show/21422/arm-unveils-2024-compute-subsystems-for-client-cortexx925-cortexa725-immortalisg925"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Google Cloud and Workday expand partnership to bring generative AI to the enterprise",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-and-workday-expand-partnership-with-generative-ai"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Amazon Bedrock is now available in the AWS Canada West (Calgary) Region",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/06/amazon-bedrock-aws-canada-west-calgary-region/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Atlassian's Loom acquisition gets a new name, Atlassian Video, and new features",
-    "source": "https://techcrunch.com/2024/06/04/atlassians-loom-acquisition-gets-a-new-name-atlassian-video-and-new-features/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Meta's AI Research Team Releases New Open-Source Tool for Data Annotation",
-    "source": "https://www.techcrunch.com/2023/10/23/meta-ai-research-tool-data-annotation/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "AWS Launches New Features for Amazon SageMaker to Simplify ML Model Deployment",
-    "source": "https://aws.amazon.com/blogs/machine-learning/2023/10/23/aws-sagemaker-new-features/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Google Cloud Introduces New Security Features to Enhance Data Protection",
-    "source": "https://cloud.google.com/blog/products/security/2023/10/23/google-cloud-security-enhancements"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Microsoft's New Visual Studio Update Enhances GitHub Integration",
-    "source": "https://devblogs.microsoft.com/visualstudio/2023/10/23/visual-studio-github-integration-update/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "OpenAI Releases New API for Fine-Tuning GPT Models",
-    "source": "https://openai.com/research/gpt-api-fine-tuning/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "IBM Unveils New Quantum Computing Roadmap",
-    "source": "https://www.ibm.com/blogs/research/2023/10/23/ibm-quantum-computing-roadmap/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "NVIDIA Releases New Drivers to Optimize Performance for AI Workloads",
-    "source": "https://www.nvidia.com/en-us/geforce/news/2023/10/23/nvidia-ai-drivers-release/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Cisco Introduces New Cybersecurity Solutions for Hybrid Work Environments",
-    "source": "https://blogs.cisco.com/security/2023/10/23/cisco-cybersecurity-hybrid-work/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Red Hat Announces New Features in OpenShift for Enhanced DevOps Practices",
-    "source": "https://www.redhat.com/en/blog/2023/10/23/red-hat-openshift-devops-enhancements"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Intel Launches New Xeon Processors for Data Center Performance",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/2023/10/23/intel-xeon-processors-launch.html"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Docker Introduces New Features for Container Security",
-    "source": "https://www.docker.com/blog/2023/10/23/docker-container-security-features/"
-  },
-  {
-    "date": "2025-11-29T13:02:53.257Z",
-    "headline": "Salesforce Enhances Analytics Capabilities with New AI Features",
-    "source": "https://www.salesforce.com/blogs/2023/10/23/salesforce-analytics-ai-enhancements/"
-  },
-  {
     "date": "2025-11-30T04:11:38.980Z",
     "headline": "Meta releases Llama 3.1, its most powerful open source AI models yet",
     "source": "https://ai.meta.com/blog/meta-llama-3-1/"
@@ -2223,5 +2093,55 @@
     "date": "2025-12-09T04:02:42.641Z",
     "headline": "Red Hat Launches New OpenShift Features for Kubernetes",
     "source": "https://www.redhat.com/en/blog/openshift-new-features-kubernetes-2023"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Google Cloud's New AI-Powered Data Analytics Tools",
+    "source": "https://cloud.google.com/blog/topics/inside-google-cloud/google-cloud-ai-powered-data-analytics-tools"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "New Cybersecurity Threats Emerge as Ransomware Attacks Increase",
+    "source": "https://www.cybersecuritynews.com/ransomware-attacks-increase/"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Oracle Expands Cloud Infrastructure with New Regions",
+    "source": "https://www.oracle.com/cloud/news/2023/oracle-cloud-infrastructure-expansion/"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "AWS Introduces New Security Features for Cloud Services",
+    "source": "https://aws.amazon.com/security/new-features/"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Intel Announces New Chip for Edge Computing",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/edge-computing-chip.html"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Mozilla Releases New Developer Tools for Web Development",
+    "source": "https://developer.mozilla.org/en-US/docs/Tools/Release_Notes"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "New Research Highlights Vulnerabilities in Popular Open Source Libraries",
+    "source": "https://www.securityresearch.com/open-source-vulnerabilities-report"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Salesforce Launches New AI Features for Customer Relationship Management",
+    "source": "https://www.salesforce.com/news/2023/salesforce-ai-features-launch/"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "Facebook Introduces New Privacy Features to Protect User Data",
+    "source": "https://about.fb.com/news/2023/10/facebook-privacy-features/"
+  },
+  {
+    "date": "2025-12-09T13:11:01.227Z",
+    "headline": "New Hardware Innovations from AMD Target Gaming Performance",
+    "source": "https://www.amd.com/en/press-releases/2023/10/amd-gaming-hardware-innovations"
   }
 ]
