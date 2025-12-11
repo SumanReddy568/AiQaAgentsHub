@@ -1,9 +1,13 @@
 // js/aiService.js
 import { state } from "./state.js";
 
-const DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
-const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
-const GEMINI_API_URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/";
+// Replace this with your deployed Cloudflare Worker URL
+// Example: "https://ai-gateway-proxy.yourname.workers.dev"
+const CLOUDFLARE_WORKER_URL = "https://shy-poetry-1817.sumanreddy568.workers.dev"; // No trailing slash
+
+const DEEPSEEK_API_URL = `${CLOUDFLARE_WORKER_URL}/deepseek/chat/completions`;
+const OPENROUTER_API_URL = `${CLOUDFLARE_WORKER_URL}/openrouter/chat/completions`;
+const GEMINI_GATEWAY_URL = `${CLOUDFLARE_WORKER_URL}/compat/chat/completions`;
 
 async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
   let lastError;
@@ -59,6 +63,14 @@ async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
       await new Promise((res) => setTimeout(res, delay));
     }
   }
+  
+  // Custom suggestion for CORS/Network errors with the Worker
+  if (lastError.message.includes("Failed to fetch")) {
+    console.error("POSSIBLE FIX: If you see 'ERR_QUIC_PROTOCOL_ERROR', go to chrome://flags/#enable-quic and DISABLE it.");
+    console.error("If you are seeing a CORS error, ensure your Cloudflare Worker is deployed and the URL in js/aiService.js is correct.");
+    throw new Error("Network/CORS/QUIC Error: Check console for fix instructions. Ensure Cloudflare Worker is deployed.");
+  }
+
   throw lastError; // All retries failed
 }
 
@@ -139,36 +151,45 @@ export async function fetchFromApi(
     return { content, usage, duration };
   }
 
-  // Default: Gemini
+  // Default: Gemini via Cloudflare Gateway
   const apiKey = state.geminiApiKey || state.apiKey;
   if (!apiKey) {
     throw new Error("API key not configured. Please set one on the main page.");
   }
-  const apiUrl = `${GEMINI_API_URL_BASE}${
-    state.selectedModel || "gemini-2.5-flash"
-  }:generateContent?key=${apiKey}`;
+  
+  const modelName = state.selectedModel || "gemini-2.5-flash";
+  const fullModelName = modelName.includes("/") ? modelName : `google-ai-studio/${modelName}`;
 
-  const response = await fetchWithRetry(apiUrl, {
+  const response = await fetchWithRetry(GEMINI_GATEWAY_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature: 1,
-      },
+      model: fullModelName,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: prompt },
+      ],
     }),
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(
-      errorData.error?.message || `API Error: ${response.status}`
-    );
+    let errorText = `API Error: ${response.status}`;
+    try {
+      const errorData = await response.json();
+      errorText = errorData.error?.message || errorText;
+    } catch {}
+    throw new Error(errorText);
   }
 
   const result = await response.json();
-  const content = result.candidates?.[0]?.content?.parts?.[0]?.text;
-  const usage = result.usageMetadata || { totalTokenCount: 0 };
+  const content = result.choices?.[0]?.message?.content || "";
+  const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+  usage.totalTokenCount =
+    usage.total_tokens ||
+    (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
   const duration = Date.now() - startTime;
   return { content, usage, duration };
 }
