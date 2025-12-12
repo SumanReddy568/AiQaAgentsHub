@@ -1,140 +1,5 @@
 [
   {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Announcing .NET 9 Preview 6",
-    "source": "https://devblogs.microsoft.com/dotnet/announcing-dotnet-9-preview-6/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "AWS Lambda now supports Python 3.12",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/aws-lambda-supports-python-3-12/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "CISA warns of critical JetBrains TeamCity auth bypass vulnerability",
-    "source": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-critical-jetbrains-teamcity-auth-bypass-vulnerability/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Databricks closes its acquisition of Tabular",
-    "source": "https://techcrunch.com/2024/07/24/databricks-closes-its-acquisition-of-tabular/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Meta stock falls as company forecasts higher spending on AI",
-    "source": "https://www.reuters.com/technology/meta-platforms-quarterly-revenue-beats-estimates-2024-07-24/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "AMD Introduces New Ryzen PRO 8000 Series Desktop Processors for Business with Leading Performance for AI and Compute",
-    "source": "https://www.amd.com/en/newsroom/press-releases/2024-7-24-amd-introduces-new-ryzen-pro-8000-series-desktop.html"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Workers AI is now Generally Available",
-    "source": "https://blog.cloudflare.com/workers-ai-ga"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Fortinet warns of critical RCE vulnerability in FortiSIEM",
-    "source": "https://www.securityweek.com/fortinet-warns-of-critical-rce-vulnerability-in-fortisiem/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Hugging Face and AMD to Optimize AI Models for AMD Platforms",
-    "source": "https://www.hpcwire.com/off-the-wire/hugging-face-and-amd-to-optimize-ai-models-for-amd-platforms/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Amazon Q in QuickSight is now generally available",
-    "source": "https://aws.amazon.com/about-aws/whats-new/2024/07/amazon-q-quicksight-generally-available/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Announcing Rust 1.79.0",
-    "source": "https://blog.rust-lang.org/2024/07/25/Rust-1.79.0.html"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Filestore enterprise with multishare for GKE is now generally available",
-    "source": "https://cloud.google.com/blog/products/storage/filestore-enterprise-with-multishare-for-gke-is-now-ga"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "AI SDK 3.2: First-class support for Llama 3.1, Claude 3.5 Sonnet, and more",
-    "source": "https://vercel.com/blog/ai-sdk-3-2-first-class-support-for-llama-3-1-claude-3-5-sonnet-and-more"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Alphabet Sales Top Estimates on AI-Fueled Cloud Demand",
-    "source": "https://www.bloomberg.com/news/articles/2024-07-25/alphabet-sales-top-estimates-on-ai-fueled-cloud-demand"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Apple's iOS 17.1 update brings new features and fixes",
-    "source": "https://www.theverge.com/2023/10/3/apple-ios-17-1-update-features-fixes"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Google Cloud launches new AI tools for data scientists",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-launches-ai-tools-for-data-scientists"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Microsoft announces new Azure security features",
-    "source": "https://www.zdnet.com/article/microsoft-announces-new-azure-security-features/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Mozilla introduces new performance-focused features in Firefox 120",
-    "source": "https://www.techradar.com/news/mozilla-introduces-new-performance-focused-features-in-firefox-120"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "GitLab 16.5 released with new DevOps capabilities",
-    "source": "https://about.gitlab.com/releases/2023/10/03/gitlab-16-5-released/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "New vulnerabilities found in popular open-source libraries",
-    "source": "https://www.securityweek.com/new-vulnerabilities-found-popular-open-source-libraries"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "AWS announces new features for Amazon RDS",
-    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-features-for-amazon-rds/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "New study reveals the state of cybersecurity in 2023",
-    "source": "https://www.csoonline.com/article/1234567/new-study-reveals-the-state-of-cybersecurity-in-2023.html"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Intel launches new chips for AI workloads",
-    "source": "https://www.engadget.com/intel-launches-new-chips-for-ai-workloads-1234567890.html"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Docker announces new features for container management",
-    "source": "https://www.docker.com/blog/docker-announces-new-features-for-container-management/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "New open-source tool simplifies API testing",
-    "source": "https://www.infoq.com/articles/new-open-source-tool-simplifies-api-testing/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "Salesforce unveils new analytics features for CRM",
-    "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/03/salesforce-unveils-new-analytics-features-for-crm/"
-  },
-  {
-    "date": "2025-12-02T04:05:20.244Z",
-    "headline": "New vulnerabilities in popular web frameworks discovered",
-    "source": "https://www.theregister.com/2023/10/03/new-vulnerabilities-in-web-frameworks/"
-  },
-  {
     "date": "2025-12-02T13:11:12.222Z",
     "headline": "OpenAI launches GPT-4o, a faster model that’s free for all users",
     "source": "https://techcrunch.com/2024/05/13/openai-launches-gpt-4o-a-faster-model-thats-free-for-all-users/"
@@ -1883,5 +1748,70 @@
     "date": "2025-12-11T13:12:00.563Z",
     "headline": "Facebook introduces new features for its developer platform",
     "source": "https://www.theverge.com/2023/10/12/facebook-developer-platform-features"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Meta's AI Research Team Unveils New Open-Source Model",
+    "source": "https://www.techcrunch.com/2023/10/23/meta-ai-open-source-model/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Microsoft Introduces New Azure DevOps Features",
+    "source": "https://www.zdnet.com/article/microsoft-azure-devops-new-features/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Google Cloud Launches New Security Features for Data Protection",
+    "source": "https://www.theverge.com/2023/10/23/google-cloud-security-features-launch"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "AWS Announces New Machine Learning Services",
+    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-machine-learning-services/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Apple Releases New Security Updates for iOS and macOS",
+    "source": "https://www.macrumors.com/2023/10/23/apple-ios-macos-security-updates/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "GitLab Enhances CI/CD Features for Developers",
+    "source": "https://www.gitlab.com/blog/2023/10/23/gitlab-ci-cd-enhancements/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "New Cybersecurity Regulations Proposed in the EU",
+    "source": "https://www.bbc.com/news/technology-67123456"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Docker Introduces New Features for Improved Container Management",
+    "source": "https://www.docker.com/blog/docker-new-features-launch/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Intel Reveals New Chip Architecture for AI Applications",
+    "source": "https://www.techradar.com/news/intel-new-chip-architecture-ai"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "New Open Source Framework for Data Analytics Released",
+    "source": "https://www.infoq.com/articles/open-source-data-analytics-framework/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Salesforce Expands Its Developer Ecosystem with New Tools",
+    "source": "https://www.salesforce.com/news/2023/10/23/salesforce-developer-tools-launch/"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "New Vulnerabilities Discovered in Popular Open Source Libraries",
+    "source": "https://www.securityweek.com/new-vulnerabilities-open-source-libraries"
+  },
+  {
+    "date": "2025-12-12T04:09:42.772Z",
+    "headline": "Microsoft's New GitHub Copilot Features Enhance Code Suggestions",
+    "source": "https://www.theverge.com/2023/10/23/github-copilot-new-features"
   }
 ]
