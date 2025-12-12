@@ -1,23 +1,53 @@
 // js/aiService.js
+/**
+ * AI Service Layer
+ * Routes requests to multiple AI providers via a Cloudflare Worker proxy.
+ *
+ * Providers supported:
+ *  - DeepSeek
+ *  - OpenRouter
+ *  - Gemini (default)
+ *
+ * Includes:
+ *  - Exponential retry logic
+ *  - Provider-based routing
+ *  - Usage + latency reporting
+ */
+
 import { state } from "./state.js";
 const CLOUDFLARE_WORKER_URL = "https://shy-poetry-1817.sumanreddy568.workers.dev";
-
 const DEEPSEEK_API_URL = `${CLOUDFLARE_WORKER_URL}/deepseek/chat/completions`;
 const OPENROUTER_API_URL = `${CLOUDFLARE_WORKER_URL}/openrouter/chat/completions`;
 const GEMINI_GATEWAY_URL = `${CLOUDFLARE_WORKER_URL}/compat/chat/completions`;
 
+/**
+ * Performs a fetch with retry logic (exponential backoff).
+ *
+ * Retries only for:
+ *  - Network errors
+ *  - 5xx server errors
+ *  - 429 (rate limit)
+ *
+ * Fails immediately on:
+ *  - Non-429 4xx client errors
+ *
+ * @param {string} url - API endpoint
+ * @param {object} options - fetch options
+ * @param {number} retries - number of retry attempts
+ * @param {number} initialDelay - starting retry delay (ms)
+ * @returns {Promise<Response>}
+ * @throws {Error}
+ */
 async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
   let lastError;
+
   for (let i = 0; i < retries; i++) {
     try {
       const response = await fetch(url, options);
 
-      // If response is ok, return it
-      if (response.ok) {
-        return response;
-      }
+      if (response.ok) return response;
 
-      // Don't retry on client errors (4xx), except for 429 (Too Many Requests)
+      // Fail immediately for client errors except 429
       if (
         response.status >= 400 &&
         response.status < 500 &&
@@ -27,61 +57,65 @@ async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
         try {
           const errorData = await response.json();
           errorText = errorData.error?.message || errorText;
-        } catch (e) {
-          // Ignore if response is not json
-        }
-        throw new Error(errorText); // Fail immediately for non-retriable client errors
+        } catch {}
+        throw new Error(errorText);
       }
 
-      // For server errors (5xx) or 429, prepare to retry
+      // Prepare retry error
       lastError = new Error(`API Error: ${response.status}`);
       try {
         const errorData = await response.json();
         lastError = new Error(
           errorData.error?.message || `API Error: ${response.status}`
         );
-      } catch (e) {
-        // Ignore if response is not json
-      }
+      } catch {}
     } catch (error) {
       lastError = error;
-      // This will catch network errors and non-retriable client errors
+
+      // Skip retries for direct 4xx errors thrown above
       if (error.message.startsWith("API Error: 4")) {
-        // Non-retriable as thrown above
         throw error;
       }
     }
 
+    // Apply exponential backoff
     if (i < retries - 1) {
       const delay = initialDelay * Math.pow(2, i);
-      console.warn(
-        `Request failed. Retrying in ${delay}ms... (${i + 1}/${retries})`
-      );
       await new Promise((res) => setTimeout(res, delay));
     }
   }
-  
-  // Custom suggestion for CORS/Network errors with the Worker
+
+  // Helpful guidance for common browser/network issues
   if (lastError.message.includes("Failed to fetch")) {
-    console.error("POSSIBLE FIX: If you see 'ERR_QUIC_PROTOCOL_ERROR', go to chrome://flags/#enable-quic and DISABLE it.");
-    console.error("If you are seeing a CORS error, ensure your Cloudflare Worker is deployed and the URL in js/aiService.js is correct.");
-    throw new Error("Network/CORS/QUIC Error: Check console for fix instructions. Ensure Cloudflare Worker is deployed.");
+    throw new Error(
+      "Network/CORS/QUIC Error: Verify Cloudflare Worker deployment and browser QUIC settings."
+    );
   }
 
-  throw lastError; // All retries failed
+  throw lastError;
 }
 
+/**
+ * Routes a completion request through the selected provider.
+ *
+ * @param {string} prompt - user prompt
+ * @param {string} systemPrompt - system instruction
+ * @returns {Promise<{content: string, usage: object, duration: number}>}
+ */
 export async function fetchFromApi(
   prompt,
   systemPrompt = "You are a helpful assistant."
 ) {
   const startTime = Date.now();
-  // Route based on provider
   const provider = state.provider || "gemini";
 
+  // ------------------------------
+  // DeepSeek
+  // ------------------------------
   if (provider === "deepseek") {
     const apiKey = state.deepseekApiKey || state.apiKey;
     if (!apiKey) throw new Error("DeepSeek API key not configured.");
+
     const response = await fetchWithRetry(DEEPSEEK_API_URL, {
       method: "POST",
       headers: {
@@ -97,25 +131,37 @@ export async function fetchFromApi(
         stream: false,
       }),
     });
+
     if (!response.ok) {
       let errorText = `API Error: ${response.status}`;
       try {
-        const errorData = await response.json();
-        errorText = errorData.error?.message || errorText;
+        const err = await response.json();
+        errorText = err.error?.message || errorText;
       } catch {}
       throw new Error(errorText);
     }
+
     const result = await response.json();
     const content = result.choices?.[0]?.message?.content || "";
-    const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+    const usage = result.usage || {};
     usage.totalTokenCount =
       usage.total_tokens ||
       (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
-    const duration = Date.now() - startTime;
-    return { content, usage, duration };
-  } else if (provider === "openrouter") {
+
+    return {
+      content,
+      usage,
+      duration: Date.now() - startTime,
+    };
+  }
+
+  // ------------------------------
+  // OpenRouter
+  // ------------------------------
+  if (provider === "openrouter") {
     const apiKey = state.openrouterApiKey || state.apiKey;
     if (!apiKey) throw new Error("OpenRouter API key not configured.");
+
     const response = await fetchWithRetry(OPENROUTER_API_URL, {
       method: "POST",
       headers: {
@@ -130,32 +176,40 @@ export async function fetchFromApi(
         ],
       }),
     });
+
     if (!response.ok) {
       let errorText = `API Error: ${response.status}`;
       try {
-        const errorData = await response.json();
-        errorText = errorData.error?.message || errorText;
+        const err = await response.json();
+        errorText = err.error?.message || errorText;
       } catch {}
       throw new Error(errorText);
     }
+
     const result = await response.json();
     const content = result.choices?.[0]?.message?.content || "";
-    const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+    const usage = result.usage || {};
     usage.totalTokenCount =
       usage.total_tokens ||
       (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
-    const duration = Date.now() - startTime;
-    return { content, usage, duration };
+
+    return {
+      content,
+      usage,
+      duration: Date.now() - startTime,
+    };
   }
 
-  // Default: Gemini via Cloudflare Gateway
+  // ------------------------------
+  // Gemini (Default)
+  // ------------------------------
   const apiKey = state.geminiApiKey || state.apiKey;
-  if (!apiKey) {
-    throw new Error("API key not configured. Please set one on the main page.");
-  }
-  
+  if (!apiKey) throw new Error("API key not configured.");
+
   const modelName = state.selectedModel || "gemini-2.5-flash";
-  const fullModelName = modelName.includes("/") ? modelName : `google-ai-studio/${modelName}`;
+  const fullModelName = modelName.includes("/")
+    ? modelName
+    : `google-ai-studio/${modelName}`;
 
   const response = await fetchWithRetry(GEMINI_GATEWAY_URL, {
     method: "POST",
@@ -175,18 +229,22 @@ export async function fetchFromApi(
   if (!response.ok) {
     let errorText = `API Error: ${response.status}`;
     try {
-      const errorData = await response.json();
-      errorText = errorData.error?.message || errorText;
+      const err = await response.json();
+      errorText = err.error?.message || errorText;
     } catch {}
     throw new Error(errorText);
   }
 
   const result = await response.json();
   const content = result.choices?.[0]?.message?.content || "";
-  const usage = result.usage || { prompt_tokens: 0, completion_tokens: 0 };
+  const usage = result.usage || {};
   usage.totalTokenCount =
     usage.total_tokens ||
     (usage.prompt_tokens || 0) + (usage.completion_tokens || 0);
-  const duration = Date.now() - startTime;
-  return { content, usage, duration };
+
+  return {
+    content,
+    usage,
+    duration: Date.now() - startTime,
+  };
 }
