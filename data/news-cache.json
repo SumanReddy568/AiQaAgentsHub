@@ -1,140 +1,5 @@
 [
   {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "OpenAI launches GPT-4o, a faster model that’s free for all users",
-    "source": "https://techcrunch.com/2024/05/13/openai-launches-gpt-4o-a-faster-model-thats-free-for-all-users/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Google unveils Project Astra, its vision for the future of AI assistants",
-    "source": "https://www.theverge.com/2024/5/14/24155829/google-project-astra-ai-assistant-gemini-io-2024"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Google announces Trillium, its 6th-gen TPU for training AI models",
-    "source": "https://techcrunch.com/2024/05/14/google-announces-trillium-its-6th-gen-tpu-for-training-ai-models/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Google launches Gemini 1.5 Flash, a faster, cheaper AI model for high-volume tasks",
-    "source": "https://venturebeat.com/ai/google-launches-gemini-1-5-flash-a-faster-cheaper-ai-model-for-high-volume-tasks/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Microsoft’s May 2024 Patch Tuesday fixes 61 flaws, one exploited zero-day",
-    "source": "https://www.bleepingcomputer.com/news/microsoft/microsoft-may-2024-patch-tuesday-fixes-61-flaws-1-zero-day/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Gemini comes to Android Studio",
-    "source": "https://android-developers.googleblog.com/2024/05/gemini-in-android-studio.html"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "AWS makes its Amazon Q AI assistant generally available in IDEs and AWS Console",
-    "source": "https://www.infoq.com/news/2024/05/aws-amazon-q-developer-ga/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Go 1.22.3 and 1.21.10 released with security fixes",
-    "source": "https://go.dev/blog/go1.22.3-go1.21.10"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Cloudflare introduces Firewall for AI, a security layer for large language models",
-    "source": "https://blog.cloudflare.com/firewall-for-ai"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Introducing expanded Vertex AI, AlloyDB and BigQuery vector search capabilities",
-    "source": "https://cloud.google.com/blog/products/ai-machine-learning/build-ai-apps-with-your-data-using-new-vector-search-features"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Veeam warns of critical RCE flaw in Recovery Orchestrator",
-    "source": "https://www.securityweek.com/veeam-warns-of-critical-rce-flaw-in-recovery-orchestrator/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Tencent posts first sales growth in two years as gaming and ads recover",
-    "source": "https://www.reuters.com/technology/tencent-posts-first-sales-growth-nearly-two-years-gaming-ads-recover-2024-05-14/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "The OpenSSF Announces New Project to Run Sigstore on Red Hat OpenShift",
-    "source": "https://www.linuxfoundation.org/press/the-openssf-announces-new-project-to-run-sigstore-on-red-hat-openshift"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Snowflake’s home-grown Arctic AI models are now available on Microsoft Azure",
-    "source": "https://siliconangle.com/2024/05/13/snowflakes-home-grown-arctic-ai-models-now-available-microsoft-azure/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Google challenges OpenAI’s Sora with its own text-to-video generator, Veo",
-    "source": "https://www.theverge.com/2024/5/14/24155845/google-veo-ai-video-generator-sora-competitor-io"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "NVIDIA Launches New AI Tools for Developers",
-    "source": "https://www.nvidia.com/en-us/blog/nvidia-launches-new-ai-tools-for-developers/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Google Cloud Introduces New Serverless Options",
-    "source": "https://cloud.google.com/blog/products/serverless/google-cloud-introduces-new-serverless-options"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Microsoft Launches New Security Features in Azure",
-    "source": "https://azure.microsoft.com/en-us/blog/microsoft-launches-new-security-features-in-azure/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "AWS Announces New Data Analytics Tools",
-    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-data-analytics-tools/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Mozilla Launches New Developer Tools for Firefox",
-    "source": "https://developer.mozilla.org/en-US/docs/Tools/Firefox_Developer_Tools"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Apple's New M3 Chips Boost Performance for Developers",
-    "source": "https://www.apple.com/newsroom/2023/10/apples-new-m3-chips-boost-performance-for-developers/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "GitHub Enhances Security Features for Repositories",
-    "source": "https://github.blog/2023/10/25/github-enhances-security-features-for-repositories/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "New Cybersecurity Framework Released by NIST",
-    "source": "https://www.nist.gov/news-events/news/2023/10/new-cybersecurity-framework-released-nist"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Intel Announces New AI-Powered Hardware Solutions",
-    "source": "https://www.intel.com/content/www/us/en/newsroom/news/2023/intel-announces-ai-hardware-solutions.html"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "New Open Source Data Visualization Library Released",
-    "source": "https://opensource.com/article/23/10/new-data-visualization-library"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "New Features in Docker Improve Container Security",
-    "source": "https://www.docker.com/blog/new-features-in-docker-improve-container-security/"
-  },
-  {
-    "date": "2025-12-02T13:11:12.222Z",
-    "headline": "Salesforce Unveils New Developer Tools for CRM",
-    "source": "https://www.salesforce.com/news/2023/10/salesforce-unveils-new-developer-tools/"
-  },
-  {
     "date": "2025-12-03T04:04:07.217Z",
     "headline": "Databricks to Acquire Tabular, a Data Management Company Founded by the Creators of Apache Iceberg",
     "source": "https://www.databricks.com/blog/databricks-acquire-tabular"
@@ -1873,5 +1738,65 @@
     "date": "2025-12-12T13:09:06.988Z",
     "headline": "New Data Privacy Regulations Impacting Tech Companies",
     "source": "https://www.forbes.com/sites/forbestechcouncil/2023/10/24/data-privacy-regulations-impact-tech-companies/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "NVIDIA Launches New AI Supercomputer for Research",
+    "source": "https://www.nvidia.com/en-us/research/ai-supercomputer-launch/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "GitLab Announces New Features for CI/CD Pipeline",
+    "source": "https://about.gitlab.com/releases/2023/10/24/gitlab-12-10/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Google Cloud Introduces New Data Protection Features",
+    "source": "https://cloud.google.com/blog/products/security-data-protection/new-data-protection-features"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "AWS Launches New Serverless Application Repository",
+    "source": "https://aws.amazon.com/blogs/aws/aws-serverless-application-repository/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Microsoft Azure Expands Global Availability of New Regions",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-expands-global-availability/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Intel Unveils New Line of Energy-Efficient Processors",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/energy-efficient-processors.html"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Palo Alto Networks Releases New Threat Detection Tools",
+    "source": "https://www.paloaltonetworks.com/resources/2023/threat-detection-tools-release"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Kubernetes 1.27 Released with New Features and Improvements",
+    "source": "https://kubernetes.io/blog/2023/10/24/kubernetes-1-27-release/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "OpenAI Releases New Version of DALL-E with Improved Capabilities",
+    "source": "https://openai.com/blog/dall-e-update/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "GitHub Copilot X Now Available for All Developers",
+    "source": "https://github.com/features/copilot-x"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Salesforce Introduces New AI-Powered Analytics Tools",
+    "source": "https://www.salesforce.com/news/2023/10/24/ai-analytics-tools-launch/"
+  },
+  {
+    "date": "2025-12-13T04:00:13.212Z",
+    "headline": "Cisco Enhances Webex with New Collaboration Features",
+    "source": "https://www.cisco.com/c/en/us/solutions/collateral/collaboration/webex-enhancements.html"
   }
 ]
