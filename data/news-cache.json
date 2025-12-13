@@ -1,140 +1,5 @@
 [
   {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Databricks to Acquire Tabular, a Data Management Company Founded by the Creators of Apache Iceberg",
-    "source": "https://www.databricks.com/blog/databricks-acquire-tabular"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "xAI, Elon Musk’s AI startup, confirms it’s raised $6B",
-    "source": "https://techcrunch.com/2024/05/27/xai-elon-musks-ai-startup-confirms-its-raised-6b/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Critical Fluent Bit vulnerability lets attackers launch DoS, RCE attacks",
-    "source": "https://www.bleepingcomputer.com/news/security/critical-fluent-bit-vulnerability-lets-attackers-launch-dos-rce-attacks/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "CISA Warns of Old Check Point VPN Flaw Actively Exploited in Attacks",
-    "source": "https://thehackernews.com/2024/05/cisa-warns-of-old-check-point-vpn-flaw.html"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Arm Announces New Chips for AI-Powered Smartphones",
-    "source": "https://www.bloomberg.com/news/articles/2024-05-29/arm-announces-new-chips-for-ai-powered-smartphones"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Anthropic releases free Claude AI chatbot app for Android",
-    "source": "https://www.theverge.com/2024/05/29/24166649/anthropic-claude-ai-chatbot-android-app"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Microsoft debuts Phi-3-vision, a multimodal small AI model that can ‘see’",
-    "source": "https://techcrunch.com/2024/05/28/microsoft-debuts-phi-3-vision-a-multimodal-small-ai-model-that-can-see/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Deno Queues is now generally available",
-    "source": "https://deno.com/blog/deno-queues-is-ga"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Announcing Confidential VMs on new C3 machine series and in more regions",
-    "source": "https://cloud.google.com/blog/products/identity-security/confidential-vms-on-c3-and-in-more-regions"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Security releases for Node.js - v22.2.0 (Current), v20.14.0 (LTS), and v18.20.4 (LTS)",
-    "source": "https://nodejs.org/en/blog/vulnerability/may-2024-security-releases"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "AI cloud provider CoreWeave secures $7.5B in debt from Blackstone, Magnetar",
-    "source": "https://www.reuters.com/technology/ai-cloud-provider-coreweave-secures-75-bln-debt-blackstone-magnetar-2024-05-28/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Hugging Face and ServiceNow launch SafeCoder for enterprise code generation",
-    "source": "https://venturebeat.com/ai/hugging-face-and-servicenow-launch-safecoder-for-enterprise-code-generation/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Salesforce stock plunges 16% on weak guidance, first revenue miss since 2006",
-    "source": "https://www.cnbc.com/2024/05/29/salesforce-crm-earnings-q1-2025.html"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Scale AI is now valued at $13.8B after a fresh $1B funding round",
-    "source": "https://venturebeat.com/ai/scale-ai-is-now-valued-at-13-8b-after-a-fresh-1b-funding-round/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Dell’s New AI PCs Are Its Thinnest and Lightest Ever",
-    "source": "https://www.wired.com/story/dell-copilot-plus-pc-laptops-qualcomm-snapdragon-x-elite/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Google Cloud Launches New AI-Powered Data Analytics Tools",
-    "source": "https://cloud.google.com/blog/topics/inside-google-cloud/google-cloud-launches-new-ai-powered-data-analytics-tools"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Microsoft Announces New Features for Azure DevOps",
-    "source": "https://techcommunity.microsoft.com/t5/azure-devops-blog/microsoft-announces-new-features-for-azure-devops/ba-p/3901236"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Oracle Introduces New Security Features for Cloud Infrastructure",
-    "source": "https://www.oracle.com/cloud/security/cloud-infrastructure-security/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "GitHub Enhances Security Features with New Dependency Review Tool",
-    "source": "https://github.blog/2023-10-10-github-enhances-security-features-with-new-dependency-review-tool/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "AWS Launches New Machine Learning Services",
-    "source": "https://aws.amazon.com/blogs/aws/aws-launches-new-machine-learning-services/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Red Hat Announces New Open Source Tools for Developers",
-    "source": "https://www.redhat.com/en/blog/red-hat-announces-new-open-source-tools-developers"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Cisco Launches New Cybersecurity Solutions for Enterprises",
-    "source": "https://blogs.cisco.com/security/cisco-launches-new-cybersecurity-solutions-for-enterprises"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Tableau Enhances Data Visualization Capabilities",
-    "source": "https://www.tableau.com/about/blog/2023/10/tableau-enhances-data-visualization-capabilities"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Mozilla Launches New Developer Tools for Web Performance",
-    "source": "https://developer.mozilla.org/en-US/docs/Web/Performance/Developer_Tools_Release"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Samsung Unveils New AI-Powered Chip for Mobile Devices",
-    "source": "https://www.samsung.com/global/galaxy/samsung-unveils-new-ai-powered-chip/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Cloudflare Expands Security Solutions for Developers",
-    "source": "https://blog.cloudflare.com/cloudflare-expands-security-solutions-for-developers/"
-  },
-  {
-    "date": "2025-12-03T04:04:07.217Z",
-    "headline": "Adobe Introduces New Features in Creative Cloud for Collaboration",
-    "source": "https://blog.adobe.com/en/publish/2023/10/adobe-introduces-new-features-in-creative-cloud-for-collaboration"
-  },
-  {
     "date": "2025-12-03T13:12:31.280Z",
     "headline": "Postman launches v11, an AI-bolstered version of its API platform",
     "source": "https://techcrunch.com/2024/06/25/postman-launches-v11-an-ai-bolstered-version-of-its-api-platform/"
@@ -1798,5 +1663,60 @@
     "date": "2025-12-13T04:00:13.212Z",
     "headline": "Cisco Enhances Webex with New Collaboration Features",
     "source": "https://www.cisco.com/c/en/us/solutions/collateral/collaboration/webex-enhancements.html"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Microsoft Teams to Get New Features for Hybrid Work",
+    "source": "https://www.theverge.com/2023/10/12/microsoft-teams-new-hybrid-work-features"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Google Cloud Introduces New Security Features for Kubernetes",
+    "source": "https://cloud.google.com/blog/products/containers-kubernetes/2023/10/google-cloud-kubernetes-security-features"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "AWS Announces New Serverless Database Options",
+    "source": "https://aws.amazon.com/blogs/aws/aws-announces-new-serverless-database-options/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Red Hat Launches New OpenShift Capabilities",
+    "source": "https://www.redhat.com/en/blog/red-hat-openshift-new-capabilities"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Mozilla Launches New Privacy-Focused Firefox Update",
+    "source": "https://www.mozilla.org/en-US/firefox/new/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Intel Reveals New Chips for AI Workloads",
+    "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-ai-chips.html"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Cloudflare Introduces Enhanced DDoS Protection",
+    "source": "https://www.cloudflare.com/press-releases/2023/10/cloudflare-ddos-protection/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Microsoft's Azure Expands AI Capabilities",
+    "source": "https://azure.microsoft.com/en-us/blog/azure-ai-capabilities/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "New Study Reveals Trends in Cybersecurity Threats",
+    "source": "https://www.cybersecurityinsider.com/cybersecurity-threats-trends-2023/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "Docker Enhances Container Security Features",
+    "source": "https://www.docker.com/blog/docker-container-security-enhancements/"
+  },
+  {
+    "date": "2025-12-13T13:02:51.636Z",
+    "headline": "GitLab Enhances CI/CD Features with New Integrations",
+    "source": "https://about.gitlab.com/releases/2023/10/12/gitlab-ci-cd-integrations/"
   }
 ]
