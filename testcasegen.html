@@ -345,6 +345,17 @@
             }
         };
     </script>
+    <!-- Analytics -->
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentTestCaseGenerator) {
+                window.Analytics.trackQAAgentTestCaseGenerator({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <!-- Agent Script -->
     <script type="module" src="js/testcasegen.js"></script>
     <script src="js/theme-switcher.js"></script>

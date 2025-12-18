@@ -163,8 +163,14 @@
         document.addEventListener('DOMContentLoaded', updateProviderStatusBtn);
         window.addEventListener('storage', updateProviderStatusBtn);
     </script>
-    <script type="module" src="js/wcag-explainer.js"></script>
-    <script src="js/theme-switcher.js"></script>
-</body>
-
-</html>
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.Analytics && window.Analytics.tr) {
+                window.Analytics.trackQAAgentExplain({
+                    referrer: document.referrer || 'direct',
+                    entryPoint: 'explain_page'
+                });
+            }
+        });
+    </script>

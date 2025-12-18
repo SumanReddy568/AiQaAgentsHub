@@ -119,6 +119,16 @@
             </div>
         </main>
         <div id="toast-container" class="fixed bottom-4 left-4 space-y-2 z-50"></div>
+        <script src="utils/analytics.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.Analytics && window.Analytics.trackQAAgentCodeOptimizer) {
+                    window.Analytics.trackQAAgentCodeOptimizer({
+                        referrer: document.referrer || 'direct'
+                    });
+                }
+            });
+        </script>
         <script type="module" src="js/codeOptimizer.js"></script>
         <script src="js/theme-switcher.js"></script>
         <script>

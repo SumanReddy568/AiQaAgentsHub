@@ -99,6 +99,16 @@
             }
         });
     </script>
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentGeminiStatus) {
+                window.Analytics.trackQAAgentGeminiStatus({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

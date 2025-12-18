@@ -172,6 +172,16 @@
         </div>
     </div>
 
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentLogin) {
+                window.Analytics.trackQAAgentLogin({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <script type="module" src="js/auth.js"></script>
     <style>
         .animate-fade-in {

@@ -577,6 +577,17 @@
     </div>
 
     <!-- Scripts -->
+    <script src="utils/analytics.js"></script>
+    <script>
+        // Track QA Agent Hub landing event
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentLanding) {
+                window.Analytics.trackQAAgentLanding({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <script type="module" src="js/landing.js"></script>
     <script type="module" src="js/theme-switcher.js"></script>
     <script type="module">

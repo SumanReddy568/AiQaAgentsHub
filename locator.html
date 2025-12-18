@@ -261,6 +261,16 @@
         </div>
 
         <div id="toast-container" class="fixed bottom-4 left-4 space-y-2 z-50"></div>
+        <script src="utils/analytics.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.Analytics && window.Analytics.trackQAAgentLocator) {
+                    window.Analytics.trackQAAgentLocator({
+                        referrer: document.referrer || 'direct'
+                    });
+                }
+            });
+        </script>
         <script type="module" src="js/locator.js"></script>
     </div>
     <script src="js/theme-switcher.js"></script>

@@ -60,6 +60,16 @@
         <div id="news-list" class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"></div>
         <div id="news-error" class="text-center text-red-600 mt-8 hidden"></div>
     </div>
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentTechNews) {
+                window.Analytics.trackQAAgentTechNews({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <script type="module" src="js/tech-news.js"></script>
     <script src="js/theme-switcher.js"></script>
 </body>

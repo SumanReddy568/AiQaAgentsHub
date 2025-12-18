@@ -146,6 +146,16 @@
             }, 3000);
         });
     </script>
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentGeminiDocs) {
+                window.Analytics.trackQAAgentGeminiDocs({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -118,6 +118,16 @@
         </div>
     </div>
 
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentDashboard) {
+                window.Analytics.trackQAAgentDashboard({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <script type="module" src="js/dashboard.js"></script>
     <script type="module">
         import './js/auth.js';

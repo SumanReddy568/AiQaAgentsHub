@@ -217,6 +217,16 @@
         </main>
     </div>
 
+    <script src="utils/analytics.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.Analytics && window.Analytics.trackQAAgentDiffChecker) {
+                window.Analytics.trackQAAgentDiffChecker({
+                    referrer: document.referrer || 'direct'
+                });
+            }
+        });
+    </script>
     <script type="module" src="js/diff-checker.js"></script>
     <script src="js/theme-switcher.js"></script>
     <script>
