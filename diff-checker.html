@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script type="module" src="js/auth-guard.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -37,25 +38,25 @@
                     </div>
                     <nav>
                         <div class="flex items-center gap-4">
-                        <a href="index.html"
-                            class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
-                            &larr; Home
-                        </a>
-                        <a href="dashboard.html" title="Usage Dashboard"
-                            class="p-2 rounded-xl hover:bg-white/50 transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 20V10"></path>
-                                <path d="M18 20V4"></path>
-                                <path d="M6 20V16"></path>
-                            </svg>
-                        </a>
-                        <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
-                            class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
-                            title="Check Gemini API Status">
-                            Gemini Status
-                        </a>
-                    </div>
+                            <a href="index.html"
+                                class="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-lg shadow-sm hover:bg-white transition-colors">
+                                &larr; Home
+                            </a>
+                            <a href="dashboard.html" title="Usage Dashboard"
+                                class="p-2 rounded-xl hover:bg-white/50 transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20V10"></path>
+                                    <path d="M18 20V4"></path>
+                                    <path d="M6 20V16"></path>
+                                </svg>
+                            </a>
+                            <a id="status-btn" href="geminiStatus.html" target="_blank" rel="noopener noreferrer"
+                                class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center"
+                                title="Check Gemini API Status">
+                                Gemini Status
+                            </a>
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -156,10 +157,12 @@
                     <!-- Loading State -->
                     <div id="optimizer-loader" class="hidden flex flex-col items-center justify-center py-12">
                         <div class="relative flex items-center justify-center mb-4" style="width:56px;height:56px;">
-                            <span class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
+                            <span
+                                class="absolute inset-0 rounded-full border-4 border-blue-400 border-t-transparent animate-spin"></span>
                             <img src="assets/ai.png" alt="AI" class="w-10 h-10 rounded-full shadow relative z-10" />
                         </div>
-                        <div class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
+                        <div
+                            class="mt-4 text-lg font-bold text-blue-700 text-center tracking-wide flex items-center justify-center gap-2">
                             <img src="assets/ai_png.png" alt="AI" class="w-6 h-6 rounded-full" />
                             AI is analyzing your code...
                         </div>

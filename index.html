@@ -95,10 +95,41 @@
                     </svg>
                 </button>
 
-                 <!-- Theme Toggle -->
+                <!-- Theme Toggle -->
                 <div class="flex items-center">
                     <input type="checkbox" id="theme-switch" class="theme-switch" />
                     <label for="theme-switch" class="theme-toggle" aria-label="Toggle Theme"></label>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div id="auth-section"
+                    class="flex items-center gap-3 ml-2 border-l border-slate-200 dark:border-slate-800 pl-4">
+                    <a href="login.html" id="login-nav-btn"
+                        class="px-5 py-2 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                        Login
+                    </a>
+                    <a href="login.html" id="signup-nav-btn"
+                        class="px-5 py-2 bg-slate-900 dark:bg-blue-600 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all">
+                        Sign Up
+                    </a>
+
+                    <!-- User Profile (Hidden by default) -->
+                    <div id="user-profile" class="hidden flex items-center gap-3">
+                        <div class="flex flex-col items-end">
+                            <span id="user-name-display"
+                                class="text-sm font-bold text-slate-800 dark:text-white leading-none"></span>
+                            <span id="user-email-display" class="text-[10px] text-slate-500 dark:text-slate-400"></span>
+                        </div>
+                        <button id="logout-nav-btn"
+                            class="p-2.5 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all border border-red-100 dark:border-red-800/30"
+                            title="Logout">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -548,6 +579,39 @@
     <!-- Scripts -->
     <script type="module" src="js/landing.js"></script>
     <script type="module" src="js/theme-switcher.js"></script>
+    <script type="module">
+        import './js/auth.js';
+
+        function updateAuthUI() {
+            const auth = window.AuthModule;
+            const loginBtn = document.getElementById('login-nav-btn');
+            const signupBtn = document.getElementById('signup-nav-btn');
+            const userProfile = document.getElementById('user-profile');
+            const nameDisplay = document.getElementById('user-name-display');
+            const emailDisplay = document.getElementById('user-email-display');
+            const logoutBtn = document.getElementById('logout-nav-btn');
+
+            if (auth && auth.isAuthenticated()) {
+                if (loginBtn) loginBtn.classList.add('hidden');
+                if (signupBtn) signupBtn.classList.add('hidden');
+                if (userProfile) userProfile.classList.remove('hidden');
+
+                if (nameDisplay) nameDisplay.textContent = auth.getStoredName() || 'User';
+                if (emailDisplay) emailDisplay.textContent = auth.getStoredEmail() || '';
+            } else {
+                if (loginBtn) loginBtn.classList.remove('hidden');
+                if (signupBtn) signupBtn.classList.remove('hidden');
+                if (userProfile) userProfile.classList.add('hidden');
+            }
+
+            if (logoutBtn) {
+                logoutBtn.onclick = () => auth.logout();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateAuthUI);
+        window.addEventListener('storage', updateAuthUI);
+    </script>
 
     <!-- Polling Logic (Preserved) -->
     <script>

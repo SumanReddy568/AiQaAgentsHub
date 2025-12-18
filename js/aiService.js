@@ -15,6 +15,7 @@
  */
 
 import { state } from "./state.js";
+import { showToast } from "./utils.js";
 const CLOUDFLARE_WORKER_URL = "https://shy-poetry-1817.sumanreddy568.workers.dev";
 const DEEPSEEK_API_URL = `${CLOUDFLARE_WORKER_URL}/deepseek/chat/completions`;
 const OPENROUTER_API_URL = `${CLOUDFLARE_WORKER_URL}/openrouter/chat/completions`;
@@ -54,21 +55,32 @@ async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
         response.status !== 429
       ) {
         let errorText = `API Error: ${response.status}`;
+        if (response.status === 404) {
+          errorText = "Model or Endpoint not found (404). Check your provider settings.";
+        }
         try {
-          const errorData = await response.json();
-          errorText = errorData.error?.message || errorText;
-        } catch {}
+          let errorData = await response.json();
+          // Handle case where error is wrapped in an array [ { error: ... } ]
+          if (Array.isArray(errorData) && errorData.length > 0) {
+            errorData = errorData[0];
+          }
+          errorText = errorData.error?.message || errorData.message || errorText;
+        } catch { }
+        showToast(errorText, "error");
         throw new Error(errorText);
       }
 
       // Prepare retry error
       lastError = new Error(`API Error: ${response.status}`);
       try {
-        const errorData = await response.json();
+        let errorData = await response.json();
+        if (Array.isArray(errorData) && errorData.length > 0) {
+          errorData = errorData[0];
+        }
         lastError = new Error(
-          errorData.error?.message || `API Error: ${response.status}`
+          errorData.error?.message || errorData.message || `API Error: ${response.status}`
         );
-      } catch {}
+      } catch { }
     } catch (error) {
       lastError = error;
 
@@ -87,11 +99,12 @@ async function fetchWithRetry(url, options, retries = 3, initialDelay = 1000) {
 
   // Helpful guidance for common browser/network issues
   if (lastError.message.includes("Failed to fetch")) {
-    throw new Error(
+    lastError = new Error(
       "Network/CORS/QUIC Error: Verify Cloudflare Worker deployment and browser QUIC settings."
     );
   }
 
+  showToast(lastError.message, "error");
   throw lastError;
 }
 
@@ -137,7 +150,7 @@ export async function fetchFromApi(
       try {
         const err = await response.json();
         errorText = err.error?.message || errorText;
-      } catch {}
+      } catch { }
       throw new Error(errorText);
     }
 
@@ -182,7 +195,7 @@ export async function fetchFromApi(
       try {
         const err = await response.json();
         errorText = err.error?.message || errorText;
-      } catch {}
+      } catch { }
       throw new Error(errorText);
     }
 
@@ -225,15 +238,6 @@ export async function fetchFromApi(
       ],
     }),
   });
-
-  if (!response.ok) {
-    let errorText = `API Error: ${response.status}`;
-    try {
-      const err = await response.json();
-      errorText = err.error?.message || errorText;
-    } catch {}
-    throw new Error(errorText);
-  }
 
   const result = await response.json();
   const content = result.choices?.[0]?.message?.content || "";

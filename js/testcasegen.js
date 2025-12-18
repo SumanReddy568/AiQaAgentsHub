@@ -12,41 +12,7 @@ import { parseTestCases, displayTestCases } from "./testcase-parser.js";
 loadSettingsFromStorage();
 initSettings();
 
-function showNotification(message, type = "info") {
-  const toastContainer = document.getElementById("toast-container");
-  if (!toastContainer) {
-    alert(message);
-    return;
-  }
-
-  const toast = document.createElement("div");
-  const typeClasses = {
-    success: "bg-green-100 border-green-500 text-green-700",
-    error: "bg-red-100 border-red-500 text-red-700",
-    warning: "bg-yellow-100 border-yellow-500 text-yellow-700",
-    info: "bg-blue-100 border-blue-500 text-blue-700",
-  };
-
-  toast.className = `px-4 py-3 rounded-lg border shadow-lg transform transition-all duration-300 ease-in-out ${
-    typeClasses[type] || typeClasses["info"]
-  }`;
-  toast.textContent = message;
-  toast.style.opacity = "0";
-  toast.style.transform = "translateY(20px)";
-
-  toastContainer.appendChild(toast);
-
-  setTimeout(() => {
-    toast.style.opacity = "1";
-    toast.style.transform = "translateY(0)";
-  }, 10);
-
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateY(20px)";
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
-}
+import { showToast } from "./utils.js";
 
 // DOM Elements
 const fileUploadArea = document.getElementById("fileUploadArea");
@@ -149,9 +115,8 @@ function displayFileList() {
         </svg>
         <div>
           <p class="text-sm font-medium text-slate-800">${file.name}</p>
-          <p class="text-xs text-slate-500">${formatFileSize(file.size)} • ${
-        file.success ? "Ready" : "Error"
-      }</p>
+          <p class="text-xs text-slate-500">${formatFileSize(file.size)} • ${file.success ? "Ready" : "Error"
+        }</p>
         </div>
       </div>
       <button onclick="removeFile(${index})" class="text-red-500 hover:text-red-700 transition-colors p-1 rounded hover:bg-red-50">
@@ -168,7 +133,7 @@ function displayFileList() {
 window.removeFile = function (index) {
   uploadedFiles.splice(index, 1);
   displayFileList();
-  showNotification("File removed", "success");
+  showToast("File removed", "success");
 };
 
 // Fallback function to display test cases if parser doesn't handle it
@@ -187,29 +152,24 @@ function fallbackDisplayTestCases(testCases) {
     <div class="test-case-item">
       <div class="flex justify-between items-start mb-3">
         <div>
-          <h3 class="text-lg font-semibold text-slate-800">${
-            tc.title || `Test Case ${index + 1}`
-          }</h3>
+          <h3 class="text-lg font-semibold text-slate-800">${tc.title || `Test Case ${index + 1}`
+        }</h3>
           <div class="flex gap-2 mt-1">
-            <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">${
-              tc.type || "N/A"
-            }</span>
-            <span class="px-2 py-1 text-xs font-medium rounded-full ${
-              tc.priority === "High"
-                ? "bg-red-100 text-red-700"
-                : tc.priority === "Medium"
-                ? "bg-yellow-100 text-yellow-700"
-                : "bg-green-100 text-green-700"
-            }">${tc.priority || "N/A"}</span>
+            <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">${tc.type || "N/A"
+        }</span>
+            <span class="px-2 py-1 text-xs font-medium rounded-full ${tc.priority === "High"
+          ? "bg-red-100 text-red-700"
+          : tc.priority === "Medium"
+            ? "bg-yellow-100 text-yellow-700"
+            : "bg-green-100 text-green-700"
+        }">${tc.priority || "N/A"}</span>
           </div>
         </div>
-        <span class="text-sm font-medium text-slate-500">TC-${
-          tc.id || index + 1
+        <span class="text-sm font-medium text-slate-500">TC-${tc.id || index + 1
         }</span>
       </div>
       
-      ${
-        tc.description
+      ${tc.description
           ? `
       <div class="mb-3">
         <h4 class="text-sm font-semibold text-slate-700 mb-1">Description:</h4>
@@ -217,10 +177,9 @@ function fallbackDisplayTestCases(testCases) {
       </div>
       `
           : ""
-      }
+        }
       
-      ${
-        tc.steps && tc.steps.length > 0
+      ${tc.steps && tc.steps.length > 0
           ? `
       <div class="mb-3">
         <h4 class="text-sm font-semibold text-slate-700 mb-2">Steps:</h4>
@@ -232,10 +191,9 @@ function fallbackDisplayTestCases(testCases) {
       </div>
       `
           : ""
-      }
+        }
       
-      ${
-        tc.expectedResult
+      ${tc.expectedResult
           ? `
       <div class="mb-3">
         <h4 class="text-sm font-semibold text-slate-700 mb-1">Expected Result:</h4>
@@ -243,7 +201,7 @@ function fallbackDisplayTestCases(testCases) {
       </div>
       `
           : ""
-      }
+        }
       
       <div class="flex gap-2 mt-3 pt-3 border-t border-slate-200">
         <button onclick="copyTestCase(${index})" class="text-sm text-blue-600 hover:text-blue-800 font-medium">
@@ -275,7 +233,7 @@ Expected Result: ${tc.expectedResult}
   `.trim();
 
   navigator.clipboard.writeText(text).then(() => {
-    showNotification("Test case copied to clipboard", "success");
+    showToast("Test case copied to clipboard", "success");
   });
 };
 
@@ -284,7 +242,7 @@ const copyAllBtn = document.getElementById("copyAllBtn");
 if (copyAllBtn) {
   copyAllBtn.addEventListener("click", () => {
     if (!generatedTestCases || generatedTestCases.length === 0) {
-      showNotification("No test cases to copy", "error");
+      showToast("No test cases to copy", "error");
       return;
     }
 
@@ -303,7 +261,7 @@ Expected Result: ${tc.expectedResult}
       .join("\n\n---\n\n");
 
     navigator.clipboard.writeText(allText).then(() => {
-      showNotification("All test cases copied to clipboard", "success");
+      showToast("All test cases copied to clipboard", "success");
     });
   });
 }
@@ -323,7 +281,7 @@ function updateStats(count) {
 // Main Generation Function
 async function handleGenerate() {
   if (!state.apiKey) {
-    showNotification(
+    showToast(
       "API key not configured. Please add it in Settings.",
       "error"
     );
@@ -331,7 +289,7 @@ async function handleGenerate() {
   }
 
   if (uploadedFiles.length === 0) {
-    showNotification("Please upload at least one file", "error");
+    showToast("Please upload at least one file", "error");
     return;
   }
 
@@ -412,7 +370,7 @@ async function handleGenerate() {
 
     updateStats(generatedTestCases.length);
 
-    showNotification(
+    showToast(
       `Generated ${generatedTestCases.length} test cases!`,
       "success"
     );
@@ -424,7 +382,7 @@ async function handleGenerate() {
         <p class="text-sm">${error.message}</p>
       </div>
     `;
-    showNotification("Generation failed: " + error.message, "error");
+    showToast("Generation failed: " + error.message, "error");
     emptyState.classList.remove("hidden");
     testCaseList.classList.add("hidden");
   } finally {
@@ -443,7 +401,7 @@ async function handleGenerate() {
 // Export Functions
 function exportAsCsv() {
   if (!generatedTestCases || generatedTestCases.length === 0) {
-    showNotification("No test cases to export", "error");
+    showToast("No test cases to export", "error");
     return;
   }
 
@@ -472,12 +430,12 @@ function exportAsCsv() {
   ].join("\n");
 
   downloadFile(csvContent, "test-cases.csv", "text/csv");
-  showNotification("Exported as CSV", "success");
+  showToast("Exported as CSV", "success");
 }
 
 function exportAsJson() {
   if (!generatedTestCases || generatedTestCases.length === 0) {
-    showNotification("No test cases to export", "error");
+    showToast("No test cases to export", "error");
     return;
   }
 
@@ -493,7 +451,7 @@ function exportAsJson() {
 
   const json = JSON.stringify(data, null, 2);
   downloadFile(json, "test-cases.json", "application/json");
-  showNotification("Exported as JSON", "success");
+  showToast("Exported as JSON", "success");
 }
 
 function downloadFile(content, filename, mimeType) {

@@ -37,12 +37,21 @@ export function copyToClipboard(text, button) {
 }
 
 export function showToast(message, type = 'info', duration = 3000) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'fixed bottom-4 left-4 space-y-2 z-[9999]';
+        document.body.appendChild(container);
+    }
+
     const toast = document.createElement('div');
     const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500', warning: 'bg-yellow-500' };
-    toast.className = `${colors[type]} text-white px-4 py-3 rounded-xl shadow-lg transform -translate-x-full transition-transform duration-300`;
-    toast.innerHTML = `<span>${message}</span>`;
-    DOM.toastContainer.appendChild(toast);
-    setTimeout(() => toast.classList.remove('-translate-x-full'), 100);
+    toast.className = `${colors[type]} text-white px-4 py-3 rounded-xl shadow-lg transform -translate-x-full transition-transform duration-300 min-w-[200px] max-w-sm`;
+    toast.innerHTML = `<span class="font-medium">${message}</span>`;
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.remove('-translate-x-full'), 10);
     setTimeout(() => {
         toast.classList.add('-translate-x-full');
         setTimeout(() => toast.remove(), 300);

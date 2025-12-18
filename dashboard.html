@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/auth-guard.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -25,7 +26,7 @@
     </style>
     <script>
         // Carry theme from localStorage (light/dark/system)
-        (function() {
+        (function () {
             const theme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', theme);
         })();
@@ -43,6 +44,11 @@
                     browser.</p>
             </div>
             <div class="flex items-center gap-4">
+                <button id="logout-btn"
+                    class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors min-w-[80px] text-center">
+                    <span class="button-text">Logout</span>
+                    <span class="button-loader hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
                 <button id="clear-data-btn"
                     class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors min-w-[120px] text-center">
                     Clear All Data
@@ -113,7 +119,24 @@
     </div>
 
     <script type="module" src="js/dashboard.js"></script>
-    <!-- <script src="js/theme-switcher.js"></script> -->
+    <script type="module">
+        import './js/auth.js';
+        // Auth guard is now handled by js/auth-guard.js
+
+        function initLogout() {
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    const auth = window.AuthModule;
+                    if (auth) auth.logout();
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initLogout();
+        });
+    </script>
     <script>
         // Apply reusable classes with Tailwind's @apply directive for cleaner HTML
         const style = document.createElement('style');
