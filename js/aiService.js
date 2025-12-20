@@ -16,7 +16,7 @@
 
 import { state } from "./state.js";
 import { showToast } from "./utils.js";
-const CLOUDFLARE_WORKER_URL = "https://shy-poetry-1817.sumanreddy568.workers.dev";
+const CLOUDFLARE_WORKER_URL = "https://cloud-fare-ai-gateway.sumanreddy568.workers.dev/";
 const DEEPSEEK_API_URL = `${CLOUDFLARE_WORKER_URL}/deepseek/chat/completions`;
 const OPENROUTER_API_URL = `${CLOUDFLARE_WORKER_URL}/openrouter/chat/completions`;
 const GEMINI_GATEWAY_URL = `${CLOUDFLARE_WORKER_URL}/compat/chat/completions`;
