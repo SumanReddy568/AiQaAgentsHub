@@ -85,7 +85,7 @@ function storeAuthData(token, email, hash, name = '') {
     localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.TOKEN, token);
     localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_EMAIL, email);
     localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_HASH, hash);
-    localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_ID, userId || '');
+    localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_ID);
     if (name) {
         localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_NAME, name);
     }
@@ -97,7 +97,7 @@ function clearAuthData() {
     localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.USER_EMAIL);
     localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.USER_HASH);
     localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.USER_NAME);
-    localStorage.setItem(AUTH_CONFIG.STORAGE_KEYS.USER_ID, userId || "");
+    localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.USER_ID);
 }
 
 // Get stored token
