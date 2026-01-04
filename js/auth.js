@@ -11,7 +11,8 @@ const AUTH_CONFIG = {
         TOKEN: 'auth_token',
         USER_EMAIL: 'user_email',
         USER_HASH: 'user_hash',
-        USER_NAME: 'user_name'
+        USER_NAME: 'user_name',
+        USER_ID: 'user_id'
     },
     REDIRECT_TARGET: 'index.html'
 };
