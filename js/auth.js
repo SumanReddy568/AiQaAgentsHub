@@ -1,11 +1,8 @@
-/**
- * Authentication Module for AI QA Agent Hub
- * Integrates with Cloudflare Auth Worker API
- */
+// Authentication module. window.WORKER_BASE is set by utils/endpoints.js
+// (loaded first in every HTML).
 
-// Configuration
 const AUTH_CONFIG = {
-  API_BASE_URL: "https://auth-worker.sumanreddy568.workers.dev",
+  API_BASE_URL: window.WORKER_BASE,
   SOURCE: "ai-qa-agents-hub",
   STORAGE_KEYS: {
     TOKEN: "auth_token",

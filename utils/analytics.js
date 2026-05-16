@@ -1,4 +1,5 @@
-const TRACK_URL = "https://multi-product-analytics.sumanreddy568.workers.dev/";
+// WORKER_BASE is set by utils/endpoints.js (loaded first in every HTML).
+const TRACK_URL = window.WORKER_BASE + "/api/event";
 
 // Get user info from storage
 function getUserInfo() {

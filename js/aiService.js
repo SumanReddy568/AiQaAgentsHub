@@ -16,7 +16,10 @@
 
 import { state } from "./state.js";
 import { showToast } from "./utils.js";
-const CLOUDFLARE_WORKER_URL = "https://cloud-fare-ai-gateway.sumanreddy568.workers.dev/";
+// window.GATEWAY_BASE is set by utils/endpoints.js (loaded as a classic
+// script first in every HTML), so it's available by the time this module
+// evaluates.
+const CLOUDFLARE_WORKER_URL = window.GATEWAY_BASE;
 const DEEPSEEK_API_URL = `${CLOUDFLARE_WORKER_URL}/deepseek/chat/completions`;
 const OPENROUTER_API_URL = `${CLOUDFLARE_WORKER_URL}/openrouter/chat/completions`;
 const GEMINI_GATEWAY_URL = `${CLOUDFLARE_WORKER_URL}/compat/chat/completions`;
